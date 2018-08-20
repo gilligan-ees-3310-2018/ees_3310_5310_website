@@ -1,0 +1,17 @@
+---
+title: Carbon Pricing Instruments
+class_date: '2018-11-07'
+class_number: 33
+weight: 33
+slug: reading_33
+pubdate: '2018-08-20'
+date: '2018-11-07'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Handout: J.M. Gilligan, "The Economics of Regulating Greenhouse Gases: Command & Control, Emissions Trading, and Emissions Taxes," handout (posted online). (posted online).
+
+

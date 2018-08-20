@@ -1,0 +1,140 @@
+baseurl = "https://www.ees3310.jgilligan.org"
+# baseurl = "https://ees-4760-5760.netlify.com"
+languageCode = "en-us"
+defaultContentLanguage = "en-us"
+title = "EES 3310/5310"
+theme = "hugo-syllabus"
+#disqusShortname = ""
+# googleAnalytics = ""
+paginate = 10
+relativeurls = true
+publishDir = "public"
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+[blackfriday]
+  smartypangs = true
+  latexDashes = true
+  smartDashes = true
+  hrefTargetBlank = true
+  angledQuotes = false
+  fractions = false
+
+[permalinks]
+  post = "/:year/:month/:slug/"
+  reading = "/reading/:slug"
+  assignment = "/assignment/:slug"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  archive = "archives"
+
+[author]
+  name = "Jonathan Gilligan"
+  bio = ""
+  job = "Associate Professor"
+  location = "Vanderbilt University"
+  gravatarEmail = "jonathan.gilligan@gmail.com"
+  # Your profile picture
+#  picture = ""
+  homepage = "https://www.jonathangilligan.org"
+  twitter = "jg_environ"
+
+# Menu Configuration
+[[menu.main]]
+  weight = 1
+  identifier = "home"
+  name = "Home"
+  pre = "<i class=\"sidebar-button-icon fa fa-lg fa-home\"></i>"
+  url = "/"
+[[menu.main]]
+  weight = 2
+  identifier = "overview"
+  name = "Overview"
+  pre = "<i class=\"fa fa-globe\"></i>"
+  url = "/overview"
+[[menu.main]]
+  weight = 3
+  identifier = "schedule"
+  name = "Schedule"
+  pre = "<i class=\"material-icons\">date_range</i>"
+  url = "/schedule"
+[[menu.main]]
+  weight = -4
+  identifier = "labs"
+  name = "Labs"
+  pre = "<i class=\"fa fa-flask\"></i>"
+  url = "/projects"
+[[menu.main]]
+  weight = -4
+  identifier = "projects"
+  name = "Projects"
+  pre = "<i class=\"material-icons\">near_me</i>"
+  url = "/projects"
+[[menu.main]]
+  weight = 5
+  identifier = "policies"
+  name = "Policies"
+  pre = "<i class=\"material-icons\">gavel</i>"
+  url = "/policies"
+[[menu.main]]
+  weight = -6
+  identifier = "downloads"
+  name = "Downloads"
+  pre = "<i class=\"material-icons\">get_app</i>"
+  url = "/downloads"
+[[menu.main]]
+  weight = 7
+  identifier = "tools"
+  name = "Tools"
+  pre = "<i class=\"material-icons\">build</i>"
+  url = "/tools"
+
+[[menu.footer]]
+  weight = 2
+  identifier = "GitHub"
+  name = "Class Repos"
+  pre = "<i class=\"button-icon fa fa-2x fa-github\"></i>"
+  url = "https://github.com/gilligan-ees-3310-2018"
+
+[params]
+  profname = "Jonathan Gilligan"
+  dateFormat = "January 2, 2006"
+  midtermDate = "2018-10-03"
+  finalExamDate = "2018-12-13"
+  background = "img/BoxcarPair.jpg"
+  math = "true"
+  backgroundColor = "white"
+  backgroundSize = "cover"
+  backgroundBlendMode = "multiply"
+  backgroundRepeat = "repeat-y"
+  shortCourseName = "EES 3310/5310"
+  fullCourseName = "EES 3310/5310: Global Climate Change"
+  semester = "Fall 2018"
+  courseCatalogEntry = "Scientific principles and policy applications. Earth's past; evidence of human impact; future climate change; and economic, social, and ecological consequences. Economic, technological, and public policy responses. Repeat credit for 2110. Students who have earned credit for 2110 will earn only one credit hour for this course. Prerequisite: one of 1030, 1080, 1510, BSCI 1510, CHEM 1601, ECON 1010, ES 1401 or PHYS 1501, 1601, 1901. [4] (MNS)"
+
+  [params.lectures]
+    times = "MWF 9:10--10:00"
+    classroom = "SC 1120 (Basement of the Math building)"
+
+  [params.lab]
+    times = "Mon. 2:10--5:00"
+    classroom = "SC 2220 (Next to the Science Library)"
+
+  [params.prof]
+    name = "Jonathan Gilligan"
+    lastname = "Gilligan"
+    title = "Prof."
+    email = "jonathan.gilligan@vanderbilt.edu"
+    phone = "322-2420"
+    url = "www.jonathangilligan.org"
+    office = "Stevenson 5725 (7th floor of building #5)"
+    officeHours = "Mon. 10:10--11:00, Thu. 10:00--11:00, or by appointment"
+
+  [params.ta]
+    name = "Kelsea Best"
+    lastname = "Best"
+    title = "Ms."
+    email = "kelsea.b.best@vanderbilt.edu"
+    office = "Stevenson 5703A (7th floor of building #5)"
+    officeHours = "Wed. 3:00--4:00, Fri. 10:10--11:00, or by appointment"

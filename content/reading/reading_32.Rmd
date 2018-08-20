@@ -1,0 +1,28 @@
+---
+title: The Limits of Economic Approaches
+class_date: '2018-11-05'
+class_number: 32
+weight: 32
+slug: reading_32
+pubdate: '2018-08-20'
+date: '2018-11-05'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Handout: T. Barker, "The Economics of Avoiding Dangerous Climate Change," Climatic Change **89**, 173--194 (2008) (posted online). (posted online).
+* Handout: C. Jaeger, H.-J. Schellnhuber, and V. Brovkin, "Stern's Review and Adam's Fallacy," Climatic Change **89**, 207--218 (posted online). (posted online).
+
+### Reading Notes:
+
+The article by Barker, "The Economics of Avoiding Dangerous Climate Change," is long. Read the following portions:
+
+* Section 1 (Introduction)
+* Section 2 (Traditional and New Economics): pp. 176--178 (through the paragraph in the middle of the page that ends "\dots but any implications for policy are heavily qualified and extensive lists are given of the dangers that are not or cannot be monetised,' and the single paragraph that starts at the bottom of p. 179 ("Contrast also the pre-Stern traditional conclusion \dots assumptions about human welfare and behaviour needed to make the mathematics tractable.")
+* Section 3 (Uncertainty): pp. 181--183, through the first complete paragraph on p. 183 ("There are serious problems \dots fundamental differences between them.")
+* Section 4 (Economic Ethics): Skip the first few pages, which summarize arguments about discounting that we already covered in previous classes. Read pp. 185--187, starting at the bottom of p. 185 with "Justice as a theory of ethics" and reading through the end of the section.
+* Section 5 (Engineering and History). Skip this section.
+* Section 6  (Social Choice): read pp. 189--190. Read through the first complete paragraph on p. 190 ("In theory \dots adaptation investments.")
+* Section 7 (Toward a New Economics): Read this whole section.

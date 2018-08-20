@@ -1,0 +1,28 @@
+---
+title: "Midterm Exam"
+class_date: '2018-10-03'
+class_number: 19
+weight: 19
+slug: reading_19
+pubdate: '2018-08-17'
+date: '2018-08-17'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+
+# Midterm Exam
+
+## Notes
+
+The midterm exam will be a mixture of about 40% multiple-choice questions and
+60% free-response short-answer questions. It will cover all the reading through
+Wednesday, Sept. 26 ("Climate Models")
+
+I will provide a sheet with the important numbers (such as the Stefan-Boltzmann
+constant, the lapse rate of the atmosphere, the solar constant, and so forth),
+and the important equations (such as the Stefan-Boltzmann law, the barometric
+law, and the chemical reactions that control carbon-dioxide buffering in the
+oceans).
+
+**Remember to bring a calculator, #2 pencils, and an eraser.**

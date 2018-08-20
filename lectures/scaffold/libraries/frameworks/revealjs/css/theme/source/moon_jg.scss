@@ -1,0 +1,101 @@
+/**
+ * Solarized Dark theme for reveal.js.
+ * Author: Achim Staebler
+ */
+
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro:400,700,400italic,700italic);
+
+/**
+ * Solarized colors by Ethan Schoonover
+ */
+html * {
+	color-profile: sRGB;
+	rendering-intent: auto;
+}
+
+// Solarized colors
+$base03:    #002b36;
+$base02:    #073642;
+$base01:    #586e75;
+$base00:    #657b83;
+$base0:     #839496;
+$base1:     #93a1a1;
+$base2:     #eee8d5;
+$base3:     #fdf6e3;
+$yellow:    #b58900;
+$orange:    #cb4b16;
+$red:       #dc322f;
+$magenta:   #d33682;
+$violet:    #6c71c4;
+$blue:      #268bd2;
+$cyan:      #2aa198;
+$green:     #859900;
+
+// Override theme settings (see ../template/settings.scss)
+$mainColor: $base1;
+$headingColor: $base2;
+$headingTextShadow: none;
+$backgroundColor: $base03;
+$linkColor: $blue;
+$linkColorHover: lighten( $linkColor, 20% );
+$selectionBackgroundColor: $magenta;
+
+// Primary/body text
+$mainFont: 'Noto Sans', sans-serif;
+$mainFontSize: 52px;
+
+// Headings
+$headingFont: 'PT Sans', Impact, sans-serif;
+$headingLineHeight: 0.9;
+$headingTextTransform: none;
+
+$heading1TextShador: none;
+
+$codeFont: 'Anonymous Pro', monospace;
+$codeColor: default;
+$codeBackgroundColor: default;
+
+
+// Background generator
+// @mixin bodyBackground() {
+// 	@include radial-gradient( rgba($base3,1), rgba(lighten($base3, 20%),1) );
+// }
+
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+.reveal h1 {
+  margin-bottom: 50px;
+}
+
+.reveal .h3 {
+  margin-top: 10px;
+}
+
+.reveal .subtitle {
+  font-size: 1.5 em;
+}
+
+.reveal .author {
+  font-size: 1.2em;
+  text-transform: none;
+}
+
+.reveal .date {
+  font-size: 0.8em;
+ }
+ 

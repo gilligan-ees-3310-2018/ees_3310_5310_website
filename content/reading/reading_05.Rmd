@@ -1,0 +1,77 @@
+---
+title: Greenhouse Gases
+class_date: '2018-08-31'
+class_number: 5
+weight: 5
+slug: reading_05
+pubdate: '2018-08-20'
+date: '2018-08-31'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Understanding the Forecast, Ch. 4.
+
+### Reading Notes:
+
+Undergraduates need only understand band saturation qualitatively
+(i.e., you don't need to worry about equations 4.1--4.3).
+Graduate students do need to know and be able to apply these equations.
+
+You should understand why molecules with many atoms are
+more powerful greenhouse gases than molecules with fewer atoms. Can a single
+atom (e.g., noble gases such as helium) act as greenhouse gases? What about
+nitrogen (N~2~) and oxygen (O~2~) molecules, which make up almost 99% of
+the atmosphere?
+
+What is the "atmospheric window," that spans the range of about
+800--1250 \wavenumber (wavelengths of 8--12 \micron)?
+
+### Understanding emissions spectra seen by satellites
+**This is important:** The key to this section is understanding diagrams,
+such as Fig. 4.3 and 4.5. These diagrams show the brightness of
+infrared light emitted at different frequencies. The smooth lines correspond
+to the radiation a perfect blackbody would give off at different temperatures.
+Hotter bodies give off more energy and cooler bodies give off less.
+
+The jagged line is the actual radiation given off by the atmosphere, as seen by
+a satellite in space. Because the atmosphere is cooler higher up, emissions that follow a cooler
+blackbody curve for some part of the spectrum mean the infrared at
+those wavenumbers is emitted by greenhouse gases higher in the atmosphere.
+Brighter emissions that follow a hotter blackbody curve for some part of
+the spectrum means hotter temperatures, and hence emission at those wavenumbers
+comes from gases closer to the ground.
+
+As you add more of a gas, it absorbs more infrared light, so the emissions from
+the ground or from lower in the atmosphere can't get through---they're absorbed
+by higher layers of the atmosphere---and thus, the only emissions that get out to
+space come from higher (and thus colder) layers. This is why you see lower
+emissions (colder temperatures) for the wavenumbers at which powerful greenhouse
+gases, such as CO~2~ and ozone, absorb.
+
+Here are some review questions to check whether you understand this material
+well:
+
+* Water vapor is a powerful greenhouse gas. Why do you suppose we don't
+  see extremely cold temperatures for the part of the spectrum (100--600 \wavenumber)
+  where _it_ absorbs?
+* If greenhouse gases make earth warmer, why does adding CO~2~ in
+  make the emissions temperatures become smaller in Fig. 4-5?
+
+
+### Band saturation
+**This is important for understanding why some greenhouse gases are more
+powerful than others** What is band saturation? Why does increasing CO~2~\
+from 10 to 100 parts per million or from 100 to 1000 parts per million have much
+less effect than increasing it from 0 to 10 parts per million? Think by analogy.
+Suppose you smear a tablespoon of black ink all over a white piece of
+paper. How much will that affect its brightness? Now suppose you smear four
+more tablespoons of ink on the stained paper. Which has the bigger effect on
+the whiteness of the paper: the first spill of ink, or the second (much bigger)
+one?
+
+Now, looking at the atmosphere with the current amount of greenhouse gases,
+can you speculate why adding a million molecules of methane to the atmosphere
+will produce 20 times more warming than adding a million molecules of CO~2~?

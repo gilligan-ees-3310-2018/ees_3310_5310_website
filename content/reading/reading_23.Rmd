@@ -1,0 +1,41 @@
+---
+title: Policy Myths
+class_date: '2018-10-12'
+class_number: 23
+weight: 23
+slug: reading_23
+pubdate: '2018-08-20'
+date: '2018-10-12'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* The Climate Fix, Ch. 2.
+* Climate Casino, Ch. 25.
+
+### Reading Notes:
+
+In _The Climate Fix_, Pielke addresses three what he calls three myths of climate policy:
+
+1. We lack political will to do anything about climate change
+1. We must trade off the economy for the environment
+1. We have all the technology we need to solve the problem
+
+With respect to myth \#2, consider this quotation, from a story on National Public Radio on October 2, 2010:
+
+    \noindent
+    Republican pollster Frank Luntz says it's clear why the politics of climate change are so different [in 2010] than they were in 2008. "_What has changed is that the American economy went to hell. And when you ask voters are they more concerned about destroying their environment over the next 100 years or rehabilitating their economy over the next 100 weeks, they'll choose the economy over the environment any day_," Luntz says.
+
+As you read Chapter 2 of _The Climate Fix_, critically assess Luntz's arguments. Pay special attention to the "**Iron Law**," described on pp. 46--50. This will be a crucial piece of Pielke's analysis throughout the book.
+
+On pp. 51--58 of _The Climate Fix_, Pielke writes about the idea of "**stabilization wedges**," introduced by Robert Socolow and Stephen Pacala, in the context of dismissing myth \#3. The stabilization wedge concept is very important in climate policy and we will discuss them further later in the semester, so read these pages reasonably carefully and keep in mind that Pielke's dismissal is just one opinion. A number of scholars and policy experts agree with Pielke, but many disagree as well. This is a topic on which it's important to think for yourself.
+
+After dismissing many myths, Pielke offers his own ideas for how to approach climate policy.
+
+In Chapter 25 of _Climate Casino_, Nordhaus discusses what we know about public opinion on climate change. Nordhaus shows that in the past decade, we have seen an increasing divide between what scientists think about the facts of climate change and what the public thinks, that this widening gap has proceeded together with a growing ideological divide between liberals and Democrats on one side and conservatives and Republicans on the other. He observes on p. 311 that "Climate change is an area where the political leaders have led public opinion."
+
+Nordhaus then proposes a way for small-government political conservatives, such as himself, to close the divide between the parties and between scientists and the public.
+
+As you read both Nordhaus's and Pielke's analyses and recommendations, ask yourself what you find it persuasive, what you agree with, and what you disagree with. This is a time to start thinking both about what kinds of climate policies you would want to pursue and how you would critically analyze them for their strengths and weaknesses.

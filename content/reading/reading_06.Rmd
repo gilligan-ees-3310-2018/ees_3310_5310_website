@@ -1,0 +1,63 @@
+---
+title: Vertical Structure of the Atmosphere
+class_date: '2018-09-03'
+class_number: 6
+weight: 6
+slug: reading_06
+pubdate: '2018-08-20'
+date: '2018-09-03'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Understanding the Forecast, Ch. 5.
+
+### Reading Notes:
+
+The key thing in this chapter is understanding why the troposphere gets colder as
+  you go higher, and how this phenomenon (described by the term **lapse rate**),
+  contributes to the greenhouse effect.
+
+  First, the chapter starts by defining a **skin layer**, which is an
+  important concept, and connects it to the greenhouse effect.
+
+  Next, it moves on to describe how air pressure varies with altitude. I
+  find the discussion on pp. 46--49 more confusing than it needs to be.
+  Don't get bogged down in the details of _why_ the equation at
+  the bottom of p. 48 is true. Just understand _what_ that equation
+  tells you:
+\[
+  P(z) = 1~\text{atm}\cdot e^{-z/8~\text{km}}
+\]
+You might find it easier and more intuitive to work with another way to write
+the same equation:
+\[
+  P(z) = 1~\text{atm}\cdot 2^{-z/5.5~\text{km}}
+\]
+If we think of it this way, it's intuitive that every 5.5 km you go up in the
+atmosphere, the pressure drops by half: at 5.5 km, it's 50% what it is at sea
+level. At 11.0 km it's 25%; at 16.5 km it's 12.5%, and so on.
+
+Third, we learn why air cools off as it rises through the atmosphere. It's
+because it expands as the pressure surrounding it drops. Similarly, as air descends to lower
+altitudes, it compresses and gets hotter.
+
+Fourth, we learn about latent heat from water evaporating and condensing. Latent
+heat is responsible for a large fraction of the heat transport around the atmosphere. Latent heat
+is also very important because it affects lapse rate. How does the lapse rate in
+**saturated** air (i.e., air with 100% relative humidity) differ from the lapse rate
+in **unsaturated** air (with relative humidity $<100%$)? Why? (Hint: the relavant
+material appears in the section on **moist convection**, not the section on latent heat.)
+
+Fifth, we learn about convection: as you heat air it tends to rise and this
+moves heat around the atmosphere. The key concept regarding convection is **stability** vs.\
+**instability**. Unstable air undergoes convection (as the troposphere does), whereas
+stable air does not, and instead remains **stratified**, as the stratosphere does.
+
+Sixth (and finally), we put everything together to see the connection between
+lapse rates and the greenhouse effect. The key result is that adding greenhouse gases raises the height
+of the "skin" and this added height, together with the lapse rate, tells us how much the
+surface temperature will warm up. The book summarizes these five points
+concisely on p. 55.

@@ -1,0 +1,57 @@
+---
+title: Energy Balance and Climate
+class_date: '2018-08-27'
+class_number: 3
+weight: 3
+slug: reading_03
+pubdate: '2018-08-20'
+date: '2018-08-27'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Understanding the Forecast, Ch. 2--3, pp. 9--23.
+
+### Reading Notes:
+
+Focus on pp. 13--23 in _Understanding the Forecast_. You need to understand the calculations of the "bare-rock" model on pp. 19--23. The intermediate steps are not as important as two equations:
+\[
+  F_{\text{out}} = F_{\text{in}}\quad\text{at equilibrium,}
+\]
+and equation (3.1), which describes the bare-rock model:
+\[
+  T_{\text{earth}} =
+  \sqrt[4]{\frac{(1-\alpha)I_{\text{in}}}{4\epsilon\sigma}}
+\]
+(Helpful hint: to take a fourth root easily with your calculator, just press the square root key twice.)
+
+Questions to think about (**not** to write up and turn in):
+
+* What is blackbody radiation? What is a "blackbody" anyway?
+* Why is it that the sun gives off visible light, but the earth does not?
+* When the earth absorbs energy from sunlight, where does the energy go initially?
+  Where is the final destination of that energy?
+* What is the Stefan-Boltzmann equation, and why is it important?
+* What does the Stefan-Boltzmann equation tell us would happen if the sun got hotter?
+  What would happen if the Earth got hotter?
+* Study table 3.1 on p. 23 of _Understanding the Forecast_
+  (ignore the column "$T_{\text{1 layer}}$" because we don't get
+  to that until later in the chapter.):
+
+    * Why is the sunlight brighter on Venus than on Earth, and dimmer on Mars?
+    * Why is the "bare-rock" temperature of Venus lower than Earth,
+      even though it gets more sunlight?
+    * Why do you suppose the actual observed temperature at the surface of Venus
+      is so much hotter than the "bare rock" temperature?
+
+* At the top of p. 20, why does Archer write,
+  \(F_{\text{out}} = F_{\text{in}}\)?
+  What would happen if
+  \(F_{\text{out}} \ne F_{\text{in}}\)
+* Without getting bogged down in the details of the numbers,
+  why are the areas used to calculate the incoming and outgoing energy
+  fluxes different? (Figures 3.1 and 3.2 explain this)
+* If the sun got 5% brighter, approximately how many degrees warmer would
+  the earth become?

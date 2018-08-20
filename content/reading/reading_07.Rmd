@@ -1,0 +1,30 @@
+---
+title: "Review of Greenhouse Effect"
+class_date: '2018-09-05'
+class_number: 7
+weight: 7
+slug: reading_07
+pubdate: '2018-08-17'
+date: '2018-08-17'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+
+## Reading:
+
+* No new reading 
+
+
+### Reading Notes:
+
+As you prepare for class, think about:
+
+* What makes some greenhouse gases more powerful than others?
+* What are the important differences between the layer-model approach to 
+  calculating temperature and the skin-model on pp. 45--46?
+* How does band saturation work? How can you recognize saturation in MODTRAN?
+* How do you use MODTRAN to calculate the effect of doubling CO~2~?
+* How do you use the full-spectrum model to calculate the effect of doubling 
+  CO~2~?
+

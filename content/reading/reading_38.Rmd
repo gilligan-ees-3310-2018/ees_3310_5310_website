@@ -1,0 +1,18 @@
+---
+title: Pragmatism and Climate Policy
+class_date: '2018-11-26'
+class_number: 38
+weight: 38
+slug: reading_38
+pubdate: '2018-08-20'
+date: '2018-11-26'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Climate Casino, Ch. 23.
+* The Climate Fix, Ch. 9.
+
+

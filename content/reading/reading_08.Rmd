@@ -1,0 +1,26 @@
+---
+title: Feedbacks
+class_date: '2018-09-07'
+class_number: 8
+weight: 8
+slug: reading_08
+pubdate: '2018-08-20'
+date: '2018-09-07'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Understanding the Forecast, Ch. 7, pp. 73--81.
+
+### Reading Notes:
+
+* Understand the concept of positive and negative feedbacks.
+* Understand how the following feedbacks work and whether each is positive or negative:
+
+    * Stefan-Boltzmann feedback
+    * Ice-albedo feedback
+    * Water vapor feedback
+
+* What is a **runaway greenhouse effect**? What prevents Earth from having a runaway greenhouse?

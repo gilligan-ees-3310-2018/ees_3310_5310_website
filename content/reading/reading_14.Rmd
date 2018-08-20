@@ -1,0 +1,27 @@
+---
+title: The Pleistocene Ice Ages
+class_date: '2018-09-21'
+class_number: 14
+weight: 14
+slug: reading_14
+pubdate: '2018-08-20'
+date: '2018-09-21'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Understanding the Forecast, Ch. 7, p. 84.
+* Understanding the Forecast, Ch. 8, pp. 93--97.
+* Understanding the Forecast, Ch. 11, pp. 147--149.
+
+### Reading Notes:
+
+Focus on the Pleistocene Ice Ages, which extended from roughly 2.75 million years ago (different scientists attribute different dates to the exact beginning of the Pleistocene) to about 10,000 years ago when our current warm period, the Holocene, began when the glaciers retreated for the last time.
+
+We have two principal questions about the Pleistocene: How do we know what climate was like then? And how do we know what caused the cycle of ice ages?
+
+* Pay particular attention to the way oxygen isotopes in samples of ice can be used to tell the temperature hundreds of thousands of years ago and the way oxygen isotopes in sediments at the bottom of the ocean can tell us about the amount of ice in the glaciers around the world, but both are useful.
+* Recall the discussion of carbon dioxide feedbacks on p. 84. This is crucial.
+* What kinds of instabilities did we see in the climates of the Pleistocene? Are those instabilities relevant to questions of how the climate will change as we increase the atmospheric greenhouse gas levels over the coming century?

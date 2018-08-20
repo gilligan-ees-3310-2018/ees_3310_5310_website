@@ -1,0 +1,32 @@
+---
+title: 'Geoengineering: Solar Radiation Management'
+class_date: '2018-11-14'
+class_number: 36
+weight: 36
+slug: reading_36
+pubdate: '2018-08-20'
+date: '2018-11-14'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* The Climate Fix, Ch. 5, pp. 117--132.
+* Climate Casino, Ch. 13, Read the whole chapter, but focus especially on pp. 152--156.
+* Handout: G.C. Hegerl and S. Solomon, "Risks of Climate Engineering," Science **325**, 955 (2009) (posted online). (posted online).
+
+### Reading Notes:
+
+We will discuss geoengineering as an alternative to rapidly cutting greenhouse gas emissions. For today, we will focus on **solar radiation management**: Techniques for cancelling out the enhanced greenhouse effect by blocking sunlight from reaching the earth.
+
+* As you read Pielke, pay attention to his discussion of the big picture. What does he mean by a **technological fix**, and what does he think about technological fixes for environmental problems?
+* What are Daniel Sarewitz's criteria for successful technological fixes?
+* In the context of technological fixes, Pielke describes climate change as a "wicked problem." This is a phrase with a specific meaning in public policy analysis. It comes from a 1973 paper,\footnote{H.W.J. Rittel and M.M. Weber, "Dilemmas in a General Theory of Planning," Policy Sciences **4**, 155 (1973).} which defines "wicked problems" as possessing ten different properties, all of which make it very difficult, even impossible, to find satisfactory solutions. A few of these properties include: Wicked problems have high stakes, so it is unacceptable to choose a solution that proves ineffective. They are plagued by uncertainty, so no one can tell in advance whether a solution will work well. They invoilve important tradeoffs, so anything that makes a solution attractive to one constituency will make it unattractive to another. They are irreversible, so trial and error is not an effective approach for finding good solutions.
+
+    As you read this chapter, think about how the problem of geoengineering the climate fits the criteria of a wicked problem.
+* What does Pielke think about solar radiation management in terms of Sarewitz's criteria?
+* Pielke begins this chapter by discussing geoengineering as a "**Plan B**" for climate policy. What does he mean by this?
+* Where Pielke talks about "Plan B," Nordhaus describes geoengineering as "**salvage therapy**" for the planet. How does his account of solar radiation management compare to Pielke's? Where do the two agree and where do they disagree?
+* Nordhaus, as an economist, focuses a lot on costs, comparing the costs and the benefits of any policy. How does he asses the costs and benefits of geoengineering?
+* The short paper by Hegerl and Solomon presents solar radiation management geoengineering from the perspective of two top climate scientists. As you read their thoughts, which focus almost entirely on the scientific aspects, how do you think of this in comparison to the policy focus in Nordhaus's and Pielke's discussions?

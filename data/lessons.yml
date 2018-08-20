@@ -1,0 +1,133 @@
+lessons:
+- date: '2018-08-22'
+  title: Introduction
+- date: '2018-08-24'
+  title: What is Climate Change?
+  reading: /reading/reading_02
+- date: '2018-08-27'
+  title: Energy Balance and Climate
+  reading: /reading/reading_03
+- date: '2018-08-29'
+  title: Greenhouse Effect
+  reading: /reading/reading_04
+- date: '2018-08-31'
+  title: Greenhouse Gases
+  reading: /reading/reading_05
+- date: '2018-09-03'
+  title: Vertical Structure of the Atmosphere
+  reading: /reading/reading_06
+- date: '2018-09-05'
+  title: Review of Greenhouse Effect
+- date: '2018-09-07'
+  title: Feedbacks
+  reading: /reading/reading_08
+- date: '2018-09-10'
+  title: Ocean and Biosphere Feedbacks
+  reading: /reading/reading_09
+- date: '2018-09-12'
+  title: 'The Carbon Cycle: Ocean and Biosphere'
+  reading: /reading/reading_10
+- date: '2018-09-14'
+  title: 'The Carbon Cycle: Mineral Weathering'
+  reading: /reading/reading_11
+- date: '2018-09-17'
+  title: Perturbing the Carbon Cycle
+  reading: /reading/reading_12
+- date: '2018-09-19'
+  title: Climates of the Past
+  reading: /reading/reading_13
+- date: '2018-09-21'
+  title: The Pleistocene Ice Ages
+  reading: /reading/reading_14
+- date: '2018-09-24'
+  title: Review
+- date: '2018-09-26'
+  title: Climate Models
+  reading: /reading/reading_16
+- date: '2018-09-28'
+  title: Future Climate Change
+  reading: /reading/reading_17
+- date: '2018-10-01'
+  title: Catching up and Review
+- date: '2018-10-03'
+  title: Midterm Exam
+- date: '2018-10-05'
+  title: Uncertainty about Future Climates
+  reading: /reading/reading_20
+- date: '2018-10-08'
+  title: How Will Climate Change Affect Our Lives? (Part 1)
+  reading: /reading/reading_21
+- date: '2018-10-10'
+  title: How Will Climate Change Affect Our Lives? (Part 2)
+  reading: /reading/reading_22
+- date: '2018-10-12'
+  title: Policy Myths
+  reading: /reading/reading_23
+- date: '2018-10-15'
+  title: 'The Kaya Identity: Energy Use, Efficiency, and Conservation'
+  reading: /reading/reading_24
+- date: '2018-10-17'
+  title: 'Reducing Carbon Emissions: Bottom-Up Approaches'
+  reading: /reading/reading_25
+- date: '2018-10-19'
+  title: Fall Break
+- date: '2018-10-22'
+  title: 'Reducing Carbon Emissions: Top-Down Approaches'
+  reading: /reading/reading_26
+- date: '2018-10-24'
+  title: The Cost of Reducing Emissions
+  reading: /reading/reading_27
+- date: '2018-10-26'
+  title: Goals of Climate Policy
+  reading: /reading/reading_28
+- date: '2018-10-29'
+  title: Costs and Benefits
+  reading: /reading/reading_29
+- date: '2018-10-31'
+  title: Pricing Carbon
+  reading: /reading/reading_30
+- date: '2018-11-02'
+  title: Discounting and the Value of Time
+  reading: /reading/reading_31
+- date: '2018-11-05'
+  title: The Limits of Economic Approaches
+  reading: /reading/reading_32
+- date: '2018-11-07'
+  title: Carbon Pricing Instruments
+  reading: /reading/reading_33
+- date: '2018-11-09'
+  title: The Case for Renewable Energy
+  reading: /reading/reading_34
+- date: '2018-11-12'
+  title: The Case for Nuclear Energy
+  reading: /reading/reading_35
+- date: '2018-11-14'
+  title: 'Geoengineering: Solar Radiation Management'
+  reading: /reading/reading_36
+- date: '2018-11-16'
+  title: 'Geoengineering: Carbon Dioxide Management'
+  reading: /reading/reading_37
+- date: '2018-11-19'
+  title: Thanksgiving Break
+- date: '2018-11-21'
+  title: Thanksgiving Break
+- date: '2018-11-23'
+  title: Thanksgiving Break
+- date: '2018-11-26'
+  title: Pragmatism and Climate Policy
+  reading: /reading/reading_38
+- date: '2018-11-28'
+  title: Global Warming Gridlock
+  reading: /reading/reading_39
+- date: '2018-11-30'
+  title: 'Beyond Gridlock: Second-Best Policies'
+  reading: /reading/reading_40
+- date: '2018-12-03'
+  title: Obstacles and Perspectives
+  reading: /reading/reading_41
+- date: '2018-12-05'
+  title: Review
+- date: '2018-12-10'
+  title: Final Exam
+- date: '2018-12-13'
+  title: Alternate Final Exam

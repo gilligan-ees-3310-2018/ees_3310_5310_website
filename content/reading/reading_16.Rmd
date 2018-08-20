@@ -1,0 +1,44 @@
+---
+title: Climate Models
+class_date: '2018-09-26'
+class_number: 16
+weight: 16
+slug: reading_16
+pubdate: '2018-08-20'
+date: '2018-09-26'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Climate Casino, Ch. 3--4.
+
+### Reading Notes:
+
+Chapter 3 treats global warming as a scientific consequence of an economic problem. As you read, consider the following questions. Some have clear answers
+while others are beyond the knowledge of experts and I ask them to challenge you to think about hard problems.
+On p. 30, Nordhaus describes three components that drive CO~2~ emissions: population, per-capita GDP, and the carbon intensity of the economy. A mathematical expression for this relationship is known as the **Kaya identity**, and we will study this in great depth on Oct. 15--22 and in the lab project on decarbonizing the energy supply.
+
+* Why don't free markets manage greenhouse gas emissions well?
+* Are CO~2~ emissions going up or down? Why?
+* What is carbon intensity? Is it going up or down in the US? Why?
+* When Nordhaus writes about models for predicting future climate change, he distinguishes between **predictions** and
+    **projections**. What is the difference and why is it important?
+* Table 1 on p. 31 shows two projections of future CO~2~ emissions. Why are they different? How can we tell which is a better prediction?
+* What is an **integrated assessment model** (**IAM**)?
+* What are the biggest sources of uncertainty in predicting future CO~2~ emissions?
+* How much can we trust models of future climate change? What should we consider when deciding how much to trust a model?
+
+
+Chapter 4 looks at what we do and don't know about future climate change.
+
+* Pages 37--42 are largely a review of material we studied in much greater depth
+in the first few weeks of the term. You can read through it quickly.
+* What is the difference between **transient** and **equilibrium** response to CO~2~ emissions? What would we expect to happen
+    to the global temperature if everyone around the world completely stopped burning fossil fuels this afternoon?
+* Figure 9 shows several different projections for how temperature might change over the rest of this century. What is the biggest reason the
+    projections don't all agree with each other?
+* Pay close attention to the bullet points on pp. 47--48.
+* How does Nordhaus recommend that we think about the uncertainties in predictions about the climate?
+* Given these uncertainties, can we trust climate models and can they be useful?

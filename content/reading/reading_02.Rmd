@@ -1,0 +1,59 @@
+---
+title: What is Climate Change?
+class_date: '2018-08-24'
+class_number: 2
+weight: 2
+slug: reading_02
+pubdate: '2018-08-20'
+date: '2018-08-24'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Understanding the Forecast, Ch. 1.
+* Climate Casino, Ch. 2--3.
+
+### Reading Notes:
+
+Read these chapters lightly. Do not try to memorize all the facts or numbers, but try to get a feel for the way the authors write about climate and what they think is important.
+
+For Friday, come to class prepared to discuss the questions I list for each book.
+(you don't need to write up answers to hand, but I want you to be ready to discuss them):
+
+_Understanding the Forecast_ is written by David Archer, a prominent climate scientist. As you read it, try to get a sense for four aspects in particular:
+
+1. What kinds of things (both human and natural) cause the earth's climate to change?
+1. Why are carbon and energy so important?
+1. Very roughly, how much has the earth's temperature changed in the past and how much do we expect it to change in the next few centuries?
+1. Should we worry about climate change and human activities that cause it?
+
+
+### Questions to think about:
+
+1. What is climate, and how is it different from weather?
+1. What determines the temperature of the earth, and what are some things that can cause the temperature to change?
+1. What is global warming? What kinds of risks do we worry about in connection with it?
+1. What are several reasons why we emphasize carbon dioxide (CO~2~) when we talk about global warming?
+1. About how much has earth's temperature varied in the past thousand years? In the last 25,000 years? How much do we expect it to change in the next hundred years?
+1. What are some extreme climatic or weather events that we've seen recently around the world (think of things in the assigned readings, but also other things you've experienced or heard about in the news).
+1. What kinds of trends do we see in natural disasters?
+1. How would you know whether or not the kinds of events and trends in your answers
+  to the two previous questions are caused by human interference with climate?
+1. What possible responses can we (the population of the earth) take to respond to global warming?
+
+_Climate Casino_ is written by William Nordhaus, a prominent economist. He has a different emphasis than Archer does. Read Chapter 1 more carefully, and mostly skim Chapter 2 lightly, but do pay attention to the section on p. 15 where he asks, "why read a book about climate change by an economist?"  Chapter 1 presents an outline of the book. As you read it, pay attention to the way Nordhaus connects the science and economics of climate change.  The figure on p. 10 illustrates these connections and it is important to understand what he is saying with it.
+
+At the end of the chapter, Nordhaus presents three things he thinks people around the planet **must** do about climate change. Later in the semester we will read a book that disagrees vehemently with most of Nordhaus's analysis and recommendations. For now, ask yourself whether you agree with Nordhaus's three points, why you agree or disagree, and whether he has made a strong case for these points in this chapter.
+
+
+### Questions to think about
+
+1. Why does Nordhaus emphasize the difference between **managed**, **unmanaged**, and **unmanageable** human and natural systems?
+1. What does Nordhaus mean by **tipping points** in the earth's climate system? Why are they important?
+1. What does Nordhaus mean by **mitigation** of climate change? (p. 6)
+1. Why does Nordhaus think that "the economics of climate change is straightforward?" What policy does his "straightforward" analysis recommmend?
+1. What does Nordhaus mean when he calls emission of CO~2~ into the atmosphere an **externality**? (p. 6) Why is this important for policymakers and for his own preferred policy?
+
+Also come to class ready to ask questions about parts of the chapter that you didn't understand as well as you'd like or that you found unconvincing, or things you just want to know. If you email me questions by Thursday evening, I will try to address them during class Friday.

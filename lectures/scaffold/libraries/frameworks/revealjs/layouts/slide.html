@@ -1,0 +1,9 @@
+<section {{#slide.class}}class='{{slide.class}}' {{/slide.class}}{{#slide.ds}}data-state='{{slide.ds}}' {{/slide.ds}}{{#slide.id}}id='{{slide.id}}' {{/slide.id}}{{#slide.bg}}data-background='{{slide.bg}}' {{/slide.bg}}{{#slide.dt}}data-transition='{{slide.dt}}' {{/slide.dt}}{{#slide.bt}}background-transition='{{slide.bt}}'{{/slide.bt}}> <!-- regular slide start {slide.id}}-->
+  {{{ slide.header }}}
+  {{{ slide.content }}}
+  {{# slide.pnotes }}
+  <aside class='notes'>
+    {{{ html }}}
+  </aside>
+  {{/ slide.pnotes }}
+</section> <!-- regular slide end {{slide.id}}-->

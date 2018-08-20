@@ -1,0 +1,26 @@
+---
+title: 'Reducing Carbon Emissions: Bottom-Up Approaches'
+class_date: '2018-10-17'
+class_number: 25
+weight: 25
+slug: reading_25
+pubdate: '2018-08-20'
+date: '2018-10-17'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* The Climate Fix, Ch. 4.
+### Optional Extra Reading:
+
+* Handout: Roger A. Pielke, Jr., "The British Climate Change Act: a critical evaluation and proposed alternative approach," Environmental Research Letters **4**, 024010 (2009). (posted online).
+* Handout: Rogar A. Pielke, Jr., "Mamizo Climate Policy: An Evaluation of Japanese Carbon Emission Reduction Targets," Environmental Research Letters **4**, 044001 (2009) (posted online).
+* Handout: Roger A. Pielke, Jr., "An Evaluation of the Targets and Timetables of Proposed Australian Emissions Reduction Policies," Environmental Science & Policy **14**, 20 (2011). (posted online).
+
+### Reading Notes:
+
+We will spend two days on this chapter. It is very involved and the technical analysis both of this chapter and of Jacobson's proposal for converting the US to 100% wind, water, and solar power will be the focus of a project in the lab. You will follow Pielke's methods to analyze the prospects for the US, China, and a third country to convert a large part of their economies to clean energy by 2050.
+
+The optional extra reading comprises three articles by Roger Pielke, in which he applies the methods he describes in this chapter to analyze proposed decarbonization policies in the U.K., Japan, and Australia.

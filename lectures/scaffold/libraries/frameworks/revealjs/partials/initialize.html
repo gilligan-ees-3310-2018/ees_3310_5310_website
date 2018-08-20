@@ -1,0 +1,117 @@
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+  {{#page.revealjs.controls}}
+  controls: true,
+  {{/page.revealjs.controls}}
+  {{^page.revealjs.controls}}
+  {{#site.revealjs.controls}}
+  controls: true,
+  {{/site.revealjs.controls}}
+  {{^site.revealjs.controls}}
+  controls: false,
+  {{/site.revealjs.controls}}
+  {{/page.revealjs.controls}}
+  progress: true,
+  history: true,
+  {{#page.revealjs.height}}
+  height: {{page.revealjs.height}},
+  {{/page.revealjs.height}}
+  {{^page.revealjs.height}}
+  {{#site.revealjs.height}}
+  height: {{site.revealjs.height}},
+  {{/site.revealjs.height}}
+  {{/page.revealjs.height}}
+  {{#page.revealjs.width}}
+  width: {{page.revealjs.width}},
+  {{/page.revealjs.width}}
+  {{^page.revealjs.width}}
+  {{#site.revealjs.width}}
+  width: {{site.revealjs.width}},
+  {{/site.revealjs.width}}
+  {{/page.revealjs.width}}
+  {{#page.revealjs.center}}
+  center: true,
+  {{/page.revealjs.center}}
+  {{^page.revealjs.center}}
+  {{#site.revealjs.center}}
+  center: true,
+  {{/site.revealjs.center}}
+  {{^site.revealjs.center}}
+  center: false,
+  {{/site.revealjs.center}}
+  {{/page.revealjs.center}}
+
+  {{#page.revealjs.transition}}
+  transition: '{{page.revealjs.transition}}',
+  {{/page.revealjs.transition}}
+  {{^page.revealjs.transition}}
+  {{#site.revealjs.transition}}
+  transition: '{{site.revealjs.transition}}',
+  {{/site.revealjs.transition}}
+  {{^site.revealjs.transition}}
+  transition: 'slide'
+  {{/site.revealjs.transition}}
+  {{/page.revealjs.transition}}
+  {{#page.revealjs.margin}}
+  margin: {{page.revealjs.margin}},
+  {{/page.revealjs.margin}}
+  {{^page.revealjs.margin}}
+  {{#site.revealjs.margin}}
+  margin: {{site.revealjs.margin}},
+  {{/site.revealjs.margin}}
+  {{/page.revealjs.margin}}
+
+
+    {{#page.revealjs.mathjax}}
+    math: {
+        mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+        config: 'TeX-AMS_HTML-full',  // See http://docs.mathjax.org/en/latest/config-files.html
+        fontVariant: "MathJax_SansSerif",
+        },
+    {{/page.revealjs.mathjax}}
+    {{^page.revealjs.mathjax}}
+    {{#site.revealjs.mathjax}}
+    math: {
+        mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+        config: 'TeX-AMS_HTML-full', // See http://docs.mathjax.org/en/latest/config-files.html
+        fontVariant: "MathJax_SansSerif",
+        },
+    {{/site.revealjs.mathjax}}
+    {{/page.revealjs.mathjax}}
+
+
+  dependencies: [
+  // Cross-browser shim that fully implements classList -
+  // https://github.com/eligrey/classList.js/
+    { src: '{{page.url.framework}}/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+    // Zoom in and out with Alt+click
+    { src: '{{page.url.framework}}/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+    // Speaker notes
+    { src: '{{page.url.framework}}/plugin/notes/notes.js', async: true },
+    // Remote control your reveal.js presentation using a touch device
+    //{ src: '{{page.url.framework}}/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+    {{#page.revealjs.mathjax}}
+    { src: 'plugin/math/math.js', async: true },
+    {{/page.revealjs.mathjax}}
+    {{^page.revealjs.mathjax}}
+    {{#site.revealjs.mathjax}}
+    { src: 'plugin/math/math.js', async: true },
+    {{/site.revealjs.mathjax}}
+    {{/page.revealjs.mathjax}}
+    ]
+});
+</script>
+{{#page.mathjax.scale}}
+<script>
+var MathJax = {"HTML-CSS" : {scale: {{page.mathjax.scale}} }};
+</script>
+{{/page.mathjax.scale}}
+{{^page.mathjax.scale}}
+{{#site.mathjax.scale}}
+<script>
+var MathJax = {"HTML-CSS" : {scale: {{site.mathjax.scale}} }};
+</script>
+{{/site.mathjax.scale}}
+{{/page.mathjax.scale}}

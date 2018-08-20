@@ -1,0 +1,141 @@
+<meta charset="utf-8">
+<title>{{{ page.title }}}</title>
+<meta name="description" content="{{{ page.description }}}">
+<meta name="author" content="{{{ page.author }}}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="{{page.url.framework}}/css/reveal.min.css">
+<link rel="stylesheet" href="{{page.url.framework}}/css/theme/{{page.revealjs.theme}}.css" id="theme">
+<link rel="stylesheet" href="{{page.url.highlighter}}/styles/{{page.hitheme}}.css" id="theme">
+<style>
+.reveal .leftslide p
+.reveal .leftslide ul
+.reveal .leftslide ol
+.reveal .leftslide blockquote
+{
+  text-align: left;
+}
+
+.reveal .toptitle h1 {
+  top: 50px;
+  margin-bottom: 6in;
+}
+
+.reveal .noborder table,
+.reveal .noborder td,
+.reveal .noborder tr,
+.reveal .noborder th {
+  border-style: none;
+}
+
+.reveal .ninety {
+  font-size: 90%;
+}
+
+.reveal .eightyfive {
+  font-size: 85%;
+}
+
+.reveal .eighty {
+  font-size: 80%;
+}
+
+.reveal .seventyfive {
+  font-size: 75%;
+}
+
+
+.whitetitle h1,
+.whitetitle h2,
+.whitetitle h3,
+.whitetitle h4,
+.whitetitle h5 {
+  color: white;
+}
+
+.yellowtitle h1,
+.yellowtitle h2,
+.yellowtitle h3,
+.yellowtitle h4,
+.yellowtitle h5 {
+  color: yellow;
+}
+
+.yellowtext p,
+.yellowtext li,
+.yellowtext ul,
+.yellowtext ol {
+  color: yellow;
+}
+
+.blacktext p,
+.blacktext li,
+.blacktext ul,
+.blacktext ol {
+  color: black;
+}
+
+.blacktitle h1,
+.blacktitle h2,
+.blacktitle h3,
+.blacktitle h4,
+.blacktitle h5 {
+  color: black;
+}
+
+.yellowblack p,
+.yellowblack li,
+.yellowblack ul,
+.yellowblack ol {
+  color: black;
+}
+
+.yellowblack h1,
+.yellowblack h2,
+.yellowblack h3,
+.yellowblack h4,
+.yellowblack h5 {
+  color: yellow;
+}
+
+.yellowpage p,
+.yellowpage li,
+.yellowpage ul,
+.yellowpage ol {
+  color: yellow;
+}
+
+.yellowpage h1,
+.yellowpage h2,
+.yellowpage h3,
+.yellowpage h4,
+.yellowpage h5 {
+  color: yellow;
+}
+
+.blackpage p,
+.blackpage li,
+.blackpage ul,
+.blackpage ol {
+  color: black;
+}
+
+.blackpage h1,
+.blackpage h2,
+.blackpage h3,
+.blackpage h4,
+.blackpage h5 {
+  color: black;
+}
+</style>
+<script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? '{{page.url.framework}}/css/print/pdf.css' : '{{page.url.framework}}/css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+<!--[if lt IE 9]>
+<script src="lib/js/html5shiv.js"></script>
+<![endif]-->

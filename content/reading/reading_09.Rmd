@@ -1,0 +1,26 @@
+---
+title: Ocean and Biosphere Feedbacks
+class_date: '2018-09-10'
+class_number: 9
+weight: 9
+slug: reading_09
+pubdate: '2018-08-20'
+date: '2018-09-10'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Understanding the Forecast, Ch. 7, pp. 81--84.
+
+### Reading Notes:
+
+* Why are cloud feedbacks more complicated and uncertain than other feedbacks?
+* What is El Ni&ntilde;o and how do feedbacks in the ocean-atmosphere system create the El Ni&ntilde;o/La Ni&ntilde;a cycle? How does this cycle affect the global climate?
+* How do feedbacks between climate and the biosphere work?
+
+* In the handout, pay close attenton to two different ways of talking about feedbacks:
+    If we **force** the climate by changing the brightness of the sun, the bare-rock temperature of the earth adjusts until the average flux of outgoing radiation equals the average flux of incoming radiation. Sometimes we count this adjustment as a negative feedback (called the **Stefan-Boltzmann feedback**) that maintains radiative balance. Other times we consider it to be a simple response to the changing amount of radiation.
+
+    The handout calls this adjustment the Stefan-Boltzmann feedback ($f_0$) and calculates the other feedbacks (water-vapor, lapse-rate, ice-albedo, etc.) as additional feedbacks. This lets us write a straightforward equation for the effect of all the different feedbacks on the earth's temperature, but it is important to be clear that when most people (including most scientists) talk about feedbacks in the climate system, they do not include the Stefan-Boltzmann feedback.

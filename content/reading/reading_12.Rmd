@@ -1,0 +1,32 @@
+---
+title: Perturbing the Carbon Cycle
+class_date: '2018-09-17'
+class_number: 12
+weight: 12
+slug: reading_12
+pubdate: '2018-08-20'
+date: '2018-09-17'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Understanding the Forecast, Ch. 10.
+
+### Reading Notes:
+
+Some key points to be sure you understand:
+
+* How is the steady-state concentration of methane in the atmosphere related to the rate of methane emissions?
+* What are the largest natural and anthropogenic sources of methane? How does anthropogenic methane emission compare to natural emission?
+* What are the dominant anthropogenic sources of CO~2~ emissions?
+* What do we know about the land as a sink for carbon?
+* What is CO~2~ fertilization and how might it affect the role of the land as a carbon sink? What are the potential benefits to plants of higher CO~2~ concentrations and what constraints are there on the extent to which these benefits might be realized in practice?
+* Understand the ocean carbon sink. Where, specifically, does the ocean work effectively to remove CO~2~ from the atmosphere and how might this sink be affected by rising CO~2~ levels?
+* What is **ocean ventilation**? Why is it important and how fast does it work?
+* What is the **thermocline** and why is it important to the ocean carbon sink?
+* Why would increasing carbon dioxide in the atmosphere make the oceans become more acidic? How confident can we be of predictions about ocean acidification?
+* What is **buffering** and how would it affect ocean acidification?
+* What is the biological pump in the oceans? Are there things people might do to speed up the biological pump
+* In the big picture, consider how these pieces fit together: how might rising temperatures and increasing drought around the world (two things scientists are very confident will happen as a result of rising greenhouse gas concentrations) affect the various carbon sources and sinks? How might ocean acidification affect the biological pump?

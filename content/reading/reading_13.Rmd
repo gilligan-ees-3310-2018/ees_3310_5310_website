@@ -1,0 +1,30 @@
+---
+title: Climates of the Past
+class_date: '2018-09-19'
+class_number: 13
+weight: 13
+slug: reading_13
+pubdate: '2018-08-20'
+date: '2018-09-19'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Understanding the Forecast, Ch. 11, pp. 135--145.
+
+### Reading Notes:
+
+* The last hundred years: Focus on two things in particular:
+
+    1. What is the evidence that the planet has warmed significantly in the last century?
+    1. What is the evidence that human emissions of greenhouse gases are responsible?
+
+* The last thousand years: This gets into some very tricky and controversial material that was central to the infamous "climategate" scandal in 2009. I will not spend a huge amount of time on this, but I will attempt to explain in class what the controversy was about and why it isn't nearly as big a deal as the media have made it out to be.
+
+    Some things to understand about the past millennium are:
+
+    * What is a **proxy** for ancient temperatures? What are examples of commonly used proxies?
+    * What problems do scientists face trying to get past temperatures from proxies?
+    * What were the **Medieval Warm Period** and the **Little Ice Age**? Roughly when did they happen? What are the big questions scientists have about them?

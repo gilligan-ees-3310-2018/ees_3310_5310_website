@@ -1,0 +1,22 @@
+---
+title: Future Climate Change
+class_date: '2018-09-28'
+class_number: 17
+weight: 17
+slug: reading_17
+pubdate: '2018-08-20'
+date: '2018-09-28'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Climate Casino, Ch. 5.
+* Understanding the Forecast, Ch. 12, pp. 153--164.
+
+### Reading Notes:
+
+One of the big worries with future climate change has to do with tipping points. As you read Ch. 5 of _The Climate Casino_, you should focus on understanding what tipping points are and what some of the specific tipping points are worry climate experts. Fig. 12 and the accompanying discussion about melting ice sheets is a key example and you should understand it. If we raise the temperature and a large fraction of the Greenland ice sheet melts, will reducing the temperature cause it to eventually grow back to its original size? Why or why not?
+
+Chapter 12 of _Understanding the Forecast_ presents a lot more detail about **abrupt climate change** (tipping points), melting ice sheets, and sea-level rise. The earlier part of the chapter also discusses the phenomenon of **global weirding**, in which the weather becomes less and less predictable as the global temperature rises. Indeed, recent scientific studies confirm predictions made years ago that global warming would lead to both increased drought and increased flooding. How is this possible?

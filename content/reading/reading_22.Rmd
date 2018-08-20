@@ -1,0 +1,26 @@
+---
+title: How Will Climate Change Affect Our Lives? (Part 2)
+class_date: '2018-10-10'
+class_number: 22
+weight: 22
+slug: reading_22
+pubdate: '2018-08-20'
+date: '2018-10-10'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Climate Casino, 10-12.
+
+### Reading Notes:
+
+Mostly, skim chapters 10--11 and focus on reading chapter 12 carefully.
+
+* What sectors of the economy are most vulnerable to climate change?
+* What parts of the world are most vulnerable?
+* Think about Nordhaus's distinction between managed and unmanaged systems: Does management affect vulnerability to climate change?
+* How has the world's economy changed in the last 60 years or so? Which sectors have become more important and which have become less important? What does that imply as we look ahead to the impacts of climate change 100 years from now?
+* How do economists estimate the damage climate change might cause to the world economy? How certain are they about these estimates? What are the biggest sources of uncertainty?
+* The section on "A Risk Premium" is especialy important. Understand what a risk premium is and how this figures into Nordhaus's thoughts about policy.

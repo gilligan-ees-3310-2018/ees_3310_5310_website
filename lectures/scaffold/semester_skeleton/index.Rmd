@@ -1,0 +1,66 @@
+---
+title       : Semester Overview
+framework   : revealjs      # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : zenburn       #
+widgets     : []            # {mathjax, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+revealjs:
+  theme: solarized_jg
+---
+
+```{r setup, cache = F, echo = F}
+knitr::knit_hooks$set(document = function(doc){
+  gsub('`` ', '```', doc)
+})
+```
+```{r load_semester_info, cache=F, echo=F}
+library(yaml)
+library(stringr)
+site = yaml.load_file("semester.yml")
+
+semester.dir <- '.'
+script.dir <- file.path(semester.dir,'util_scripts')
+data.dir <- file.path(semester.dir, 'data')
+
+source_semester_script <- function(script) {
+  script_file <- file.path(script.dir, script)
+  source(script_file, chdir = T)
+}
+
+source_semester_script('rmd_header.R')
+```
+## `r site$course`: `r site$course_name`
+
+### Navigation:
+
+<ul style="width:95%;">
+<li><a href="`r file.path(semester.dir, 'assets', 'pdf', 'syllabus.pdf')`"><b>Syllabus</b></a>
+<li><b>Lectures:</b></li>
+<ul style="height:50%; width:80%; overflow:hidden; overflow:auto; white-space:nowrap;">
+
+```{r link_to_lectures, echo = F, results = 'asis', cache=F}
+files = dir('Lectures', 'index.Rmd', recursive = TRUE, full = TRUE)
+links <- c()
+
+last_lecture_file <- 'last_lecture.yml'
+if (file.exists(last_lecture_file)) {
+  last_lecture <- yaml.load_file(last_lecture_file)$last_lecture
+} else last_lecture <- NA
+for (f in files) {
+  htmlfile <- sub('\\.Rmd$','.html',f)
+  url <- URLencode(htmlfile)
+  metadata <- grab_header(f)
+  num <- metadata$class_no
+  title <- metadata$title
+  class_date <- metadata$class_date
+  if (file.exists(htmlfile) && (is.na(last_lecture) || num <= last_lecture)) {
+    links = c(links, 
+              paste0('<li><a href="', url, '">Lecture #', num , '</a> (', 
+                     strip_year(class_date), '): "', title, '"</li>'))
+  }
+}
+writeLines(links)
+```
+</ul></ul>

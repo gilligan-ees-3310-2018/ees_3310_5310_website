@@ -1,0 +1,17 @@
+---
+title: Pricing Carbon
+class_date: '2018-10-31'
+class_number: 30
+weight: 30
+slug: reading_30
+pubdate: '2018-08-20'
+date: '2018-10-31'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Climate Casino, Ch. 19.
+
+

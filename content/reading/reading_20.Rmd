@@ -1,0 +1,26 @@
+---
+title: Uncertainty about Future Climates
+class_date: '2018-10-05'
+class_number: 20
+weight: 20
+slug: reading_20
+pubdate: '2018-08-20'
+date: '2018-10-05'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Understanding the Forecast, Ch. 12, pp. 164--166.
+* Climate Casino, Ch. 24.
+* The Climate Fix, Ch. 1, pp. 1--24.
+
+### Reading Notes:
+
+This is a good place for us to reflect on what we do and don't know about the science of climate change. As we review the science we have studied so far, think about the contrasting views Nordhaus and Pielke present in _Climate Casino_ and _The Climate Fix_ about what we do and don't know and whether people should be skeptical of scientists about global warming. In particular, focus on:
+
+* What is **scientific consensus**, is there consensus on global warming, and should we trust it? Where do Nordhaus and Pielke agree and where do they disagree about this?
+* How should we think about contrarians or skeptics who disagree with the consensus?
+* How should we think about scientific uncertainty? Where do Nordhaus and Pielke agree and where do they disagree about this?
+* Can we make policy when there is still disagreement and uncertainty about climate science? How do Nordhaus and Pielke feel about this?

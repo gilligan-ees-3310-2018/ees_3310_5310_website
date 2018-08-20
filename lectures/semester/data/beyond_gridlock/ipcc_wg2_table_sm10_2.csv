@@ -1,0 +1,24 @@
+Study,Warming (C),Impact a (%GDP),Method,Coverage
+Nordhaus (1994b),3.0,-1.3,Enumeration,"Agriculture, energy demand, sea level rise"
+Nordhaus (1994a),3.0,-3.6,Expert elicitation,Total welfare
+Nordhaus (1994a),3.0,-1.9,Expert elicitation,Total welfare
+Fankhauser (1995),2.5,-1.4,Enumeration,"Sea level rise, biodiversity, agriculture, forestry, fi sheries, electricity demand, water resources, amenity, human health, air pollution, natural disasters"
+Tol (1995),2.5,-1.9,Enumeration,"Agriculture, biodiversity, sea level rise, human health, energy demand, water resources, natural disasters, amenity"
+Nordhaus and Yang (1996),2.5,-1.7,Enumeration,"Agriculture, energy demand, sea level rise"
+Plambeck and Hope (1996),2.5,-2.5,Enumeration,"Sea level rise, biodiversity, agriculture, forestry, fi sheries, electricity demand, water resources, amenity, human health, air pollution, natural disasters"
+Mendelsohn et al. (2000),2.2,0.0,Enumeration,"Agriculture, forestry, sea level rise, energy demand, water resources"
+Mendelsohn et al. (2000),2.2,0.1,Statistical,"Agriculture, forestry, energy demand"
+Nordhaus and Boyer (2000),2.5,-1.5,Enumeration,"Agriculture, sea level rise, other market impacts, human health, amenity, biodiversity, catastrophic impacts"
+Tol (2002),1.0,2.3,Enumeration,"Agriculture, forestry, biodiversity, sea level rise, human health, energy demand, water resources"
+Tol (2002),1.0,0.2,Enumeration,"Agriculture, forestry, biodiversity, sea level rise, human health, energy demand, water resources"
+Tol (2002),1.0,-2.7,Enumeration,"Agriculture, forestry, biodiversity, sea level rise, human health, energy demand, water resources"
+Maddison (2003),2.5,-0.1,Statistical,Household consumption
+Rehdanz and Maddison (2005),1.0,-0.4,Statistical,Self-reported happiness
+Hope (2006a),2.5,-0.9,Enumeration,"Sea level rise, biodiversity, agriculture, forestry, fi sheries, energy demand, water resources, amenity, human health, air pollution, natural disasters"
+Nordhaus (2006),3.0,-0.9,Statistical,Economic output
+Nordhaus (2006),3.0,-1.1,Statistical,Economic output
+Nordhaus (2008),3.0,-2.6,Enumeration,"Agriculture, sea level rise, other market impacts, human health, amenity, biodiversity, catastrophic impacts"
+Maddison and Rehdanz (2011),3.2,-12.4,Statistical,Self-reported happiness
+Bosello et al. (2012),1.9,-0.5,CGE,Energy demand; tourism; sea level rise; river floods; agriculture; forestry; human health
+Roson and van der Mensbrugghe (2012),2.9,-2.1,CGE,"Agriculture, sea level rise, water resources, tourism, energy demand, human health, labor productivity"
+Roson and van der Mensbrugghe (2012),5.4,-6.1,CGE,"Agriculture, sea level rise, water resources, tourism, energy demand, human health, labor productivity"

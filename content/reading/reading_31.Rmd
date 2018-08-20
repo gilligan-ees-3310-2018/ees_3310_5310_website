@@ -1,0 +1,34 @@
+---
+title: Discounting and the Value of Time
+class_date: '2018-11-02'
+class_number: 31
+weight: 31
+slug: reading_31
+pubdate: '2018-08-20'
+date: '2018-11-02'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Climate Casino, Ch. 16.
+* W. Nordhaus, "Critical Assumptions in the Stern Review on Climate Change".
+### Optional Extra Reading:
+
+* Handout: J. Quiggin, "Stern and His Critics on Discounting and Climate Change: An Editorial Essay," Climatic Change **89**, 195 (2008) (posted online).
+
+### Reading Notes:
+
+Time-discounting is one of the most contentious and controversial aspects of the economics and ethics of climate change. Entire books have been written about this, and one class will not do justice to the topic.
+
+* As you read this chapter in Nordhaus, try to follow the distinctions Nordhaus draws between several aspects of discounting:
+
+    * **Pure time preference:** If I offer you a choice of getting a free dinner at a nice restaurant sometime this month or getting the same dinner five years from now, you would almost certainly prefer to get the nice dinner this month. Given the choice of getting something nice now, or in the near future, versus having to wait a long time, most people don't want to wait.
+    * **Opportunity cost:** If I offered you the choice of $100 now versus in five years, as opposed to the fancy meal, something else comes into the picture: If you got the money now, but chose not to spend it right away, you could invest it so that in five years, you would have more than $100. Spending money today rather than investing it for the future produces an opportunity cost (missing out on the compounding interest), which contributes another piece to the problem of discounting and the value of time.
+    * **Fairness and economic growth:** Economic growth has dramatically reduced poverty around the world over the past centuries. The decline of poverty has been especially rapid in the past half-century. If this trend continues, people living a few centuries in the future will have average per-capita incomes much more than 10 times what the average person earns today. Thus, spending money today to reduce the costs of climate change for future generations might be like taking from the poor (today's generation) to benefit the rich (future generations).
+
+* Graduate students should read the two articles in Science (and undergrads are welcome to read them if you're interested). Each is a bit less than two pages and they are very clear. These articles are a nice distillation of the kinds of economic/ethical arguments about what it means to be fair and just that are very common in environmental policy, and especially in climate policy.
+
+    There are no easy answers, and the challenge has led philosopher Stephen Gardiner to call the problem of climate change "a perfect moral storm."
+* The optional article by the economist, John Quiggin, is a much more technical discussion of the ethical and economic conundrums that arise from reducing the value of life and suffering to a mathematical equation about time. It's very good, but it's purely optional and you should not feel obliged to read it if you are not really excited to nerd out about these things.

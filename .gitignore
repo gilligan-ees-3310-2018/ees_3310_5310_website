@@ -1,0 +1,23 @@
+/blogdown/
+/docs/
+/public/
+Corel Auto-Preserve/
+node_modules/
+.Rproj.user/
+.RData
+.Ruserdata
+.Rhistory
+.DS_Store
+*.Rproj
+*.zip
+*.xlsx
+*.out
+*.log
+*.aux
+*.synctex.gz
+*-concordance.tex
+*.bak
+/public/
+.Rproj.user/
+
+.Rproj.user

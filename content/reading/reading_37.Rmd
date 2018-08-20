@@ -1,0 +1,27 @@
+---
+title: 'Geoengineering: Carbon Dioxide Management'
+class_date: '2018-11-16'
+class_number: 37
+weight: 37
+slug: reading_37
+pubdate: '2018-08-20'
+date: '2018-11-16'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* The Climate Fix, Ch. 5, pp. 132--142.
+* Climate Casino, Ch. 14, pp. 165--168.
+* Handout: F. Dyson, "The Question of Global Warming," New York Review of Books, June 2008 (posted online) (posted online).
+
+### Reading Notes:
+
+For today we will focus on a second class of geoengineering, called "**air capture**," (Pielke calls this "**carbon remediation**") meaning reducing the atmospheric concentration of CO~2~ by filtering it out of the atmosphere and storing it permanently somewhere.
+
+* How do Pielke and Dyson feel about the prospect of air-capture geoengineering? (You know about Pielke; Dyson is a very famous physicist who is often discussed as a top prospect for a future Nobel Prize).
+* How does Pielke think air-capture fits Sarewitz's criteria for a technological fix?
+* At the end, when Pielke discusses the "**moral hazard**" argument against geoengineering, what does he mean by "moral hazard?" What do you think about the moral hazard argument?
+* What are the implications of geoengineering technology for climate policy in general? How does the prospect of geoengineering shape Dyson's, Nordhaus's, and Pielke's support or opposition to more conventional climate policy that focuses on cutting greenhouse gas emissions?
+* What do _you_ think about geoengineering and how does the prospect of geoengineering shape your views of climate policy?

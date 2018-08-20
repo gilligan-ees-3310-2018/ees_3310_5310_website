@@ -1,0 +1,39 @@
+---
+title: 'The Kaya Identity: Energy Use, Efficiency, and Conservation'
+class_date: '2018-10-15'
+class_number: 24
+weight: 24
+slug: reading_24
+pubdate: '2018-08-20'
+date: '2018-10-15'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* The Climate Fix, Ch. 3.
+* Climate Casino, Ch. 14.
+
+### Reading Notes:
+
+In both chapters, the focus is on what it would take to reduce CO~2~ emissions around the world.
+
+Key concepts that you should understand are:
+
+* We will be discussing national and global energy consumption in terms of **quads** (see p. 63 in Climate Fix). You should have a good feeling for how much a quad is and how many quads the US consumes.
+* The **Kaya Identity** and the factors that go into it (p. 71 of _The Climate Fix_; you might also go back and quickly review pp. 19--23 of _Climate Casino_, which we read for Aug. 28).:
+
+    * Total CO~2~ emissions ($F$)
+    * Population ($P$)
+    * Per-capita GDP ($g$)
+    * Energy intensity of the economy ($e$)
+    * Carbon intensity of the energy supply ($f$)
+
+* How would you make sense of the fact that the U.S. has a much greater $F$ than India and a slightly smaller $F$ than China, but a much smaller $e$ and $f$ than either India or China?
+* What trends have we seen over the past several decades in the energy intensity of the economy and the carbon intensity of the energy supply? (pp. 74--79 of _The Climate Fix_ and Fig. 3 on p. 22 of _Climate Casino_)
+* What is **primary energy consumption** and how does it differ from other kinds of energy consumption?
+* Why does Pielke argue that **energy dependence** leads to **energy insecurity**?
+* In _Climate Casino_, look at Figure 23 and the table of carbon emissions on p. 159. How do different fuels compare in terms of carbon emissions?
+* In _Climate Casino_, look at Table 6 and get a sense of what activities cause the most CO~2~ emissions.
+* What does the Kaya Identity and the material from _Climate Casino_ suggest for where we should focus in our economy to reduce CO~2~ emissions?

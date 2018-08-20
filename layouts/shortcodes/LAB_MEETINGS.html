@@ -1,0 +1,3 @@
+{{ if isset .Site.Params "lab" -}}
+Lab: {{ .Site.Params.lab.times | markdownify }}, {{ .Site.Params.lab.classroom }}<br/>
+{{- end }}

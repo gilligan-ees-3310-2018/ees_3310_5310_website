@@ -1,0 +1,17 @@
+---
+title: 'Beyond Gridlock: Second-Best Policies'
+class_date: '2018-11-30'
+class_number: 40
+weight: 40
+slug: reading_40
+pubdate: '2018-08-20'
+date: '2018-11-30'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+## Reading:
+
+* Handout: M.P. Vandenbergh and J.M. Gilligan, _Beyond Politics_ (Cambridge, 2017), Ch. 1 (posted online)., Ch. 1 (posted online).
+
+
