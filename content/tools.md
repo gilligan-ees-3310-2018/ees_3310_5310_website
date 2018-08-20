@@ -105,8 +105,8 @@ produce nicely formatted PDF (Acrobat) output from your RMarkdown files
   you probably want to choose "letter" instead of the default "A4" (for 
   European users).
 * Linux: Install `texlive` from your distribution's package manager:
-  `sudo apt-get install texlive` for Debian and Ubuntu, 
-  `sudo yum install texlive` or `sudo dfm install texlive` for 
+    * `sudo apt-get install texlive` for Debian and Ubuntu, 
+    * `sudo yum install texlive` or `sudo dfm install texlive` for 
   Fedora, Red Hat, etc.
 
 ### Installing {{% RSTUDIO_LOGO %}} {#installing-rstudio}
