@@ -196,12 +196,12 @@ produce nicely formatted PDF (Acrobat) output from your RMarkdown files
   using git and GitHub with RStudio at 
   [Happy Git and GitHub for the useR](http://happygitwithr.com/).
   
-  Professor Bryan has also posted a detailed 
-  [video tutorial](https://resources.rstudio.com/wistia-rstudio-conf-2017/happy-git-and-gihub-for-the-user-tutorial-jenny-bryan)
-  at the 
-  [RStudio Webinars and Videos page](https://resources.rstudio.com/webinars). 
-  This tutorial walks you through all the steps of setting up git with RStudio
-  and how to use it to keep track of your edits and revisions, and synchronize
-  your work with GitHub (this serves three functions: backing up your data to 
-  the cloud, sharing your data with other people, and collaborating on writing
-  code or documents with other people).
+    Professor Bryan has also posted a detailed 
+    [video tutorial](https://resources.rstudio.com/wistia-rstudio-conf-2017/happy-git-and-gihub-for-the-user-tutorial-jenny-bryan)
+    at the 
+    [RStudio Webinars and Videos page](https://resources.rstudio.com/webinars). 
+    This tutorial walks you through all the steps of setting up git with RStudio
+    and how to use it to keep track of your edits and revisions, and synchronize
+    your work with GitHub (this serves three functions: backing up your data to 
+    the cloud, sharing your data with other people, and collaborating on writing
+    code or documents with other people).
