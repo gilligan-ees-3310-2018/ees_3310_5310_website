@@ -116,6 +116,9 @@ produce nicely formatted PDF (Acrobat) output from your RMarkdown files
   download the installer for your operating system. Windows, MacOS, 
   and the Debian, Ubuntu, Fedora, RedHat, and openSUSE editions of
   Linux are all supported.
+  
+    There are other versions of RStudio (an expensive professional edition and a server edition). You
+    want the **free desktop edition**.
 * Run the installer. 
 * After the installer finishes running, run RStudio.
     * When RStudio starts up, the lower left part of the screen should have
