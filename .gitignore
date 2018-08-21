@@ -1,9 +1,10 @@
 /blogdown/
 /docs/
 /public/
-Corel Auto-Preserve/
-node_modules/
 .Rproj.user/
+lectures/
+node_modules/
+Corel Auto-Preserve/
 .RData
 .Ruserdata
 .Rhistory
@@ -17,7 +18,3 @@ node_modules/
 *.synctex.gz
 *-concordance.tex
 *.bak
-/public/
-.Rproj.user/
-
-.Rproj.user
