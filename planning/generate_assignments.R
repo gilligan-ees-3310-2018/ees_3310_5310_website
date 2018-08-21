@@ -8,6 +8,7 @@ p_load(yaml)
 p_load(rprojroot)
 
 database <- "EES_3310_5310.sqlite3"
+online_location <- "posted on Brightspace"
 
 root_dir <- find_rstudio_root_file()
 planning_dir <- find_rstudio_root_file("planning")
@@ -21,8 +22,9 @@ reading_sources <- semester_db %>% tbl("reading_sources")
 reading_assignments <- semester_db %>% tbl("reading_assignments") %>%
   left_join(reading_items, by = c("rd_group")) %>%
   left_join(reading_sources, by = "source_id") %>%
-  select(reading_id, title, short_title, markdown_title, short_markdown_title, textbook,
-         handout, chapter, pages, reading_notes,
+  select(rd_item_id, reading_id, title, short_title,
+         markdown_title, short_markdown_title,
+         textbook, handout, chapter, pages, reading_notes,
          rd_undergraduate_only = undergraduate_only,
          rd_graduate_only = graduate_only,
          rd_optional = optional,
@@ -31,7 +33,9 @@ reading_assignments <- semester_db %>% tbl("reading_assignments") %>%
   mutate_at(c("textbook", "handout",
               "rd_undergraduate_only", "rd_graduate_only", "rd_optional",
               "rd_prologue", "rd_epilogue", "rd_break_before"),
-            as.logical)
+            as.logical) %>%
+  arrange(reading_id, desc(rd_prologue), rd_epilogue, rd_optional,
+          rd_undergraduate_only, rd_graduate_only, rd_item_id)
 
 notices <- semester_db %>% tbl("notices") %>% select(topic_id, notice) %>%
   collect()
@@ -115,12 +119,6 @@ year_taught <- year(first_date)
 
 pub_date <- "2018-08-20"
 
-append_newline_if_needed <- function(txt) {
-  txt <- str_trim(txt)
-  txt[str_detect(txt, "[^\n]$")] <- str_c(txt, "\n")
-  txt
-}
-
 select_class <- function(calendar, class_no) {
   class <- calendar %>% filter(class == class_no) %>% select(class, date, topic) %>%
     mutate(weekday = wday(date, label = TRUE), long.weekday = wday(date, label = TRUE, abbr = FALSE),
@@ -133,6 +131,11 @@ append_newline_if_needed <- function(txt) {
   txt <- str_trim(txt)
   txt[str_detect(txt, '[^\n]$')] <- str_c(txt, '\n')
   txt
+}
+
+escape_dollar <- function(txt) {
+  txt %>% str_replace_all(c("([^\\\\])\\\\\\$" = "\\1\\\\\\\\$",
+                            "^\\\\\\$" = "\\\\\\\\$"))
 }
 
 format_month <- function(d, abbr = TRUE) {
@@ -291,7 +294,7 @@ format_handout_reading_item <- function(reading_item) {
     output <- str_c(output, ", ", reading_item$pages)
   }
   output <- output %>% str_trim() %>%
-    str_c(" (posted online)") %>%
+    str_c(" (", online_location, ")") %>%
     add_period()
   output
 }
@@ -307,38 +310,85 @@ format_handout_reading <- function(reading_list) {
 }
 
 make_reading_assignment <- function(reading_entry) {
-  textbook_reading <- reading_entry %>% filter(textbook & ! rd_optional)
-  handout_reading <- reading_entry %>% filter(handout & ! rd_optional)
+  textbook_reading <- reading_entry %>%
+    filter(textbook &
+             ! (rd_optional | rd_undergraduate_only | rd_graduate_only ))
+  handout_reading <- reading_entry %>%
+    filter(handout &
+             ! (rd_optional | rd_undergraduate_only | rd_graduate_only ))
+  ugrad_textbook_reading <- reading_entry %>%
+    filter(textbook & rd_undergraduate_only )
+  ugrad_handout_reading <- reading_entry %>%
+    filter(handout & rd_undergraduate_only )
+  grad_textbook_reading <- reading_entry %>%
+    filter(textbook & rd_graduate_only )
+  grad_handout_reading <- reading_entry %>%
+    filter(handout & rd_graduate_only )
   optional_textbook_reading <- reading_entry %>% filter(textbook & rd_optional)
   optional_handout_reading <- reading_entry %>% filter(handout & rd_optional)
+
   reading_notes <- reading_entry %>% filter(!is.na(reading_notes))
+
   has_req_reading <- (nrow(textbook_reading) + nrow(handout_reading)) > 0
+  has_ugrad_reading <- (nrow(ugrad_textbook_reading) +
+                          nrow(ugrad_handout_reading)) > 0
+  has_grad_reading <- (nrow(grad_textbook_reading) +
+                         nrow(grad_handout_reading)) > 0
   has_opt_reading <- (nrow(optional_textbook_reading) +
                         nrow(optional_handout_reading)) > 0
+  has_any_reading <- has_req_reading || has_ugrad_reading ||
+    has_grad_reading || has_opt_reading
+
   has_notes <- nrow(reading_notes) > 0
+
   output <- "## Reading:"
-  if (! has_req_reading) {
+  if (! has_any_reading) {
     output <- str_c(str_trim(output), "",
                     "No new reading for today.",
                     "", sep = "\n")
   } else {
-    readings <- c(format_textbook_reading(textbook_reading),
-                  format_handout_reading(handout_reading)) %>%
-      itemize()
-    output <- str_c(str_trim(output),
-                    "",
-                    append_newline_if_needed(readings),
-                    "",
-                    "", sep = "\n")
-  }
-  if (has_opt_reading) {
-    extra_readings <- c(format_textbook_reading(optional_textbook_reading),
-                        format_handout_reading(optional_handout_reading)) %>%
-      itemize()
-    output <- str_c(str_trim(output),
-                    "### Optional Extra Reading:", "",
-                    append_newline_if_needed(extra_readings), "",
-                    sep = "\n")
+    if (has_req_reading) {
+      readings <- c(format_textbook_reading(textbook_reading),
+                    format_handout_reading(handout_reading)) %>%
+        itemize()
+      output <- str_c(str_trim(output),
+                      "",
+                      "### Required Reading (everyone):",
+                      append_newline_if_needed(readings),
+                      "",
+                      "", sep = "\n")
+    }
+    if (has_ugrad_reading) {
+      ug_readings <- c(format_textbook_reading(ugrad_textbook_reading),
+                    format_handout_reading(ugrad_handout_reading)) %>%
+        itemize()
+      output <- str_c(str_trim(output),
+                      "",
+                      "### Required for Undergrads (optional for grad students):",
+                      append_newline_if_needed(ug_readings),
+                      "",
+                      "", sep = "\n")
+    }
+    if (has_grad_reading) {
+      g_readings <- c(format_textbook_reading(grad_textbook_reading),
+                    format_handout_reading(grad_handout_reading)) %>%
+        itemize()
+      output <- str_c(str_trim(output),
+                      "",
+                      "### Required for Grad Students (optional for undergrads):",
+                      append_newline_if_needed(g_readings),
+                      "",
+                      "", sep = "\n")
+    }
+    if (has_opt_reading) {
+      extra_readings <- c(format_textbook_reading(optional_textbook_reading),
+                          format_handout_reading(optional_handout_reading)) %>%
+        itemize()
+      output <- str_c(str_trim(output), "",
+                      "### Optional Extra Reading:", "",
+                      append_newline_if_needed(extra_readings), "",
+                      sep = "\n")
+    }
   }
   if (has_notes) {
     reading_note_str <- reading_notes$reading_notes %>% str_trim() %>%
@@ -541,17 +591,19 @@ make_reading_page <- function(cal_entry) {
                    class_number = class_num, weight = class_num,
                    slug = sprintf("reading_%02d", class_num),
                    pubdate = pub_date, date = rd_date,
-                   output = list("blogdown::html_page" = list(md_extensions = md_extensions))
+                   output = list("blogdown::html_page" =
+                                   list(md_extensions = md_extensions))
   ) %>%
     as.yaml() %>% str_trim("right") %>%
     str_c(delim, ., delim, sep = "\n")
   rd_page <- str_c(
     header,
-    make_short_hw_assignment(cal_entry),
-    make_reading_assignment(reading),
+    make_short_hw_assignment(cal_entry) %>% escape_dollar(),
+    make_reading_assignment(reading) %>% escape_dollar(),
     sep = "\n"
   ) %>% expand_codes()
 
+  rd_page
 }
 
 
@@ -568,7 +620,7 @@ make_notice <- function(notice_entries) {
                     notice_entries$notice, "",
                     sep = "\n")
   }
-  output
+  output %>% escape_dollar()
 }
 
 generate_assignments <- function() {

@@ -12,6 +12,7 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * Climate Casino, 6--9.
 
 ### Reading Notes:

@@ -12,6 +12,7 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * Understanding the Forecast, Ch. 11, pp. 135--145.
 
 ### Reading Notes:

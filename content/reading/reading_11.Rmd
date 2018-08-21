@@ -12,12 +12,12 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * Understanding the Forecast, Ch. 8, pp. 95--101.
 
 ### Reading Notes:
 
 * Try to get a rough feel for the orbital forcing of climate, but don't stress about the details. We'll dig into this in much more depth when we look at climates of the past, on Sep. 19--21. The key here is to understand that small variations in the earth's orbit lead to small forcings on the climate, which are dramatically amplified by a positive feedback in the carbon cycle to produce the cycle of ice ages that the earth experienced over the past 2 million years or so.
 * Understand the feedback in the sedimentary rock cycle. This is very important, but very slow. It acts as a thermostat for the earth, but takes millions of years to act, so although it will ultimately fix any global warming that people cause, it will do so much too slowly to protect our civilization from the effects of climate change.
-\medskip
 
   The key to the sedimentary rock part of the carbon cycle is the transformation of **silicate minerals** to **carbonate minerals** through weathering. You should understand how this cycle works, how it changes in response to changing climate in order to act as a thermostat (negative feedback), and why this cycle works well on Earth but not on Mars or Venus. One clue is the graph in Fig. 7.2 on p. 76.

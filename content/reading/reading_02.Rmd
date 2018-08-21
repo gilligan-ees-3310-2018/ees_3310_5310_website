@@ -12,6 +12,7 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * Understanding the Forecast, Ch. 1.
 * Climate Casino, Ch. 2--3.
 

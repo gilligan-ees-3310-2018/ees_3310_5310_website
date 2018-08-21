@@ -1,5 +1,5 @@
 ---
-title: The Limits of Economic Approaches
+title: Discounting and the Value of Time
 class_date: '2018-11-05'
 class_number: 32
 weight: 32
@@ -12,17 +12,28 @@ output:
 ---
 ## Reading:
 
-* Handout: T. Barker, "The Economics of Avoiding Dangerous Climate Change," Climatic Change **89**, 173--194 (2008) (posted online). (posted online).
-* Handout: C. Jaeger, H.-J. Schellnhuber, and V. Brovkin, "Stern's Review and Adam's Fallacy," Climatic Change **89**, 207--218 (posted online). (posted online).
+### Required Reading (everyone):
+* Climate Casino, Ch. 16.
+
+### Required for Grad Students (optional for undergrads):
+* W. Nordhaus, "Critical Assumptions in the Stern Review on Climate Change".
+* Handout: N. Stern & C. Taylor, "Climate Change: Risk, Ethics, and the Stern Review," Science **317**, 203--204 (2007) (posted on Brightspace).
+
+### Optional Extra Reading:
+
+* Handout: J. Quiggin, "Stern and His Critics on Discounting and Climate Change: An Editorial Essay," Climatic Change **89**, 195 (2008) (posted on Brightspace).
 
 ### Reading Notes:
 
-The article by Barker, "The Economics of Avoiding Dangerous Climate Change," is long. Read the following portions:
+Time-discounting is one of the most contentious and controversial aspects of the economics and ethics of climate change. Entire books have been written about this, and one class will not do justice to the topic.
 
-* Section 1 (Introduction)
-* Section 2 (Traditional and New Economics): pp. 176--178 (through the paragraph in the middle of the page that ends "\dots but any implications for policy are heavily qualified and extensive lists are given of the dangers that are not or cannot be monetised,' and the single paragraph that starts at the bottom of p. 179 ("Contrast also the pre-Stern traditional conclusion \dots assumptions about human welfare and behaviour needed to make the mathematics tractable.")
-* Section 3 (Uncertainty): pp. 181--183, through the first complete paragraph on p. 183 ("There are serious problems \dots fundamental differences between them.")
-* Section 4 (Economic Ethics): Skip the first few pages, which summarize arguments about discounting that we already covered in previous classes. Read pp. 185--187, starting at the bottom of p. 185 with "Justice as a theory of ethics" and reading through the end of the section.
-* Section 5 (Engineering and History). Skip this section.
-* Section 6  (Social Choice): read pp. 189--190. Read through the first complete paragraph on p. 190 ("In theory \dots adaptation investments.")
-* Section 7 (Toward a New Economics): Read this whole section.
+* As you read this chapter in Nordhaus, try to follow the distinctions Nordhaus draws between several aspects of discounting:
+
+    * **Pure time preference:** If I offer you a choice of getting a free dinner at a nice restaurant sometime this month or getting the same dinner five years from now, you would almost certainly prefer to get the nice dinner this month. Given the choice of getting something nice now, or in the near future, versus having to wait a long time, most people don't want to wait.
+    * **Opportunity cost:** If I offered you the choice of \\$100 now versus in five years, as opposed to the fancy meal, something else comes into the picture: If you got the money now, but chose not to spend it right away, you could invest it so that in five years, you would have more than \\$100. Spending money today rather than investing it for the future produces an opportunity cost (missing out on the compounding interest), which contributes another piece to the problem of discounting and the value of time.
+    * **Fairness and economic growth:** Economic growth has dramatically reduced poverty around the world over the past centuries. The decline of poverty has been especially rapid in the past half-century. If this trend continues, people living a few centuries in the future will have average per-capita incomes much more than 10 times what the average person earns today. Thus, spending money today to reduce the costs of climate change for future generations might be like taking from the poor (today's generation) to benefit the rich (future generations).
+
+* Graduate students should read the two articles in Science (and undergrads are welcome to read them if you're interested). Each is a bit less than two pages and they are very clear. These articles are a nice distillation of the kinds of economic/ethical arguments about what it means to be fair and just that are very common in environmental policy, and especially in climate policy.
+
+    There are no easy answers, and the challenge has led philosopher Stephen Gardiner to call the problem of climate change "a perfect moral storm."
+* The optional article by the economist, John Quiggin, is a much more technical discussion of the ethical and economic conundrums that arise from reducing the value of life and suffering to a mathematical equation about time. It's very good, but it's purely optional and you should not feel obliged to read it if you are not really excited to nerd out about these things.

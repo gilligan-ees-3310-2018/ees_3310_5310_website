@@ -12,6 +12,7 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * The Climate Fix, Ch. 3.
 * Climate Casino, Ch. 14.
 

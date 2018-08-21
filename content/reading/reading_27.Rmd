@@ -12,6 +12,7 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * Climate Casino, Ch. 14, pp. 157--165.
 * Climate Casino, Ch. 15.
 

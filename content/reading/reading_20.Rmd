@@ -12,6 +12,7 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * Understanding the Forecast, Ch. 12, pp. 164--166.
 * Climate Casino, Ch. 24.
 * The Climate Fix, Ch. 1, pp. 1--24.

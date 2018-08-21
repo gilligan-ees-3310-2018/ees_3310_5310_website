@@ -12,6 +12,7 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * Understanding the Forecast, Ch. 5.
 
 ### Reading Notes:
@@ -52,7 +53,7 @@ in **unsaturated** air (with relative humidity $<100%$)? Why? (Hint: the relavan
 material appears in the section on **moist convection**, not the section on latent heat.)
 
 Fifth, we learn about convection: as you heat air it tends to rise and this
-moves heat around the atmosphere. The key concept regarding convection is **stability** vs.\
+moves heat around the atmosphere. The key concept regarding convection is **stability** vs.
 **instability**. Unstable air undergoes convection (as the troposphere does), whereas
 stable air does not, and instead remains **stratified**, as the stratosphere does.
 

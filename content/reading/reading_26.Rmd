@@ -12,12 +12,14 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * The Climate Fix, Ch. 4.
+
 ### Optional Extra Reading:
 
-* Handout: Roger A. Pielke, Jr., "The British Climate Change Act: a critical evaluation and proposed alternative approach," Environmental Research Letters **4**, 024010 (2009). (posted online).
-* Handout: Rogar A. Pielke, Jr., "Mamizo Climate Policy: An Evaluation of Japanese Carbon Emission Reduction Targets," Environmental Research Letters **4**, 044001 (2009) (posted online).
-* Handout: Roger A. Pielke, Jr., "An Evaluation of the Targets and Timetables of Proposed Australian Emissions Reduction Policies," Environmental Science & Policy **14**, 20 (2011). (posted online).
+* Handout: Roger A. Pielke, Jr., "The British Climate Change Act: a critical evaluation and proposed alternative approach," Environmental Research Letters **4**, 024010 (2009). (posted on Brightspace).
+* Handout: Rogar A. Pielke, Jr., "Mamizu Climate Policy: An Evaluation of Japanese Carbon Emission Reduction Targets," Environmental Research Letters **4**, 044001 (2009) (posted on Brightspace).
+* Handout: Roger A. Pielke, Jr., "An Evaluation of the Targets and Timetables of Proposed Australian Emissions Reduction Policies," Environmental Science & Policy **14**, 20 (2011). (posted on Brightspace).
 
 ### Reading Notes:
 

@@ -12,9 +12,10 @@ output:
 ---
 ## Reading:
 
-* Handout: R.K. Lester, "A Roadmap for U.S. Nuclear Energy Innovation," Issues in Science and Technology **32** (2) (Winter, 2016) (posted online). (posted online).
-* Handout: D. Ropeik, "Clean Energy Mind Games," Issues in Science and Technology **33** (4) (Summer, 2017) (posted online.). (posted online).
-* Handout: C. Tomlinson, "Nuclear Power as We Know it Is Finished," Houston Chronicle Aug. 3, 2017 (posted online.). (posted online).
+### Required Reading (everyone):
+* Handout: R.K. Lester, "A Roadmap for U.S. Nuclear Energy Innovation," Issues in Science and Technology **32** (2) (Winter, 2016) (posted on Brightspace).
+* Handout: D. Ropeik, "Clean Energy Mind Games," Issues in Science and Technology **33** (4) (Summer, 2017) (posted on Brightspace).
+* Handout: C. Tomlinson, "Nuclear Power as We Know it Is Finished," Houston Chronicle Aug. 3, 2017 (posted on Brightspace).
 
 ### Reading Notes:
 

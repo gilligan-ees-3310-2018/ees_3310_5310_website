@@ -12,6 +12,7 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * Understanding the Forecast, Ch. 4.
 
 ### Reading Notes:
@@ -27,9 +28,10 @@ nitrogen (N~2~) and oxygen (O~2~) molecules, which make up almost 99% of
 the atmosphere?
 
 What is the "atmospheric window," that spans the range of about
-800--1250 \wavenumber (wavelengths of 8--12 \micron)?
+800--1250 cycles/cm (wavelengths of 8--12 &mu;m)?
 
 ### Understanding emissions spectra seen by satellites
+
 **This is important:** The key to this section is understanding diagrams,
 such as Fig. 4.3 and 4.5. These diagrams show the brightness of
 infrared light emitted at different frequencies. The smooth lines correspond
@@ -55,15 +57,16 @@ Here are some review questions to check whether you understand this material
 well:
 
 * Water vapor is a powerful greenhouse gas. Why do you suppose we don't
-  see extremely cold temperatures for the part of the spectrum (100--600 \wavenumber)
+  see extremely cold temperatures for the part of the spectrum (100--600 cycles/cm)
   where _it_ absorbs?
 * If greenhouse gases make earth warmer, why does adding CO~2~ in
   make the emissions temperatures become smaller in Fig. 4-5?
 
 
 ### Band saturation
+
 **This is important for understanding why some greenhouse gases are more
-powerful than others** What is band saturation? Why does increasing CO~2~\
+powerful than others** What is band saturation? Why does increasing CO~2~
 from 10 to 100 parts per million or from 100 to 1000 parts per million have much
 less effect than increasing it from 0 to 10 parts per million? Think by analogy.
 Suppose you smear a tablespoon of black ink all over a white piece of

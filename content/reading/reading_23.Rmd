@@ -12,6 +12,7 @@ output:
 ---
 ## Reading:
 
+### Required Reading (everyone):
 * The Climate Fix, Ch. 2.
 * Climate Casino, Ch. 25.
 
@@ -23,14 +24,16 @@ In _The Climate Fix_, Pielke addresses three what he calls three myths of climat
 1. We must trade off the economy for the environment
 1. We have all the technology we need to solve the problem
 
-With respect to myth \#2, consider this quotation, from a story on National Public Radio on October 2, 2010:
+With respect to myth #2, consider this quotation, from a story on National Public Radio on October 2, 2010:
 
-    \noindent
-    Republican pollster Frank Luntz says it's clear why the politics of climate change are so different [in 2010] than they were in 2008. "_What has changed is that the American economy went to hell. And when you ask voters are they more concerned about destroying their environment over the next 100 years or rehabilitating their economy over the next 100 weeks, they'll choose the economy over the environment any day_," Luntz says.
+>  Republican pollster Frank Luntz says it's clear why the politics of climate change are so different [in 2010] than they were in 2008. 
+> "_What has changed is that the American economy went to hell. And when you ask voters are they more concerned about destroying 
+> their environment over the next 100 years or rehabilitating their economy over the next 100 weeks, they'll choose the economy over 
+> the environment any day_," Luntz says.
 
 As you read Chapter 2 of _The Climate Fix_, critically assess Luntz's arguments. Pay special attention to the "**Iron Law**," described on pp. 46--50. This will be a crucial piece of Pielke's analysis throughout the book.
 
-On pp. 51--58 of _The Climate Fix_, Pielke writes about the idea of "**stabilization wedges**," introduced by Robert Socolow and Stephen Pacala, in the context of dismissing myth \#3. The stabilization wedge concept is very important in climate policy and we will discuss them further later in the semester, so read these pages reasonably carefully and keep in mind that Pielke's dismissal is just one opinion. A number of scholars and policy experts agree with Pielke, but many disagree as well. This is a topic on which it's important to think for yourself.
+On pp. 51--58 of _The Climate Fix_, Pielke writes about the idea of "**stabilization wedges**," introduced by Robert Socolow and Stephen Pacala, in the context of dismissing myth #3. The stabilization wedge concept is very important in climate policy and we will discuss them further later in the semester, so read these pages reasonably carefully and keep in mind that Pielke's dismissal is just one opinion. A number of scholars and policy experts agree with Pielke, but many disagree as well. This is a topic on which it's important to think for yourself.
 
 After dismissing many myths, Pielke offers his own ideas for how to approach climate policy.
 

@@ -12,11 +12,15 @@ output:
 ---
 ## Reading:
 
-* Handout: M.Z. Jacobson and M.A. Delucchi, "A Path to Sustainable Energy by 2030," Scientific American, Nov. 2009, pp. 58--65 (posted online). (posted online).
-* Handout: E. Porter, "Fisticuffs over the Route to a Clean-Energy Future," New York Times June 20, 2017, p. B1 (posted online) (posted online).
-* Handout: C. Mooney, "A Bitter Scientific Debate just Erupted over the Future of America's Power Grid," Washington Post June 19, 2017 (posted online) (posted online).
-* Handout: M.Z. Jacobson _et al_., "Low-cost solution to the grid reliability problem with 100% penetration of intermittent wind, water, and solar for all purposes," PNAS **112**, 15060 (2015) (posted online) (posted online).
-* Handout: C.T.M. Clack _et al_., "Evaluation of a Proposal for Reliable Low-Cost Grid Power with 100% Wind, Water, and Solar," PNAS **114**, 6722 (2017) (posted online). (posted online).
+### Required Reading (everyone):
+* Handout: M.Z. Jacobson and M.A. Delucchi, "A Path to Sustainable Energy by 2030," Scientific American, Nov. 2009, pp. 58--65 (posted on Brightspace).
+* Handout: E. Porter, "Fisticuffs over the Route to a Clean-Energy Future," New York Times June 20, 2017, p. B1 (posted on Brightspace).
+* Handout: C. Mooney, "A Bitter Scientific Debate just Erupted over the Future of America's Power Grid," Washington Post June 19, 2017 (posted on Brightspace).
+
+### Required for Grad Students (optional for undergrads):
+* Handout: M.Z. Jacobson _et al_., "Low-cost solution to the grid reliability problem with 100% penetration of intermittent wind, water, and solar for all purposes," PNAS **112**, 15060 (2015) (posted on Brightspace).
+* Handout: C.T.M. Clack _et al_., "Evaluation of a Proposal for Reliable Low-Cost Grid Power with 100% Wind, Water, and Solar," PNAS **114**, 6722 (2017) (posted on Brightspace).
+* Handout: M.Z. Jacobson _et al_., "The United States Can Keep the Grid Stable at Low Cost with 100% Clean, Renewable Energy in All Sectors, Despite Inaccurate Claims," PNAS **114*, E5021 (2017) (posted on Brightspace).
 
 ### Reading Notes:
 
