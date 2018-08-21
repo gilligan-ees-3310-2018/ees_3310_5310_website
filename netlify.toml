@@ -2,7 +2,7 @@
   ID = "ees3310"
 
 [[redirects]]
-  from = "/static"
+  from = "/static/*"
   to = "https://static.jgilligan.org/ees3310/:splat"
   status = 200
 
