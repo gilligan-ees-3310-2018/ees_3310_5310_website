@@ -9,7 +9,7 @@
 [[redirects]]
   from = "/climatemodels/*"
   to = "https://climatemodels.jgilligan.org/:splat"
-  status = 307
+  status = 302
 
 [[redirects]]
   from = "/*"
