@@ -447,11 +447,11 @@ make_homework_assignment <- function(homework_entries) {
   if (nrow(prologue) > 0) {
     prologue_str <- str_c(discard(prologue$homework, ~is.na(.x) | .x == ""), collapse = "\n\n")
   } else {
-    prologue_str <- "Turn in the following homework on Box by 11:59 pm:"
+    prologue_str <- NULL
   }
 
   if (nrow(epilogue) > 0) {
-    prologue_str <- str_c(discard(epilogue$homework, ~is.na(.x) | .x == ""), collapse = "\n\n")
+    epiloque_str <- str_c(discard(epilogue$homework, ~is.na(.x) | .x == ""), collapse = "\n\n")
   } else {
     epilogue_str <-  NULL
   }

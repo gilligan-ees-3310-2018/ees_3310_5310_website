@@ -1,0 +1,26 @@
+---
+title: Introduction to Reproducible Research
+lab_date: '2018-08-27'
+report_due_date: '2018-09-03'
+lab_number: 1
+pubdate: '2018-08-20'
+date: '2018-08-27'
+slug: lab_01_assignment
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+This lab will introduce the principles of reproducible research and the tools we will use to perform the tasks of reproducible research.
+
+## Reading
+
+**Before you come to lab**, please read the following documents:
+
+* [Introduction to EES 3310/5310 Labs](/lab_docs/lab_01_lab01_overview)
+* [Introduction to Reproducible Research](/lab_docs/lab_01_reproducible_research)
+* [Introduction to Git and GitHub Classroom](/lab_docs/lab_01_git_intro)
+* [Introduction to R and RMarkdown](/lab_docs/lab_01_rmarkdown_intro)
+
+## Assignment
+
+The GitHub Classroom has not been posted yet.

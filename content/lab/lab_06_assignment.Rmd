@@ -1,0 +1,17 @@
+---
+title: Group Projects
+lab_date: '2018-10-01'
+report_due_date: '2018-10-17'
+lab_number: 6
+pubdate: '2018-08-20'
+date: '2018-10-01'
+slug: lab_06_assignment
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+In this lab, you and a partner will begin to develop your own question to explore using computer models and/or archives of climate data
+
+## Assignment
+
+The GitHub Classroom has not been posted yet.

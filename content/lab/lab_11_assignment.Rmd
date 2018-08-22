@@ -1,0 +1,17 @@
+---
+title: Continuing Work on the Decarbonization Policy Analysis
+lab_date: '2018-11-26'
+report_due_date: '2018-12-05'
+lab_number: 11
+pubdate: '2018-08-20'
+date: '2018-11-26'
+slug: lab_11_assignment
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+Lab attendence is optional today. Ms. Best and I will be there to answer questions and discuss your projects with you.
+
+## Assignment
+
+The GitHub Classroom has not been posted yet.

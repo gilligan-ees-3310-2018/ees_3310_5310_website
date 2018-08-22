@@ -1,0 +1,17 @@
+---
+title: Continuing Work on Group Projects
+lab_date: '2018-10-08'
+report_due_date: '2018-10-17'
+lab_number: 7
+pubdate: '2018-08-20'
+date: '2018-10-08'
+slug: lab_07_assignment
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+You and your partner will continue to work on your group projects. Lab attendance is optional today, but Ms. Best and I will be available in the lab classroom to answer questions and discuss your projects.
+
+## Assignment
+
+The GitHub Classroom has not been posted yet.

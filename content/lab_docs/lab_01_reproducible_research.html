@@ -1,0 +1,392 @@
+---
+title: Introduction to Reproducible Research
+lab_number: 1
+lab_date: '2018-08-27'
+pubdate: '2018-08-20'
+date: '2018-08-27'
+slug: lab_01_reproducible_research
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+
+
+
+<div id="why-do-we-need-reproducible-research" class="section level1">
+<h1>Why Do We Need Reproducible Research?</h1>
+<p>In the spring of 2012, Bruno Iksil, a securities trader at
+the investment bank JPMorgan, Chase, &amp; Company who was also known by the
+nickname “The London Whale” for his aggressive trades, made a series of
+costly mistakes that cost JPM-Chase $6.2 billion. <span class="citation">[@hurtado_london_2015]</span>
+Iksil was attempting to manage the financial risk of a portfolio of investments.
+However, an analyst on Iksil’s team had calculated the volatility (a measure of
+financial riskiness) of his portfolio using an Excel spreadsheet and made a subtle
+error in a mathematical formula, dividing by the sum of two numbers instead of
+the average. That error caused Iksill to underestimate risk by a factor of 2,
+and thus to expose JPM-Chase to far more risk than he realized with his enormous
+trades. <span class="citation">[@kwak_importance_2013]</span></p>
+<p>Two years earlier,
+Carmen Reinhart and Kenneth Rogoff,
+two highly respected academic economists published an influential
+research paper on the effect of government debt on economic growth.
+<span class="citation">[@reinhart_growth_2010]</span> This paper
+concluded that when government debt exceeds 90% of GDP, the country’s economic
+growth is likely to abruptly come to a halt, and even slide into recession.
+This paper was used to justify harsh austerity measures throughout Europe, where
+nations were struggling to recover from the 2008 global economic meltdown,
+and was cited by Paul Ryan as justification for his proposals to dramatically
+cut federal spending in the U.S.</p>
+<p>Thomas Herndon, a graduate student in economics at the University of Massachusetts,
+was skeptical about this research, but Reinhart and Rogoff’s paper did not
+explain all the details of their data and analysis. Finally, in 2013, Reinhart
+and Rogoff gave Herndon copies of the spreadsheets they had used in their analysis.
+Herndon found three glaring errors in the spreadsheet, and after he fixed the
+errors, there was no sudden slowdown of economic growth.
+<span class="citation">[@krudy_how_2013; @bailey_reinhart-rogoff_2013; @kwak_importance_2013]</span></p>
+<p>Such errors are not unique to economic research. In the past two years, errors
+in spreadsheet formulas led to the retraction of papers in prominent journals
+of environmental science, medicine, and biology.
+<span class="citation">[@stern_think_2017; @palus_doing_2016; @ferguson_teflon_2015]</span></p>
+<p>In 2015, a major study of air pollution associated with “fracking” in natural
+gas wells was retracted when the authors discovered a major error in an Excel
+spreadsheet that they used for data analysis. <span class="citation">[@chawla_authors_2016]</span></p>
+<p>Spreadsheets are not the only source of major errors in scientific publications.
+Poor statistical practices have led to what has come to be called a “crisis of
+replication” in psychology and medicine and concern that many
+published scientific results are incorrect.</p>
+<p>Of particular concern is the fact that major problems are being discovered in
+clinical medical research. Once recent review of 5,000 papers in eight top medical
+journals found that almost 100 had major inaccuracies.</p>
+<div id="scientific-errors-in-climate-science" class="section level2">
+<h2>Scientific Errors in Climate Science</h2>
+<p>Scientific errors have had significant impact in climate science
+In the 1990s, John Christy and Roy Spencer,
+a pair of prominent climate scientists at the University of Alabama at Huntsville
+(UAH),
+were analyzing satellite measurements of microwave emissions from the earth’s
+atmosphere and using them to calculate the temperature of different layers of
+the atmosphere. They reported the surprising result that whereas measurements of
+temperatures at the earth’s surface, made with thermometers at meteorological
+monitoring stations, consistently showed a large warming trend, the satellite
+measurements found that the lower troposphere was cooling off. Christy and Spencer
+claimed that their satellite measurements were more accurate than the thermometer
+measurements taken at the surface and challenged scientific findings that global
+warming was taking place. Controversy about the disagreement between the satellite
+measurements and the surface measurements raged for years, and was the subject of
+a book-length report from the National Academy of Sciences. <span class="citation">[@nrc_reconciling_2000]</span></p>
+<p>A rival team of scientists at the company Remote Sensing Systems (RSS) looked into
+the matter and conducted its own analysis of the satellite temperature records.
+Christy and Spencer would not release the computer code they used to analyze
+the satellite record to the public, so other scientists could not check it for
+errors. However, the independent analysis by scientists at RSS revealed a number
+of serious errors in the UAH analysis, including a place where the UAH team
+mistakenly added two numbers instead of subtracting one from the other (an easy
+mistake to make in programming, and one that might have been caught years earlier
+if the code had been available for public inspection).
+<span class="citation">[@wentz_effects_1998; @mears_effect_2005; @christy_tropospheric_2007]</span> In the end,
+the UAH team released corrections to their satellite temperature measurements,
+and the corrected record agreed well with other measurements, including those by
+thermometers at the surface and weather balloons. The years of controversy over
+whether the lower troposphere was cooling turned out to be mostly the result of
+computer programming errors.</p>
+<div id="the-move-toward-open-climate-science" class="section level3">
+<h3>The Move toward Open Climate Science</h3>
+<p>In 2009, a leak of thousands of emails by a number of climate scientists led to
+a scandal known as “Climategate,” in which prominent climate scientists were
+accused of doctoring their data and analysis. Investigations conclusively cleared
+them of any misdeeds, and it turned out that the things they were accused of doing
+in secret had in fact been clearly reported in published papers years before the
+scandal. However, the damage to the reputation of the scientists and the public’s
+trust in climate science taught the climate science community the importance of
+being completely open with data, methods, and computer code.</p>
+<p>Since then, climate scientists have moved significantly toward adopting principles
+of openness. Today, pretty much all major climate data sets are available for free
+on the internet. Computer code used for important analysis, including the source
+code to many of the major global climate models, is publicly available (although
+much of it is not much use unless you have a supercomputer to run it on).</p>
+<p>Making all the data and code available helps win trust by convincing the public that
+climate scientists do not have anything to hide. It also facilitates faster scientific
+progress by allowing scientists more easily to build on one another’s work,
+and it makes it easier to find and correct errors. A good list of major sources
+of climate data and computer code is available at
+<a href="http://www.realclimate.org/index.php/data-sources/" class="uri">http://www.realclimate.org/index.php/data-sources/</a>.
+The R Open Science Project (<a href="https://ropensci.org/" class="uri">https://ropensci.org/</a>) maintains a number of sophisticated open-source
+scientific projects that cover many fields, such as biology and climate science.
+A retired engineer and amateur climate scientist, D. Kelly O’Day, maintains
+a blog (<a href="https://rclimate.wordpress.com/" class="uri">https://rclimate.wordpress.com/</a>) where he shares R scripts to download,
+analyze, and graph climate data.</p>
+</div>
+</div>
+<div id="the-big-picture" class="section level2">
+<h2>The Big Picture</h2>
+<p>For the most part, science works. Advances in all fields of science have led to
+deep understanding of nature, and have led to technological breakthroughs that
+drive our economy, enable us to live much longer and healthier lives, and
+otherwise improve the quality of our lives.</p>
+<p>Nonetheless, even if only a few percent of major scientific research papers are
+wrong, this has potential to mislead us about which medicines or medical procedures
+are safe and which are dangerous, about which government policies are likely to
+be effective, and in the private sector, can lead companies to make
+financially disastrous mistakes.</p>
+<div id="reproducible-research" class="section level3">
+<h3>Reproducible Research</h3>
+<p>Two important principles in science, which should prevent these errors,
+are that research should be <em>transparent</em>
+and <em>reproducible</em>: Research reports should describe the procedures clearly and
+in enough detail that other scientists know exactly what was done. And scientists
+who repeat the research procedures, as described in the reports, should find
+similar results, within the limits of experimental uncertainty.</p>
+<p>However, as the anecdotes above, and hundreds of similar reports of problems in
+research reveal, too often even well-meaning scientists fall short of providing
+enough detail about their methods for other scientists to understand their work
+and catch errors, and it is often difficult to truly reproduce previously
+published research.</p>
+<p>To address these problems, the scientific community is increasingly embracing the
+principles of what has come to be called <strong>reproducible research</strong>.</p>
+<p>Federal funding agencies, scientific journals, and scientific societies now call
+for authors to reveal all the details of their experiments and analysis, and
+must share the data and computer codes they used to perform the analyses described
+in their publications.</p>
+<p>Whether you are doing research in basic science, such as quantum physics,
+conducting clinical trials to assess the effectiveness and safety of new drugs
+and medical procedures, investigating climate change, analyzing economic policy,
+or working for a private company to study financial risks and opportunities,
+it will be important for you to be able to do your research accurately, to
+communicate the details clearly with your co-workers and your bosses, and
+to be able to return to your old research reports and vouch for all the details of
+what you did.</p>
+<p>Whether you find yourself working in pure academic research, in public policy,
+or for private industry, the tools of reproducible research will help you do these
+things effectively.</p>
+</div>
+</div>
+</div>
+<div id="what-is-reproducible-research" class="section level1">
+<h1>What is Reproducible Research?</h1>
+<p><em>Reproducible research</em> seeks to make scientific research completely reproducible
+by documenting every decision a researcher made in the course of collecting and
+analyzing data. At the simplest level, this would mean that when a scientist
+submits a paper to a research journal, she would include all the data and a clear
+description of the analysis.</p>
+<p>However, a written description of the analysis process might inadvertently omit crucial
+steps, or the researcher might describe what she thought she did, but might have
+made errors in her actual analysis.</p>
+<p>In the example of Reinhart and Rogoff’s paper on debt and economic growth, the two
+economists described what they thought they had done, but they were unaware that
+their spreadsheet contained errors. For three years after they published the paper,
+the errors remained buried in their spreadsheets but other economists only knew the
+written descriptions of the analysis that appeared in their paper and could not
+examine the spreadsheet for themselves.</p>
+<p>Thus, reproducible research calls for researchers to share not only their data,
+but also any spreadsheets, computer programs, or scripts they used to perform
+the analysis. This will allow other researchers to catch errors where the actual
+analysis procedure does not match the description in the published report, just
+as Thomas Herndon was able to do when he obtained Reinhart and Rogoff’s spreadsheets.</p>
+<div id="scripts-versus-spreadsheets" class="section level2">
+<h2>Scripts versus Spreadsheets</h2>
+<p>In principle, this should suffice, but in practice it turns out that auditing a
+spreadsheet is very difficult. When you open a spreadsheet in Excel, you see
+a grid of text and numbers, but the formulas used in calculating the values of
+certain cells from other cells are largely invisible and it is difficult to
+read and audit every formula in a spreadsheet that contains thousands of cells.</p>
+<p>Thus, the scientific community has become increasingly mistrustful of spreadsheets
+and prefers data analysis tools that use scripts to conduct the analysis.
+Scripts (basically, short computer programs) are written in a textual form that
+is straightforward for a knowledgeable person to read and understand.
+Consistency checks to catch errors are much easier to implement in scripts than
+in spreadsheets.</p>
+<p>In the labs for EES 3310 and 5310, we will be using scripts for the R statistical
+analysis program to analyze climate data and the output of climate models.
+In the course of the semester, you will become increasingly familiar with the ideas
+of using analysis scripts to promote reproducible research.</p>
+</div>
+<div id="from-the-analysis-to-the-manuscript" class="section level2">
+<h2>From the Analysis to the Manuscript</h2>
+<p>Even when analysis is performed correctly, it can be difficult to transcribe
+every number correctly into the manuscript of a research report. When I (Professor Gilligan)
+was in graduate school, one of my professors told me a cautionary tale from early in
+his career: Three prominent physicists were attempting a very difficult calculation in
+quantum electrodynamics. To guard against errors, each of the three performed the
+calculation independently and then they compared their results. They were very excited
+to discover that their calculations agreed perfectly. One of them went to
+add up the different terms from the calculations and type the result into the manuscript of a
+paper they rushed into print to announce and share their accomplishment.
+Somewhere in the process, he transcribed a number incorrectly, so the
+published result was incorrect and the embarrassing error was not discovered until some time
+after it appeared in print.</p>
+<p>Consider, too, what happens if a research report is almost complete and the researchers
+discover an error in their analysis scripts or in their raw data. After they make the
+correction, they must adjust every number in their final manuscript. This introduces
+additional risks of either mistyping numbers or of missing a number that needs to
+be changed.</p>
+<p>With modern computing tools, it has become easy to integrate the analysis with
+the final report.</p>
+<p>In the EES 3310 and 5310 laboratories, we will use a tool called RMarkdown, which
+allows you to combine the text of your lab reports with the scripts that perform
+your data analysis and generate the figures and tables for your report.
+Thus, any time you change a number in your data or change a line of code in your
+analysis script, the computer can automatically regenerate your report to
+update all of the numbers and figures accordingly.</p>
+</div>
+</div>
+<div id="elements-of-reproducible-research" class="section level1">
+<h1>Elements of Reproducible Research</h1>
+<p>This section is adapted from the “Introduction to Reproducible Research”
+by the R Open Science Project, <a href="http://ropensci.github.io/reproducibility-guide/sections/introduction/" class="uri">http://ropensci.github.io/reproducibility-guide/sections/introduction/</a></p>
+<div id="kinds-of-reproducibility" class="section level2">
+<h2>Kinds of Reproducibility</h2>
+<p>Reproducibility means different things in different scientific fields.
+One big distinction is between computational versus observational or empirical
+aspects of research.</p>
+<ul>
+<li>Computational reproducibility provides detailed information on exactly how computations
+(either calculations or simulations using computer models) were performed,
+and making it possible for others to exactly reproduce those computations or calculations.
+This includes providing source code for programs and scripts written by the researcher,
+together with detailed specifications of the software (including the specific versions used),
+and the hardware used (running the same software on different computer hardware can
+sometimes give different results).
+R has a function that will automatically report the computing hardware and
+software, so it will be trivial to add this to the end of all your laboratory
+reports.</li>
+<li>Empirical reproducibility provides detailed information about laboratory or field
+procedures that were used to acquire empirical data used in the analysis.
+In practice, this is often accomplished by providing the raw data together with
+details about how it was collected.</li>
+</ul>
+<p>In this laboratory, we will focus entirely on <em>computational reproducibility</em>.
+We will not address all the details of computational reproducibility in this
+laboratory, but we will focus on three important aspects:</p>
+<ul>
+<li><p><strong>Literate computing and authoring:</strong>
+Literate computing refers to mixing computer code with narrative description
+of what the code is doing. Stanford computer science professor Donald Knuth
+invented literate programming based on his experience with large software
+projects, where he found that if he wrote clear narrative descriptions of
+what his programming code was doing, he made fewer errors, and could find
+and correct those errors more quickly.</p>
+<p>In this laboratory, we will use RMarkdown and RStudio to apply literate
+computing and authoring in laboratory activities and writing reports.</p></li>
+<li><p><strong>Automation:</strong>
+Many of you may be used to so-called “point-and-click” software
+tools for statistical analysis. Examples include Excel, SPSS, and Stata.
+These tools let you perform analysis by reading in your data and then highlighting
+data with a mouse and selecting menu options.
+This approach makes it easy to get started with these software packages
+when you are a beginner, but make it difficult to track exactly what you did
+in your analysis, so when it comes time to write up your report, you may not
+remember exactly what you did, and in what order you did it.
+Automating your analysis using scripts means that your script contains the
+complete information about everything you did.</p>
+<p>Some programs, such as Stata, allow you to record your analysis and export a
+script (a <code>.do</code> file) that will allow you or others to reproduce your analysis.
+This is a valid form of reproducible research, but it is not the one we will
+use in this course.</p>
+<p>Automation is also important if you have to do the same operation on many different data sets.
+What seemed easy when you just had to create one graph or analysis can quickly
+become tedious as you have to drag the mouse and click on the same menu entries
+over and over again on a dozen different data sets.
+Automating your analysis with scripts makes it easy to run the same script on
+each of your different data sets.</p></li>
+<li><p><strong>Revision Control:</strong>
+As you edit both your text and the R scripts you use for your analysis,
+it is valuable to be able to keep track of changes. For instance, if your
+analysis is working well, and then you edit something and it stops working
+it is useful to be able to go back and look at what changed between the
+time when it was working and when it stopped working.</p>
+<p>Revision control systems allow you to easily keep track of changes you make
+to your files.</p>
+<p>Another important use of revision control is not relevant to this laboratory
+section,
+but applies to larger research projects. I have computational models that are
+constantly under development and I publish papers based on them. Suppose that
+another scientist has a question about a paper that I wrote two years ago, but
+I have made many changes to the model since then. How can I go back and
+recreate the version of the model that I used for that paper?
+Revision control systems make this very easy.</p>
+<p>Finally, revision control systems are very useful for team projects because they
+allow a team of many researchers to coordinate their activities when they are all
+editing files (computer code and text) for a project at the same time.</p>
+<p>We will be using a revision control tool called <code>git</code>. There is a web site
+called <a href="https://github.com">github.com</a>, which allows people to share projects.
+My students and I use github to release software that we develop in our research,
+and there is an educational site connected to github, which we will use for
+laboratory assignments in EES 3310 and 5310.</p>
+<p>Everyone should sign up for a free student account on github.</p></li>
+</ul>
+</div>
+</div>
+<div id="software-tools" class="section level1">
+<h1>Software Tools</h1>
+<p>All the software you will need is installed on the computers in our laboratory classroom (SC 2200, right next to the Science and Engineering Library).
+If you want to install it on your personal computer, all the software we use is free and open source.</p>
+<ul>
+<li><p>R <a href="https://cran.rstudio.com/" class="uri">https://cran.rstudio.com/</a> Available for Windows, Mac OS X, and Linux</p></li>
+<li><p>RStudio is available in many different options. What you want is the Open Source version of RStudio Desktop, which
+you can download from <a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a>. Be sure to
+install R before you install RStudio.</p>
+<p>After you install RStudio, you will almost certainly want to install several optional packages for R
+that we will use extensively for the labs. From the “packages” window in RStudio, click on “Install”
+and install the following packages: “tidyverse”, “knitr”, “rmarkdown”, “xts”, “lme4”,
+“ggalt”, “GGAlly”, “ggExtra”, “ggspectra”, “ggspectra”,
+“ggstance”, “gtable”, “hrbrthemes”, and “pacman”</p></li>
+<li><p>Git for revision control. You have three options:</p>
+<ul>
+<li><p>You can download Git from <a href="https://git-scm.com/" class="uri">https://git-scm.com/</a></p></li>
+<li><p>There is a very popular free git client called “Source Tree” that has some very nice
+graphical utilities that let you use git from Windows Explorer or Mac Finder.
+You can get Source Tree from <a href="https://www.sourcetreeapp.com/" class="uri">https://www.sourcetreeapp.com/</a> for Mac or Windows.
+You will need to sign up for a free account at Atlassian to install it.</p></li>
+<li><p>A third option is Git Kraken, which you can get from <a href="https://www.gitkraken.com/" class="uri">https://www.gitkraken.com/</a>
+Git Kraken is very popular, and is free for educational, personal, and other non-commercial use.
+Git Kraken is available for Windows, Mac, and Linux.</p></li>
+</ul>
+<p>After you install Git, it is important to run two commands:</p>
+<ul>
+<li><p>Open a git command line:</p>
+<ul>
+<li>On Windows, open the program menu, go to “Git” and click on “Git Bash”</li>
+<li>On a Mac, open a terminal window</li>
+</ul></li>
+<li><p>Run the two following commands:</p>
+<ul>
+<li><code>git config --global user.name &quot;Your Name&quot;</code> (using your own name instead of “Your Name”)</li>
+<li><code>git config --global user.email &quot;your.email.address@vanderbilt.edu&quot;</code> (using your own email address)</li>
+</ul></li>
+</ul>
+<p>Git uses information to keep track of who makes changes to a file. If you are editing a file on your
+computer and a friend is editing it on her computer, git uses this user information to keep track of
+who made each change. Then when you and your friend merge your changes, git will be able to tell you
+which of you edited what.</p></li>
+</ul>
+<div id="optional-tools" class="section level2">
+<h2>Optional Tools</h2>
+<p>If you want to produce PDF files from RMarkdown, you will need to install the LaTeX software.</p>
+<p>If you have a Windows computer, I recommend MikTeX, which you can get from <a href="https://miktex.org/download" class="uri">https://miktex.org/download</a></p>
+<p>If you have a Mac, I recommend the MacTeX distribution, which you can get from <a href="http://www.tug.org/mactex/" class="uri">http://www.tug.org/mactex/</a></p>
+<p>On Linux, you should be able to install LaTeX using the package manager for your Linux distribution (e.g., <code>sudo apt-get install texlive-full</code> on Debian, Ubuntu or Mint; and <code>sudo yum install texlive</code> or <code>sudo dnf install texlive</code> on Fedora, CentOS, or other RedHat-based distributions)</p>
+</div>
+</div>
+<div id="walking-the-walk" class="section level1">
+<h1>Walking the Walk</h1>
+<p>Over the last five years I have become increasingly convinced that reproducible
+research methods are both more efficient and also lead to higher quality research.
+In my own research, I use the methods and many of the tools that we will use
+in this laboratory.</p>
+</div>
+<div id="further-reading" class="section level1">
+<h1>Further Reading</h1>
+<p>If you are interested in learning more about reproducible research, I would recommend
+the following:</p>
+<ul>
+<li><p>Christopher Gandrud, <em>Reproducible Research with R and RStudio</em> (Second Edition) (CRC Press/Chapman &amp; Hall, 2015).
+Gandrud is an economist and political scientist, who pioneered a lot of the methods that I use for
+reproducible research as part of his Ph.D. dissertation. This book is a comprehensive how-to guide
+to reproducible research, and all of the files necessary to reproduce the book are available online at
+<a href="https://github.com/christophergandrud/Rep-Res-Book" class="uri">https://github.com/christophergandrud/Rep-Res-Book</a></p></li>
+<li><p>The R Open Science Project, <em>Reproducibility in Science: A Guide to Enhancing Reproducibility in Scientific Results and Writing</em>
+<a href="http://ropensci.github.io/reproducibility-guide/" class="uri">http://ropensci.github.io/reproducibility-guide/</a></p></li>
+</ul>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+</div>

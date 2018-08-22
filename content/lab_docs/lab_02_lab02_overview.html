@@ -1,0 +1,740 @@
+---
+title: Data Wrangling with R
+lab_number: 2
+lab_date: '2018-09-03'
+pubdate: '2018-08-20'
+date: '2018-09-03'
+slug: lab_02_lab02_overview
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This is a brief introduction to data types, data structures, and
+some of the functions and packages that we will use to manipulate
+data in the labs.</p>
+<p>There is a lot more, and two particular resources that I would recommend to you
+are available free on the web.</p>
+<div id="r-for-data-science" class="section level2">
+<h2>R for Data Science</h2>
+<p>The first is the book, <em>R for Data Science</em>, by Hadley Wickham who wrote most
+of the packages in the <code>tidyverse</code> collection. You can buy a print version of
+the book from all the usual online sources, but Wickham has also posted the
+full text on the web at <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a> to make it available for free.
+(Also, he wrote the whole book in RMarkdown, and if you’re curious you can get
+the RMarkdown from <a href="https://github.com/hadley/r4ds" class="uri">https://github.com/hadley/r4ds</a>).</p>
+<p>The key parts of the book, from the perspective of the labs for this course,
+are Chapter 4: “Workflow Basics,” which presents a brief overview of R and
+how to program with it; Chapter 5: “Data Transformation,” which explains the
+functions I discuss in the first part of this handout about tibbles and the
+manipulating them with functions like <code>select</code>, <code>filter</code>, <code>mutate</code>, and
+<code>summarize</code>; and Chapter 3: “Data Visualization,” which describes using
+the <code>ggplot2</code> package to make graphs and charts of your data.</p>
+<p>If you are interested in learning more about R, Section II of the book
+discusses the different data types that R uses in detail (tibbles,
+character data (or strings), factors, dates, and times). Section III discusses
+programming, and section IV discusses statistical modeling (i.e., fitting
+functions to data). Section V discusses RMarkdown and all the different ways
+you can use it to communicate about your analysis with other people.</p>
+<p>The book is an excellent introduction to data analysis with
+R. I have recommended it to many people who did not previously have experience
+working with programming or R and they found it a very accessible, useful,
+and user-friendly introduction.</p>
+</div>
+<div id="online-documentation-for-the-tidyverse" class="section level2">
+<h2>Online documentation for the tidyverse</h2>
+<p><em>R for Data Science</em> is a great introduction to the concepts behind the
+<code>tidyverse</code> collection of packages and functions for R, but what should you do
+when you already understand that big picture and just want to know how to do
+a specific task? For that, the online documentation for the <code>tidyverse</code> is
+very useful and you can find it at <a href="http://www.tidyverse.org/packages/" class="uri">http://www.tidyverse.org/packages/</a>.</p>
+<p>This page has links to the documentation for all the major tidyverse packages:
+<code>ggplot2</code> for making graphics, <code>dplyr</code> and <code>tidyr</code> for working with <code>data.frames</code>
+and tibbles, <code>reader</code> for reading in data from text files on the disk and
+<code>readxl</code> for reading data from Excel spreadsheets, and many more packages that
+we will not be using in these labs.</p>
+<p>The documents give lots of examples showing what the functions do and explanations
+of how to do many common tasks. Especially for <code>ggplot2</code>, it can be very useful
+to look at the graphs in the examples to find something that looks like what
+you’re trying to do and then seeing the code that made that happen.</p>
+</div>
+</div>
+<div id="data-in-r" class="section level1">
+<h1>Data in R</h1>
+<div id="kinds-of-variables" class="section level2">
+<h2>Kinds of variables</h2>
+<p>R is capable of analyzing many different kinds of data. Some of the most
+important kinds of data that we may work with are:</p>
+<ul>
+<li><p><strong>Integer data</strong>, which represents discrete quantities, such as counting
+events or objects.</p></li>
+<li><p><strong>Real number data</strong>, which represents quantities that can have fractional values.
+Most of the data we will work with in this course, such as temperatures,
+altitudes, amounts of rainfall, and so forth, will be real-number data.
+This kind of data is also referred to frequently as “floating point” data
+or (for obscure reasons having to do with computer hardware) as “double”
+or “double-precision” data.</p></li>
+<li><p><strong>Character data</strong>, which represents text. Examples include names of months,
+or categories (such as the name of a city or country). This kind of data is
+also referred to as “string data”.</p></li>
+<li><p><strong>factor data</strong>, which represents variables that can only take on
+certain discrete values. R treats factor data as a kind of augmented character
+data.</p>
+<p>The difference between character data and factor data is that factor
+data has an explicit set of allowed values and has an integer number associated
+with each of those values.</p>
+<p>For instance, if I have a factor variable with the allowed values “up” and
+“down”, then I could not assign it a value “left” or “right”, whereas a
+character variable can be assigned any arbitrary text, such as
+“second star to the right and straight on til morning.”</p>
+<p>There are two kinds of factors: ordered and unordered. The difference is that
+the legal values for ordered factors have a specific order, so you can say
+that one comes before or after another (or is greater than or less than another),
+whereas unordered factors don’t have any natural ordering.</p>
+<p>Examples of ordered variables might be the months of the year, or the days
+of the week, or a grouping like “small”, “medium”, “large”, or
+“bad”, “fair”, “good”.</p>
+<p>Examples of unordered variables might be lists of states, gender, religion,
+cities, sports teams, or other descriptive characteristics that don’t
+have a natural order to them.</p></li>
+<li><p><strong>date and time data</strong>, which represents calendar dates, times of day, or
+a combination, such as 9:37 PM on January 17, 1984.</p></li>
+</ul>
+<p>For the most part, R handles different data types sensibly so you don’t need to
+worry about them, but sometimes when R is reading data in from files, or when
+you want to convert one kind of variable to another, you will need to think about
+these.</p>
+<p>The most common cases where you will need to think about this is when you are
+reading data in from files. Sometimes it is ambiguous whether to treat something
+from a file as character data, numerical data, or a date. In such cases, you may
+need to give R guidance about how to interpret data. The functions for reading
+data in from files, such as <code>read_csv</code> and <code>read_table</code> allow you to specify
+whether a given column of data in a table is integer, double-precision
+(floating point), character, date, etc.</p>
+<p>R also provides functions for converting data. The <code>as.character</code> function
+takes data that might be character, factor, or numeric, and represent it as
+text (characters).</p>
+<p><code>as.numeric</code> or <code>as.integer</code> will allow you to convert a character variable to
+a number. For instance, <code>as.numeric(&quot;3.14&quot;)</code> converts a text variable “3.14”
+into a numeric variable 3.14.</p>
+<p><code>as.integer</code> is very useful when we want to convert an ordered factor to an
+integer that corresponds to the order of that value. For instance, if I have
+an ordered factor <code>f</code> with legal values corresponding to the months of the year
+(“Jan”, “Feb”, …, “Dec”), if <code>f</code> has the value <code>Mar</code>, then
+<code>as.integer(f)</code> will have the integer value 3.</p>
+</div>
+<div id="vectors-lists-data-frames-and-tibbles." class="section level2">
+<h2>Vectors, Lists, Data Frames, and Tibbles.</h2>
+<p>In statistics, you generally don’t just work with one number at a time, but with
+collections of numbers. R provides many ways to work with collections of numbers.</p>
+<div id="vectors" class="section level3">
+<h3>Vectors</h3>
+<p>The simplest is a <strong>vector</strong>. A vector is a collection of values that are all
+of the same kind: a collection of integers, a collection of floating point values,
+a collection of character values, a collection of factor values, etc.</p>
+<p>You specify vectors like this: <code>x = c(1, 2, 5, 9, 3, 4, 2, 7, 5)</code>.
+You can access elements of vectors by indexing their position within the
+vector, so <code>x[3]</code> will be 5 and <code>x[4]</code> will be 9.</p>
+<p>You can also give the elements of a vector names:
+<code>ages = c(Sam = 27, Ben = 20, Sarah = 25, Deborah = 31)</code> allows you to use
+<code>ages[&quot;Ben&quot;]</code>, which will be 20.</p>
+<p>All of the elements of a vector have to be the same kind, so
+<code>x = c(1, 2, &quot;three&quot;)</code> will not allow the vector to mix numbers and characters
+and R will transform all of the values to character. The result is
+<code>&quot;1&quot;, &quot;2&quot;, &quot;three&quot;</code>, and <code>x[1] + x[2]</code> will give an error because
+R doesn’t know how to add two character variables. However,
+<code>as.numeric(x[1]) + as.numeric(x[2])</code> will yield 3.</p>
+</div>
+<div id="lists" class="section level3">
+<h3>Lists</h3>
+<p>Lists are a lot like vectors, but they can contain different kinds of variables.
+They can even contain lists and vectors.
+<code>x = list(1, 2, &quot;three&quot;, list(4, 5, 6))</code> has four elements. The first two are
+the numbers 1 and 2; the third is the character string “three”, and the fourth
+is the list <code>(4,5,6)</code>.</p>
+<p>Just as we can have named vectors, we can have named lists:
+<code>ages = list(Sam = 27, Ben = 20, Sarah = 25, Deborah = 31)</code>.
+There is a nice shortcut to getting the elements of a named list, using a
+dollar sign: <code>ages$Sam</code> is 27.</p>
+</div>
+<div id="data-frames-and-tibbles" class="section level3">
+<h3>Data frames and tibbles</h3>
+<p>We will not use lists very much in this class. We will use vectors a little bit,
+but what we will use <em>a lot</em> are tables of data. You have probably worked a
+lot with spreadsheets and other data analysis tools that organize data in a
+table with rows and columns. This is a very natural and common way to work.</p>
+<p>R provides a structure called a <code>data.frame</code> for working with tabular data, but
+the package <code>tidyverse</code> introduces an improved version of the <code>data.frame</code>
+called a <code>tibble</code> (think of it as a kind of data table).</p>
+<p><code>data.frames</code> and tibbles have rows and columns. A row represents a set of
+quantities, such as measurements or observations, that go together in some way.
+Different rows in a tibble represent different sets of these quantities.</p>
+<p>For instance, if I am measuring the height and weight of a number of people, then
+I would have a row for each person and each row would have a column for the
+person’s name or identity code, a column for their height, and a column for
+their weight.</p>
+<p>If I am measuring the average temperature and average precipitation
+for a number of cities, then I would have a column for the city, a column for the
+temperature, and a column for the precipitation.</p>
+<p>Each column of a <code>data.frame</code> or tibble should correspond to a specific kind of
+data (integer, floating point, character, factor, date, etc.). A column is
+a kind of vector, so it has to obey the restrictions that apply to vectors.</p>
+<p>To get some experience with tibbles, let’s load a couple of data sets that
+I have prepared. If you have cloned the directory for this document
+(from <a href="https://github.com/gilligan-ees-3310/lab_02_documentation" class="uri">https://github.com/gilligan-ees-3310/lab_02_documentation</a>),
+you can load the datasets, which contain daily weather summaries for
+Nashville and Chicago,
+by running the code below:</p>
+<pre class="r"><code>nashville_weather = readRDS(&#39;data/nashville_weather.Rds&#39;)
+chicago_weather = readRDS(&#39;data/chicago_weather.Rds&#39;)</code></pre>
+<p>Here is an example of the first few rows of a tibble with weather data for
+Nashville from
+1948–2017:</p>
+<pre class="r"><code>head(nashville_weather)</code></pre>
+<pre><code>## # A tibble: 6 x 6
+##   id          date        prcp  tmin  tmax location     
+##   &lt;chr&gt;       &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        
+## 1 USW00013897 1948-01-01  67.8  -1.1  18.3 Nashville, TN
+## 2 USW00013897 1948-01-02   0    -1.7   1.7 Nashville, TN
+## 3 USW00013897 1948-01-03   0    -3.3   9.4 Nashville, TN
+## 4 USW00013897 1948-01-04   0     1.7   8.9 Nashville, TN
+## 5 USW00013897 1948-01-05   0    -2.2   8.9 Nashville, TN
+## 6 USW00013897 1948-01-06   0    -1.1  10.6 Nashville, TN</code></pre>
+<p>There are 6 columns: the weather station ID for the Nashville Airport,
+the date of the measurement, the daily precipitation (in millimeters),
+the daily minimum and maximum temperatures (Celsius), and the name of the
+location.</p>
+<p>The tibble also shows the kind of variable that each column represents:
+<code>id</code> and <code>location</code> are character data, <code>date</code> is Date data, and
+<code>prcp</code>, <code>tmin</code>, and <code>tmax</code> are double-precision floating point data
+(i.e., real numbers).</p>
+<p>In some ways, a tibble or <code>data.frame</code> is like a names list of vectors, where each
+vector is a column and its name is the name of the column. We can access individual
+columns using the dollar sign, just as with regular named lists:</p>
+<pre class="r"><code>precipitation = nashville_weather$prcp
+
+head(precipitation)</code></pre>
+<pre><code>## [1] 67.8  0.0  0.0  0.0  0.0  0.0</code></pre>
+<p>RStudio has a nice feature that lets you examine a tibble or <code>data.frame</code>
+as though it were a spreadsheet. To examine one of R’s built-in data sets,
+which has data on hurricanes in the Atlantic from 1975–2015:
+<code>View(dplyr::storms)</code></p>
+<p>Some other useful functions:</p>
+<ul>
+<li><p>You can get a list of the names of
+a named vector, a named list, or the columns of a tibble or <code>data.frame</code>
+with the <code>names</code> function: <code>names(x)</code>, where x is a vector, list,
+tibble, or <code>data.frame</code>.</p></li>
+<li><p>You can get the length of a vector or list with the <code>length</code> function,
+and you can get the number of rows and columns in a tibble using the
+<code>dim</code> function:</p></li>
+</ul>
+<pre class="r"><code>x = c(1, 2, 3, 4, 5)
+print(&quot;Length of x is&quot;)</code></pre>
+<pre><code>## [1] &quot;Length of x is&quot;</code></pre>
+<pre class="r"><code>print(length(x))</code></pre>
+<pre><code>## [1] 5</code></pre>
+<pre class="r"><code>print(&quot;Dimensions of dplyr::storms is &quot;)</code></pre>
+<pre><code>## [1] &quot;Dimensions of dplyr::storms is &quot;</code></pre>
+<pre class="r"><code>dim(dplyr::storms)</code></pre>
+<pre><code>## [1] 10010    13</code></pre>
+<p>That’s 10010 rows and 13 columns.
+You can also get just the number of rows or the number of columns
+with <code>nrow()</code> and <code>ncol()</code>.</p>
+</div>
+</div>
+</div>
+<div id="the-tidyverse" class="section level1">
+<h1>The Tidyverse</h1>
+<p>The “tidyverse” is a collection of packages written by Hadley Wickham
+to make it easy to work with data frames. Wickham developed an improved
+kind of data frame that has features that are lacking in the basic R
+<code>data.frame</code>, and he developed a collection of tools for manipulating,
+analyzing, and graphing data from tibbles and regular <code>data.frames</code>.</p>
+<p>To use the tidyverse, we need to load the package using R’s <code>library</code> function.
+If tidyverse is not installed on your computer, you will get an error message
+and you will have to run <code>install.packages(&quot;tidyverse&quot;)</code> before you can
+proceed.</p>
+<p>When you load <code>tidyverse</code>, it automatically loads a bunch of useful packages
+for manipulating and analyzing data: <code>tibble</code>, <code>dplyr</code>, <code>tidyr</code>, <code>purrr</code>,
+<code>readr</code>, and <code>ggplot2</code>.</p>
+<p>If you have the <code>pacman</code> package installed, it can help you avoid these error
+messages: after you load <code>pacman</code> with <code>library(pacman)</code>, then you can load
+other packages using <code>p_load(tidyverse)</code> (you can substituate any other
+package name for “tidyverse”): pacman will first see whether you have that
+package on your computer; if you do, pacman will load it, and if you don’t
+pacman will install the package from the Comprehensive R Archive Network (CRAN)
+and then load it.</p>
+<p>In the code below, I will also load the <code>lubridate</code> package, which is part of
+<code>tidyverse</code> but is not loaded automatically when you load <code>tidyverse</code>.
+<code>lubridate</code> provides useful functions for working with dates, which will
+come in handy as we work with the weather data.</p>
+<pre class="r"><code>library(tidyverse)
+library(lubridate)
+# alternately, I could do the following:
+# library(pacman)
+# p_load(tidyverse, lubridate)</code></pre>
+<p>One part of the <code>tidyverse</code> is the package <code>dplyr</code>, which has many useful
+tools for modifying and manipulating tibbles:</p>
+<ul>
+<li><code>select</code> lets you choose a subset of columns from a tibble</li>
+<li><code>rename</code> lets you rename columns</li>
+<li><code>filter</code> lets you choose a subset of rows from a tibble</li>
+<li><code>arrange</code> lets you sort the rows with respect to the values of different columns</li>
+<li><code>mutate</code> lets you modify the values of columns or add new columns</li>
+<li><code>summarize</code> lets you generate summaries of columns (e.g., the mean, maximum,
+or minimum value of that column)</li>
+<li><code>group_by</code> and <code>ungroup</code> let you perform calculations with grouping (e.g., in
+combination with summarize, you can group by year to produce separate summaries
+for each year)</li>
+<li><code>bind_rows</code> to combine multiple tibbles that have the same kinds of columns
+by stacking one above the other.</li>
+</ul>
+<p>There is a lot more, but these functions will be enough to keep us busy for now
+and they will allow us to do some powerful analysis.</p>
+<p>Let’s start with <code>select</code>: You can select columns to keep or columns to delete.</p>
+<p>Here are the first few rows of <code>nashville_weather</code></p>
+<pre class="r"><code>head(nashville_weather)</code></pre>
+<pre><code>## # A tibble: 6 x 6
+##   id          date        prcp  tmin  tmax location     
+##   &lt;chr&gt;       &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        
+## 1 USW00013897 1948-01-01  67.8  -1.1  18.3 Nashville, TN
+## 2 USW00013897 1948-01-02   0    -1.7   1.7 Nashville, TN
+## 3 USW00013897 1948-01-03   0    -3.3   9.4 Nashville, TN
+## 4 USW00013897 1948-01-04   0     1.7   8.9 Nashville, TN
+## 5 USW00013897 1948-01-05   0    -2.2   8.9 Nashville, TN
+## 6 USW00013897 1948-01-06   0    -1.1  10.6 Nashville, TN</code></pre>
+<p>Let’s get rid of the <code>id</code> column, since we don’t really care about the ID number,
+that meteorological agencies use to identify the weather station.
+and let’s get rid of the <code>location</code> column because we know that the data set
+is from Nashville, so having that information repeated on each row is a waste
+of space.
+To do this, we just call select, specifying the tibble or <code>data.frame</code> to
+operate on, and then give a list of columns to eliminate, with a minus sign
+in front of each:</p>
+<pre class="r"><code>x = select(nashville_weather, -id, -location)
+head(x)</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   date        prcp  tmin  tmax
+##   &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 1948-01-01  67.8  -1.1  18.3
+## 2 1948-01-02   0    -1.7   1.7
+## 3 1948-01-03   0    -3.3   9.4
+## 4 1948-01-04   0     1.7   8.9
+## 5 1948-01-05   0    -2.2   8.9
+## 6 1948-01-06   0    -1.1  10.6</code></pre>
+<p>Alternately, instead of telling select which columns to get rid of, we can tell
+it which columns to keep:</p>
+<pre class="r"><code>x = select(nashville_weather, date, prcp, tmin, tmax)
+head(x)</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   date        prcp  tmin  tmax
+##   &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 1948-01-01  67.8  -1.1  18.3
+## 2 1948-01-02   0    -1.7   1.7
+## 3 1948-01-03   0    -3.3   9.4
+## 4 1948-01-04   0     1.7   8.9
+## 5 1948-01-05   0    -2.2   8.9
+## 6 1948-01-06   0    -1.1  10.6</code></pre>
+<p>We can specify a range of consecutive columns by giving the first and last with a
+colon between them:</p>
+<pre class="r"><code>x = select(nashville_weather, date:tmax)
+head(x)</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##   date        prcp  tmin  tmax
+##   &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 1948-01-01  67.8  -1.1  18.3
+## 2 1948-01-02   0    -1.7   1.7
+## 3 1948-01-03   0    -3.3   9.4
+## 4 1948-01-04   0     1.7   8.9
+## 5 1948-01-05   0    -2.2   8.9
+## 6 1948-01-06   0    -1.1  10.6</code></pre>
+<p>This is a general R thing: we can specify a range of numbers in a similar way:</p>
+<pre class="r"><code>1:10</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p><code>rename</code> lets us rename columns:</p>
+<pre class="r"><code>x = rename(nashville_weather, weather_station = id, city = location)
+head(x)</code></pre>
+<pre><code>## # A tibble: 6 x 6
+##   weather_station date        prcp  tmin  tmax city         
+##   &lt;chr&gt;           &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        
+## 1 USW00013897     1948-01-01  67.8  -1.1  18.3 Nashville, TN
+## 2 USW00013897     1948-01-02   0    -1.7   1.7 Nashville, TN
+## 3 USW00013897     1948-01-03   0    -3.3   9.4 Nashville, TN
+## 4 USW00013897     1948-01-04   0     1.7   8.9 Nashville, TN
+## 5 USW00013897     1948-01-05   0    -2.2   8.9 Nashville, TN
+## 6 USW00013897     1948-01-06   0    -1.1  10.6 Nashville, TN</code></pre>
+<p><code>filter</code> lets us select only rows that match a condition:</p>
+<pre class="r"><code>x = filter(nashville_weather, year(date) &gt; 2015 &amp; tmax &lt; 0)
+head(x)</code></pre>
+<pre><code>## # A tibble: 6 x 6
+##   id          date        prcp  tmin  tmax location     
+##   &lt;chr&gt;       &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        
+## 1 USW00013897 2016-01-18   0   -11    -3.8 Nashville, TN
+## 2 USW00013897 2016-01-19   0    -9.9  -2.1 Nashville, TN
+## 3 USW00013897 2016-01-23   0    -8.2  -1   Nashville, TN
+## 4 USW00013897 2016-02-09   1.3  -6    -2.7 Nashville, TN
+## 5 USW00013897 2016-02-10   0.5  -7.1  -0.5 Nashville, TN
+## 6 USW00013897 2016-12-15   0    -6    -1   Nashville, TN</code></pre>
+<p>In the code above, I used the <code>year</code> function from the <code>lubridate</code> package to extract just the year from a date.</p>
+<p>One thing that is important to know about making comparisons in <code>filter</code> expressions: to specify that two things are
+equal, you write <code>==</code> with two equal signs. A single equal sign is for assigning a value to a variable and two
+equal signs are for comparisons. You can also use “&lt;=” for less than or equal to and “&gt;=” for greter than or equal to.</p>
+<pre class="r"><code>x = filter(nashville_weather, date == ymd(&quot;2016-06-10&quot;))
+x</code></pre>
+<pre><code>## # A tibble: 1 x 6
+##   id          date        prcp  tmin  tmax location     
+##   &lt;chr&gt;       &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        
+## 1 USW00013897 2016-06-10     0  15.6  33.3 Nashville, TN</code></pre>
+<p>In the code above, I used the <code>ymd</code> function from <code>lubridate</code> to translate a character
+value “2016-06-10” to the date value for June 10, 2016.</p>
+<p>You can combine conditions in <code>filter</code> by using <code>&amp;</code> to indicate
+“and” and <code>|</code> to indicate “or”.</p>
+<p>We can sort the rows of a tibble or <code>data.frame</code> with the <code>arrange</code> function:</p>
+<pre class="r"><code>x = arrange(nashville_weather, desc(tmax), tmin)
+head(x,10)</code></pre>
+<pre><code>## # A tibble: 10 x 6
+##    id          date        prcp  tmin  tmax location     
+##    &lt;chr&gt;       &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;        
+##  1 USW00013897 2012-06-29   0    21.1  42.8 Nashville, TN
+##  2 USW00013897 1952-07-27   0    20    41.7 Nashville, TN
+##  3 USW00013897 1952-07-28   0    22.8  41.7 Nashville, TN
+##  4 USW00013897 2012-06-30   0    26.7  41.7 Nashville, TN
+##  5 USW00013897 1952-06-30  15.2  23.3  41.1 Nashville, TN
+##  6 USW00013897 2007-08-16   0    24.4  41.1 Nashville, TN
+##  7 USW00013897 2012-06-28   0    17.8  40.6 Nashville, TN
+##  8 USW00013897 1988-07-08   0    20    40.6 Nashville, TN
+##  9 USW00013897 1954-09-05   0    20.6  40.6 Nashville, TN
+## 10 USW00013897 2012-07-06   0    22.2  40.6 Nashville, TN</code></pre>
+<p>This sorts the rows in descending order of <code>tmax</code> (i.e., so the largest values are at the top),
+and where multiple rows have the same value of <code>tmax</code>, then it sorts them in ascending order
+of <code>tmin</code>. Observe the three rows with <code>tmax</code> = 41.7, the two rows where <code>tmax</code> = 41.1,
+and the four rows where <code>tmax</code> = 40.6.</p>
+<p>We can use <code>mutate</code> to modify the values of columns or to create new columns.
+The temperatures in Nashville weather are in Celsius and the precipitation is
+in millimeters. Let’s convert these to Fahrenheit and inches, respectively, and
+then let’s create a <code>trange</code> column that will have the difference between the maximum
+and minimum temperature:</p>
+<pre class="r"><code>x = mutate(nashville_weather, prcp = prcp / 25.4, tmin = tmin * 9./5. + 32,
+           tmax = tmax * 9./5. + 32, trange = tmax - tmin)
+head(x)</code></pre>
+<pre><code>## # A tibble: 6 x 7
+##   id          date        prcp  tmin  tmax location      trange
+##   &lt;chr&gt;       &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;
+## 1 USW00013897 1948-01-01  2.67  30.0  64.9 Nashville, TN  34.9 
+## 2 USW00013897 1948-01-02  0     28.9  35.1 Nashville, TN   6.12
+## 3 USW00013897 1948-01-03  0     26.1  48.9 Nashville, TN  22.9 
+## 4 USW00013897 1948-01-04  0     35.1  48.0 Nashville, TN  13.0 
+## 5 USW00013897 1948-01-05  0     28.0  48.0 Nashville, TN  20.0 
+## 6 USW00013897 1948-01-06  0     30.0  51.1 Nashville, TN  21.1</code></pre>
+<p>Summaries are useful for finding averages and extreme values. Let’s find the maximum and minimum temperatures
+and the most extreme rainfall in the whole data set:</p>
+<pre class="r"><code>x = summarize(nashville_weather, prcp.max = max(prcp), tmin.min = min(tmin), tmax.max = max(tmax))
+x</code></pre>
+<pre><code>## # A tibble: 1 x 3
+##   prcp.max tmin.min tmax.max
+##      &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1       NA       NA       NA</code></pre>
+<p><code>nashville_weather</code> has 25446 rows, but summarize reduces it to a single summary row.</p>
+<p>You can use summary to generate multiple summary quantities from a column:</p>
+<pre class="r"><code>x = summarize(nashville_weather, prcp.max = max(prcp), prcp.min = min(prcp))
+x</code></pre>
+<pre><code>## # A tibble: 1 x 2
+##   prcp.max prcp.min
+##      &lt;dbl&gt;    &lt;dbl&gt;
+## 1       NA       NA</code></pre>
+<p>We can also generate grouped summaries:</p>
+<pre class="r"><code>x = ungroup(summarize(group_by(nashville_weather, year(date)), prcp.max = max(prcp), prcp.tot = sum(prcp)))
+head(x)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   `year(date)` prcp.max prcp.tot
+##          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1         1948     67.8    1179.
+## 2         1949     78.2    1324.
+## 3         1950     84.6    1633 
+## 4         1951     97.3    1484.
+## 5         1952    118.     1011.
+## 6         1953     47.8    1050.</code></pre>
+<p>This provides the maximum one-day precipitation and the total annual precipitation for each year</p>
+<p>Note how difficult it is to read that grouped summary expression: the <code>group_by</code> function is inside
+<code>summarize</code>, which is inside <code>ungroup</code>.</p>
+<p>The <code>tidyverse</code> offers us a much nicer way to put these kind of complicated expressions together
+using what it calls the “pipe” operator, <code>%&gt;%</code>. The pipe operator chains operations together,
+taking the result of the one on the left and inserting it into the one on the right.</p>
+<p>We can use the pipe operator to rewrite the expression above as</p>
+<pre class="r"><code>x = nashville_weather %&gt;% group_by(year(date)) %&gt;% summarize(prcp.max = max(prcp), prcp.tot = sum(prcp)) %&gt;%
+  ungroup()
+head(x)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##   `year(date)` prcp.max prcp.tot
+##          &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1         1948     67.8    1179.
+## 2         1949     78.2    1324.
+## 3         1950     84.6    1633 
+## 4         1951     97.3    1484.
+## 5         1952    118.     1011.
+## 6         1953     47.8    1050.</code></pre>
+<p>Now the expression is easier to read: First we group <code>nashville_weather</code> by year, then we summarize it by calculating the
+maximum daily precipitation and the yearly total for each year, and finally, after we summarize we ungroup.</p>
+<p>You can combine any set of the <code>tidyverse</code> functions using the pipe operator, so you could <code>select</code> columns,
+<code>filter</code> rows, <code>mutate</code> the values of columns, and <code>summarize</code>, using the <code>%&gt;%</code> pipe operator to connect
+all of the different operations in sequence.</p>
+<p>The final <code>dplyr</code> command we’re going to look at is <code>bind_rows</code>, which lets us combine tibbles:</p>
+<pre class="r"><code>weather = bind_rows(nashville_weather, chicago_weather)</code></pre>
+<p>This creates a single tibble that has all of the rows from <code>nashville_weather</code> on
+top and all the rows from <code>chicago_weather</code> on the bottom. Because the two tibbles
+have the same columns, the columns are matched up.</p>
+<p>We can operate on this combined tibble:</p>
+<pre class="r"><code>weather_summary = weather %&gt;% 
+  mutate(year = year(date), t.range = tmax - tmin) %&gt;%
+  group_by(year, location) %&gt;%   
+  summarize(prcp.max = max(prcp), prcp.tot = sum(prcp), t.range.max = max(t.range)) %&gt;%
+  ungroup() %&gt;%
+  arrange(year, location)
+tail(weather_summary)</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##    year location      prcp.max prcp.tot t.range.max
+##   &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
+## 1  2015 Chicago, IL       98.3    1169.        18.3
+## 2  2015 Nashville, TN     59.9    1291.        23.9
+## 3  2016 Chicago, IL       50.8    1067.        23.9
+## 4  2016 Nashville, TN     52.8    1086.        22.2
+## 5  2017 Chicago, IL       NA        NA         NA  
+## 6  2017 Nashville, TN     NA        NA         NA</code></pre>
+<div id="re-shaping-tibbles-gather-and-spread" class="section level2">
+<h2>Re-shaping tibbles: <code>gather</code> and <code>spread</code></h2>
+<p>Sometimes you want to gather many columns in a data table, data frame, or tibble
+into a single column. For instance, consider this data frame, which was
+read in from a spreadsheet of global temperatures produced at NASA:</p>
+<pre class="r"><code>giss_zonal &lt;- readRDS(&#39;data/giss_zonal.Rds&#39;)
+head(giss_zonal)</code></pre>
+<pre><code>## # A tibble: 6 x 9
+##    year x64n_90n x44n_64n x24n_44n equ_24n x24s_equ x44s_24s x64s_44s
+##   &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+## 1  1880    -1.05   -0.51     -0.26   -0.21    -0.14    -0.05     0.05
+## 2  1881    -0.93   -0.5      -0.15    0.03     0.06    -0.07    -0.07
+## 3  1882    -1.51   -0.290    -0.09   -0.09    -0.07     0.02     0.04
+## 4  1883    -0.4    -0.62     -0.22   -0.24    -0.19    -0.02     0.07
+## 5  1884    -1.36   -0.62     -0.41   -0.23    -0.2     -0.19    -0.02
+## 6  1885    -1.19   -0.68     -0.42   -0.09    -0.23    -0.31    -0.15
+## # ... with 1 more variable: x90s_64s &lt;dbl&gt;</code></pre>
+<p>The tibble presents the average temperatures for different bands of latitude:
+64%deg;N–90°N, 44°N==64°N, 24°N–44°N, Equator–24°N,
+and the same for the Southern Hemisphere.</p>
+<p>If we wanted to plot all of these, we could do something like this:</p>
+<pre class="r"><code>ggplot(giss_zonal, aes(x = year)) + 
+  geom_line(aes(y = x64n_90n, color = &quot;64N-90N&quot;)) +
+  geom_line(aes(y = x44n_64n, color = &quot;44N-64N&quot;)) +
+  geom_line(aes(y = x24n_44n, color = &quot;24N-44N&quot;)) +
+  geom_line(aes(y = equ_24n, color = &quot;EQU-24N&quot;)) +
+  geom_line(aes(y = x24s_equ, color = &quot;24S-EQU&quot;)) +
+  geom_line(aes(y = x44s_24s, color = &quot;44S-24S&quot;)) +
+  geom_line(aes(y = x64s_44s, color = &quot;64S-44S&quot;)) +
+  geom_line(aes(y = x90s_64s, color = &quot;90S-64S&quot;)) +
+  labs(x = &quot;Year&quot;, y = &quot;Temperature anomaly&quot;)</code></pre>
+<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/bad_zonal_plot-1.png" width="672" />
+This is a big mess. It would be hard to clean up the appearance, and would require a lot of
+retyping if we decided to group the data into different bands of latitude.</p>
+<p>We can do this much more easily with the <code>gather</code> function:</p>
+<pre class="r"><code>bands = names(giss_zonal) # column names of the tibble
+bands = bands[-1] # drop the first column (&quot;year&quot;)
+labels = c(&quot;64N-90N&quot;, &quot;44N-64N&quot;, &quot;24N-44N&quot;, &quot;EQU-24N&quot;, 
+           &quot;24S-EQU&quot;, &quot;44S-24S&quot;, &quot;64S-44S&quot;, &quot;90S-64S&quot;)
+tidy_zonal = giss_zonal %&gt;%
+  gather(key = latitude, value = anomaly, -year)
+
+head(tidy_zonal)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##    year latitude anomaly
+##   &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
+## 1  1880 x64n_90n   -1.05
+## 2  1881 x64n_90n   -0.93
+## 3  1882 x64n_90n   -1.51
+## 4  1883 x64n_90n   -0.4 
+## 5  1884 x64n_90n   -1.36
+## 6  1885 x64n_90n   -1.19</code></pre>
+<p>Now we can clean up the <code>latitude</code> column a bit to make it more friendly for
+human readers:</p>
+<pre class="r"><code>tidy_zonal = tidy_zonal %&gt;%
+  mutate(latitude = ordered(latitude, levels = bands, 
+                            labels = labels)) %&gt;%
+  # ^^^ the previous line converts the latitude band into an ordered factor
+  # where the order is the order of the original columns. This will prevent
+  # R from sorting them alphabetically when it makes the legend for the plot.
+  # The &quot;labels&quot; parameter then changes the names from the somewhat cryptic 
+  # original column name to something a human can read easily.
+  arrange(year, latitude)
+
+head(tidy_zonal)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##    year latitude anomaly
+##   &lt;int&gt; &lt;ord&gt;      &lt;dbl&gt;
+## 1  1880 64N-90N    -1.05
+## 2  1880 44N-64N    -0.51
+## 3  1880 24N-44N    -0.26
+## 4  1880 EQU-24N    -0.21
+## 5  1880 24S-EQU    -0.14
+## 6  1880 44S-24S    -0.05</code></pre>
+<p>Now let’s plot it:</p>
+<pre class="r"><code>ggplot(tidy_zonal, aes(x = year, y = anomaly, color = latitude)) +
+  geom_line() +
+  labs(x = &quot;Year&quot;, y = &quot;Temperature anomaly&quot;)</code></pre>
+<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/plot_zonal_tibble-1.png" width="672" />
+The code for making the plot was a lot simpler, and by using an ordered factor,
+we could control the order of the latitude bands in the legend, which now
+appear in a sensible order. It is much easier to look at this graph and quickly
+recognize that the far northern latitudes (64N-90N, and to a lesser extent
+44N-64N) are warming up much faster than the rest of the planet.</p>
+<p>Back in 1967, one of the first global climate models predicted that
+global warming due to greenhouse gases would cause the far northern latitudes
+to warm up much faster than the rest of the planet. This data confirms that
+prediction.</p>
+<p>We also see that the Southern Hemisphere has warmed much less than the Northern.
+Think about why that might be.</p>
+<p>We can also do the inverse of <code>gather</code> and spread one column of data and one
+“key” column into many columns, whose names are taken from the “key” column.</p>
+<p>Let’s go back to the <code>weather_summary</code> tibble we made above:</p>
+<pre class="r"><code>head(weather_summary)</code></pre>
+<pre><code>## # A tibble: 6 x 5
+##    year location    prcp.max prcp.tot t.range.max
+##   &lt;dbl&gt; &lt;chr&gt;          &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
+## 1  1928 Chicago, IL       NA       NA          NA
+## 2  1929 Chicago, IL       NA       NA          NA
+## 3  1930 Chicago, IL       NA       NA          NA
+## 4  1931 Chicago, IL       NA       NA          NA
+## 5  1932 Chicago, IL       NA       NA          NA
+## 6  1933 Chicago, IL       NA       NA          NA</code></pre>
+<p>Let’s set it up to make it easy to compare the annual precipitation of
+Nashville and Chicago:</p>
+<pre class="r"><code>x = weather_summary %&gt;% select(year, location, prcp.tot) %&gt;%
+  spread(key = location, value = prcp.tot)
+tail(x)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##    year `Chicago, IL` `Nashville, TN`
+##   &lt;dbl&gt;         &lt;dbl&gt;           &lt;dbl&gt;
+## 1  2012          801.           1165.
+## 2  2013         1076.           1394.
+## 3  2014         1322.           1286.
+## 4  2015         1169.           1291.
+## 5  2016         1067.           1086.
+## 6  2017           NA              NA</code></pre>
+</div>
+</div>
+<div id="graphing-data" class="section level1">
+<h1>Graphing Data</h1>
+<p>Here, we will look at the <code>ggplot2</code> package for plotting data. This
+package is automatically loaded when you load the <code>tidyverse</code> collection
+with <code>library(tidyverse)</code>. It follows a theory of making useful graphs
+of data called, “The Grammar of Graphics” (that’s where the “gg” comes from).</p>
+<p>The idea is that a graph has several distinct parts, which come together:</p>
+<ul>
+<li>One or more <em>layers</em> of graphics. A layer consists of the following:
+<ul>
+<li>A <em>data table</em> with one or more columns, each corresponding to a different variable,</li>
+<li>A <em>mapping</em> of different variables (columns) in the data table to different,
+<em>aesthetics</em> of the plot. Aesthetics are things like
+<ul>
+<li>the <em>x</em> coordinate,</li>
+<li>the <em>y</em> coordinate,</li>
+<li>the <em>color</em> of the point or line,</li>
+<li>the <em>fill</em> color that is used to fill in areas, like the interior of a rectangle or circle.</li>
+<li>the <em>shape</em> of points (e.g., circle, square, triangle, cross, diamond, …)</li>
+<li>the <em>size</em> of points and lines</li>
+<li>the <em>linetype</em> (e.g., solid, dashed, dotted, …)</li>
+<li>and so forth …</li>
+</ul></li>
+<li>A <em>geometry</em> (point, line, box, etc.) that is used to draw the data</li>
+</ul></li>
+<li>A coordinate system (axes and legends)</li>
+</ul>
+<p>There are some more aspects to the gramar of graphics, but we don’t need them
+for what we’re going to do.</p>
+<p>A simple graph has just one layer:</p>
+<pre class="r"><code>ggplot(data = tidy_zonal, # the data
+       mapping = aes(x = year, y = anomaly, color = latitude, shape = latitude) # the mapping of variables to aesthetics
+       ) +
+  geom_point() + # the geometry
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly&quot;) # labels for the coordinates</code></pre>
+<pre><code>## Warning: Using shapes for an ordinal variable is not advised</code></pre>
+<pre><code>## Warning: The shape palette can deal with a maximum of 6 discrete values
+## because more than 6 becomes difficult to discriminate; you have 8.
+## Consider specifying shapes manually if you must have them.</code></pre>
+<pre><code>## Warning: Removed 274 rows containing missing values (geom_point).</code></pre>
+<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/simple_plot-1.png" width="672" /></p>
+<p>We can also make a plot with the same data, but two layers:</p>
+<pre class="r"><code>ggplot(data = tidy_zonal, # the data
+       mapping = aes(x = year, y = anomaly, color = latitude, shape = latitude) # the mapping of variables to aesthetics
+       ) +
+  geom_point() + # the geometry of the first layer
+  geom_line() +  # the geometry of the second layer
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly&quot;) # labels for the coordinates</code></pre>
+<pre><code>## Warning: Using shapes for an ordinal variable is not advised</code></pre>
+<pre><code>## Warning: The shape palette can deal with a maximum of 6 discrete values
+## because more than 6 becomes difficult to discriminate; you have 8.
+## Consider specifying shapes manually if you must have them.</code></pre>
+<pre><code>## Warning: Removed 274 rows containing missing values (geom_point).</code></pre>
+<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/second_plot-1.png" width="672" /></p>
+<p>We can also use different mappings for different layers</p>
+<pre class="r"><code>annual_extremes = weather %&gt;% mutate(year = year(date)) %&gt;%
+  group_by(location, year) %&gt;% 
+  summarize(tmin = min(tmin, na.rm = T),      # the na.rm = T means to ignore missing values
+            tmax = max(tmax, na.rm = T)) %&gt;%  # if we don&#39;t put that in, then if any year has
+  ungroup()                                   # a missing value for even one day, the tmax 
+                                              # or tmin for that year will be recorded as 
+                                              # NA (missing)
+ggplot(data = annual_extremes # the data
+       ) +
+  geom_point(aes(x = year, y = tmin, color = location, shape = &quot;min&quot;)) +
+  geom_point(aes(x = year, y = tmax, color = location, shape = &quot;max&quot;)) +
+  xlim(1990,2000) + # set the range of the x-axis, part of the coordinate specification
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly&quot;) # labels for the coordinates</code></pre>
+<pre><code>## Warning: Removed 138 rows containing missing values (geom_point).
+
+## Warning: Removed 138 rows containing missing values (geom_point).</code></pre>
+<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/third_plot-1.png" width="672" /></p>
+<p>Note that <code>ggplot</code> issued several harmless warnings to tell us that
+setting the limits of the <em>x</em>-axis the way we did. We can tell RMarkdown not
+to include those warnings in the document by adding “warning=FALSE”
+to the options for the chunk</p>
+<p>If we want to specify aesthetics as having fixed values, we can specify them
+outside of the mapping. Here I specify the size and color of lines:</p>
+<pre class="r"><code>ggplot(data = annual_extremes # the data
+       ) +
+  geom_line(aes(x = year, y = tmin, group = location), color = &quot;dark blue&quot;, size = 1) +
+  geom_line(aes(x = year, y = tmax, group = location), color = &quot;dark red&quot;, size = 0.3) +
+  geom_point(aes(x = year, y = tmin, color = location, shape = &quot;min&quot;), size = 2) +
+  geom_point(aes(x = year, y = tmax, color = location, shape = &quot;max&quot;), size = 2) +
+  xlim(1990,2000) + # set the range of the x-axis, part of the coordinate specification
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly&quot;) # labels for the coordinates</code></pre>
+<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/fourth_plot-1.png" width="672" /></p>
+<p>We can also take finer control of the axis formatting:</p>
+<pre class="r"><code>ggplot(data = annual_extremes # the data
+       ) +
+  geom_line(aes(x = year, y = tmin, group = location), color = &quot;dark blue&quot;, size = 1) +
+  geom_line(aes(x = year, y = tmax, group = location), color = &quot;dark red&quot;, size = 0.3) +
+  geom_point(aes(x = year, y = tmin, color = location, shape = &quot;min&quot;), size = 2) +
+  geom_point(aes(x = year, y = tmax, color = location, shape = &quot;max&quot;), size = 2) +
+  scale_x_continuous(limits=c(1990,2000), breaks = c(1990, 1992, 1994, 1996, 1998, 2000)) + 
+  # ^^^ the &quot;breaks&quot; parameter for an axis tells R where to put the labels
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly&quot;) # labels for the coordinates</code></pre>
+<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/fifth_plot-1.png" width="672" /></p>
+<p>And, of course, we could use <code>gather</code> to simplify this graph:</p>
+<pre class="r"><code>annual_extremes_gathered = annual_extremes %&gt;%
+  gather(key = Temperature, value = value, -year, -location)
+
+ggplot(data = annual_extremes_gathered # the data
+       ) +
+  geom_line( aes(x = year, y = value, color = location, size = Temperature)) +
+  geom_point(aes(x = year, y = value, color = location, shape = Temperature), size = 2) +
+  scale_size_manual(values = c(tmax = 0.5, tmin = 0.1)) + # set coordinates for &quot;size&quot;
+  scale_x_continuous(limits=c(1990,2000), breaks = c(1990, 1992, 1994, 1996, 1998, 2000)) + 
+  # ^^^ Set coordinates for the x-axis.
+  scale_color_brewer(palette = &quot;Set1&quot;, name = &quot;City&quot;) + # one of many options for setting the color palette
+                                                        # the Brewer palettes are very good for people with
+                                                        # color-blindness.
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly&quot;) # labels for the coordinates</code></pre>
+<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/sixth_plot-1.png" width="672" /></p>
+</div>

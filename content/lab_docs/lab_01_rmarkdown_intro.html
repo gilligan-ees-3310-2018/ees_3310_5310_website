@@ -1,0 +1,422 @@
+---
+title: Introduction to R and RMarkdown
+lab_number: 1
+lab_date: '2018-08-27'
+pubdate: '2018-08-20'
+date: '2018-08-27'
+slug: lab_01_rmarkdown_intro
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+
+
+
+<div id="rmarkdown" class="section level1">
+<h1>RMarkdown</h1>
+<p>RMarkdown is a combination of two tools: Markdown is a simple way of writing
+plain text that can be formatted into fancy documents. Markdown originated
+as a tool for easily writing blog posts and comments that include formatting,
+such as section headings, italic and bold-faced text, and so forth without
+having to learn a technical formatting language, such as HTML. Markdown is
+fairly generic, so it is easy to translate a single Markdown document into
+many output formats, such as HTML for web pages, PDF, and Microsoft Word documents.</p>
+<p>You can learn a lot about the details of Markdown at the RStudio web site
+<a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>. RStudio has a handy cheat sheet for RMarkdown
+that you can see by opening the Help menu, going to “Cheatsheets” and
+opening the RMarkdown Cheat Sheet or the more comprehensive RMarkdown Reference.</p>
+<p>What makes RMarkdown different from ordinary Markdown is that it allows you to
+combine text, formatted in Markdown, with instructions to the R statistical
+software to analyze data and produce graphs, tables, and other useful output.</p>
+<p>By integrating the data analysis with the text of a document, we can easily make our
+research reproducible. The RMarkdown file contains all the instructions to
+load the data, analyze it, and generate the final report. Then if your
+data changes and you need to update your report, you can do so by knitting the
+RMarkdown document with the updated data files.</p>
+<p>To turn an RMarkdown document into an HTML, PDF, or Microsoft Word document, you
+just click on the “Knit” button in RStudio. If you click on the word “Knit” on the
+button, RStudio will turn the RMarkdown document into the default format (see
+below). To knit the document into a different output format, click on the arrow
+just to the right of the word “Knit,” and select the output format you want.</p>
+</div>
+<div id="document-header" class="section level1">
+<h1>Document header</h1>
+<p>At the top of an RMarkdown document there is a section set off by lines of three
+hyphens above it and below it.</p>
+<p>Here is an example:</p>
+<pre><code>---
+title: &quot;Your document&#39;s title&quot;
+subtitle: &quot;Your document&#39;s subtitle&quot;
+author: &quot;Your name goes here&quot;
+date: &quot;Aug 28, 2017&quot;
+output:
+    pdf_document: default
+    html_document: default
+---</code></pre>
+<p>By default, when RStudio knits the document, it converts it into the format listed
+first under <code>output_format</code></p>
+<p>When the output format lists, for instance, “<code>pdf_format: default</code>”, that means
+that when RStudio creates a pdf document, it uses the default options.
+If you want to customize the output, you can specify
+options for RStudio to use in creating PDF, HTML, or Word output documents:</p>
+<pre><code>---
+title: &quot;Your document&#39;s title&quot;
+subtitle: &quot;Your document&#39;s subtitle&quot;
+author: &quot;Your name goes here&quot;
+date: &quot;Aug 28, 2017&quot;
+output:
+    pdf_document:
+      toc: &quot;true&quot; 
+      number_sections: &quot;false&quot;
+    html_document:
+      self_contained: &quot;false&quot;
+---</code></pre>
+</div>
+<div id="markdown" class="section level1">
+<h1>Markdown</h1>
+<p>Some of the basic elements of Markdown are:</p>
+<div id="paragraphs" class="section level2">
+<h2>Paragraphs</h2>
+<p>Any block of one or more lines of text, with a blank line before and a blank line after
+is treated as a single paragraph. To separate paragraphs, put a blank line between them:</p>
+<div id="markdown-1" class="section level3">
+<h3>Markdown:</h3>
+<pre><code>This is one paragraph.
+It stretches over several consecutive lines,
+but it will be formatted 
+as a single paragraph.
+
+This is another paragraph.
+The blank line between the two
+blocks of text tells Markdown
+that they are separate paragraphs</code></pre>
+</div>
+<div id="formatted-output" class="section level3">
+<h3>Formatted Output:</h3>
+<blockquote>
+<p>This is one paragraph.
+It stretches over several consecutive lines,
+but it will be formatted
+as a single paragraph.</p>
+<p>This is another paragraph.
+The blank line between the two
+blocks of text tells Markdown
+that they are separate paragraphs</p>
+</blockquote>
+</div>
+</div>
+<div id="section-headers" class="section level2">
+<h2>Section headers</h2>
+<p>Any line of text that begins with one or more hash symbols (“#”) and is preceded by
+a blank line is treated as a section header. Top-level section headers have a single
+hash, and subsections, subsubsections, etc. use two, three, etc. hashes.</p>
+<div id="markdown-2" class="section level3">
+<h3>Markdown:</h3>
+<pre><code># This is a top-level section header
+
+## This is a subsection
+
+### This is a subsubsection
+
+# This is another section</code></pre>
+</div>
+<div id="formatted-output-1" class="section level3">
+<h3>Formatted Output:</h3>
+<pre><code></code></pre>
+<blockquote>
+<h1 id="this-is-a-top-level-section-header">This is a top-level section header</h1>
+<h2 id="this-is-a-subsection">This is a subsection</h2>
+<h3 id="this-is-a-subsubsection">This is a subsubsection</h3>
+<h1 id="this-is-another-section">This is another section</h1>
+</blockquote>
+</div>
+</div>
+<div id="formatting-text" class="section level2">
+<h2>Formatting text</h2>
+<p>To make <em>italic text</em> and <strong>boldface text</strong> you surround the text with underscores
+or asterisks. A single underscore or asterisk means italic, two means boldface,
+and three means both italic and boldface:</p>
+<div id="markdown-3" class="section level3">
+<h3>Markdown:</h3>
+<pre><code>This is _italic text_. This is *also italic text*. __This is boldface__ and 
+**so is this**. ***This is bold italic***. This is ~~strikethrough~~, perhaps 
+to indicate an error.</code></pre>
+</div>
+<div id="formatted-output-2" class="section level3">
+<h3>Formatted Output:</h3>
+<blockquote>
+<p>This is <em>italic text</em>. This is <em>also italic text</em>. <strong>This is boldface</strong> and
+<strong>so is this</strong>. <strong><em>This is bold italic</em></strong>. This is <del>strikethrough</del>, perhaps
+to indicate an error.</p>
+</blockquote>
+</div>
+</div>
+<div id="lists" class="section level2">
+<h2>Lists</h2>
+<p>You can make bulleted or numbered lists easily in Markdown. Simply begin a line
+with an asterisk, hyphen, or plus sign.
+To make a sub-list, just indent the lines of the sublist by four spaces.</p>
+<div id="markdown-4" class="section level3">
+<h3>Markdown:</h3>
+<pre><code>* This is a list
+
+* This is the second item of the list.
+
+    * This is a sub-list
+
+    * This is another item in the sub-list
+    
+        A list item can have several paragraphs. Just ident the continuation 
+        by four additional spaces and do not begin it with an asterisk.
+        If you have multiple lines with no blank line separating them,
+        Markdown treats them as a single paragraph.
+
+        Here is a third paragraph of continuation.
+
+* This is the main list again.
+  Just as with other things, you can break a single list item into several lines,
+  and as long as there is no blank line between them, Markdown knows to treat
+  them as a single paragraph.</code></pre>
+</div>
+<div id="formatted-output-3" class="section level3">
+<h3>Formatted Output:</h3>
+<ul>
+<li><p>This is a list</p></li>
+<li><p>This is the second item of the list.</p>
+<ul>
+<li><p>This is a sub-list</p></li>
+<li><p>This is another item in the sub-list</p>
+<p>A list item can have several paragraphs. Just indent the continuation
+by four additional spaces and do not begin it with an asterisk.
+If you have multiple lines with no blank line separating them,
+Markdown treats them as a single paragraph.</p>
+<p>Here is a third paragraph of continuation.</p></li>
+</ul></li>
+<li><p>This is the main list again.
+Just as with other things, you can break a single list item into several lines,
+and as long as there is no blank line between them, Markdown knows to treat
+them as a single paragraph.</p></li>
+</ul>
+</div>
+</div>
+<div id="numbered-lists" class="section level2">
+<h2>Numbered Lists</h2>
+<p>To make numbered lists, start them with a number and a period:</p>
+<div id="markdown-5" class="section level3">
+<h3>Markdown</h3>
+<pre><code>1. This is a list
+
+1. This is the second item of the list. Notice that I keep using the 
+   numeral &quot;1&quot;, but Markdown automatically increments the numbers
+   for the list items.
+
+    a) This is a sub-list
+
+    a) This is another item in the sub-list
+    
+        A list item can have several paragraphs.
+        
+        Here is a third paragraph of continuation.
+        
+        i) this is a sub-sub list numbered with Roman numerals
+
+        i) this is a sub-sub list numbered with Roman numerals
+
+        i) this is a sub-sub list numbered with Roman numerals
+
+1. This is the main list again.
+</code></pre>
+</div>
+<div id="formatted-output-4" class="section level3">
+<h3>Formatted Output:</h3>
+<ol style="list-style-type: decimal">
+<li><p>This is a list</p></li>
+<li><p>This is the second item of the list. Notice that I keep using the
+numeral “1”, but Markdown automatically increments the numbers
+for the list items.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>This is a sub-list</p></li>
+<li><p>This is another item in the sub-list</p>
+<p>A list item can have several paragraphs.</p>
+<p>Here is a third paragraph of continuation.</p>
+<ol style="list-style-type: lower-roman">
+<li><p>this is a sub-sub list numbered with Roman numerals</p></li>
+<li><p>this is a sub-sub list numbered with Roman numerals</p></li>
+<li><p>this is a sub-sub list numbered with Roman numerals</p></li>
+</ol></li>
+</ol></li>
+<li><p>This is the main list again.</p></li>
+</ol>
+</div>
+</div>
+<div id="mathematical-expressions" class="section level2">
+<h2>Mathematical expressions</h2>
+<p>For simple math, you can just type stuff in RMarkdown: <code>1 + 2 * 3</code> comes out as
+1 + 2 * 3. If you want subscripts or superscripts, you can get those by using
+the <code>~</code> and <code>^</code> characters, respectively: <code>I~out~ = sigma T^4^</code> appears as
+I<sub>out</sub> = sigma T<sup>4</sup>.</p>
+<p>If you want fancier formatting for mathematical expressions, RMarkdown has a way
+to do this.</p>
+<p>If you put an expression between dollar signs, RMarkdown interprets it differently
+from regular RMarkdown, and uses a format called LaTeX that is used for typesetting
+sophisticated mathematics. I won’t try to present all of LaTeX here, but will give
+some common examples:</p>
+<p>An expression between single dollar signs is interpreted as <em>in-line</em> math that
+appears in the middle of a line of text. LaTeX uses special terms that begin with
+a backslash <code>\</code> to indicate special mathematical formatting or operators.
+For example <code>$a + b \times x$</code> appears
+as <span class="math inline">\(a + b \times x\)</span>.</p>
+<p>You can show Greek letters, like <span class="math inline">\(\alpha\)</span>, <span class="math inline">\(\pi\)</span>, and <span class="math inline">\(\sigma\)</span> by spelling them
+out like this: <code>$\alpha$</code>, <code>$\pi$</code>, and <code>$\sigma$</code>. The epsilon that we use to
+indicate emissivity is a variation on the ordinary Greek epsilon, so we spell it
+<code>$\varepsilon$</code> to get <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>LaTeX handles subscripts and superscripts differently from RMarkdown:
+You use <code>_{}</code> and <code>^{}</code> with whatever you want to appear in the subscript
+or superscript inside the braces <code>{}</code>:
+<code>$I_{out} = \sigma T^{4}$</code> appears as <span class="math inline">\(I_{out} = \sigma T^{4}\)</span></p>
+<p>You can include square root signs using <code>\sqrt</code>: <code>$x = \sqrt{y \times z}$</code> appears
+as <span class="math inline">\(x = \sqrt{y \times z}\)</span>. You can do other roots like this:
+<code>$T = \sqrt[4]{I_{out} / \sigma}$</code> appears as <span class="math inline">\(T = \sqrt[4]{I_{out} / \sigma}\)</span>.</p>
+<p>To get display math, which appears on its own line, you use double dollar signs.
+This is useful when you want to write a mathematical expression that is much taller
+than a line of text. In display mode you can display fractions using
+<code>\frac{numerator expression}{denominator expression}</code>, as in this example:
+<code>$$\varepsilon \sigma T^4 = \frac{(1 - \alpha)}{4} \times I_{solar}$$</code> appears as</p>
+<p><span class="math display">\[ \varepsilon \sigma T^4 = \frac{(1 - \alpha)}{4} \times I_{solar}\]</span>
+<code>$$T_{bare rock} = \sqrt[4]{\frac{(1 - \alpha)}{4 \varepsilon \sigma} \times I_{solar}}$$</code>
+appears as</p>
+<p><span class="math display">\[T_{bare rock} = \sqrt[4]{\frac{(1 - \alpha)}{4 \varepsilon \sigma} \times I_{solar}}\]</span></p>
+<p>There is a lot more to the LaTeX notation that you can use in
+RMarkdown, but what I have shown here is sufficient for everything you will
+do in this class.
+You won’t need to use this kind of mathematical notation very much, but it can
+be convenient, especially when you are working exercises on atmospheric layer
+models.</p>
+<p>If you find it too difficult to use LaTeX mathematical notation, I will accept
+either hand-written supplements in which you write out the equations by hand, or
+a textual description in your document where you use words instead of mathematical
+symbols to explain what you are doing.</p>
+</div>
+<div id="figures" class="section level2">
+<h2>Figures</h2>
+<p>You can include image files in your RMarkdown document:</p>
+<div id="markdown-6" class="section level3">
+<h3>Markdown</h3>
+<pre><code>![This is a tornado](images/tornado.jpg)</code></pre>
+</div>
+<div id="formatted-output-5" class="section level3">
+<h3>Formatted Output:</h3>
+<div class="figure">
+<img src="images/tornado.jpg" alt="This is a tornado" />
+<p class="caption">This is a tornado</p>
+</div>
+</div>
+</div>
+<div id="hyperlinks" class="section level2">
+<h2>Hyperlinks</h2>
+<p>You can include links to documents on the web in two ways. The simplest
+is if you want the URL for the link to appear in your document you can just
+surround the URL with angle brackets:
+<code>&lt;https://www.vanderbilt.edu&gt;</code> appears as <a href="https://www.vanderbilt.edu" class="uri">https://www.vanderbilt.edu</a>.</p>
+<p>If you want to add a hyperlink to some text in your document, then you would
+do it like this:</p>
+<pre><code>[Vanderbilt University](https://www.vanderbilt.edu)</code></pre>
+<p>to get this: <a href="https://www.vanderbilt.edu">Vanderbilt University</a>.</p>
+<p>Note the difference between the hyperlink specification and the image specification
+is whether there is an exclamation point before the square brackets.</p>
+</div>
+</div>
+<div id="using-r-for-calculations" class="section level1">
+<h1>Using R for calculations</h1>
+<p>RMarkdown combines the “Markdown” system for formatting text with the
+R statistical system for performing calculations and making graphs.</p>
+<p>We are using R for the laboratory section of this course because it allows you to
+easily analyze large amounts of data and produce high-quality graphs.</p>
+<p>To enter R expressions in an RMarkdown document, we use “code blocks” and
+“inline code”. Code blocks are useful if we are doing a calculation, and
+inline code is useful if you just want to insert a number (maybe one you have
+calculated in a code block) into the middle of a line of text.</p>
+<p>Code blocks begin and end with three consecutive “back-tick” characters:</p>
+<pre><code>```{r code_block_name, options}
+   # code goes here
+```</code></pre>
+<p>Inline code appears between single back-ticks: <code>`r code goes here`</code></p>
+<p>We express basic mathematical operations in R similarly to the way we express them
+in Excel and most programming languages. Addition and subtraction use the
+normal plus and minus signs. Multiplication uses an asterisk, division uses
+a slash (“/”), and powers (exponentiation) uses “^”.</p>
+<p>R has a lot of mathematical functions you can use, such as <code>sqrt()</code>, <code>log()</code>
+(for the natural logarithm), <code>log10()</code> for the base-10 logarithm, and so forth.</p>
+<p>We can assign numbers to variables using the equals sign:</p>
+<pre class="r"><code>sigma = 5.67E-8
+I_solar = 1350 # watts per square meter
+albedo = 0.3
+I_absorbed = I_solar * (1 - albedo)
+T = (I_absorbed / (4 * sigma))^0.25</code></pre>
+<p>If the last line of a code block is something with a value (e.g., the name of a
+variable or a mathematical expression, as opposed to an assignment with an equals
+sign), then R will show that value:</p>
+<pre class="r"><code>T</code></pre>
+<pre><code>## [1] 254.0664</code></pre>
+<p>We can also print the value of an R expression in the middle of a line of text
+using inline code: <code>T =</code> <code>`r T`</code> will give T = 254.0663741.</p>
+<p>Inline code is very useful because it lets us ask R to automatically insert a
+number into the text. This means that every time we knit the document, that number
+is generated by R. If you write a report and then realize that there was a problem
+with the data or the analysis, you can just fix the problem and re-knit the report
+using the corrected data and analysis code. You don’t need to manually go through
+a separate document and edit the numbers to update them with the latest results
+from your analysis. RMarkdown will do that for you, if you used inline code to
+insert the numbers into your text.</p>
+<p>Thus, a bit of extra work at the beginning to set up the document and analysis
+using RMarkdown saves lots of time later on by making it trivial to update the
+document.</p>
+<p>Code blocks also allow us to include graphs in our document:</p>
+<pre><code>```{r graph_example, fig.cap = "This is a plot of pressure versus temperature."}
+ggplot(pressure, aes(x = temperature, y = pressure)) +
+  geom_line() +
+  geom_point() +
+  labs(x = "Temperature", y = "Pressure")
+```</code></pre>
+<div class="figure">
+<img src="/lab_docs/lab_01_rmarkdown_intro_files/figure-html/graph_example-1.png" alt="This is a plot of pressure versus temperature." width="672" />
+<p class="caption">
+(#fig:graph_example)This is a plot of pressure versus temperature.
+</p>
+</div>
+<div id="loading-r-scripts" class="section level2">
+<h2>Loading R Scripts</h2>
+<p>In this course, I am trying to teach you to use the basics of R. Sometimes we will
+need to do things for our analysis that require more complicated R programming,
+and then I will write R scripts that contain this code so you don’t need to write
+it yourself from scratch, but can just call functions that I provide.</p>
+<p>To load a script (a file containing R code), you use the R command
+<code>source(&quot;script_file.R&quot;&quot;)</code></p>
+<p>For the exercises here, we will use two scripts, which are located in the
+“scripts” directory.</p>
+<p>To load them into R so you can use them in your analysis, you would put the
+following code into your RMarkdown document:</p>
+<pre class="r"><code>source(&quot;scripts/format_md.R&quot;)
+source(&quot;scripts/layer_diagram.R&quot;)</code></pre>
+<div id="useful-scripts-for-the-labs" class="section level3">
+<h3>Useful Scripts for the Labs:</h3>
+<p>These first script defines a function, <code>format_md</code>, which formats
+numbers nicely for markdown documents, allowing you to control how many
+significant digits it shows, and optionally using scientific notation or
+inserting commas to separate thousands, millions, etc.</p>
+<p><code>format_md(sigma, digits = 1)</code> will produce 5.7 × 10<sup>-8</sup></p>
+<p><code>format_md(sigma, digits = 1, scientific = FALSE)</code> will produce
+0.0</p>
+<p><code>format_md(pi * 1E6, digits = 3, scientific = TRUE)</code> will produce
+3.142 × 10<sup>6</sup></p>
+<p><code>format_md(pi * 1E6, digits = 3, scientific = FALSE, comma = TRUE)</code> will produce
+3,141,592.654</p>
+</div>
+<div id="script-for-layer-diagrams" class="section level3">
+<h3>Script for Layer Diagrams</h3>
+<p>The other script allows you to produce a layer diagram, similar to the ones in
+Chapter 3 of <em>Global Warming: Understanding the Forecast</em>.</p>
+<pre class="r"><code>make_layer_diagram(2)</code></pre>
+<p><img src="/lab_docs/lab_01_rmarkdown_intro_files/figure-html/example_layer_diagram-1.png" width="672" /></p>
+</div>
+</div>
+</div>

@@ -1,0 +1,218 @@
+---
+title: Energy-Balance and Layer Models
+due_date: '2018-09-05'
+assignment_number: 1
+weight: 1
+slug: homework_01
+pubdate: '2018-08-20'
+date: '2018-09-05'
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+
+
+
+<div id="homework" class="section level2">
+<h2>Homework</h2>
+<div id="notes-on-homework" class="section level3">
+<h3>Notes on Homework:</h3>
+</div>
+</div>
+<div id="instructions" class="section level1">
+<h1>Instructions</h1>
+<p>The exercises from Chapter 3, below, are not to do for the lab
+but are homework exercises. You have a choice:</p>
+<ul>
+<li><p>You can do the exercises out of the book like regular homework and
+turn them in at the beginning of class on Monday, Sept. 4.</p></li>
+<li><p>You can do them using RMarkdown and turn them by submitting them
+electronically on GitHub by the start of class on Monday, Sept. 4.</p>
+<p>To submit the homework electronically,</p>
+<ul>
+<li>Clone a local copy of the file repository from github.</li>
+<li>In your local repository, answer the exercises in the template
+<code>homework_01.Rmd</code>.</li>
+<li>When you are done, knit your <code>.Rmd</code> file into a PDF or DOCX (Microsoft Word) file.</li>
+<li>Use git to commit your changes (including the edits to <code>homework_01.Rmd</code>
+and the new PDF or DOCX file) to your local git repository.</li>
+<li><p>Push the changes from your local git repository to github.</p>
+<p>The last changes that you push before the due date (start of class
+on Monday Sept. 4) will be graded.</p></li>
+</ul></li>
+</ul>
+<p>It is your choice how to do them. Either way is acceptable and will get equal
+credit.</p>
+</div>
+<div id="exercises-from-chapter-3" class="section level1">
+<h1>Exercises from Chapter 3</h1>
+<p>For the following exercises, use the following numbers:</p>
+<ul>
+<li>I<sub>solar</sub> = 1350 W/m<sup>2</sup></li>
+<li><span class="math inline">\(\sigma = 5.67 \times 10^{-8}\)</span></li>
+<li><span class="math inline">\(\alpha = 0.30\)</span></li>
+<li><span class="math inline">\(\varepsilon = 1.0\)</span></li>
+</ul>
+<pre class="r"><code>I_solar = 1350
+alpha = 0.30
+sigma = 5.67E-8
+epsilon = 1</code></pre>
+<div id="worked-example-for-one-layer-atmosphere" class="section level2">
+<h2>Worked Example for One-Layer Atmosphere</h2>
+<blockquote>
+<p><strong>A One-Layer Model.</strong></p>
+</blockquote>
+<pre class="r"><code>make_layer_diagram(1)</code></pre>
+<div class="figure">
+<img src="/assignment/homework_01_files/figure-html/one_layer_figure-1.png" alt="An energy diagram for a planet with one pane of glass for an atmosphere. The intensity of heat from visible light is $(1 - \alpha) I_{solar} / 4$." width="672" />
+<p class="caption">
+(#fig:one_layer_figure)An energy diagram for a planet with one pane of glass for an atmosphere. The intensity of heat from visible light is <span class="math inline">\((1 - \alpha) I_{solar} / 4\)</span>.
+</p>
+</div>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>Write the energy budgets for the atmospheric layer, for the ground, and for
+the Earth as a whole.</li>
+</ol>
+</blockquote>
+<p><strong>Answer:</strong> Start at the top, at the boundary to sapce, and work downward:</p>
+<ul>
+<li><p>At the boundary to space, <span class="math inline">\(I_{1,up} = (1 - \alpha) I_{solar} / 4\)</span>.</p></li>
+<li><p>At the atmospheric layer, <span class="math inline">\(I_{1,up} + I_{1,down} = I_{ground,up}\)</span></p></li>
+<li><p>At the ground, <span class="math inline">\((1 - \alpha) I_{solar} + I_{1,down} = I_{ground,up}\)</span></p></li>
+</ul>
+<p>We also know that</p>
+<ul>
+<li><p><span class="math inline">\(I_{1,up} = I_{1,down} = \varepsilon \sigma T_{1}^4\)</span></p></li>
+<li><p><span class="math inline">\(I_{ground,up} = \sigma T_{ground}^4\)</span></p></li>
+</ul>
+<blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Manipulate the budget for the Earth as a whole to obtain the temperature
+T<sub>1</sub> of the atmospheric layer. Does this part of the exercise seem familiar in
+any way? Does the term ring any bells?</li>
+</ol>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<p><span class="math display">\[(1 - \alpha) I_{solar} / 4 = I_{1,up} = \sigma T_{1}^4\]</span></p>
+<p><span class="math display">\[(1 - \alpha) I_{solar} / 4 \varepsilon \sigma = T_{1}^4\]</span></p>
+<p><span class="math display">\[T_{1} = \sqrt[4]{\frac{(1 - \alpha) I_{solar}}{4 \varepsilon \sigma}}\]</span></p>
+<p>This is familiar, because it’s the same as the formula for the bare-rock temperature.</p>
+<p>Here is R code to calculate <span class="math inline">\(I_{\text{1,up}}\)</span> and <span class="math inline">\(T_1\)</span>:</p>
+<pre class="r"><code>I_1_up = (1 - alpha) * I_solar / 4
+T_1 = (I_1_up / (epsilon * sigma))^0.25</code></pre>
+<p>From the algebraic solution, we expect T<sub>1</sub> to be 254. K.
+From the R code above, we get T<sub>1</sub> = 254. K.</p>
+<blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Now insert the value you found for T<sub>1</sub> into the budget for atmospheric
+layer 1 to obtain the temperature of the ground, T<sub>ground</sub>.</li>
+</ol>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<ul>
+<li><span class="math inline">\(I_{ground} = I_{1,up} + I_{1,down} = 2 \times I_{1,up}\)</span></li>
+<li><span class="math inline">\(\varepsilon \sigma T_{ground}^4 = 2 \varepsilon \sigma T_{1}^4\)</span></li>
+<li><span class="math inline">\(T_{ground}^4 = 2 T_{1}^4\)</span></li>
+<li><span class="math inline">\(T_{ground} = \sqrt[4]{2} \times T_{1}\)</span></li>
+</ul>
+<p>And here is R code to calculate <span class="math inline">\(I_{\text{1,down}}\)</span>, <span class="math inline">\(I_{\text{ground}}\)</span>, and <span class="math inline">\(T_{\text{ground}}\)</span>:</p>
+<pre class="r"><code>I_1_down = I_1_up
+I_ground = I_1_up + I_1_down
+T_ground = (I_ground / (epsilon * sigma))^0.25</code></pre>
+<p>From the algebraic solution, we get T<sub>ground</sub> = 302. K and from the R code above, we get T<sub>ground</sub> = 302. K.</p>
+</div>
+<div id="exercise-3.1-grad.-students-only" class="section level2">
+<h2>Exercise 3.1 (Grad. students only)</h2>
+<blockquote>
+<p><strong>The moon with no heat transport.</strong> The Layer Model assumes that the
+temperature of the body in space is all the same. This is not really very
+accurate, as you know that it is colder at the poles than it is at the equator.
+For a bare rock with no atmosphere or ocean, like the moon, the situation is
+even worse because fluids like air and water are how heat is carried around on
+the planet. So let us make the other extreme assumption, that there is no heat
+transport on a bare rock like the moon. Assume for comparability that the
+albedo of this world is 0.30, same as Earth’s.</p>
+<p>What is the equilibrium temperature of the surface of the moon, on the equator,
+at local noon, when the sun is directly overhead? (Hint: First figure out the
+intensity of the local solar radiation I<sub>solar</sub>)</p>
+</blockquote>
+<pre class="r"><code># Put your R code here to answer the question</code></pre>
+<p><strong>Answer:</strong> put your answer here …</p>
+<blockquote>
+<p>What is the equilibrium temperature on the dark side of the moon?</p>
+</blockquote>
+<pre class="r"><code># Put your R code here to answer the question</code></pre>
+<p><strong>Answer:</strong> put your answer here …</p>
+</div>
+<div id="exercise-3.2" class="section level2">
+<h2>Exercise 3.2</h2>
+<blockquote>
+<p><strong>A Two-Layer Model.</strong> Insert another atmospheric layer into the model, just
+like the first one. The layer is transparent to visible light but a blackbody
+for infrared.</p>
+</blockquote>
+<pre class="r"><code>make_layer_diagram(2)</code></pre>
+<div class="figure">
+<img src="/assignment/homework_01_files/figure-html/two_layer_figure-1.png" alt="An energy diagram for a planet with two panes of glass for an atmosphere. The intensity of absorbed visible light is $(1 - \alpha) I_{solar} / 4$." width="672" />
+<p class="caption">
+(#fig:two_layer_figure)An energy diagram for a planet with two panes of glass for an atmosphere. The intensity of absorbed visible light is <span class="math inline">\((1 - \alpha) I_{solar} / 4\)</span>.
+</p>
+</div>
+<blockquote>
+<ol style="list-style-type: lower-alpha">
+<li>Write the energy budgets for both atmospheric layers, for the ground, and
+for the Earth as a whole, like we did for the One-Layer Model.</li>
+</ol>
+</blockquote>
+<p><strong>Answer:</strong> put your energy budgets here…</p>
+<blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Manipulate the budget for the Earth as a whole to obtain the temperature
+T<sub>2</sub> of the top atmospheric layer, labeled Atmospheric Layer 2 in the figure
+above. Does this part of the exercise seem familiar in any way? Does the term
+ring any bells?</li>
+</ol>
+</blockquote>
+<pre class="r"><code># Put your R code here to answer the question</code></pre>
+<p><strong>Answer:</strong> put the temperature T<sub>2</sub> here…</p>
+<blockquote>
+<ol start="3" style="list-style-type: lower-alpha">
+<li>Insert the value you found for T<sub>2</sub> into the energy budget for layer 2, and
+solve for the temperature of layer 1 in terms of layer 2. How much bigger is
+T<sub>1</sub> than T<sub>2</sub>?</li>
+</ol>
+</blockquote>
+<pre class="r"><code># Put your R code here to answer the question</code></pre>
+<p><strong>Answer:</strong> put the temperature T<sub>1</sub> here….</p>
+<blockquote>
+<ol start="4" style="list-style-type: lower-alpha">
+<li>Now insert the value you found for T<sub>1</sub> into the budget for atmospheric
+layer 1 to obtain the temperature of the ground, T<sub>ground</sub>. Is the greenhouse
+effect stronger or weaker because of the second layer?</li>
+</ol>
+</blockquote>
+<pre class="r"><code># Put your R code here to answer the question</code></pre>
+<p><strong>Answer:</strong> put your answer here…</p>
+</div>
+<div id="exercise-3.3" class="section level2">
+<h2>Exercise 3.3</h2>
+<pre class="r"><code>make_nuclear_winter_diagram()</code></pre>
+<div class="figure">
+<img src="/assignment/homework_01_files/figure-html/nuclear_winter_diagram-1.png" alt="An energy diagram for a planet with an opaque pane of glass for an atmosphere. The intensity of absorbed visible light is $(1 - \alpha) I_{solar} / 4$." width="672" />
+<p class="caption">
+(#fig:nuclear_winter_diagram)An energy diagram for a planet with an opaque pane of glass for an atmosphere. The intensity of absorbed visible light is <span class="math inline">\((1 - \alpha) I_{solar} / 4\)</span>.
+</p>
+</div>
+<blockquote>
+<p><strong>Nuclear Winter.</strong> Let us go back to the One-Layer Model but change it so
+that the atmospheric layer absorbs visible light rather than allowing it to
+pass through (See the figure above). This could happen if the upper atmosphere
+were filled with dust. For simplicity, assume that the albedo of the Earth
+remains the same, even though in the real world it might change with a dusty
+atmosphere.&gt; What is the temperature of the ground in this case?</p>
+</blockquote>
+<pre class="r"><code># Put your R code here to answer this question.</code></pre>
+<p><strong>Answer:</strong> put your answer here …</p>
+</div>
+</div>

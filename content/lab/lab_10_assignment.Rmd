@@ -1,0 +1,17 @@
+---
+title: 'Group Project: Decarbonization Policy for a Country'
+lab_date: '2018-11-12'
+report_due_date: '2018-12-05'
+lab_number: 10
+pubdate: '2018-08-20'
+date: '2018-11-12'
+slug: lab_10_assignment
+output:
+  blogdown::html_page:
+    md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+You and a partner will pick a country and begin working on a policy analysis for reducing its greenhouse gas emissions.
+
+## Assignment
+
+The GitHub Classroom has not been posted yet.
