@@ -8,8 +8,8 @@
 
 [[redirects]]
   from = "/climatemodels/*"
-  to = "http://climatemodels.uchicago.edu/"
-  status = 200
+  to = "https://climatemodels.jgilligan.org/:splat"
+  status = 307
 
 [[redirects]]
   from = "/*"
