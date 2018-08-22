@@ -1,5 +1,4 @@
-baseurl = "https://www.ees3310.jgilligan.org"
-# baseurl = "https://ees-4760-5760.netlify.com"
+baseurl = "https://ees3310.jgilligan.org"
 languageCode = "en-us"
 defaultContentLanguage = "en-us"
 title = "EES 3310/5310"
