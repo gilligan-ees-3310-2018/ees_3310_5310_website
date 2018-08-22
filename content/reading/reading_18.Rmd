@@ -1,20 +1,19 @@
 ---
-title: "Catching Up and Review"
+title: Catching up and Review
 class_date: '2018-10-01'
 class_number: 18
 weight: 18
 slug: reading_18
-pubdate: '2018-08-17'
-date: '2018-08-17'
+pubdate: '2018-08-20'
+date: '2018-10-01'
 output:
   blogdown::html_page:
     md_extensions: +tex_math_single_backslash+compact_definition_lists
 ---
 ## Reading:
 
-No new reading for today
+No new reading for today.
 
-### Notes
+### Notes:
 
-We will use today's class to catch up and review for the midterm exam.
-Bring your questions.
+We will use today to catch up and review for the midterm exam. Bring your questions.

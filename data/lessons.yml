@@ -22,6 +22,7 @@ lessons:
   lab: lab_02_assignment
 - date: '2018-09-05'
   title: Review of Greenhouse Effect
+  reading: /reading/reading_07
   assignment: homework_01
 - date: '2018-09-07'
   title: Feedbacks
@@ -48,6 +49,7 @@ lessons:
   reading: /reading/reading_14
 - date: '2018-09-24'
   title: Review
+  reading: /reading/reading_15
   lab: lab_05_assignment
 - date: '2018-09-26'
   title: Climate Models
@@ -57,9 +59,11 @@ lessons:
   reading: /reading/reading_17
 - date: '2018-10-01'
   title: Catching up and Review
+  reading: /reading/reading_18
   lab: lab_06_assignment
 - date: '2018-10-03'
   title: Midterm Exam
+  reading: /reading/reading_19
 - date: '2018-10-05'
   title: Uncertainty about Future Climates
   reading: /reading/reading_20

@@ -602,6 +602,7 @@ make_reading_page <- function(cal_entry) {
   reading <- reading_assignments %>% filter(reading_id == cal_entry$reading_id)
   rd_topic <- cal_entry$topic
   class_num <- cal_entry$class
+  this_class_num <<- class_num
   this_class_date <<- rd_date
 
   delim <- "---"
