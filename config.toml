@@ -105,6 +105,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   midtermDate = "2018-10-03"
   finalExamDate = "2018-12-13"
   background = "img/BoxcarPair.jpg"
+  backgroundCredit = "[NASA Terra/CERES](https://terra.nasa.gov/news/study-long-term-global-warming-needs-external-drivers)"
   math = "true"
   backgroundColor = "white"
   backgroundSize = "cover"
