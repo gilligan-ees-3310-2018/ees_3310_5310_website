@@ -12,6 +12,11 @@ output:
 ---
 You and your partner will continue to work on your group projects. Lab attendance is optional today, but Ms. Best and I will be available in the lab classroom to answer questions and discuss your projects.
 
+## Reading
+
+No reading has been posted yet for this lab.
+
+
 ## Assignment
 
 The GitHub Classroom has not been posted yet.

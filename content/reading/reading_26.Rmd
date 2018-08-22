@@ -23,6 +23,6 @@ output:
 
 ### Reading Notes:
 
-We will continue discussing this chapter and work examples in class of Pielke's calculations. If you have a tablet or laptop computer that can run spreadsheets (Open Office, Libre Office, Microsoft Office, etc.), I recommend that you bring it to class today.
+We will continue discussing this chapter and work examples in class of Pielke's calculations.
 
 The optional extra reading comprises three articles by Roger Pielke, in which he applies the methods he describes in this chapter to analyze proposed decarbonization policies in the U.K., Japan, and Australia.

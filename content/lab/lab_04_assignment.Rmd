@@ -12,6 +12,11 @@ output:
 ---
 This lab will explore two different phenomena: First, we will explore the effect that clouds have on infrared transmission and the climate and second we will explore the role of the lapse rate and convection in modifying the greenhouse effect.
 
+## Reading
+
+No reading has been posted yet for this lab.
+
+
 ## Assignment
 
 The GitHub Classroom has not been posted yet.

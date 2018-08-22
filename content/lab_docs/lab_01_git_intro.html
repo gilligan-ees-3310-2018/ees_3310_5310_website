@@ -4,6 +4,7 @@ lab_number: 1
 lab_date: '2018-08-27'
 pubdate: '2018-08-20'
 date: '2018-08-27'
+pdf_url: /files/lab_docs/lab_01/git_intro.pdf
 slug: lab_01_git_intro
 output.blogdown::html_page:
   md_extensions: +tex_math_single_backslash+compact_definition_lists
@@ -15,12 +16,24 @@ output.blogdown::html_page:
 <h1>Revision Control for Reproducible Research</h1>
 <p>A very important part of reproducible research is using revision control.</p>
 <p>For an excellent introduction to using git with R, I recommend
-Professor Jenny Bryan’s lecture, “Happy Git and Github for the useR.”
+Professor Jenny Bryan’s lecture, “Happy Git and GitHub for the useR.”
 Her slides for the lecture are available at <a href="http://happygitwithr.com/" class="uri">http://happygitwithr.com/</a>,
 and you can watch the lecture online at
 <a href="https://www.rstudio.com/resources/videos/happy-git-and-gihub-for-the-user-tutorial/" class="uri">https://www.rstudio.com/resources/videos/happy-git-and-gihub-for-the-user-tutorial/</a>
 (It’s two hours long and walks you through using git with RStudio in detail and
 gives lots of practical advice)</p>
+<div id="tools-for-revision-control" class="section level2">
+<h2>Tools for Revision Control</h2>
+<p>This document describes two related tools:</p>
+<ul>
+<li>Git is a program that helps you manage revisions in files that you edit (computer code, text documents, etc.), and coordinate sharing documents and working on them with other people.</li>
+<li><p>GitHub is a web site that allows people to share projects using Git. It is free for educational users and for open-source projects that anyone can see and copy.
+GitHub also allows paying customers to have private projects. Educational users can set up private projects for free.</p>
+<p><strong>Before lab on Monday</strong> please sign up for a free account on GitHub at <a href="https://github.com" class="uri">https://github.com</a>. I also recommend that after you sign up, you then request a student account
+at <a href="https://education.github.com/students" class="uri">https://education.github.com/students</a>. A student account gives you access to a bunch of free extras, such as the ability to set up private projects on GitHub.</p>
+<p>We will use an educational feature of GitHub called GitHub Classroom to distribute the lab assignments and for you to turn them in when you have completed them.</p></li>
+</ul>
+</div>
 </div>
 <div id="installing-git-on-your-own-computer" class="section level1">
 <h1>Installing Git on Your own Computer</h1>
@@ -87,6 +100,10 @@ The git repository will add the new files to the repository, note that the delet
 and note the changes in the edited files between the latest version in the repository and the edited version that you are
 committing. Then it will then note the current state of all the files in the repository, so the commit represents a snapshot of the
 current state of all the files in the repository when you make the commit.</p></li>
+<li><p><strong>Clone</strong> When you start a new lab project, you will <strong>clone</strong> a template that I post on GitHub classroom. Cloning a project
+not only gives you a copy of the current project, but it also gives you a copy of the entire history of the project, so if you are
+working with a partner and one of you clones a project from the other, you will be able to use Git to coordinate your work and
+each of you will be able to see everything the other one has done on the project. It is like “track changes” on steroids.</p></li>
 </ul>
 </div>
 <div id="using-git-with-rstudio" class="section level2">
@@ -232,20 +249,19 @@ and make a commit.</p>
 </div>
 </div>
 <div id="github-and-github-classroom" class="section level1">
-<h1>Github and Github Classroom</h1>
-<p>Github is a web site devoted to sharing open-source git repositories and allowing
+<h1>GitHub and GitHub Classroom</h1>
+<p>GitHub is a web site devoted to sharing open-source Git repositories and allowing
 paying customers to operate private git repositories.
 You can get a free account at <a href="https://github.com" class="uri">https://github.com</a> and as a student, you can
 get some free extra features if you request a student account at
 <a href="https://education.github.com/students" class="uri">https://education.github.com/students</a>.</p>
-<p>Github classroom is an add-on service that github offers for teachers, which allows
-teachers to post assignments on github and then invite students to clone the assignment
+<p>GitHub classroom is an add-on service that github offers for teachers, which allows
+teachers to post assignments on GitHub and then invite students to clone the assignment
 and then turn in the completed assignment via a private repository.</p>
-<p>For each lab assignment, I will create a repository on Github Classroom
+<p>For each lab assignment, I will create a repository on GitHub Classroom
 and invite you to accept the assignment. When you accept the assignment,
-Github will clone the assignment into private repository just for you on github.
+GitHub will clone the assignment into private repository just for you on GitHub.
 Only you, I, and the teaching assistant will be able to see your private repository.</p>
 <p>You can then clone the private repository to your personal computer or a computer in the laboratory classroom
-and complete it. As you make commits, I encourage you to push the changes back up to github.
-When you are done with the assignment, you will create a “pull request”</p>
+and complete it. As you make commits, I encourage you to push the changes back up to GitHub.</p>
 </div>

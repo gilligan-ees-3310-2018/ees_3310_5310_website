@@ -12,6 +12,11 @@ output:
 ---
 This lab will use the GEOCARB model to explore the geochemical carbon cycle. We will trace what happens following a large release of carbon dioxide into the atmosphere.
 
+## Reading
+
+No reading has been posted yet for this lab.
+
+
 ## Assignment
 
 The GitHub Classroom has not been posted yet.

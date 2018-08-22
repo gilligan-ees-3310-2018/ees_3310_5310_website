@@ -12,6 +12,11 @@ output:
 ---
 Lab attendence is optional today. Ms. Best and I will be there to answer questions and discuss your projects with you.
 
+## Reading
+
+No reading has been posted yet for this lab.
+
+
 ## Assignment
 
 The GitHub Classroom has not been posted yet.

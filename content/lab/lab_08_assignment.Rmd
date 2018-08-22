@@ -12,6 +12,11 @@ output:
 ---
 You and your partner will give a presentation about your project. The final report will be due Wednesday Oct. 17
 
+## Reading
+
+No reading has been posted yet for this lab.
+
+
 ## Assignment
 
 The GitHub Classroom has not been posted yet.

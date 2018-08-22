@@ -12,6 +12,11 @@ output:
 ---
 You and a partner will pick a country and begin working on a policy analysis for reducing its greenhouse gas emissions.
 
+## Reading
+
+No reading has been posted yet for this lab.
+
+
 ## Assignment
 
 The GitHub Classroom has not been posted yet.

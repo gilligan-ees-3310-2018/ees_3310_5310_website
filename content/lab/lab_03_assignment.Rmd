@@ -12,6 +12,11 @@ output:
 ---
 This lab will use the MODTRAN computer model to simulate the transmission of different wavelengths of infrared light through the atmosphere and explore the effect that different greenhouse gases have on infrared light and the earth's temperature.
 
+## Reading
+
+No reading has been posted yet for this lab.
+
+
 ## Assignment
 
 The GitHub Classroom has not been posted yet.

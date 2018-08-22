@@ -697,6 +697,11 @@ make_lab_assignment_page <- function(this_assignment, lab_docs) {
       doc <- make_lab_doc(this_doc, this_assignment)
       output <- output %>% str_c("\n* [", this_doc$lab_document_title, "](", doc['url'], ")")
     }
+  } else {
+    output <- output %>% str_c(
+      "", "## Reading", "",
+      "No reading has been posted yet for this lab.",
+      "", sep = "\n")
   }
   url <- this_assignment$lab_assignment_url
   if (! is.na(url)) {

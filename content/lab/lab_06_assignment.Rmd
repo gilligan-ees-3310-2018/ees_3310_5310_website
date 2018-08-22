@@ -12,6 +12,11 @@ output:
 ---
 In this lab, you and a partner will begin to develop your own question to explore using computer models and/or archives of climate data
 
+## Reading
+
+No reading has been posted yet for this lab.
+
+
 ## Assignment
 
 The GitHub Classroom has not been posted yet.

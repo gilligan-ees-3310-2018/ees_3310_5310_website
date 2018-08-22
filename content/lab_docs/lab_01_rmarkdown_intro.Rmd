@@ -4,6 +4,7 @@ lab_number: 1
 lab_date: '2018-08-27'
 pubdate: '2018-08-20'
 date: '2018-08-27'
+pdf_url: /files/lab_docs/lab_01/rmarkdown_intro.pdf
 slug: lab_01_rmarkdown_intro
 output.blogdown::html_page:
   md_extensions: +tex_math_single_backslash+compact_definition_lists
@@ -52,6 +53,11 @@ just click on the "Knit" button in RStudio. If you click on the word "Knit" on t
 button, RStudio will turn the RMarkdown document into the default format (see 
 below). To knit the document into a different output format, click on the arrow 
 just to the right of the word "Knit," and select the output format you want.
+
+I use RMarkdown to produce all of the documents I produce for the labs in this course.
+You can see my code at <https://github.com/gilligan-ees-3310-2018>.
+The code for all of the Lab #1 documentation is at 
+<https://github.com/gilligan-ees-3310-2018/lab_01_documentation>
 
 # Document header
 
