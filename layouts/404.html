@@ -3,13 +3,14 @@
   <div class="grid-y medium-grid-frame">
     {{ partial "topbar.html" . }}
     <div class="grid-x medium-auto medium-cell-block-container">
-      <div class="grid-container small-12 fill-y medium-cell-block-y">
+      <div class="grid-container fill-y medium-cell-block-y">
         <div class="grid-y fill-y grid-margin-y">
           <div class="cell auto show-for-medium">
           </div>
-          <div class="grid-x grid-padding-x grid-padding-y shrink scrollable-content medium-cell-block-container" style="background-color:hsla(0, 0%, 100%, 0.9);">
-            <div class="cell" style="height:calc(100vh - 5rem);">
-    <h1 id="title"><a href="{{ "/" | relURL }}">Go Home</a></h1>
+          <div class="grid-x grid-padding-x grid-padding-y shrink scrollable-content medium-cell-block-container">
+            <div class="cell small-12 medium-8 large-5 medium-offset-2" style="color:white;background-color:hsla(0, 0%, 0%, 0.4);overflow:scroll-y">
+              <h1 id="title">Page not found.</h1>
+              <h2 id="gohome"><a href="{{ "/" | relURL }}">Go Home</a></h2>
             </div>
           </div>
         </div>
