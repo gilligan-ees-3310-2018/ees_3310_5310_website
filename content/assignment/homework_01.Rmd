@@ -26,8 +26,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(stringr)
 
-source("scripts/format_md.R")
-source("scripts/layer_diagram.R")
+source("_scripts/format_md.R")
+source("_scripts/layer_diagram.R")
 ```
 # Instructions
 

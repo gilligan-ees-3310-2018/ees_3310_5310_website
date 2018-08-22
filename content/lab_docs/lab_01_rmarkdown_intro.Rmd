@@ -483,14 +483,14 @@ To load a script (a file containing R code), you use the R command
 `source("script_file.R"")`
 
 For the exercises here, we will use two scripts, which are located in the 
-"scripts" directory.
+"_scripts" directory.
 
 To load them into R so you can use them in your analysis, you would put the 
 following code into your RMarkdown document:
 
 ```{r load_scripts}
-source("scripts/format_md.R")
-source("scripts/layer_diagram.R")
+source("_scripts/format_md.R")
+source("_scripts/layer_diagram.R")
 ```
 
 ### Useful Scripts for the Labs:

@@ -189,8 +189,8 @@ I have prepared. If you have cloned the directory for this document
 you can load the datasets, which contain daily weather summaries for
 Nashville and Chicago,
 by running the code below:</p>
-<pre class="r"><code>nashville_weather = readRDS(&#39;data/nashville_weather.Rds&#39;)
-chicago_weather = readRDS(&#39;data/chicago_weather.Rds&#39;)</code></pre>
+<pre class="r"><code>nashville_weather = readRDS(&#39;_data/nashville_weather.Rds&#39;)
+chicago_weather = readRDS(&#39;_data/chicago_weather.Rds&#39;)</code></pre>
 <p>Here is an example of the first few rows of a tibble with weather data for
 Nashville from
 1948–2017:</p>
@@ -510,7 +510,7 @@ tail(weather_summary)</code></pre>
 <p>Sometimes you want to gather many columns in a data table, data frame, or tibble
 into a single column. For instance, consider this data frame, which was
 read in from a spreadsheet of global temperatures produced at NASA:</p>
-<pre class="r"><code>giss_zonal &lt;- readRDS(&#39;data/giss_zonal.Rds&#39;)
+<pre class="r"><code>giss_zonal &lt;- readRDS(&#39;_data/giss_zonal.Rds&#39;)
 head(giss_zonal)</code></pre>
 <pre><code>## # A tibble: 6 x 9
 ##    year x64n_90n x44n_64n x24n_44n equ_24n x24s_equ x44s_24s x64s_44s

@@ -4,11 +4,11 @@ defaultContentLanguage = "en-us"
 title = "EES 3310/5310"
 theme = "hugo-syllabus"
 #disqusShortname = ""
-# googleAnalytics = ""
+googleAnalytics = "UA-101117636-3"
 paginate = 10
 relativeurls = true
 publishDir = "public"
-ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$", "_scripts$", "_data$", "\\.gitkeep"]
 
 [blackfriday]
   smartypangs = true

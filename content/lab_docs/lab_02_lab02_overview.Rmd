@@ -17,20 +17,20 @@ knitr::opts_chunk$set(echo = TRUE)
 # This section loads necessary R libraries and sources scripts that define 
 # useful functions format_md.
 # 
-data_dir = "data"
-script_dir = "scripts"
+data_dir = "_data"
+script_dir = "_scripts"
 
 library(pacman)
 p_load(zoo, xml2, tidyverse, stringr, lubridate)
 
 theme_set(theme_bw(base_size = 15))
 
-# source('scripts/utils.R', chdir = T)
+# source(file.path('_scripts/utils.R', chdir = T)
 
-if (!dir.exists('data')) dir.create('data')
+if (!dir.exists(data_dir)) dir.create(data_dir)
 
-nashville_weather <- readRDS('data/nashville_weather.Rds')
-chicago_weather <- readRDS('data/chicago_weather.Rds')
+nashville_weather <- readRDS('_data/nashville_weather.Rds')
+chicago_weather <- readRDS('_data/chicago_weather.Rds')
 ```
 # Introduction
 
@@ -243,8 +243,8 @@ Nashville and Chicago,
 by running the code below:
 
 ```{r load_datasets, include=TRUE}
-nashville_weather = readRDS('data/nashville_weather.Rds')
-chicago_weather = readRDS('data/chicago_weather.Rds')
+nashville_weather = readRDS('_data/nashville_weather.Rds')
+chicago_weather = readRDS('_data/chicago_weather.Rds')
 ```
 
 Here is an example of the first few rows of a tibble with weather data for 
@@ -531,7 +531,7 @@ into a single column. For instance, consider this data frame, which was
 read in from a spreadsheet of global temperatures produced at NASA:
 
 ```{r giss_temp_example}
-giss_zonal <- readRDS('data/giss_zonal.Rds')
+giss_zonal <- readRDS('_data/giss_zonal.Rds')
 head(giss_zonal)
 ```
 
