@@ -14,13 +14,13 @@
   status = 301
 
 [[redirects]]
-  from = "https://ees3310.netlify.org/*"
+  from = "https://ees3310.netlify.com/*"
   to   = "https://ees3310.jgilligan.org/:splat"
   force = true
   status = 301
 
 [[redirects]]
-  from = "http://ees3310.netlify.org/*"
+  from = "http://ees3310.netlify.com/*"
   to   = "https://ees3310.jgilligan.org/:splat"
   force = true
   status = 301
