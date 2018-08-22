@@ -34,7 +34,7 @@ reading_assignments <- semester_db %>% tbl("reading_assignments") %>%
   mutate_at(c("textbook", "handout",
               "rd_undergraduate_only", "rd_graduate_only", "rd_optional",
               "rd_prologue", "rd_epilogue", "rd_break_before"),
-            as.logical) %>%
+            funs(ifelse(is.na(.), FALSE, as.logical(.)))) %>%
   arrange(reading_id, desc(rd_prologue), rd_epilogue, rd_optional,
           rd_undergraduate_only, rd_graduate_only, rd_item_id)
 
@@ -93,8 +93,8 @@ calendar <- calendar %>%
   left_join(homework_assignments %>%
               select(homework_id, homework, homework_notes), by = "homework_id") %>%
   left_join(notices %>% select(topic_id, notice), by = "topic_id") %>%
-  mutate(has_reading = ifelse(is.na(textbook) | is.na(handout), FALSE,
-                              textbook | handout),
+  mutate(has_reading = ifelse(is.na(textbook), FALSE, textbook) | ifelse(is.na(handout), FALSE, handout) |
+           ! is.na(reading_notes),
          has_notice =  ! is.na(notice), has_lab = ! is.na(lab_group),
          has_homework = ! (is.na(homework) & is.na(homework_notes))) %>%
   select(-reading_notes, -textbook, -handout, -notice, -homework, -homework_notes, -lab_title) %>%
