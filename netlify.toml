@@ -2,6 +2,30 @@
   ID = "ees3310"
 
 [[redirects]]
+  from = "https://www.ees3310.jgilligan.org/*"
+  to   = "https://ees3310.jgilligan.org/:splat"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "http://www.ees3310.jgilligan.org/*"
+  to   = "https://ees3310.jgilligan.org/:splat"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "https://ees3310.netlify.org/*"
+  to   = "https://ees3310.jgilligan.org/:splat"
+  force = true
+  status = 301
+
+[[redirects]]
+  from = "http://ees3310.netlify.org/*"
+  to   = "https://ees3310.jgilligan.org/:splat"
+  force = true
+  status = 301
+
+[[redirects]]
   from = "/static/*"
   to = "https://static.jgilligan.org/ees3310/:splat"
   status = 200
