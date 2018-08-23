@@ -4,6 +4,7 @@ defaultContentLanguage = "en-us"
 title = "EES 3310/5310"
 theme = "hugo-syllabus"
 #disqusShortname = ""
+enableRobotsTXT = true
 googleAnalytics = "UA-101117636-3"
 paginate = 10
 relativeurls = true
