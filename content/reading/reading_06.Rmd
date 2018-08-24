@@ -4,7 +4,7 @@ class_date: '2018-09-03'
 class_number: 6
 weight: 6
 slug: reading_06
-pubdate: '2018-08-20'
+pubdate: '2018-07-31'
 date: '2018-09-03'
 output:
   blogdown::html_page:

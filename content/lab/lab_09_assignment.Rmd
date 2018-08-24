@@ -2,7 +2,7 @@
 title: Role-Playing Emissions Regulations
 lab_date: '2018-11-05'
 lab_number: 9
-pubdate: '2018-08-20'
+pubdate: '2018-07-31'
 date: '2018-11-05'
 slug: lab_09_assignment
 output:

@@ -2,7 +2,7 @@
 title: Data Wrangling with R
 lab_number: 2
 lab_date: '2018-09-03'
-pubdate: '2018-08-20'
+pubdate: '2018-07-31'
 date: '2018-09-03'
 pdf_url: /files/lab_docs/lab_02/lab_02_overview.pdf
 slug: lab_02_lab02_overview
@@ -25,7 +25,7 @@ p_load(zoo, xml2, tidyverse, stringr, lubridate)
 
 theme_set(theme_bw(base_size = 15))
 
-# source(file.path('_scripts/utils.R', chdir = T)
+# source('_scripts/utils.R', chdir = T)
 
 if (!dir.exists(data_dir)) dir.create(data_dir)
 

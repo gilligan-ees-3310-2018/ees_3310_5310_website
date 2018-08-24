@@ -2,7 +2,7 @@
 title: Introduction to EES 3310/5310 Labs
 lab_number: 1
 lab_date: '2018-08-27'
-pubdate: '2018-08-20'
+pubdate: '2018-07-31'
 date: '2018-08-27'
 pdf_url: /files/lab_docs/lab_01/lab_01_overview.pdf
 slug: lab_01_lab01_overview

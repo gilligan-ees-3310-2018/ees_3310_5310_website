@@ -3,7 +3,7 @@ title: Group Projects
 lab_date: '2018-10-01'
 report_due_date: '2018-10-17'
 lab_number: 6
-pubdate: '2018-08-20'
+pubdate: '2018-07-31'
 date: '2018-10-01'
 slug: lab_06_assignment
 output:

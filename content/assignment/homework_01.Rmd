@@ -4,7 +4,7 @@ due_date: '2018-09-05'
 assignment_number: 1
 weight: 1
 slug: homework_01
-pubdate: '2018-08-20'
+pubdate: '2018-07-31'
 date: '2018-09-05'
 output:
   blogdown::html_page:
@@ -26,8 +26,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(stringr)
 
-source("_scripts/format_md.R")
-source("_scripts/layer_diagram.R")
+source("scripts/format_md.R")
+source("scripts/layer_diagram.R")
 ```
 # Instructions
 
