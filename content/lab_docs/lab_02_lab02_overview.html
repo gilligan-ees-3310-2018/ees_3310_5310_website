@@ -2,7 +2,7 @@
 title: Data Wrangling with R
 lab_number: 2
 lab_date: '2018-09-03'
-pubdate: '2018-08-20'
+pubdate: '2018-07-31'
 date: '2018-09-03'
 pdf_url: /files/lab_docs/lab_02/lab_02_overview.pdf
 slug: lab_02_lab02_overview
@@ -536,8 +536,8 @@ and the same for the Southern Hemisphere.</p>
   geom_line(aes(y = x64s_44s, color = &quot;64S-44S&quot;)) +
   geom_line(aes(y = x90s_64s, color = &quot;90S-64S&quot;)) +
   labs(x = &quot;Year&quot;, y = &quot;Temperature anomaly&quot;)</code></pre>
-<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/bad_zonal_plot-1.png" width="672" />
-This is a big mess. It would be hard to clean up the appearance, and would require a lot of
+<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/bad_zonal_plot-1.png" width="672" /></p>
+<p>This is a big mess. It would be hard to clean up the appearance, and would require a lot of
 retyping if we decided to group the data into different bands of latitude.</p>
 <p>We can do this much more easily with the <code>gather</code> function:</p>
 <pre class="r"><code>bands = names(giss_zonal) # column names of the tibble
@@ -583,8 +583,8 @@ head(tidy_zonal)</code></pre>
 <pre class="r"><code>ggplot(tidy_zonal, aes(x = year, y = anomaly, color = latitude)) +
   geom_line() +
   labs(x = &quot;Year&quot;, y = &quot;Temperature anomaly&quot;)</code></pre>
-<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/plot_zonal_tibble-1.png" width="672" />
-The code for making the plot was a lot simpler, and by using an ordered factor,
+<p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/plot_zonal_tibble-1.png" width="672" /></p>
+<p>The code for making the plot was a lot simpler, and by using an ordered factor,
 we could control the order of the latitude bands in the legend, which now
 appear in a sensible order. It is much easier to look at this graph and quickly
 recognize that the far northern latitudes (64N-90N, and to a lesser extent
@@ -655,28 +655,20 @@ of data called, “The Grammar of Graphics” (that’s where the “gg” comes
 for what we’re going to do.</p>
 <p>A simple graph has just one layer:</p>
 <pre class="r"><code>ggplot(data = tidy_zonal, # the data
-       mapping = aes(x = year, y = anomaly, color = latitude, shape = latitude) # the mapping of variables to aesthetics
+       # the mapping of variables to aesthetics
+       mapping = aes(x = year, y = anomaly, color = latitude, shape = latitude)
        ) +
   geom_point() + # the geometry
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly&quot;) # labels for the coordinates</code></pre>
-<pre><code>## Warning: Using shapes for an ordinal variable is not advised</code></pre>
-<pre><code>## Warning: The shape palette can deal with a maximum of 6 discrete values
-## because more than 6 becomes difficult to discriminate; you have 8.
-## Consider specifying shapes manually if you must have them.</code></pre>
-<pre><code>## Warning: Removed 274 rows containing missing values (geom_point).</code></pre>
 <p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/simple_plot-1.png" width="672" /></p>
 <p>We can also make a plot with the same data, but two layers:</p>
 <pre class="r"><code>ggplot(data = tidy_zonal, # the data
-       mapping = aes(x = year, y = anomaly, color = latitude, shape = latitude) # the mapping of variables to aesthetics
+       # the mapping of variables to aesthetics
+       mapping = aes(x = year, y = anomaly, color = latitude, shape = latitude)
        ) +
   geom_point() + # the geometry of the first layer
   geom_line() +  # the geometry of the second layer
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly&quot;) # labels for the coordinates</code></pre>
-<pre><code>## Warning: Using shapes for an ordinal variable is not advised</code></pre>
-<pre><code>## Warning: The shape palette can deal with a maximum of 6 discrete values
-## because more than 6 becomes difficult to discriminate; you have 8.
-## Consider specifying shapes manually if you must have them.</code></pre>
-<pre><code>## Warning: Removed 274 rows containing missing values (geom_point).</code></pre>
 <p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/second_plot-1.png" width="672" /></p>
 <p>We can also use different mappings for different layers</p>
 <pre class="r"><code>annual_extremes = weather %&gt;% mutate(year = year(date)) %&gt;%
@@ -692,9 +684,6 @@ ggplot(data = annual_extremes # the data
   geom_point(aes(x = year, y = tmax, color = location, shape = &quot;max&quot;)) +
   xlim(1990,2000) + # set the range of the x-axis, part of the coordinate specification
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly&quot;) # labels for the coordinates</code></pre>
-<pre><code>## Warning: Removed 138 rows containing missing values (geom_point).
-
-## Warning: Removed 138 rows containing missing values (geom_point).</code></pre>
 <p><img src="/lab_docs/lab_02_lab02_overview_files/figure-html/third_plot-1.png" width="672" /></p>
 <p>Note that <code>ggplot</code> issued several harmless warnings to tell us that
 setting the limits of the <em>x</em>-axis the way we did. We can tell RMarkdown not

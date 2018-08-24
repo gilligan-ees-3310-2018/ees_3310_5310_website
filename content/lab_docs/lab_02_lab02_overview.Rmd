@@ -553,6 +553,7 @@ ggplot(giss_zonal, aes(x = year)) +
   geom_line(aes(y = x90s_64s, color = "90S-64S")) +
   labs(x = "Year", y = "Temperature anomaly")
 ```
+
 This is a big mess. It would be hard to clean up the appearance, and would require a lot of 
 retyping if we decided to group the data into different bands of latitude.
 
@@ -592,6 +593,7 @@ ggplot(tidy_zonal, aes(x = year, y = anomaly, color = latitude)) +
   geom_line() +
   labs(x = "Year", y = "Temperature anomaly")
 ```
+
 The code for making the plot was a lot simpler, and by using an ordered factor,
 we could control the order of the latitude bands in the legend, which now
 appear in a sensible order. It is much easier to look at this graph and quickly
@@ -653,9 +655,10 @@ for what we're going to do.
 
 A simple graph has just one layer: 
 
-```{r simple_plot, include=TRUE}
+```{r simple_plot, include=TRUE, warning=FALSE}
 ggplot(data = tidy_zonal, # the data
-       mapping = aes(x = year, y = anomaly, color = latitude, shape = latitude) # the mapping of variables to aesthetics
+       # the mapping of variables to aesthetics
+       mapping = aes(x = year, y = anomaly, color = latitude, shape = latitude)
        ) +
   geom_point() + # the geometry
   labs(x = "Year", y = "Temperature Anomaly") # labels for the coordinates
@@ -663,9 +666,10 @@ ggplot(data = tidy_zonal, # the data
 
 We can also make a plot with the same data, but two layers:
 
-```{r second_plot, include=TRUE}
+```{r second_plot, include=TRUE, warning=FALSE}
 ggplot(data = tidy_zonal, # the data
-       mapping = aes(x = year, y = anomaly, color = latitude, shape = latitude) # the mapping of variables to aesthetics
+       # the mapping of variables to aesthetics
+       mapping = aes(x = year, y = anomaly, color = latitude, shape = latitude)
        ) +
   geom_point() + # the geometry of the first layer
   geom_line() +  # the geometry of the second layer
@@ -675,7 +679,7 @@ ggplot(data = tidy_zonal, # the data
 
 We can also use different mappings for different layers
 
-```{r third_plot, include=TRUE}
+```{r third_plot, include=TRUE, warning=FALSE}
 annual_extremes = weather %>% mutate(year = year(date)) %>%
   group_by(location, year) %>% 
   summarize(tmin = min(tmin, na.rm = T),      # the na.rm = T means to ignore missing values
