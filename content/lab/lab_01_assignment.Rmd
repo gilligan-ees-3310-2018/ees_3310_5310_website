@@ -23,6 +23,7 @@ Before you come to class Monday, please set up a free account on GitHub, as desc
 * [Introduction to Reproducible Research](/lab_docs/lab_01_reproducible_research)
 * [Introduction to Git and GitHub Classroom](/lab_docs/lab_01_git_intro)
 * [Introduction to R and RMarkdown](/lab_docs/lab_01_rmarkdown_intro)
+* [No more excuses for non-reproducible methods (optional)](/lab_docs/lab_01_no_more_excuses)
 
 ## Assignment
 

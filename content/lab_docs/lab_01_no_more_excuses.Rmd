@@ -1,0 +1,23 @@
+---
+title: No more excuses for non-reproducible methods (optional)
+author: |
+  Lenny Teytelman
+lab_number: 1
+lab_date: '2018-08-27'
+pubdate: '2018-07-31'
+date: '2018-08-27'
+slug: lab_01_no_more_excuses
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+---
+Just this week, a new article about big problems in cancer research due to researchers' failure to follow reproducible research methods. Consider this article optional reading.
+
+Here is the abstract:
+
+> Here's a one-two punch to spark camaraderie among scientists. First, ask: "How long did it take to get your PhD?" Then follow up with: "How long would it have taken if all your experiments had worked the first or second time?"
+>
+> Part of the probable time difference is due to inexperience, but not all of it. News last month brought a powerful reminder that access to detailed methods can be essential for getting experiments to work. In 2013, the US\$1.6-million Reproducibility Project: Cancer Biology set out to repeat key experiments from 50 high-profile cancer papers, and so assess the extent to which published results can be replicated. Instead, the project has decided to stop at 18 papers. One big reason for this was the difficulty of working out what exactly was done in the original experiments. Protocols---precise step-by-step recipes for repeating experiments---are missing from published research more often than not, and even the original researchers can have trouble pinpointing particulars years later.
+
+You can read the full paper at <https://www-nature-com.proxy.library.vanderbilt.edu/articles/d41586-018-06008-w>
+
+L. Teytelman, "No more excuses for non-reproducible methods," Nature **560**, 411 (2018) [doi:10.1038/d41586-018-06008-w](https://doi.org/10.1038/d41586-018-06008-w)
