@@ -9,10 +9,12 @@ lessons:
 - date: '2018-08-27'
   title: Energy Balance and Climate
   reading: /reading/reading_03
+  lecture: /Slides/Class_03/energy_balance.pptx
   lab: lab_01_assignment
 - date: '2018-08-29'
   title: Greenhouse Effect
   reading: /reading/reading_04
+  lecture: /Slides/Class_04/greenhouse.pptx
 - date: '2018-08-31'
   title: Greenhouse Gases
   reading: /reading/reading_05
