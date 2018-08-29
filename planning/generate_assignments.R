@@ -767,6 +767,7 @@ generate_assignments <- function() {
     slide_url <- file.path("/Slides", slide_class_dir, fsep = "/")
 
     if (file.exists(file.path(slide_dir, slide_class_dir, "index.html"))) {
+      message("HTML slide_url = ", slide_url)
       semester <- semester %>%
         mutate(lecture_page = ifelse(class == class_num,
                                      slide_url, lecture_page))
@@ -775,13 +776,16 @@ generate_assignments <- function() {
       if (length(slides) > 0) {
         if (length(slides) == 1) {
           these_slides <- slides[1]
+          message("One ppt slide found: ", these_slides)
         } else {
           slide_df <- tibble(slide = slides) %>%
             mutate(date = file.mtime(file.path(slide_dir, slide_class_dir, slide))) %>%
             arrange(desc(date))
           these_slides <- slide_df$slide[1]
+          message(length(slides), " slides found. Choosing ", these_slides)
         }
         slide_url <- file.path(slide_url, these_slides, fsep = "/") %>% URLencode()
+        message("slide_url = ", slide_url)
         semester <- semester %>% mutate(lecture_page = ifelse(class == class_num,
                                                               slide_url, lecture_page))
       }
