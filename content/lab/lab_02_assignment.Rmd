@@ -3,6 +3,7 @@ title: Working with climate data
 lab_date: '2018-09-03'
 report_due_date: '2018-09-10'
 lab_number: 2
+github_classroom_assignment_url: https://classroom.github.com/a/vFttp2UE
 pubdate: '2018-07-31'
 date: '2018-09-03'
 slug: lab_02_assignment
@@ -10,7 +11,7 @@ output:
   blogdown::html_page:
     md_extensions: +tex_math_single_backslash+compact_definition_lists
 ---
-This lab will introduce working with climate data using R and RMarkdown. We will download temperature 
+This lab will introduce working with climate data using R and RMarkdown. We will download temperature and CO~2~ measurements from scientific archives of climate data and practice producing tables of measurements, making plots of the measurements, and analyzing the series of measurements to determine the trends over time (rates of increase or decrease).
 
 ## Reading
 
@@ -20,4 +21,4 @@ This lab will introduce working with climate data using R and RMarkdown. We will
 
 ## Assignment
 
-The GitHub Classroom has not been posted yet.
+Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/vFttp2UE>.

@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<!-- JG Reveal.js Template -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Jonathan Gilligan" />
+  <title>Greenhouse Gases</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="stylesheet" href="../../lecture_lib/library/reveal.js-3.7.0/css/reveal.min.css"/>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      .smallcaps{font-variant: small-caps;}
+      .line-block{white-space: pre-line;}
+      .column{display: inline-block;}  </style>
+  <style type="text/css">
+    div.qrbox {
+     position:fixed; 
+     bottom:0%;
+     left:10px;
+     text-align:left; 
+     vertical-align:bottom;
+    }
+  </style>
+<!-- theme = solarized_jg -->
+<link rel="stylesheet" href="../../lecture_lib/library/assets/css/theme/solarized_jg.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lecture_lib/library/reveal.js-3.7.0/css/print/pdf.css' : '../../lecture_lib/library/reveal.js-3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+            <!-- start title slide -->
+<section class='center' id='title' >
+    <h1 class="title">Greenhouse Gases</h1>
+    <h3 class="author">EES 3310/5310</h3>
+        <h3 class="author">Global Climate Change</h3>
+    <h3 class="author">Jonathan Gilligan</h3>
+    <h3 class="date">
+      Class #5:
+       Fri. Aug. 31
+      2018
+    </h3>
+        <div class="qrbox" id="qrbox">
+      <p style="font-size:30%">
+    <a href="https://ees3310.jgilligan.org/Slides/Class_05">
+  	<img src="qrcode.png" alt="https://ees3310.jgilligan.org/Slides/Class_05"/>
+  	</a>
+    	<br/>
+    	Live web page: <a href="https://ees3310.jgilligan.org/Slides/Class_05">https://ees3310.jgilligan.org/Slides/Class_05</a>
+    	<br/>
+    	PDF: <a href="https://ees3310.jgilligan.org/Slides/Class_05/EES_3310_5310_Class_05_Slides.pdf" target="_blank">https://ees3310.jgilligan.org/Slides/Class_05/EES_3310_5310_Class_05_Slides.pdf</a>
+    	
+  	</p>
+  	</div>
+    	<!-- end title slide -->
+</section>
+
+<section><section id="lab-for-monday" class="title-slide slide level1 center"><h1>Lab for Monday:</h1></section><section id="before-lab" class="slide level2">
+<h2>Before Lab:</h2>
+<ul>
+<li>Read Lab #2 documentation (posted in the course web site)</li>
+<li>Accept the Lab #2 assignment on github classroom (from link on the course web site and also on Brightspace)</li>
+</ul>
+</section></section>
+<section><section id="homework-for-next-wednesday" class="title-slide slide level1 center"><h1>Homework for next Wednesday:</h1></section><section id="general_principles" class="slide level2 center eighty">
+<h2>General Principles:</h2>
+<h3 id="start-at-the-top-and-work-down">Start at the top and work down:</h3>
+<ol>
+<li class="fragment">Balance budget at boundary to space
+<ul>
+<li class="fragment">Get “skin temperature” (top layer)</li>
+</ul></li>
+<li class="fragment">Balance budget at top layer of atmosphere
+<ul>
+<li class="fragment">Get temp. of next layer down (2<sup>nd</sup> from top)</li>
+</ul></li>
+<li class="fragment">Balance budget at next layer of atmosphere
+<ul>
+<li class="fragment">Get temp. of next layer down (3<sup>rd</sup> from top)</li>
+</ul></li>
+<li class="fragment">…</li>
+<li class="fragment">Balance budget at bottom layer of atmosphere
+<ul>
+<li class="fragment">This gives surface (ground) temperature.</li>
+</ul></li>
+</ol>
+<div class="fragment">
+<div style="color:darkred;margin:20px;margin-top:50px;">
+<p>As long as the albedo and the solar constant don’t change, <b>the skin temperature is always the same</b> for all models: 254 K.</p>
+</div>
+<p style="margin:10px;font-size:80%;">
+— <i>Understanding the Forecast</i>, p. 25.
+</p>
+</div>
+</section><section id="budget_expl" class="slide level2 center">
+<h2>“Balance the Budget”</h2>
+<h3 id="textheat_textin-textheat_textout"><span class="math inline">\(\text{Heat}_{\text{in}} = \text{Heat}_{\text{out}}\)</span></h3>
+<ul>
+<li class="fragment">Nature balances the budget automatically.</li>
+<li class="fragment">We use this fact to find the ground temperature.</li>
+<li class="fragment">If you know that <span class="math inline">\(\text{Heat}_{\text{in}} = \text{Heat}_{\text{out}}\)</span>, you can figure out the fluxes you don’t know.</li>
+<li class="fragment">If you know the flux going out of something, you know its temperature.</li>
+</ul>
+</section><section id="one_layer_brief" class="slide level2 center">
+<h2>1-Layer Model in Brief</h2>
+<center>
+<table style="border:none;">
+<tr style="border:none;">
+<td style="border:none;vertical-align:top;">
+<div>
+<h3 id="start-at-top">Start at top:</h3>
+<ul>
+<li class="fragment">Balance heat budget at boundary to space. <span class="math display">\[
+\frac{(1 - \alpha) I_{\text{solar}}}{4} = \epsilon\sigma T_{\text{atmos}}^4
+\]</span>
+<ul>
+<li class="fragment"><span style="color:darkgreen;">Same as bare-rock model: <span class="math inline">\(T_{\text{atmos}} = 254~K\)</span>. </span>
+<ul>
+<li class="fragment"><strong>Skin temperature</strong></li>
+</ul></li>
+</ul></li>
+<li class="fragment">Balance budget at atmosphere: <span class="math display">\[
+\begin{aligned}
+\Rule{0pt}{3ex}{0ex}\epsilon\sigma T_{\text{ground}}^4 &amp;= 2\epsilon\sigma T_{\text{atmos}}^4\\
+T_{\text{ground}}^4 &amp;= 2 T_{\text{atmos}}^4\\
+T_{\text{ground}} &amp;= \sqrt[4]{2}\: T_{\text{atmos}}
+\end{aligned}
+\]</span>
+<ul>
+<li class="fragment"><strong>Ground temp</strong>: <span class="math inline">\(T_{\text{ground}} = \sqrt[4]{2}\: T_{\text{skin}} = 302~K\)</span>.</li>
+</ul></li>
+</ul>
+</div>
+</td>
+<td style="border:none;width=700px;">
+<p><img data-src="assets/images/ar03f04.png" alt="One-layer model" width="600" /></p>
+</td>
+</tr>
+</table>
+</center>
+</section><section id="layer-model-heat-balance-details" class="slide level2">
+<h2>1-Layer Model: Heat Balance Details</h2>
+<center>
+<table style="border:none;">
+<tr style="border:none;">
+<td style="border:none;vertical-align:top;">
+<div>
+<ul>
+<li class="fragment">Numbers:
+<ul>
+<li class="fragment"><span class="math inline">\(I_{\text{solar}} = 1350~W/m^2\)</span></li>
+<li class="fragment"><span class="math inline">\(I_{\text{in}} = (1 - \alpha) I_{\text{solar}} / 4 = 236~W/m^2\)</span></li>
+<li class="fragment"><span class="math inline">\(I_{\text{down,atm}} = I_{\text{up,atm}} = I_{\text{in}} = 236~W/m^2\)</span></li>
+<li class="fragment"><span class="math inline">\(I_{\text{up,ground}} = 2 I_{\text{up,atm}} = 472~W/m^2\)</span></li>
+</ul></li>
+<li class="fragment">Balance:
+<ul>
+<li class="fragment">Space:
+<ul>
+<li class="fragment"><span class="math inline">\(\text{in} = I_{\text{in}} = 236~W/m^2\)</span>,</li>
+<li class="fragment"><span class="math inline">\(\text{out} = I_{\text{up,atm}} = 236~W/m^2\)</span>.</li>
+</ul></li>
+<li class="fragment">Atmosphere:
+<ul>
+<li class="fragment"><span class="math inline">\(\text{in} = I_{\text{up,ground}} = 472~W/m^2\)</span>,</li>
+<li class="fragment"><span class="math inline">\(\text{out} = 2 I_{\text{up,atm}} = 472~W/m^2\)</span>.</li>
+</ul></li>
+<li class="fragment">Ground:
+<ul>
+<li class="fragment"><span class="math inline">\(\text{in} = I_{\text{in}} + I_{\text{down,atm}} = 472~W/m^2\)</span>,</li>
+<li class="fragment"><span class="math inline">\(\text{out} = I_{\text{up,ground}} = 472~W/m^2\)</span>.</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</td>
+<td style="border:none;width=700px;">
+<p><img data-src="assets/images/ar03f04.png" alt="One-layer model" width="600" /></p>
+</td>
+</tr>
+</table>
+</center>
+</section></section>
+<section><section id="ghg_section" class="title-slide slide level1 eighty" data-transition="fade-out"><h1>Greenhouse Gases</h1></section><section id="ghg" class="slide level2 eighty" data-transition="fade">
+<h2>Greenhouse Gases</h2>
+<p>Layer model was too simple:</p>
+<ul>
+<li><span class="math inline">\(\varepsilon\)</span>, varies with wavelength</li>
+<li>Temperature varies with altitude</li>
+</ul>
+<p><img data-src="assets/fig/load_iris_spectrum-1.png" /></p>
+</section><section id="temperature_profile.center" class="slide level2 eighty">
+<h2>Temperature in the Atmosphere</h2>
+<p><img data-src="assets/fig/temp_profile-1.png" /></p>
+</section></section>
+<section><section id="radiative_diffusion" class="title-slide slide level1 center"><h1><img src="assets/images/ar04f04.png" style="height:750" /></h1></section><section id="GOES_all_channel" class="slide level2">
+<h2>Earth seen by GOES satellite</h2>
+<p><img alt="GOES satellite images" src="assets/images/geall.14240.1900.png" style="height:750px;"/></p>
+</section><section id="models_observations_sec" class="slide level2" data-transition="fade">
+<h2>Models and Observations</h2>
+</section><section id="models_observations" class="slide level2" data-transition="fade-in" data-backgorund-transition="fade">
+<h2>Models and Observations</h2>
+<p><img data-src="assets/fig/model.sahara-1.png" /></p>
+<p>Checking MODTRAN model: It looks very similar to real life.</p>
+</section></section>
+<section><section id="modtran_section" class="title-slide slide level1 center" data-transition="fade-out"><h1>MODTRAN Computer Model</h1></section><section id="what_is_modtram" class="slide level2 eightyfive" data-transition="fade">
+<h2>What is MODTRAN?</h2>
+<ul>
+<li class="fragment">Pure radiative calculation
+<ul>
+<li class="fragment">Air does not move:
+<ul>
+<li class="fragment">No wind or convection</li>
+</ul></li>
+</ul></li>
+<li class="fragment">Only calculates infrared heat flux
+<ul>
+<li class="fragment">Does not give equilibrium ground temperature</li>
+</ul></li>
+<li class="fragment">Only calculates one spot
+<ul>
+<li class="fragment">Does not give global averages</li>
+</ul></li>
+<li class="fragment">You specify:
+<ul>
+<li class="fragment">Ground temperature</li>
+<li class="fragment">Composition of atmosphere</li>
+</ul></li>
+<li class="fragment">Modtran computes:
+<ul>
+<li class="fragment">Longwave radiation at different altitudes</li>
+<li class="fragment">Total radiation to space</li>
+</ul></li>
+</ul>
+</section><section id="running_modtran" class="slide level2">
+<h2>Running MODTRAN</h2>
+<ul>
+<li>Go to <a href="http://climatemodels.uchicago.edu/modtran/" class="uri">http://climatemodels.uchicago.edu/modtran/</a></li>
+<li><a href="#/double_co2">Next</a></li>
+</ul>
+<iframe src="https://climatemodels.jgilligan.org/modtran/" style="height:650px;width:1200px;">
+<a href="http://climatemodels.uchicago.edu/modtran">http://climatemodels.uchicago.edu/modtran/</a>
+</iframe>
+</section><section id="double_co2" class="slide level2 eighty">
+<h2>Exercise: Double CO<sub>2</sub></h2>
+<ul>
+<li>Set Locality to “1976 U.S. Standard Atmosphere”</li>
+<li>Click “Save This Run to Background”</li>
+<li>Note the Upward IR heat flux</li>
+<li>Double the amount of CO<sub>2</sub></li>
+<li>Adjust T offset until new heat flux = background flux</li>
+<li>What is the new ground temperature?</li>
+</ul>
+<iframe src="https://climatemodels.jgilligan.org/modtran/" style="height:450px;width:1200px;">
+</iframe>
+</section><section id="double_co2_2" class="slide level2">
+<h2>Exercise: Double CO<sub>2</sub></h2>
+<iframe src="https://climatemodels.jgilligan.org/modtran/" style="height:750px;width:1200px;">
+</iframe>
+</section></section>
+<section><section id="different_gas_sec" class="title-slide slide level1 center"><h1>Different Gases</h1></section><section id="different_gases" class="slide level2">
+<h2>Different Gases</h2>
+<iframe src="https://climatemodels.jgilligan.org/modtran/" style="height:750px;width:1200px;">
+</iframe>
+</section></section>
+<section><section id="band_saturation_intro_sec" class="title-slide slide level1 center"><h1>Band Saturation</h1></section><section id="setup_modtran" class="slide level2 eighty">
+<h2>Set up MODTRAN:</h2>
+<ul>
+<li>Set “Location” to “1976 U.S. Standard Atmosphere”</li>
+<li>Set All greenhouse gases to zero</li>
+<li>Set altitude to 20 km</li>
+</ul>
+<iframe src="https://climatemodels.jgilligan.org/modtran/" style="height:650px;width:1200px;">
+</iframe>
+</section><section id="co2_00000" class="slide level2" data-transition="fade">
+<h2>No CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/no.ghg-1.png" /></p>
+</section><section id="co2_00001" class="slide level2" data-transition="fade">
+<h2>1 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00001-1.png" /></p>
+</section><section id="co2_00003_125" class="slide level2" data-transition="fade">
+<h2>2 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00002-1.png" /></p>
+</section><section id="co2_00004" class="slide level2" data-transition="fade">
+<h2>4 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00004-1.png" /></p>
+</section><section id="co2_00008" class="slide level2" data-transition="fade">
+<h2>8 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00008-1.png" /></p>
+</section><section id="co2_00016" class="slide level2" data-transition="fade">
+<h2>16 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00016-1.png" /></p>
+</section><section id="co2_00032" class="slide level2" data-transition="fade">
+<h2>32 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00032-1.png" /></p>
+</section><section id="co2_00064" class="slide level2" data-transition="fade">
+<h2>64 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00064-1.png" /></p>
+</section><section id="co2_00128" class="slide level2" data-transition="fade">
+<h2>128 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00128-1.png" /></p>
+</section><section id="co2_00256" class="slide level2" data-transition="fade">
+<h2>256 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00256-1.png" /></p>
+</section><section id="co2_00512" class="slide level2" data-transition="fade">
+<h2>512 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00512-1.png" /></p>
+</section><section id="co2_01024" class="slide level2" data-transition="fade">
+<h2>1024 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.01024-1.png" /></p>
+</section><section id="co2_02048" class="slide level2" data-transition="fade">
+<h2>2048 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.02048-1.png" /></p>
+</section></section>
+<section><section id="band_saturation_detect_sec" class="title-slide slide level1 center"><h1>Measuring Band Saturation</h1></section><section id="setup_modtran_2" class="slide level2 eighty">
+<h2>Set up MODTRAN:</h2>
+<ul>
+<li>Go to MODTRAN, set CO<sub style="font-size:60%;">2</sub> to 100 ppm, and set all other gases to zero.</li>
+</ul>
+<!-- -->
+<ul>
+<li class="fragment">Set altitude to 20 km and location to “1976 US Standard Atmosphere”.</li>
+<li class="fragment">Press “Save this run to background”</li>
+<li class="fragment">Note <span class="math inline">\(I_{\text{out}}\)</span></li>
+<li class="fragment">Double CO<sub style="font-size:60%;">2</sub> and note the change in <span class="math inline">\(I_{\text{out}}\)</span></li>
+<li class="fragment">Keep doubling CO<sub style="font-size:60%;">2</sub> until you get to 1600 ppm.</li>
+<li class="fragment">Do you notice anything about the changes in <span class="math inline">\(I_{\text{out}}\)</span>?</li>
+</ul>
+</section><section id="co2_delta_00000" class="slide level2" data-transition="fade">
+<h2>0 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00000-1.png" /></p>
+</section><section id="co2_delta_00001" class="slide level2" data-transition="fade">
+<h2>1 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00001-1.png" /></p>
+</section><section id="co2_delta_00003_125" class="slide level2" data-transition="fade">
+<h2>2 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00002-1.png" /></p>
+</section><section id="co2_delta_00004" class="slide level2" data-transition="fade">
+<h2>4 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00004-1.png" /></p>
+</section><section id="co2_delta_00008" class="slide level2" data-transition="fade">
+<h2>8 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00008-1.png" /></p>
+</section><section id="co2_delta_00016" class="slide level2" data-transition="fade">
+<h2>16 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00016-1.png" /></p>
+</section><section id="co2_delta_00032" class="slide level2" data-transition="fade">
+<h2>32 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00032-1.png" /></p>
+</section><section id="co2_delta_00064" class="slide level2" data-transition="fade">
+<h2>64 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00064-1.png" /></p>
+</section><section id="co2_delta_00128" class="slide level2" data-transition="fade">
+<h2>128 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00128-1.png" /></p>
+</section><section id="co2_delta_00256" class="slide level2" data-transition="fade">
+<h2>256 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00256-1.png" /></p>
+</section><section id="co2_delta_00512" class="slide level2" data-transition="fade">
+<h2>512 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.00512-1.png" /></p>
+</section><section id="co2_delta_01024" class="slide level2" data-transition="fade">
+<h2>1024 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.01024-1.png" /></p>
+</section><section id="co2_delta_02048" class="slide level2" data-transition="fade">
+<h2>2048 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.delta.02048-1.png" /></p>
+</section><section id="band_sat_i" class="slide level2" data-transition="fade">
+<h2>Band Saturation (I<sub>out</sub>)</h2>
+<p><img data-src="assets/fig/band.sat.i.out-1.png" /></p>
+</section><section id="band_sat_i" class="slide level2" data-transition="fade">
+<h2>I<sub>out</sub> (CO<sub>2</sub> on log scale)</h2>
+<p><img data-src="assets/fig/band.sat.i.out.log-1.png" /></p>
+</section><section id="band_sat_delta" class="slide level2" data-transition="fade">
+<h2><span class="math inline">\(\Delta I_{\text{out}}\)</span></h2>
+<p><img data-src="assets/fig/band.sat.delta.i-1.png" /></p>
+<p><small>Change in <span class="math inline">\(I_{\text{out}}\)</span> from no <span class="math inline">\(\COO\)</span></small></p>
+</section><section id="band_sat_inc" class="slide level2" data-transition="fade">
+<h2>Increments of <span class="math inline">\(I_{\text{out}}\)</span></h2>
+<p><img data-src="assets/fig/band.sat.inc-1.png" /></p>
+<p><small>Change in <span class="math inline">\(I_{\text{out}}\)</span> from previous <span class="math inline">\(I_{\text{out}}\)</span></small></p>
+</section></section>
+<section><section id="greenhouse_effect_sec" class="title-slide slide level1 center"><h1>Measuring Greenhouse Effect:</h1></section><section id="greenhouse_effect" class="slide level2" data-transition="fade-out">
+<h2>Measuring Greenhouse Effect:</h2>
+<ul>
+<li class="fragment">Go to MODTRAN, set CO<sub>2</sub> to 0 ppm, and set all other gases to zero.</li>
+<li class="fragment">Set altitude to 70 km and location to “1976 US Standard Atmosphere”.</li>
+<li class="fragment">Press “Save this run to background”</li>
+<li class="fragment">Note <span class="math inline">\(I_{\text{out}}\)</span></li>
+<li class="fragment">Set CO<sub>2</sub> to 400 ppm and note the change in <span class="math inline">\(I_{\text{out}}\)</span></li>
+<li class="fragment">Adjust the temperature offset to make the difference in <br/> <span class="math inline">\(I_{\text{out}} (\text{New} - \text{BG})\)</span> equal zero.</li>
+</ul>
+</section><section id="greenhouse_effect_00" class="slide level2" data-transition="fade">
+<h2>No Greenhouse Gases</h2>
+<p><img data-src="assets/fig/warming.000-1.png" /></p>
+</section><section id="greenhouse_effect_400" class="slide level2" data-transition="fade">
+<h2>400 ppm</h2>
+<p><img data-src="assets/fig/warming.400-1.png" /></p>
+</section><section id="greenhouse_effect_400_warm" class="slide level2" data-transition="fade">
+<h2>Adjust temperature</h2>
+<p><img data-src="assets/fig/warming.400.warm-1.png" /></p>
+</section></section>
+<section><section id="calc_warming_sec" class="title-slide slide level1 center" data-transition="fade"><h1>Calculating Global Warming</h1></section><section id="calc_warming" class="slide level2" data-transition="fade">
+<h2>Calculating Global Warming</h2>
+<ul>
+<li>
+“Climate sensitivity” = <span class="math inline">\(\Delta T_{2x}\)</span>
+<ul>
+<li>
+Temperature rise for doubled CO<sub>2</sub>.
+</li>
+<li>
+Uncertain (because of feedbacks)
+</li>
+<li>
+Best estimate: <span class="math inline">\(\Delta T_{2x} \sim\)</span> 3.2K (range 2.0–4.5 K)
+</li>
+</ul>
+</li>
+<li class="fragment fade-in">
+Every time you double CO<sub>2</sub>, <span class="math inline">\(T\)</span> rises by <span class="math inline">\(\Delta T_{2x}\)</span>.
+</li>
+<li class="fragment fade-in">
+For arbitrary change in CO<sub>2</sub>:
+<div style="background-color:ghostwhite;margin:20px;border:10px;color:darkblue;">
+<p><span class="math display">\[\Delta T = \Delta T_{2x} \times 
+\frac{\ln\left(\frac{\text{new}~p\COO}{\text{old}~p\COO}\right)}{\ln 2}\]</span></p>
+</div>
+</li>
+</ul>
+</section><section id="gwp" class="slide level2">
+<h2>Global Warming Potential</h2>
+<ul>
+<li class="fragment">Absorption by CO<sub>2</sub> and water vapor are very saturated</li>
+<li class="fragment">Absorption in the atmospheric window is not saturated</li>
+<li class="fragment">Therefore, molecule-for-molecule, gases that absorb in the window have a much bigger effect on the climate than adding more CO<sub>2</sub>.
+<ul>
+<li class="fragment">One chlorofluorocarbon molecule = thousands of CO<sub>2</sub> molecules</li>
+</ul></li>
+<li class="fragment">Global Warming Potential (GWP) of <span class="math inline">\(x\)</span> = how many CO<sub>2</sub> molecules cause the same warming as one molecule of <span class="math inline">\(x\)</span></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/head.min.js"></script>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1440,
+        height: 900,
+      
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+
+<script>
+var MathJax = { jax: ["input/TeX", "output/HTML-CSS"],
+                TeX: {extensions: ["color.js", "mhchem.js"],
+                Macros: {
+                  permil: "\\unicode{x2030}",
+                  pH: "p\\ce{H}",
+                  CaSi: "\\ce{CaSiO3}",
+                  silicate: "\\ce{SiO3^2-}",
+                  Caplus: "\\ce{Ca^2+}",
+                  calcite: "\\ce{CaCO3}",
+                  silica: "\\ce{SiO2}",
+                  OH: "\\ce{OH-}",
+                  Hplus: "\\ce{H+}",
+                  carbonic: "\\ce{H2CO3}",
+                  bicarb: "\\ce{HCO3-}",
+                  carb: "\\ce{CO3^2-}",
+                  water: "\\mathrm{H_2O}",
+                  degF: "^\\circ \\mathrm{F}",
+                  degC: "^\\circ \\mathrm{C}",
+                  methane: "\\ce{CH4}",
+                  COO: "\\ce{CO2}"
+                },
+                  },
+                "HTML-CSS" : {scale: 100 }};
+</script>
+
+    
+    
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["SVG"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+  </script>
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  <script>
+  var qrbox = document.querySelector("#qrbox");
+  var advance_fragment = 0;
+  Reveal.addEventListener('slidechanged', function() {
+    if (Reveal.isFirstSlide()) {
+      qrbox.style.visibility="visible";
+    } else {
+      qrbox.style.visibility="hidden";
+      while (advance_fragment > 0) {
+        console.log('advancing fragment');
+        Reveal.nextFragment();
+        advance_fragment--;
+      }
+    }
+  }, false);
+  
+  Reveal.addEventListener('skip_slide', function() {
+    Reveal.next();
+  }, false);
+  
+  Reveal.addEventListener('advance_fragment', function() {
+    console.log("setting advance fragment");
+    advance_fragment++;
+    }, false);
+  </script>
+  </body>
+</html>
