@@ -17,7 +17,7 @@ This lab will introduce working with climate data using R and RMarkdown. We will
 
 **Before you come to lab**, please read the following document:
 
-* [Data Wrangling with R](/lab_docs/lab_02_lab02_overview)
+* [Data Wrangling with R](/lab_docs/lab_02_overview)
 
 ## Assignment
 

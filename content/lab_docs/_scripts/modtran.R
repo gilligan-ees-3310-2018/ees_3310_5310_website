@@ -214,7 +214,7 @@ read_modtran <- function(filename, text = NULL, scale_factor = 3.14E+4) {
     which()
   target <- lines[im[1]]
   x <- target %>% str_trim() %>% str_split(" +") %>% unlist()
-  x <- x[7:12] %>% map_dbl(~as.numeric(.x)) %>% set_names(x[1:6])
+  x <- x[8:14] %>% map_dbl(~as.numeric(.x)) %>% set_names(x[1:7])
   co2 <- x['co2mx']
   ch4 <- x['ch4rat'] * 1.7
   im <- str_detect(lines, fixed("0 SLANT PATH TO SPACE")) %>% which()
