@@ -9,7 +9,6 @@ slug: lab_02_overview
 output.blogdown::html_page:
   md_extensions: +tex_math_single_backslash+compact_definition_lists
 ---
-
 ```{r setup, include=FALSE}
 knitr::knit_hooks$set(inline = function(x) { knitr:::format_sci(x, 'md')})
 knitr::opts_chunk$set(echo = TRUE)
