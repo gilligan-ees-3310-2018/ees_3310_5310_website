@@ -122,7 +122,7 @@ which loads a script with the following functions:
       "down" (the default) or "up".
       
     Any arguments you don't specify explicitly take on their default value.
-    Thus, `run_modtran('_data/modtran_experiment_1.txt', co2_ppm = 800, delta_t = 1.0, h2o_fixed = "relative humidity")`
+    Thus, `run_modtran(file.path(data_dir, "modtran_experiment_1.txt"), co2_ppm = 800, delta_t = 1.0, h2o_fixed = "relative humidity")`
     would run with all the default values, except for 800 ppm CO~2~, 
     a temperature offset of 1&deg;C, and holding relative humidity fixed.
 
@@ -238,7 +238,7 @@ You see that $`r t2_f` - `r t1_f` \neq `r ktof(delta_t_k)`$.
 ```{r run_modtran_baseline, include=TRUE, message=FALSE, warning=FALSE}
 run_modtran(filename = file.path(data_dir, "modtran_baseline.txt"))
 
-modtran_baseline = read_modtran(file.path(data_dir, 'modtran_baseline.txt'))
+modtran_baseline = read_modtran(file.path(data_dir, "modtran_baseline.txt"))
 
 # Here is how you extract the various values from modtran_baseline:
 baseline_i_out <- modtran_baseline$i_out
@@ -410,8 +410,8 @@ b) Where in the spectrum does methane absorb? What concentration does it take to
                                   # power of x.
           
           # Create a character variable that will be a file name of the form
-          # "_data/methane_xx_x.txt", where xx_x is the methane concentration,
-          # with an underscore for the decimal point.
+          # file.path(data_dir, "methane_xx_x.txt"), where xx_x is the methane 
+          # concentration, with an underscore for the decimal point.
           file_name = formatC(p_methane, digits = 1, decimal.mark = "_", 
                               format = "f") %>%
                       str_c('methane_', ., ".txt") %>%
@@ -435,7 +435,7 @@ b) Where in the spectrum does methane absorb? What concentration does it take to
         }
         ```
         This will run MODTRAN for the different values of methane concentration and
-        save them in the `_data` folder as "methane_0_4.txt", "methane_0_8.txt", 
+        save them in the "_data" folder as "methane_0_4.txt", "methane_0_8.txt", 
         "methane_1_6.txt", and so forth, up to "methane_819_2.txt", and also
         create a data tibble `methane_data` with a list of methane concentrations
         and the corresponding $I_{\text{out}}$.

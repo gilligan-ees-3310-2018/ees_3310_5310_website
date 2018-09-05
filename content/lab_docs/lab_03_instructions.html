@@ -87,7 +87,7 @@ IR radiation going out to space.</p></li>
 “down” (the default) or “up”.</p></li>
 </ul>
 <p>Any arguments you don’t specify explicitly take on their default value.
-Thus, <code>run_modtran('_data/modtran_experiment_1.txt', co2_ppm = 800, delta_t = 1.0, h2o_fixed = &quot;relative humidity&quot;)</code>
+Thus, <code>run_modtran(file.path(data_dir, &quot;modtran_experiment_1.txt&quot;), co2_ppm = 800, delta_t = 1.0, h2o_fixed = &quot;relative humidity&quot;)</code>
 would run with all the default values, except for 800 ppm CO<sub>2</sub>,
 a temperature offset of 1°C, and holding relative humidity fixed.</p></li>
 <li><p><code>plot_modtran</code> reads a MODTRAN output file and generates a plot.
@@ -187,7 +187,7 @@ top of the atmosphere).</p></li>
 <h2>Examples:</h2>
 <pre class="r"><code>run_modtran(filename = file.path(data_dir, &quot;modtran_baseline.txt&quot;))
 
-modtran_baseline = read_modtran(file.path(data_dir, &#39;modtran_baseline.txt&#39;))
+modtran_baseline = read_modtran(file.path(data_dir, &quot;modtran_baseline.txt&quot;))
 
 # Here is how you extract the various values from modtran_baseline:
 baseline_i_out &lt;- modtran_baseline$i_out
@@ -358,8 +358,8 @@ methane_data = tibble() # create a blank data tibble</p>
                         # power of x.
 
 # Create a character variable that will be a file name of the form
-# &quot;_data/methane_xx_x.txt&quot;, where xx_x is the methane concentration,
-# with an underscore for the decimal point.
+# file.path(data_dir, &quot;methane_xx_x.txt&quot;), where xx_x is the methane 
+# concentration, with an underscore for the decimal point.
 file_name = formatC(p_methane, digits = 1, decimal.mark = &quot;_&quot;, 
                     format = &quot;f&quot;) %&gt;%
             str_c(&#39;methane_&#39;, ., &quot;.txt&quot;) %&gt;%
@@ -381,7 +381,7 @@ results = read_modtran(file_name)
 df = tibble(methane = results$ch4, i_out = results$i_out)
 methane_data = bind_rows(methane_data, df)</code></pre>
 <p>}
-``<code>This will run MODTRAN for the different values of methane concentration and   save them in the</code>_data<code>folder as &quot;methane_0_4.txt&quot;, &quot;methane_0_8.txt&quot;,    &quot;methane_1_6.txt&quot;, and so forth, up to &quot;methane_819_2.txt&quot;, and also   create a data tibble</code>methane_data` with a list of methane concentrations
+``<code>This will run MODTRAN for the different values of methane concentration and   save them in the &quot;_data&quot; folder as &quot;methane_0_4.txt&quot;, &quot;methane_0_8.txt&quot;,    &quot;methane_1_6.txt&quot;, and so forth, up to &quot;methane_819_2.txt&quot;, and also   create a data tibble</code>methane_data` with a list of methane concentrations
 and the corresponding <span class="math inline">\(I_{\text{out}}\)</span>.</p></li>
 <li><p>Use <code>mutate</code> to add a new column <code>change</code>, which contains the change in
 <span class="math inline">\(I_{\text{out}}\)</span> between the previous row and this one. You can use the
