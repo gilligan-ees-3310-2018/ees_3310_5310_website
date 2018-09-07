@@ -307,16 +307,16 @@
 		// Holds information about the keyboard shortcuts
 		keyboardShortcuts = {
 			'N  ,  SPACE':			'Next slide',
-			'P':					'Previous slide',
+			'P  ,  BACKSPACE':	'Previous slide',
 			'&#8592;  ,  H':		'Navigate left',
 			'&#8594;  ,  L':		'Navigate right',
 			'&#8593;  ,  K':		'Navigate up',
 			'&#8595;  ,  J':		'Navigate down',
-			'Home':					'First slide',
-			'End':					'Last slide',
-			'B  ,  .':				'Pause',
-			'F':					'Fullscreen',
-			'ESC, O':				'Slide overview'
+			'Home':					    'First slide',
+			'End':					    'Last slide',
+			'B  ,  .':				  'Pause',
+			'F':					      'Fullscreen',
+			'ESC, O':				    'Slide overview'
 		},
 
 		// Holds custom key code mappings
@@ -4786,8 +4786,8 @@
 			triggered = true;
 
 			switch( event.keyCode ) {
-				// p, page up
-				case 80: case 33: navigatePrev(); break;
+				// p, page up, backspace
+				case 80: case 33: case 8: navigatePrev(); break;
 				// n, page down
 				case 78: case 34: navigateNext(); break;
 				// h, left
