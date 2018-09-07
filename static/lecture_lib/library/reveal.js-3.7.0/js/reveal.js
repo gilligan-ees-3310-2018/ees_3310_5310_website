@@ -4518,12 +4518,12 @@
 
 		// Reverse for RTL
 		if( config.rtl ) {
-			if( ( isOverview() || nextFragment() === false ) && availableRoutes().left ) {
+			if( availableRoutes().left ) {
 				slide( indexh + 1 );
 			}
 		}
 		// Normal navigation
-		else if( ( isOverview() || previousFragment() === false ) && availableRoutes().left ) {
+		else if( availableRoutes().left ) {
 			slide( indexh - 1 );
 		}
 
@@ -4535,12 +4535,12 @@
 
 		// Reverse for RTL
 		if( config.rtl ) {
-			if( ( isOverview() || previousFragment() === false ) && availableRoutes().right ) {
+			if( availableRoutes().right ) {
 				slide( indexh - 1 );
 			}
 		}
 		// Normal navigation
-		else if( ( isOverview() || nextFragment() === false ) && availableRoutes().right ) {
+		else if( availableRoutes().right ) {
 			slide( indexh + 1 );
 		}
 
@@ -4549,7 +4549,7 @@
 	function navigateUp() {
 
 		// Prioritize hiding fragments
-		if( ( isOverview() || previousFragment() === false ) && availableRoutes().up ) {
+		if( availableRoutes().up ) {
 			slide( indexh, indexv - 1 );
 		}
 
@@ -4560,7 +4560,7 @@
 		hasNavigatedDown = true;
 
 		// Prioritize revealing fragments
-		if( ( isOverview() || nextFragment() === false ) && availableRoutes().down ) {
+		if( availableRoutes().down ) {
 			slide( indexh, indexv + 1 );
 		}
 
