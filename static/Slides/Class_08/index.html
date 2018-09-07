@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<!-- JG Reveal.js Template -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Jonathan Gilligan" />
+  <title>Climate Feedbacks</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="stylesheet" href="../../lecture_lib/library/reveal.js-3.7.0/css/reveal.min.css"/>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      .smallcaps{font-variant: small-caps;}
+      .line-block{white-space: pre-line;}
+      .column{display: inline-block;}  </style>
+  <style type="text/css">
+    div.qrbox {
+     position:fixed; 
+     bottom:0%;
+     left:10px;
+     text-align:left; 
+     vertical-align:bottom;
+    }
+  </style>
+<!-- theme = solarized_jg -->
+<link rel="stylesheet" href="../../lecture_lib/library/assets/css/theme/solarized_jg.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lecture_lib/library/reveal.js-3.7.0/css/print/pdf.css' : '../../lecture_lib/library/reveal.js-3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+            <!-- start title slide -->
+<section class='center' id='title' >
+    <h1 class="title">Climate Feedbacks</h1>
+    <h3 class="author">EES 3310/5310</h3>
+        <h3 class="author">Global Climate Change</h3>
+    <h3 class="author">Jonathan Gilligan</h3>
+    <h3 class="date">
+      Class #8:
+       Friday Sept. 7
+      2018
+    </h3>
+        <div class="qrbox" id="qrbox">
+      <p style="font-size:30%">
+    <a href="https://ees3310.jgilligan.org/Slides/Class_08">
+  	<img src="qrcode.png" alt="https://ees3310.jgilligan.org/Slides/Class_08"/>
+  	</a>
+    	<br/>
+    	Live web page: <a href="https://ees3310.jgilligan.org/Slides/Class_08">https://ees3310.jgilligan.org/Slides/Class_08</a>
+    	<br/>
+    	PDF: <a href="https://ees3310.jgilligan.org/Slides/Class_08/EES_3310_5310_Class_08_Slides.pdf" target="_blank">https://ees3310.jgilligan.org/Slides/Class_08/EES_3310_5310_Class_08_Slides.pdf</a>
+    	
+  	</p>
+  	</div>
+    	<!-- end title slide -->
+</section>
+
+<section><section id="lapse-rate-sec" class="title-slide slide level1 center"><h1>Lapse Rates</h1></section><section id="which-lapse-rate-is-greater" class="slide level2 center">
+<h2>Which lapse rate is greater?</h2>
+<p><br/></p>
+</center>
+<table style="border:none;">
+<tr style="border:none;">
+<td style="border:none;">
+<div>
+<p><img data-src="assets/fig/lapse.a-1.png" /></p>
+</div>
+</td>
+<td style="border:none;">
+<div class="fragment grow">
+<p><img data-src="assets/fig/lapse.b-1.png" /></p>
+</div>
+</td>
+</tr>
+</table>
+</center>
+</section><section id="lapse-rates" class="slide level2">
+<h2>Lapse Rates</h2>
+<p><img data-src="assets/fig/lapses-1.png" /></p>
+</section></section>
+<section><section id="feedback1-sec" class="title-slide slide level1 center"><h1>Feedback</h1></section><section id="feedback1" class="slide level2">
+<h2>Feedback</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(Q\)</span> is net heat flow into the earth:
+<ul>
+<li class="fragment"><span class="math inline">\(Q = I_{\text{in}} - I_{\text{out}}\)</span>,</li>
+</ul></li>
+<li class="fragment"><strong>At Start:</strong> <span class="math inline">\(Q = I_{\text{in}} - I_{\text{out}} = 0\)</span>,
+<ul>
+<li class="fragment"><span class="math inline">\(T_{\text{ground}} = T_0\)</span>.</li>
+</ul></li>
+<li class="fragment"><strong>Forcing:</strong> change <span class="math inline">\(Q \rightarrow Q_{\text{forcing}} &gt; 0\)</span>
+<ul>
+<li class="fragment">What happens?</li>
+</ul></li>
+<li class="fragment"><strong>Response:</strong> <span class="math inline">\(T_{\text{ground}} \rightarrow T_0 + \Delta T\)</span>
+<ul>
+<li class="fragment"><strong>Normally</strong>, <span class="math inline">\(\Delta T\)</span> brings <span class="math inline">\(I_{\text{out}}\)</span> back to balance with <span class="math inline">\(I_{\text{in}}\)</span>.</li>
+<li class="fragment"><strong>With feedback</strong>, <span class="math inline">\(\Delta T\)</span> causes a new forcing, <span class="math inline">\(\Delta Q_{\text{feedback}} = f \Delta T\)</span></li>
+<li class="fragment"><span class="math inline">\(\Delta Q_{\text{feedback}}\)</span> causes further change in <span class="math inline">\(T_{\text{ground}}\)</span>.</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="feedback-examples" class="title-slide slide level1 center"><h1>Examples of feedbacks</h1></section><section id="ice-albedo" class="slide level2 blacktitle blacktext" data-background="assets/images/icealbedo.png">
+<h2>Ice-Albedo</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\Delta Q = f_{\text{ice-alb}} \Delta T\)</span></li>
+<li class="fragment">What happens?</li>
+</ul>
+</section><section id="water-vapor" class="slide level2">
+<h2>Water-vapor</h2>
+<p><br/></p>
+<ul>
+<li class="fragment">Temperature rises</li>
+<li class="fragment">What happens to humidity?
+<ul>
+<li class="fragment">Humidity rises: more water vapor</li>
+</ul></li>
+<li class="fragment">How does this affect <span class="math inline">\(\Delta Q\)</span>?
+<ul>
+<li class="fragment">More water vapor <span class="math inline">\(\rightarrow\)</span> bigger greenhouse effect</li>
+<li class="fragment"><span class="math inline">\(I_{\text{out}}\)</span> gets smaller</li>
+<li class="fragment"><span class="math inline">\(\Delta Q = \Delta(I_{\text{in}} - I_{\text{out}}) &gt; 0\)</span></li>
+<li class="fragment">Positive <span class="math inline">\(\Delta T \rightarrow \text{Positive}~\Delta Q\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(f = \Delta Q / \Delta T &gt; 0\)</span>: positive feedback</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="gw-baseline-2" class="slide level2 ninety" data-transition="fade">
+<h2>Greenhouse effect</h2>
+<ul>
+<li>Ground temp: <span class="math inline">\(T_{\text{ground}} = T_{\text{skin}} + h_{\text{skin}} \times \text{env. lapse}\)</span></li>
+</ul>
+</section><section id="gw-convect-2" class="slide level2 ninety" data-transition="fade">
+<h2>Global warming</h2>
+<ul>
+<li>Greater CO<sub>2</sub> <span class="math inline">\(\rightarrow\)</span> greater skin height.</li>
+<li>Warming: <span class="math inline">\(\Delta T_{\text{ground}} = \Delta h_{\text{skin}} \times \text{env. lapse}\)</span></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>What does rising temperature do to water vapor?</li>
+</ul>
+</div>
+</section><section id="wv-feedback" class="slide level2 ninety" data-transition="fade">
+<h2>Water Vapor Feedback</h2>
+<p><img data-src="assets/fig/h2o.feedback.1-1.png" /></p>
+<ul>
+<li>Rising temperature <span class="math inline">\(\rightarrow\)</span> greater humidity</li>
+<li>Greater humidity <span class="math inline">\(\rightarrow\)</span> skin height rises even higher</li>
+<li><span class="math inline">\(\Delta T_{\text{ground}} = \Delta h_{\text{skin}} \times \text{Lapse}\)</span></li>
+</ul>
+</section><section id="testing-theory" class="slide level2">
+<h2>Testing Theory</h2>
+<p><img alt="Water Vapor Feedback" src="assets/images/w_v_feedback_test.png"/></p>
+</section><section id="testing-theory-of-water-vapor-feedback" class="slide level2 eighty">
+<h2>Testing Theory of Water-Vapor Feedback</h2>
+<p><img alt="Pinatubo Water Vapor Feedback" src="assets/images/pinatubo_wvfeedback.jpg"/></p>
+<ul>
+<li class="fragment">Pinatubo erupts</li>
+<li class="fragment">Model calculations with water vapor feedback correctly predict cooling</li>
+<li class="fragment">Turn off water vapor feedback: incorrect predictions</li>
+</ul>
+</section></section>
+<section><section id="runaway-sec" class="title-slide slide level1" data-background="assets/images/runaway_greenhouse_bg.png" data-transition="fade" data-background-transition="fade-out"><h1>Runaway Greenhouse</h1></section><section id="runaway" class="slide level2 ninety" data-transition="fade" data-background-transition="fade">
+<h2>Runaway Greenhouse</h2>
+<div class="columns" style="vertical-align:top;">
+<div class="column" style="width:50%;vertical-align:top;padding-top:1em;font-size:80%;">
+<ul>
+<li class="fragment">Equilibrium vapor pressure: <span class="math inline">\(p_{\text{eq}}(T)\)</span></li>
+<li class="fragment">Actual vapor pressure <span class="math inline">\(p\)</span></li>
+<li class="fragment">If <span class="math inline">\(p_{\text{eq}}(T) &gt; p\)</span>, then <span class="math inline">\(p\)</span> will rise.</li>
+<li class="fragment">Rising <span class="math inline">\(p \rightarrow\)</span> rising <span class="math inline">\(T \rightarrow\)</span> rising <span class="math inline">\(p_{\text{eq}}(T)\)</span>.</li>
+<li class="fragment">Equilibrium when <span class="math inline">\(p = p_{\text{eq}}(T)\)</span>,</li>
+<li class="fragment">If vapor pressure curve does not hit equilibrium with water or ice, greenhouse will run away:
+<ul>
+<li class="fragment">Water will keep evaporating until oceans are dry.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;vertical-align:top;padding-top:30px;">
+<p><img data-src="assets/images/runaway_greenhouse.png" alt="Runaway Greenhouse" /></p>
+</div>
+</div>
+</section><section id="Ingersoll_1" class="slide level2" data-transition="fade">
+<h2>Andrew Ingersoll &amp; Runaway Greenhouse</h2>
+<div class="columns">
+<div class="column" style="width:75%;padding-top:20px;">
+<h3 id="first-class-he-ever-taught">1967: First class he ever taught</h3>
+<ul>
+<li class="fragment">Assigned homework:
+<ul>
+<li class="fragment">Calculate water vapor feedback</li>
+</ul></li>
+<li class="fragment">Students couldn’t solve problem</li>
+<li class="fragment">Fixed problem so students could solve it</li>
+<li class="fragment">It worked for Earth, but not Venus</li>
+<li class="fragment">Hmmmm …</li>
+<li class="fragment">It would work for Venus if all the oceans boiled dry.</li>
+</ul>
+</div><div class="column" style="width:25%;vertical-align:top;">
+<p><img data-src="assets/images/Ingersoll.jpg" alt="Andrew Ingersoll" /></p>
+</div>
+</div>
+</section><section id="Ingersoll_2" class="slide level2" data-transition="fade">
+<h2>Andrew Ingersoll &amp; Runaway Greenhouse</h2>
+<div class="columns">
+<div class="column" style="width:75%;padding-top:20px;">
+<h3 id="wrote-up-results-for-publication">Wrote up results for publication</h3>
+<ul>
+<li class="fragment">Rejected by journal</li>
+<li class="fragment">Submitted to another journal
+<ul>
+<li class="fragment">Rejected again</li>
+</ul></li>
+<li class="fragment">Submitted to a third journal
+<ul>
+<li class="fragment">Accepted</li>
+</ul></li>
+<li class="fragment">Now a classic paper
+<ul>
+<li class="fragment">Cited more than 200 times</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:25%;vertical-align:top;">
+<p><img data-src="assets/images/Ingersoll.jpg" alt="Andrew Ingersoll" /></p>
+</div>
+</div>
+</section><section id="kombayashi-ingersoll-limit" class="slide level2">
+<h2>Kombayashi-Ingersoll Limit</h2>
+<div class="columns">
+<div class="column" style="width:50%;font-size:80%;">
+<ul>
+<li class="fragment">Outgoing long-wave has to balance incoming sunlight</li>
+<li class="fragment">Brighter sun <span class="math inline">\(\rightarrow\)</span> hotter surface <span class="math inline">\(\rightarrow\)</span> more water vapor</li>
+<li class="fragment">Kombayashi-Ingersoll limit:
+<ul>
+<li class="fragment">Sunlight below limit, there is a stable equilibrium with liquid water</li>
+<li class="fragment">Sunlight above limit, oceans boil dry</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="assets/images/kombayashi-ingersoll.jpg" alt="Kombayashi-Ingersoll Limit" /></p>
+</div>
+</div>
+</section></section>
+<section><section id="cloud-feedbacks-sec" class="title-slide slide level1 blacktitle" data-background="assets/images/clouds-001-1024x768.jpg" data-transition="fade" data-background-transition="fade"><h1>Cloud Feedbacks</h1></section><section id="cloud-feedbacks-1" class="slide level2" data-transition="fade" data-background-transition="fade">
+<h2>Cloud Feedbacks</h2>
+<ul>
+<li class="fragment">What effect do clouds have on climate?</li>
+<li class="fragment">What effects does climate have on clouds?</li>
+<li class="fragment">Warmer <span class="math inline">\(\rightarrow\)</span> more clouds</li>
+<li class="fragment">More clouds:
+<ul>
+<li class="fragment">Higher albedo
+<ul>
+<li class="fragment">(cools earth: negative feedback)</li>
+</ul></li>
+<li class="fragment">High emissivity: blocks longwave light
+<ul>
+<li class="fragment">(warms earth: positive feedback)</li>
+</ul></li>
+</ul></li>
+<li class="fragment">Which effect is bigger?</li>
+</ul>
+</section><section id="cloud-feedbacks-2" class="slide level2 yellowtitle" data-background="assets/images/cirrus.jpg" data-transition="fade" data-background-transition="fade">
+<h2>Cirrus Clouds</h2>
+</section><section id="cloud-feedbacks-3" class="slide level2 blacktitle" data-background="assets/images/stratus.jpg" data-transition="fade" data-background-transition="fade">
+<h2>Stratus Clouds</h2>
+</section><section id="cloud-feedbacks-4" class="slide level2" data-transition="fade" data-background-transition="fade">
+<h2>Cloud Feedbacks</h2>
+<p><img data-src="assets/images/cloud_feedback_2.png" alt="Cloud Feedbacks" style="height:750px;" /></p>
+</section><section id="cloud-feedbacks-5" class="slide level2" data-transition="fade" data-background-transition="fade">
+<h2>Satellite Measurements</h2>
+<h3 id="radiative-forcing-by-clouds">Radiative forcing by clouds</h3>
+<p><img data-src="assets/images/satellite_clouds.jpg" alt="Satellite Measurement of radiative forcing by clouds" style="height:550px;" /></p>
+<p>(negative = cooling, positive = warming)</p>
+</section></section>
+<section><section id="indirect-aerosol-sec" class="title-slide slide level1 yellowtitle" data-transition="fade" data-background-transition="fade" data-background="assets/images/pacific_tmo_2009063_crop.jpg"><h1>Indirect Aerosol Effect</h1></section><section id="indirect-aerosol" class="slide level2 ninety" data-transition="fade" data-background-transition="fade">
+<h2>Indirect Aerosol Effect</h2>
+<ul>
+<li>Aerosol particles <span class="math inline">\(\rightarrow\)</span> more, smaller droplets</li>
+<li>Smaller droplets <span class="math inline">\(\rightarrow\)</span> greater albedo, longer lifetime</li>
+<li>More droplets <span class="math inline">\(\rightarrow\)</span> greater albedo, more absorption</li>
+</ul>
+<p><img data-src="assets/images/houghton3-9.jpg" alt="Indirect Aerosol Effect" style="height:550px;" /></p>
+</section><section id="indirect-aerosol-2" class="slide level2">
+<h2>Indirect Aerosol Effect</h2>
+<p><img data-src="assets/images/indirect_aerosol_ships.jpg" alt="Ships and Clouds" style="height:750px;" /></p>
+</section></section>
+<section><section id="feedback-summary-sec" class="title-slide slide level1 center" data-transition="fade-out"><h1>Summary of Feedbacks</h1></section><section id="feedback-summary" class="slide level2" data-transition="fade-in">
+<h2>Summary of Feedbacks</h2>
+<p><img data-src="assets/images/feedback_summary.png" alt="Summary of feedbacks" style="height:750px;" /></p>
+</section></section>
+<section><section id="feedback-math-sec" class="title-slide slide level1 center"><h1>Feedback Mathematics</h1></section><section id="feedback-math-intro" class="slide level2 center">
+<h2>Feedback Mathematics</h2>
+<p>This mathematical section is for the graduate students. Undergraduates will not be responsible for this material.</p>
+</section><section id="feedback-math" class="slide level2">
+<h2>Feedback Mathematics</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(Q\)</span> is heat coming into the earth:
+<ul>
+<li class="fragment"><span class="math inline">\(Q = I_{\text{in}} - I_{\text{out}}\)</span>,</li>
+</ul></li>
+<li class="fragment">Start out: <span class="math inline">\(Q = I_{\text{in}} - I_{\text{out}} = 0\)</span>,
+<ul>
+<li class="fragment"><span class="math inline">\(T_{\text{ground}} = T_0\)</span>.</li>
+</ul></li>
+<li class="fragment">Forcing: change <span class="math inline">\(Q \rightarrow Q_{\text{forcing}} &gt; 0\)</span>
+<ul>
+<li class="fragment">What happens?</li>
+</ul></li>
+<li class="fragment">Response: <span class="math inline">\(T_{\text{ground}} \rightarrow T_0 + \Delta T\)</span>
+<ul>
+<li class="fragment">What happens to <span class="math inline">\(Q\)</span></li>
+</ul></li>
+<li class="fragment">Feedback: <span class="math inline">\(\Delta Q_{\text{feedback}} = f \Delta T\)</span></li>
+</ul>
+</section><section id="feedback-math-2" class="slide level2 leftslide">
+<h2>Stabilizing (Negative) Feedback</h2>
+<ul>
+<li class="fragment">Start out: <span class="math inline">\(Q = I_{\text{in}} - I_{\text{out}} = 0\)</span>,
+<ul>
+<li class="fragment"><span class="math inline">\(T = T_0\)</span></li>
+</ul></li>
+<li class="fragment">Positive Forcing: change <span class="math inline">\(Q \rightarrow Q_{\text{forcing}} &gt; 0\)</span></li>
+<li class="fragment">Response: <span class="math inline">\(T_{\text{ground}} \rightarrow T_0 + \Delta T\)</span></li>
+<li class="fragment">Feedback: <span class="math inline">\(\Delta Q_{\text{feedback}} = f \Delta T\)</span>
+<ul>
+<li class="fragment">New equilibrium: <span class="math display">\[\begin{aligned}
+\Delta Q &amp;= - Q_{\text{forcing}}\\
+Q &amp;= Q_{\text{forcing}} + \Delta Q \\
+&amp;= Q_{\text{forcing}} - Q_{\text{forcing}} = 0
+\end{aligned}\]</span></li>
+<li class="fragment"><span class="math inline">\(\Delta T = \Delta Q / f = - Q_{\text{forcing}} / f\)</span></li>
+</ul></li>
+</ul>
+</section><section id="sb-feedback" class="slide level2 leftslide ninety">
+<h2>Stefan-Boltzmann Feedback</h2>
+<h3 id="bare-rock">Bare rock:</h3>
+<ul>
+<li><span class="math inline">\(I_{\text{out}} = \epsilon\sigma T^4\)</span></li>
+<li><span class="math inline">\(f_{\text{SB}} = - 3.2~\mathrm{W m^{-2} K^{-1}}\)</span></li>
+</ul>
+<ul>
+<li class="fragment">Forcing: <span class="math inline">\(Q_{\text{forcing}} = I_{\text{in}} - I_{\text{out}} = +1~\mathrm{W m^{-2}}\)</span>
+<ul>
+<li class="fragment">Will this warm or cool the planet?</li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(\Delta T = - Q_{\text{forcing}} / f\)</span></li>
+<li class="fragment"><span class="math display">\[\Delta T = \frac{-1~\mathrm{W m^{-2}}}{-3.2~\mathrm{W m^{-2} K^{-1}}}
+= +0.32~\mathrm{K}\]</span></li>
+<li class="fragment">Is Stefan-Boltzmann feedback positive or negative?
+<ul>
+<li class="fragment">Negative because although temperature rises, SB feedback stabilizes it.</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="pos-neg-fb-sec" class="title-slide slide level1 center"><h1>Positive &amp; Negative Feedback</h1></section><section id="pos-neg-fb" class="slide level2" data-transition="fade-out">
+<h2>Positive &amp; Negative Feedback</h2>
+<ul>
+<li>
+Total feedback: <span class="math inline">\(f = f_0 + f_1 + f_2 + \cdots\)</span>
+</li>
+<li class="fragment fade-in">
+<span class="math inline">\(f_0 = f_{\text{SB}}\)</span>: Stefan-Boltzmann
+</li>
+<li class="fragment fade-in">
+Other feedbacks <span class="math inline">\(f_1, f_2, \cdots\)</span>:
+<ul>
+<li>
+Positive (<span class="math inline">\(f_i &gt; 0\)</span>): amplifies temperature change
+<ul>
+<li>
+Warmings <span class="math inline">\(\rightarrow\)</span> hotter
+</li>
+<li>
+Coolings <span class="math inline">\(\rightarrow\)</span> colder
+</li>
+</ul>
+</li>
+<li li class="fragment fade-in">
+Negative (<span class="math inline">\(f_i &lt; 0\)</span>): diminishes temperature change
+<ul>
+<li>
+Warmings <span class="math inline">\(\rightarrow\)</span> milder
+</li>
+<li>
+Coolings <span class="math inline">\(\rightarrow\)</span> milder
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section><section id="amp" class="slide level2 eighty">
+<h2>Amplification</h2>
+<p><br/></p>
+<p><span class="math display">\[\begin{aligned}
+  a &amp;= \frac{f_0}{f} = \frac{f_0}{f_0 + f_1 + f_2 + \cdots}\\
+  f_0 &amp;= f_{\text{SB}} = \text{Stefan-Boltzmann feedback}
+  \end{aligned}\]</span> <br/> <span class="fragment fade-in"> <span class="math display">\[\begin{aligned}
+  \Delta T &amp;= \frac{\,- Q_{\text{forcing}}}{f}\\
+  &amp;=   a \times \frac{\,-Q_{\text{forcing}}}{f_0}
+  \end{aligned}\]</span> </span></p>
+<ul>
+<li class="fragment fade-in">
+<span class="math inline">\(a &gt; 1\)</span>: net feedback is positive:
+<ul>
+<li>
+more severe warmings, coolings.
+</li>
+</ul>
+</li>
+<li class="fragment fade-in">
+<span class="math inline">\(a &lt; 1\)</span>: net feedback is negative:
+<ul>
+<li>
+milder warmings, coolings.
+</li>
+</ul>
+</li>
+</ul>
+</section><section id="stability" class="slide level2 eighty">
+<h2>Stability of the Climate</h2>
+<ul>
+<li class="fragment">Most feedbacks we’ve discussed are positive:
+<ul>
+<li class="fragment">Ice-albedo</li>
+<li class="fragment">Water vapor</li>
+<li class="fragment">Clouds (mostly)</li>
+</ul></li>
+<li class="fragment">Why don’t these positive feedbacks make the climate unstable? (e.g., runaway greenhouse)
+<ul>
+<li class="fragment">Because they are smaller than the negative Stefan-Boltzmann feedback, so the total feedback remains negative.</li>
+<li class="fragment">Thus, positive feedbacks make global warming much greater than it would be with just the Stefan-Boltzmann feedback, but they’re not big enough to destabilize the planet.</li>
+</ul></li>
+<li class="fragment">Many scientists worry that there may be a threshold of global warming where the positive feedbacks will become greater than Stefan-Boltzmann and destabilize the climate.</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/head.min.js"></script>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1440,
+        height: 900,
+      
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+
+<script>
+var MathJax = { jax: ["input/TeX", "output/HTML-CSS"],
+                TeX: {extensions: ["color.js", "mhchem.js"],
+                Macros: {
+                  permil: "\\unicode{x2030}",
+                  pH: "p\\ce{H}",
+                  CaSi: "\\ce{CaSiO3}",
+                  silicate: "\\ce{SiO3^2-}",
+                  Caplus: "\\ce{Ca^2+}",
+                  calcite: "\\ce{CaCO3}",
+                  silica: "\\ce{SiO2}",
+                  OH: "\\ce{OH-}",
+                  Hplus: "\\ce{H+}",
+                  carbonic: "\\ce{H2CO3}",
+                  bicarb: "\\ce{HCO3-}",
+                  carb: "\\ce{CO3^2-}",
+                  water: "\\mathrm{H_2O}",
+                  degF: "^\\circ \\mathrm{F}",
+                  degC: "^\\circ \\mathrm{C}",
+                  methane: "\\ce{CH4}",
+                  COO: "\\ce{CO2}"
+                },
+                  },
+                "HTML-CSS" : {scale: 100 }};
+</script>
+
+    
+    
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["SVG"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+  </script>
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  <script>
+  var qrbox = document.querySelector("#qrbox");
+  var advance_fragment = 0;
+  Reveal.addEventListener('slidechanged', function() {
+    if (Reveal.isFirstSlide()) {
+      qrbox.style.visibility="visible";
+    } else {
+      qrbox.style.visibility="hidden";
+      while (advance_fragment > 0) {
+        console.log('advancing fragment');
+        Reveal.nextFragment();
+        advance_fragment--;
+      }
+    }
+  }, false);
+  
+  Reveal.addEventListener('skip_slide', function() {
+    Reveal.next();
+  }, false);
+  
+  Reveal.addEventListener('advance_fragment', function() {
+    console.log("setting advance fragment");
+    advance_fragment++;
+    }, false);
+  </script>
+  </body>
+</html>
