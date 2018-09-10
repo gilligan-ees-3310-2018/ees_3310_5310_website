@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!-- JG Reveal.js Template -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Jonathan Gilligan" />
+  <title>Feedbacks: Oceans and El Niño</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="stylesheet" href="../../lecture_lib/library/reveal.js-3.7.0/css/reveal.min.css"/>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      .smallcaps{font-variant: small-caps;}
+      .line-block{white-space: pre-line;}
+      .column{display: inline-block;}  </style>
+  <style type="text/css">
+    div.qrbox {
+     position:fixed; 
+     bottom:-50%;
+     left:10px;
+     text-align:left; 
+     vertical-align:bottom;
+    }
+  </style>
+<!-- theme = solarized_jg -->
+<link rel="stylesheet" href="../../lecture_lib/library/assets/css/theme/solarized_jg.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lecture_lib/library/reveal.js-3.7.0/css/print/pdf.css' : '../../lecture_lib/library/reveal.js-3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+            <!-- start title slide -->
+<section class='center' id='title' >
+    <h1 class="title">Feedbacks:<br/>Oceans and El Niño</h1>
+    <h3 class="author">EES 3310/5310</h3>
+        <h3 class="author">Global Climate Change</h3>
+    <h3 class="author">Jonathan Gilligan</h3>
+    <h3 class="date">
+      Class #9:
+       Monday Sept. 11
+      2017
+    </h3>
+        <div class="qrbox" id="qrbox">
+      <p style="font-size:30%">
+    <a href="https://ees3310.jgilligan.org/Slides/Class_09">
+  	<img src="qrcode.png" alt="https://ees3310.jgilligan.org/Slides/Class_09"/>
+  	</a>
+    	<br/>
+    	Live web page: <a href="https://ees3310.jgilligan.org/Slides/Class_09">https://ees3310.jgilligan.org/Slides/Class_09</a>
+    	<br/>
+    	PDF: <a href="https://ees3310.jgilligan.org/Slides/Class_09/EES_3310_5310_Class_09_Slides.pdf" target="_blank">https://ees3310.jgilligan.org/Slides/Class_09/EES_3310_5310_Class_09_Slides.pdf</a>
+    	
+  	</p>
+  	</div>
+    	<!-- end title slide -->
+</section>
+
+<section id="feedback-summary" class="slide level2">
+<h2>Summary of Feedbacks</h2>
+<p><img data-src="assets/images/feedback_summary.png" alt="Summary of feedbacks" style="height:800px;" /></p>
+</section>
+<section id="question_4" class="slide level2 eighty">
+<h2>Question</h2>
+<p><img data-src="assets/fig/std_atmos_plot-1.png" /></p>
+<ul>
+<li class="fragment">Water vapor absorption is completely saturated.
+<ul>
+<li class="fragment">Why does water vapor emit at <br/> warmer temperatures than CO<sub>2</sub>?</li>
+</ul></li>
+</ul>
+</section>
+<section><section id="indirect-aerosol-sec" class="title-slide slide level1 yellowtitle" data-transition="fade" data-background-transition="fade" data-background="assets/images/pacific_tmo_2009063_crop.jpg"><h1>Indirect Aerosol Effect</h1></section><section id="indirect-aerosol" class="slide level2 ninety" data-transition="fade" data-background-transition="fade">
+<h2>Indirect Aerosol Effect</h2>
+<ul>
+<li>Aerosol particles <span class="math inline">\(\rightarrow\)</span> more, smaller droplets</li>
+<li>Smaller droplets <span class="math inline">\(\rightarrow\)</span> greater albedo, longer lifetime</li>
+<li>More droplets <span class="math inline">\(\rightarrow\)</span> greater albedo, more absorption</li>
+</ul>
+<p><img data-src="assets/images/houghton3-9.jpg" alt="Indirect Aerosol Effect" style="height:600px;" /></p>
+</section><section id="indirect-aerosol-2" class="slide level2">
+<h2>Indirect Aerosol Effect</h2>
+<p><img data-src="assets/images/indirect_aerosol_ships.jpg" alt="Ships and Clouds" style="height:750px;" /></p>
+</section><section id="feedback-math" class="slide level2" data-transition="fade">
+<h2>Feedback Mathematics</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(Q\)</span> is heat coming into the earth:
+<ul>
+<li class="fragment"><span class="math inline">\(Q = I_{\text{in}} - I_{\text{out}}\)</span>,</li>
+</ul></li>
+<li class="fragment">Start out: <span class="math inline">\(Q = I_{\text{in}} - I_{\text{out}} = 0\)</span>,
+<ul>
+<li class="fragment"><span class="math inline">\(T_{\text{ground}} = T_0\)</span>.</li>
+</ul></li>
+<li class="fragment">Forcing: change <span class="math inline">\(Q \rightarrow Q_{\text{forcing}} &gt; 0\)</span>
+<ul>
+<li class="fragment">What happens?</li>
+</ul></li>
+<li class="fragment">Response: <span class="math inline">\(T_{\text{ground}} \rightarrow T_0 + \Delta T\)</span>
+<ul>
+<li class="fragment">What happens to <span class="math inline">\(Q\)</span></li>
+</ul></li>
+<li class="fragment">Feedback: <span class="math inline">\(\Delta Q_{\text{feedback}} = f \Delta T\)</span></li>
+</ul>
+</section><section id="feedback-math-2" class="slide level2 leftslide" data-transition="fade">
+<h2>Stabilizing (Negative) Feedback</h2>
+<ul>
+<li class="fragment">Start out: <span class="math inline">\(Q = I_{\text{in}} - I_{\text{out}} = 0\)</span>,
+<ul>
+<li class="fragment"><span class="math inline">\(T = T_0\)</span></li>
+</ul></li>
+<li class="fragment">Positive Forcing: change <span class="math inline">\(Q \rightarrow Q_{\text{forcing}} &gt; 0\)</span></li>
+<li class="fragment">Response: <span class="math inline">\(T_{\text{ground}} \rightarrow T_0 + \Delta T\)</span></li>
+<li class="fragment">Feedback: <span class="math inline">\(\Delta Q_{\text{feedback}} = f \Delta T\)</span>
+<ul>
+<li class="fragment">New equilibrium: <span class="math display">\[\begin{aligned}
+\Delta Q &amp;= - Q_{\text{forcing}}\\
+Q &amp;= Q_{\text{forcing}} + \Delta Q \\
+&amp;= Q_{\text{forcing}} - Q_{\text{forcing}} = 0
+\end{aligned}\]</span></li>
+<li class="fragment"><span class="math inline">\(\Delta T = \Delta Q / f = - Q_{\text{forcing}} / f\)</span></li>
+</ul></li>
+</ul>
+</section><section id="sb-feedback" class="slide level2 leftslide">
+<h2>Stefan-Boltzmann Feedback</h2>
+<h3 id="bare-rock">Bare rock:</h3>
+<ul>
+<li><span class="math inline">\(I_{\text{out}} = \epsilon\sigma T^4\)</span></li>
+<li><span class="math inline">\(f_{\text{SB}} = - 3.2~\mathrm{W m^{-2} K^{-1}}\)</span></li>
+</ul>
+<ul>
+<li class="fragment">Forcing: <span class="math inline">\(Q_{\text{forcing}} = I_{\text{in}} - I_{\text{out}} = +1~\mathrm{W m^{-2}}\)</span>
+<ul>
+<li class="fragment">Will this warm or cool the planet?</li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(\Delta T = - Q_{\text{forcing}} / f\)</span></li>
+<li class="fragment"><span class="math display">\[\Delta T = \frac{-1~\mathrm{W m^{-2}}}{-3.2~\mathrm{W m^{-2} K^{-1}}}
+= +0.32~\mathrm{K}\]</span></li>
+<li class="fragment">Is Stefan-Boltzmann feedback positive or negative?</li>
+</ul>
+</section></section>
+<section><section id="pos-neg-fb-sec" class="title-slide slide level1 center"><h1>Positive &amp; Negative Feedback</h1></section><section id="pos-neg-fb" class="slide level2" data-transition="fade-out">
+<h2>Positive &amp; Negative Feedback</h2>
+<ul>
+<li>
+Total feedback: <span class="math inline">\(f = f_0 + f_1 + f_2 + \cdots\)</span>
+</li>
+<li class="fragment fade-in">
+<span class="math inline">\(f_0 = f_{\text{SB}}\)</span>: Stefan-Boltzmann
+</li>
+<li class="fragment fade-in">
+Other feedbacks <span class="math inline">\(f_1, f_2, \cdots\)</span>:
+<ul>
+<li>
+Positive (<span class="math inline">\(f_i &gt; 0\)</span>): amplifies temperature change
+<ul>
+<li>
+Warmings <span class="math inline">\(\rightarrow\)</span> hotter
+</li>
+<li>
+Coolings <span class="math inline">\(\rightarrow\)</span> colder
+</li>
+</ul>
+</li>
+<li li class="fragment fade-in">
+Negative (<span class="math inline">\(f_i &lt; 0\)</span>): diminishes temperature change
+<ul>
+<li>
+Warmings <span class="math inline">\(\rightarrow\)</span> milder
+</li>
+<li>
+Coolings <span class="math inline">\(\rightarrow\)</span> milder
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section><section id="amp" class="slide level2 ninety">
+<h2>Amplification</h2>
+<p><br/></p>
+<p><span class="math display">\[\begin{aligned}
+  a &amp;= \frac{f_0}{f} = \frac{f_0}{f_0 + f_1 + f_2 + \cdots}\\
+  f_0 &amp;= f_{\text{SB}} = \text{Stefan-Boltzmann feedback}
+  \end{aligned}\]</span> <br/> <span class="fragment fade-in"> <span class="math display">\[\begin{aligned}
+  \Delta T &amp;= \frac{\,- Q_{\text{forcing}}}{f}\\
+  &amp;=   a \times \frac{\,-Q_{\text{forcing}}}{f_0}
+  \end{aligned}\]</span> </span></p>
+<ul>
+<li class="fragment fade-in">
+<span class="math inline">\(a &gt; 1\)</span>: net feedback is positive:
+<ul>
+<li>
+more severe warmings, coolings.
+</li>
+</ul>
+</li>
+<li class="fragment fade-in">
+<span class="math inline">\(a &lt; 1\)</span>: net feedback is negative:
+<ul>
+<li>
+milder warmings, coolings.
+</li>
+</ul>
+</li>
+</ul>
+</section></section>
+<section><section id="ENSO-sec" class="title-slide slide level1" data-background="assets/images/el_nino_sst_2.jpg" data-background-size="contain" data-background-color="white" data-transition="fade-out" data-background-transition="fade-out"><h1>El Niño/Southern Oscillation</h1></section><section id="NormalENSO" class="slide level2" data-transition="fade">
+<h2>Normal Conditions</h2>
+<p><img data-src="assets/images/enso_normal_w.jpg" alt="Normal ENSO" style="height:700px;width:1400px;" /></p>
+</section><section id="Nino" class="slide level2" data-transition="fade-in">
+<h2>El Niño</h2>
+<p><img data-src="assets/images/enso_nino_w.jpg" alt="Normal ENSO" style="height:700px;width:1400px;" /></p>
+</section><section id="ENSO-week-2015" class="slide level2" data-transition="fade-out">
+<h2>This Week in 2015</h2>
+<p><img data-src="assets/images/sstweek_c_2015_09_02.png" alt="Tropical Pacific Temperature Anomalies" style="height:700px;" /></p>
+</section><section id="ENSO-week-2016" class="slide level2" data-transition="fade-in">
+<h2>This week in 2016</h2>
+<p><img data-src="assets/images/sstweek_c_2016_08_31.png" alt="Tropical Pacific Temperature Anomalies" style="height:700px;" /></p>
+</section><section id="climate-connection" class="slide level2">
+<h2>Climate Connection</h2>
+<ul>
+<li>El Niño phase:
+<ul>
+<li>Hotter sea-surface</li>
+<li>More evaporation</li>
+<li>Bigger greenhouse effect</li>
+<li>Higher global air temperatures</li>
+<li>Incoming heat goes into air more than ocean</li>
+</ul></li>
+<li>La Niña phase:
+<ul>
+<li>Cooler sea-surface</li>
+<li>Less water vapor</li>
+<li>Smaller greenhouse effect</li>
+<li>Cooler global air temperatures</li>
+<li>Incoming heat mostly absorbed by ocean</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="vertical_saturation_sec" class="title-slide slide level1 center"><h1>Vertical Structure<br/>and Saturation</h1></section><section id="setup_modtran_3" class="slide level2 eighty">
+<h2>Set up MODTRAN:</h2>
+<h3 id="go-to-modtran-httpclimatemodels.uchicago.edumodtran">Go to MODTRAN (<a href="http://climatemodels.uchicago.edu/modtran/" class="uri">http://climatemodels.uchicago.edu/modtran/</a>)</h3>
+<!-- -->
+<ul>
+<li class="fragment">Set altitude to <strong>70 km</strong> and location to “1976 Standard U.S. Atmosphere”.</li>
+<li class="fragment">Set CO<sub>2</sub> to 1 ppm, all other gases to zero.</li>
+<li class="fragment">Now increase by factors of 10 (10, 100, 1000, …)</li>
+</ul>
+</section><section id="vert_co2_00001" class="slide level2" data-transition="fade">
+<h2>1 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00001.hi-1.png" /></p>
+</section><section id="vert_co2_00010" class="slide level2" data-transition="fade">
+<h2>10 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00010.hi-1.png" /></p>
+</section><section id="vert_co2_00100" class="slide level2" data-transition="fade">
+<h2>100 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.00100.hi-1.png" /></p>
+</section><section id="vert_co2_01000" class="slide level2" data-transition="fade">
+<h2>1000 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.01000.hi-1.png" /></p>
+</section><section id="vert_co2_10000" class="slide level2" data-transition="fade">
+<h2>10,000 ppm CO<sub>2</sub></h2>
+<p><img data-src="assets/fig/co2.10000.hi-1.png" /></p>
+</section><section id="question_3" class="slide level2">
+<h2>Question</h2>
+<h3 id="why-do-we-see-the-spike-in-the-middle-of-the-co2-absorption-feature">Why do we see the spike in the middle of the CO<sub>2</sub> absorption feature?</h3>
+</section></section>
+    </div>
+  </div>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/head.min.js"></script>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1440,
+        height: 900,
+      
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+
+<script>
+var MathJax = { jax: ["input/TeX", "output/HTML-CSS"],
+                TeX: {extensions: ["color.js", "mhchem.js"],
+                Macros: {
+                  permil: "\\unicode{x2030}",
+                  pH: "p\\ce{H}",
+                  CaSi: "\\ce{CaSiO3}",
+                  silicate: "\\ce{SiO3^2-}",
+                  Caplus: "\\ce{Ca^2+}",
+                  calcite: "\\ce{CaCO3}",
+                  silica: "\\ce{SiO2}",
+                  OH: "\\ce{OH-}",
+                  Hplus: "\\ce{H+}",
+                  carbonic: "\\ce{H2CO3}",
+                  bicarb: "\\ce{HCO3-}",
+                  carb: "\\ce{CO3^2-}",
+                  water: "\\mathrm{H_2O}",
+                  degF: "^\\circ \\mathrm{F}",
+                  degC: "^\\circ \\mathrm{C}",
+                  methane: "\\ce{CH4}",
+                  COO: "\\ce{CO2}"
+                },
+                  },
+                "HTML-CSS" : {scale: 100 }};
+</script>
+
+    
+    
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["SVG"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+  </script>
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  <script>
+  var qrbox = document.querySelector("#qrbox");
+  var advance_fragment = 0;
+  Reveal.addEventListener('slidechanged', function() {
+    if (Reveal.isFirstSlide()) {
+      qrbox.style.visibility="visible";
+    } else {
+      qrbox.style.visibility="hidden";
+      while (advance_fragment > 0) {
+        console.log('advancing fragment');
+        Reveal.nextFragment();
+        advance_fragment--;
+      }
+    }
+  }, false);
+  
+  Reveal.addEventListener('skip_slide', function() {
+    Reveal.next();
+  }, false);
+  
+  Reveal.addEventListener('advance_fragment', function() {
+    console.log("setting advance fragment");
+    advance_fragment++;
+    }, false);
+  </script>
+  </body>
+</html>
