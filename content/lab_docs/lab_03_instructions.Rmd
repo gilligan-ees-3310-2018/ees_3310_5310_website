@@ -255,13 +255,17 @@ plot_modtran(file.path(data_dir, "modtran_baseline.txt"))
 ```
 
 ```{r double_co2, include=TRUE, message=FALSE, warning=FALSE}
-run_modtran(filename = file.path(data_dir, "modtran_double_co2.txt"), co2_ppm = 800)
-plot_modtran(file.path(data_dir, "modtran_double_co2.txt"), i_out_ref = baseline_i_out, delta_t = 0)
+run_modtran(filename = file.path(data_dir, "modtran_double_co2.txt"), 
+            co2_ppm = 800)
+plot_modtran(file.path(data_dir, "modtran_double_co2.txt"), 
+             i_out_ref = baseline_i_out, delta_t = 0)
 ```
 
 ```{r double_co2_warming, include=TRUE, message=FALSE, warning=FALSE}
-run_modtran(filename = file.path(data_dir, "modtran_double_co2_warming.txt"), co2_ppm = 800, delta_t = 0.76)
-plot_modtran(file.path(data_dir, "modtran_double_co2_warming.txt"), i_out_ref = baseline_i_out, delta_t = 0.76)
+run_modtran(filename = file.path(data_dir, "modtran_double_co2_warming.txt"), 
+            co2_ppm = 800, delta_t = 0.76)
+plot_modtran(file.path(data_dir, "modtran_double_co2_warming.txt"), 
+             i_out_ref = baseline_i_out, delta_t = 0.76)
 ```
 
 # A few new R functions that we will use in this lab:
@@ -399,6 +403,7 @@ b) Where in the spectrum does methane absorb? What concentration does it take to
       0.4 ppm, 0.8 ppm, 1.6 ppm, ... 102.4 ppm.
       
         Hint: You can use the following R commands to do this:
+        
         ```
         methane_data = tibble() # create a blank data tibble
     
@@ -434,6 +439,7 @@ b) Where in the spectrum does methane absorb? What concentration does it take to
           methane_data = bind_rows(methane_data, df)
         }
         ```
+        
         This will run MODTRAN for the different values of methane concentration and
         save them in the "_data" folder as "methane_0_4.txt", "methane_0_8.txt", 
         "methane_1_6.txt", and so forth, up to "methane_819_2.txt", and also
