@@ -1,5 +1,4 @@
-/**
- * Solarized Light JG theme for reveal.js.
+/* Solarized Light JG theme for reveal.js.
  * Author: Achim Staebler, Modified by Jonathan GIlligan
  */
 @import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic);
@@ -298,6 +297,12 @@ body {
 
 .reveal ol {
   margin-left: 2em; }
+
+.reveal ol[type=A] {
+  list-style-type: upper-alpha; }
+
+.reveal ol[type=a] {
+  list-style-type: lower-alpha; }
 
 .reveal sub {
   font-size: 60%; }
