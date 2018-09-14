@@ -17,9 +17,9 @@ output:
 
 ### Optional Extra Reading:
 
-* Handout: Roger A. Pielke, Jr., "The British Climate Change Act: a critical evaluation and proposed alternative approach," Environmental Research Letters **4**, 024010 (2009). (posted on Brightspace).
-* Handout: Rogar A. Pielke, Jr., "Mamizu Climate Policy: An Evaluation of Japanese Carbon Emission Reduction Targets," Environmental Research Letters **4**, 044001 (2009) (posted on Brightspace).
-* Handout: Roger A. Pielke, Jr., "An Evaluation of the Targets and Timetables of Proposed Australian Emissions Reduction Policies," Environmental Science & Policy **14**, 20 (2011). (posted on Brightspace).
+* Handout: [Roger A. Pielke, Jr., "The British Climate Change Act: a critical evaluation and proposed alternative approach," Environmental Research Letters **4**, 024010 (2009).](http://iopscience.iop.org/article/10.1088/1748-9326/4/2/024010/meta){target="_blank"}.
+* Handout: [Rogar A. Pielke, Jr., "Mamizu Climate Policy: An Evaluation of Japanese Carbon Emission Reduction Targets," Environmental Research Letters **4**, 044001 (2009)](http://iopscience.iop.org/article/10.1088/1748-9326/4/4/044001/meta){target="_blank"}.
+* Handout: [Roger A. Pielke, Jr., "An Evaluation of the Targets and Timetables of Proposed Australian Emissions Reduction Policies," Environmental Science & Policy **14**, 20 (2011).](https://www-sciencedirect-com.proxy.library.vanderbilt.edu/science/article/pii/S1462901110001383){target="_blank"}.
 
 ### Reading Notes:
 

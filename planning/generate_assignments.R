@@ -318,7 +318,16 @@ format_textbook_reading <- function(reading_list) {
 }
 
 format_handout_reading_item <- function(reading_item) {
-  output <- str_c("Handout: ", reading_item$citation)
+  if(is.null(reading_item$url) || is.na(reading_item$url)) {
+    pre = ""
+    post = ""
+    loc = str_c(" (", online_location, ")")
+  } else {
+    pre = "["
+    post = str_c("](", reading_item$url, '){target="_blank"}')
+    loc = ""
+  }
+  output <- str_c("Handout: ", pre, reading_item$citation, post)
   if (! is.na(reading_item$chapter)) {
     output <- str_c(output, ", ", reading_item$chapter)
   }
@@ -326,7 +335,7 @@ format_handout_reading_item <- function(reading_item) {
     output <- str_c(output, ", ", reading_item$pages)
   }
   output <- output %>% str_trim() %>%
-    str_c(" (", online_location, ")") %>%
+    str_c(loc) %>%
     add_period()
   output
 }

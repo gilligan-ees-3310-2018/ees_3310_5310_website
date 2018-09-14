@@ -13,8 +13,8 @@ output:
 ## Reading:
 
 ### Required Reading (everyone):
-* Handout: T. Barker, "The Economics of Avoiding Dangerous Climate Change," Climatic Change **89**, 173--194 (2008) (posted on Brightspace).
-* Handout: C. Jaeger, H.-J. Schellnhuber, and V. Brovkin, "Stern's Review and Adam's Fallacy," Climatic Change **89**, 207--218 (posted on Brightspace).
+* Handout: [T. Barker, "The Economics of Avoiding Dangerous Climate Change," Climatic Change **89**, 173--194 (2008)](https://link-springer-com.proxy.library.vanderbilt.edu/article/10.1007/s10584-008-9433-x){target="_blank"}.
+* Handout: [C. Jaeger, H.-J. Schellnhuber, and V. Brovkin, "Stern's Review and Adam's Fallacy," Climatic Change **89**, 207--218](https://link-springer-com.proxy.library.vanderbilt.edu/content/pdf/10.1007%2Fs10584-008-9436-7.pdf){target="_blank"}.
 
 ### Reading Notes:
 

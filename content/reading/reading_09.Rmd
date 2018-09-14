@@ -14,7 +14,7 @@ output:
 
 ### Required Reading (everyone):
 * Understanding the Forecast, Ch. 7, pp. 81--84.
-* Handout: Jonathan Gilligan, "Handout on Feedbacks" (posted on Brightspace).
+* Handout: [Jonathan Gilligan, "Handout on Feedbacks"](/files/reading_handouts/Feedback_Handout.pdf){target="_blank"}.
 
 ### Reading Notes:
 

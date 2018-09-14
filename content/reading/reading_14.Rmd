@@ -16,7 +16,7 @@ output:
 * Understanding the Forecast, Ch. 7, p. 84.
 * Understanding the Forecast, Ch. 8, pp. 93--97.
 * Understanding the Forecast, Ch. 11, pp. 147--149.
-* Handout: Jonathan Gilligan, "Handout on Isotopes," (posted on Brightspace).
+* Handout: [Jonathan Gilligan, "Handout on Isotopes,"](/files/reading_handouts/Isotope_Handout.pdf){target="_blank"}.
 
 ### Reading Notes:
 

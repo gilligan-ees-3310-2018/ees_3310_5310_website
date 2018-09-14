@@ -13,6 +13,6 @@ output:
 ## Reading:
 
 ### Required Reading (everyone):
-* Handout: J.M. Gilligan, "The Economics of Regulating Greenhouse Gases: Command & Control, Emissions Trading, and Emissions Taxes," handout (posted on Brightspace).
+* Handout: [J.M. Gilligan, "The Economics of Regulating Greenhouse Gases: Command & Control, Emissions Trading, and Emissions Taxes," handout](/files/reading_handouts/Economics_of_Regulating_Greenhouse_Gases.pdf){target="_blank"}.
 
 
