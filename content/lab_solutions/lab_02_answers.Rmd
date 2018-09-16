@@ -36,9 +36,6 @@ giss_url = "https://data.giss.nasa.gov/gistemp/tabledata_v3/GLB.Ts+dSST.csv"
 # Create a data directory if one does not exist.
 if (!dir.exists(data_dir)) dir.create(data_dir)
 ```
-# Lab #2 Answers
-
-
 # Worked Example
 
 ## Downloading CO~2~ Data from Mauna Loa Observatory
