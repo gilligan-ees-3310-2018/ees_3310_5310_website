@@ -1,0 +1,832 @@
+---
+title: Answers
+lab_number: 2
+lab_date: '2018-09-03'
+pubdate: '2018-09-15'
+date: '2018-09-10'
+pdf_url: /files/lab_solutions/lab_02/lab_02_answers.pdf
+slug: lab_02_answers
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+
+
+
+<div id="lab-2-answers" class="section level1">
+<h1>Lab #2 Answers</h1>
+</div>
+<div id="worked-example" class="section level1">
+<h1>Worked Example</h1>
+<div id="downloading-co2-data-from-mauna-loa-observatory" class="section level2">
+<h2>Downloading CO<sub>2</sub> Data from Mauna Loa Observatory</h2>
+<p>In 1957, Charles David Keeling established a permanent observatory on Mauna Loa,
+Hawaii to make continuous measurements of atmospheric carbon dioxide. The
+observatory has been running ever since, and has the longest record of direct
+measurements of atmospheric carbon dioxide levels. The location was chosen
+because the winds blow over thousands of miles of open ocean before reaching
+Mauna Loa, and this means the CO<sub>2</sub> measurements are very pure and uncontaminated
+by any local sources of pollution.</p>
+<p>We can download the data from <a href="http://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/monthly/monthly_in_situ_co2_mlo.csv" class="uri">http://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/monthly/monthly_in_situ_co2_mlo.csv</a>. We can download the file and save
+it to the local computer using the R function <code>download.file</code></p>
+<pre class="r"><code>mlo_url = &quot;http://scrippsco2.ucsd.edu/assets/data/atmospheric/stations/in_situ_co2/monthly/monthly_in_situ_co2_mlo.csv&quot;
+download.file(mlo_url, file.path(data_dir, &quot;mlo_data.csv&quot;))</code></pre>
+<p>Try opening the data file in Excel or a text editor.</p>
+<p>The first 54 lines of the data file are comments describing the data.
+These comments describe the contents of each column of data
+and explain that this data file uses the special value <code>-99.99</code> to
+indicate a missing value. The Mauna Loa Observatory started recording data
+in March 1958, so the monthly averages for January and February are missing.
+Other months are missing for some months in the record when the instruments
+that monitor CO<sub>2</sub> concentrations were not working properly.</p>
+<p>The <code>read_csv</code> function from the <code>tidyverse</code> package can read the data into R
+and convert it into a <code>tibble</code> data structure (like a fancy data table).
+However, when R reads in <code>.csv</code> files, it expects column names to be on a
+single row,
+and lines 55–57 of the data file are column headings that are split across
+multiple rows, so R will get confused if we tell it to use those rows as column
+names.</p>
+<p>Thus, we will tell <code>read_csv</code> to read this data file, but skip the first 57 lines.
+We will also tell it not to look for column names in the data file, so we will
+supply the column names, and we will tell it that whenever it sees <code>-99.99</code>,
+it should interpret that as indicating a missing value, rather than a measurement.</p>
+<p>Finally, R can guess what kinds of data each column contains, but for this file,
+things work a bit more smoothly if we provide this information explicitly.</p>
+<p><code>read_csv</code> lets us specify the data type for each column by providing a string
+with one letter for each column. The letters are <code>i</code> for integer numbers,
+<code>d</code> for real numbers (i.e., numbers with a decimal point and
+fractional parts), <code>n</code> for an unspecified number,
+<code>c</code> for character (text) data, <code>l</code> for logical (<code>TRUE</code> or <code>FALSE</code>),
+<code>D</code> for calendar dates, <code>t</code> for time of day, and <code>T</code> for combined date and time.</p>
+<pre class="r"><code>mlo_data = read_csv(file.path(data_dir, &quot;mlo_data.csv&quot;), 
+                    skip = 57,  # skip the first 57 rows
+                    col_names = c(&quot;year&quot;, &quot;month&quot;, &quot;date.excel&quot;, &quot;date&quot;,
+                                   &quot;co2.raw&quot;, &quot;co2.raw.seas&quot;, 
+                                   &quot;co2.fit&quot;, &quot;co2.fit.seas&quot;,
+                                   &quot;co2.filled&quot;, &quot;co2.filled.seas&quot;),
+                     col_types = &quot;iiiddddddd&quot;, # the first three columns are integers
+                                               # and the next 7 are real numbers
+                     na = &quot;-99.99&quot; # interpret -99.99 as a missing value
+                    )</code></pre>
+<p>Let’s look at the first few rows of the data:</p>
+<p>Here is how it looks in R:</p>
+<pre class="r"><code>head(mlo_data)</code></pre>
+<pre><code>## # A tibble: 6 x 10
+##    year month date.excel  date co2.raw co2.raw.seas co2.fit co2.fit.seas
+##   &lt;int&gt; &lt;int&gt;      &lt;int&gt; &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;        &lt;dbl&gt;
+## 1  1958     1      21200 1958.     NA           NA      NA           NA 
+## 2  1958     2      21231 1958.     NA           NA      NA           NA 
+## 3  1958     3      21259 1958.    316.         314.    316.         315.
+## 4  1958     4      21290 1958.    317.         315.    317.         315.
+## 5  1958     5      21320 1958.    318.         315.    318.         315.
+## 6  1958     6      21351 1958.     NA           NA     317.         315.
+## # ... with 2 more variables: co2.filled &lt;dbl&gt;, co2.filled.seas &lt;dbl&gt;</code></pre>
+<p>And here is how we can use the <code>kable</code> function to format the data
+nicely as a table in an RMarkdown document:</p>
+<pre class="r"><code>head(mlo_data) %&gt;% knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="right">year</th>
+<th align="right">month</th>
+<th align="right">date.excel</th>
+<th align="right">date</th>
+<th align="right">co2.raw</th>
+<th align="right">co2.raw.seas</th>
+<th align="right">co2.fit</th>
+<th align="right">co2.fit.seas</th>
+<th align="right">co2.filled</th>
+<th align="right">co2.filled.seas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1958</td>
+<td align="right">1</td>
+<td align="right">21200</td>
+<td align="right">1958.041</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">1958</td>
+<td align="right">2</td>
+<td align="right">21231</td>
+<td align="right">1958.126</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">1958</td>
+<td align="right">3</td>
+<td align="right">21259</td>
+<td align="right">1958.203</td>
+<td align="right">315.70</td>
+<td align="right">314.43</td>
+<td align="right">316.18</td>
+<td align="right">314.90</td>
+<td align="right">315.70</td>
+<td align="right">314.43</td>
+</tr>
+<tr class="even">
+<td align="right">1958</td>
+<td align="right">4</td>
+<td align="right">21290</td>
+<td align="right">1958.288</td>
+<td align="right">317.45</td>
+<td align="right">315.16</td>
+<td align="right">317.29</td>
+<td align="right">314.98</td>
+<td align="right">317.45</td>
+<td align="right">315.16</td>
+</tr>
+<tr class="odd">
+<td align="right">1958</td>
+<td align="right">5</td>
+<td align="right">21320</td>
+<td align="right">1958.370</td>
+<td align="right">317.51</td>
+<td align="right">314.72</td>
+<td align="right">317.84</td>
+<td align="right">315.06</td>
+<td align="right">317.51</td>
+<td align="right">314.72</td>
+</tr>
+<tr class="even">
+<td align="right">1958</td>
+<td align="right">6</td>
+<td align="right">21351</td>
+<td align="right">1958.455</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">317.23</td>
+<td align="right">315.14</td>
+<td align="right">317.23</td>
+<td align="right">315.14</td>
+</tr>
+</tbody>
+</table>
+<p>There are six different columns for the CO<sub>2</sub> measurements:</p>
+<ul>
+<li><p><code>co2.raw</code> is the
+raw measurement from the instrument. The measurements began in March 1958, so
+there are <code>NA</code> values for January and February. In addition, there are missing
+values for some months when the instrument was not working well.</p></li>
+<li><p><code>co2.fit</code> is a smoothed version of the data, which we will not use in this lab.</p></li>
+<li><p><code>co2.filled</code> is the same as <code>co2.raw</code>, except that where there are missing
+values in the middle of the data, they have been filled in with interpolated
+estimates based on measurements before and after the gap.</p></li>
+</ul>
+<p>For each of these three data series, there is also a <em>seasonally adjusted</em>
+version, which attempts to remove the effects of seasonal variation in order
+to make it easier to observe the trends.</p>
+<p>For this lab, we will focus on the <code>co2.filled</code> data series. To keep things simple,
+we can use the <code>select</code> function from <code>tidyverse</code> to keep only certain columns
+in the tibble and get rid of the ones we don’t want.</p>
+<pre class="r"><code>mlo_simple = mlo_data %&gt;% select(year, month, date, co2 = co2.filled)
+
+head(mlo_simple)</code></pre>
+<pre><code>## # A tibble: 6 x 4
+##    year month  date   co2
+##   &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  1958     1 1958.   NA 
+## 2  1958     2 1958.   NA 
+## 3  1958     3 1958.  316.
+## 4  1958     4 1958.  317.
+## 5  1958     5 1958.  318.
+## 6  1958     6 1958.  317.</code></pre>
+<p>Note how we renamed the <code>co2.filled</code> column to just plain <code>co2</code> in the select
+function.</p>
+<p>Now, let’s plot this data:</p>
+<pre class="r"><code>ggplot(mlo_simple, 
+       aes(x = date, y = co2)) + # This line specifies the data to plot and
+                                 # the aesthetics that define which variables to 
+                                 # use for the x and y axes
+  geom_line() +   # This line says to plot lines between the points
+  labs(x = &quot;Year&quot;, y = &quot;CO2 concentration (ppm)&quot;,
+       title = &quot;Measured CO2 from Mauna Loa Observatory&quot;) # This line gives the </code></pre>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_path).</code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_mlo-1.png" width="672" /></p>
+<pre class="r"><code>                                                          # names of the axes
+  # Earlier in this .Rmd file, I called set_theme(theme_bw(base_size = 15)) to 
+  # set the default plot style. If you call ggplot() without this,
+  # you will get a different style, but you can either call theme_set
+  # or you can add a theme specification (such as &quot;+ theme_bw(base_size = 15)&quot;)
+  # end of the sequence of plotting commands in order to apply a specific style
+  # to an individual plot.</code></pre>
+<p>Notice the seasonal variation in CO<sub>2</sub>. Every year, there is a large cycle of
+CO<sub>2</sub>, but underneath is a gradual and steady increase from year to year.
+If we wanted to look at the trend without the seasonal variation, we could use
+the <code>co2.filled.seas</code> column of the original tibble, but instead, let’s look at
+how we might estimate this ourselves.</p>
+<p>The seasonal cycle is 12 months long and it repeats every year. This means that
+if we average the values in our table over a whole year, this cycle should average
+out. We can do this by creating a new column <code>trend</code> where every row represents
+the average over a year centered at that row (technically, all the months from
+5 months before through six months after that date):</p>
+<pre class="r"><code>mlo_simple %&gt;% mutate(trend = rollapply(data = co2, width = 12, FUN = mean,
+                                      fill = NA, align = &quot;center&quot;)) %&gt;%
+  ggplot(aes(x = date)) + 
+  geom_line(aes(y = co2), color = &quot;dark blue&quot;) +
+  geom_line(aes(y = trend), color = &quot;black&quot;, size = 2) +
+  labs(x = &quot;Year&quot;, y = &quot;CO2 concentration (ppm)&quot;, 
+       title = &quot;Measured and Seasonally Adjusted CO2&quot;)</code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_trend-1.png" width="672" /></p>
+<p>But wait: we might want a legend to tell the reader what each colored line
+represents. We can create new aesthetics for the graph mapping to do this:</p>
+<pre class="r"><code>mlo_simple %&gt;% mutate(trend = rollapply(data = co2, width = 12, FUN = mean,
+                                      fill = NA, align = &quot;center&quot;)) %&gt;%
+  ggplot(aes(x = date)) + 
+  geom_line(aes(y = co2, color = &quot;Raw&quot;)) +
+  geom_line(aes(y = trend, color = &quot;12-month average&quot;), size = 2) +
+  scale_color_manual(values = c(&quot;Raw&quot; = &quot;dark blue&quot;, &quot;12-month average&quot; = &quot;black&quot;),
+                     name = &quot;Smoothing&quot;) +
+  labs(x = &quot;Year&quot;, y = &quot;CO2 concentration (ppm)&quot;, 
+       title = &quot;Measured and Seasonally Adjusted CO2&quot;)</code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_trend_2-1.png" width="672" /></p>
+<p>We can also anlyze this data to estimate the average trend in CO<sub>2</sub>.
+We use the <code>lm</code> function in R to fit a straight line to the data,
+and we use the <code>tidy</code> function from the <code>broom</code> package to
+print the results of the fit nicely.</p>
+<p>R has many powerful functions to fit data, but here we will just use a very
+simple one. We specify the linear relationship to fit using R’s formula
+language. If we want to tell R that we think <code>co2</code> is related to <code>date</code>
+by the linear relationship <span class="math inline">\(co2 = a + b \times \text{date}\)</span>, then we write
+the formula <code>co2 ~ date</code>. The intercept is implicit, so we don’t have to spell
+it out.</p>
+<pre class="r"><code>trend = lm(co2 ~ date, data = mlo_simple)
+
+library(broom)
+
+tidy(trend)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 (Intercept) -2726.    17.6         -155.       0
+## 2 date            1.55   0.00884      175.       0</code></pre>
+<p>This shows us that the trend is for CO<sub>2</sub> to rise by
+1.55 ppm per year,
+with an uncertainty of plus or minus
+0.009.</p>
+<p>We can also plot a linear trend together with the data:</p>
+<pre class="r"><code>mlo_simple %&gt;% mutate(trend = rollapply(data = co2, width = 12, FUN = mean,
+                                      fill = NA, align = &quot;center&quot;)) %&gt;%
+  ggplot(aes(x = date, y = co2)) + 
+  geom_line() +
+  geom_smooth(method = &quot;lm&quot;) +
+  labs(x = &quot;Year&quot;, y = &quot;CO2 concentration (ppm)&quot;, 
+       title = &quot;Measured CO2 and Linear Fit&quot;)</code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_with_fitted_trend-1.png" width="672" /></p>
+</div>
+</div>
+<div id="exercises" class="section level1">
+<h1>Exercises</h1>
+<div id="exercises-with-co2-data-from-the-mauna-loa-observatory" class="section level2">
+<h2>Exercises with CO<sub>2</sub> Data from the Mauna Loa Observatory</h2>
+<p>Using the <code>select</code> function, make a new data tibble called <code>mlo_seas</code>, from
+the original <code>mlo_data</code>, which only has two columns: <code>date</code> and
+<code>co2.seas</code>, where <code>co2.seas</code> is a renamed version of <code>co2.filled.seas</code> from the
+original tibble.</p>
+<pre class="r"><code># We only need to load the libraries once and they will be loaded for all 
+# subsequent code chunks
+library(tidyverse)
+library(zoo)
+
+mlo_seas = select(mlo_data, date, co2.filled.seas)
+mlo_seas = rename(mlo_seas, co2.seas = co2.filled.seas)
+
+# Alternately, you can simplify with the pipe operator:
+# 
+# mlo_seas = select(mlo_data, date, co2.filled.seas) %&gt;% rename(co2.seas = co2.filled.seas)
+# 
+# or you can rename as part of the select operation:
+# 
+# mlo_seas = select(mlo_data, date, co2.seas = co2.filled.seas)
+
+# Display the first few rows:
+head(mlo_seas)</code></pre>
+<pre><code>## # A tibble: 6 x 2
+##    date co2.seas
+##   &lt;dbl&gt;    &lt;dbl&gt;
+## 1 1958.      NA 
+## 2 1958.      NA 
+## 3 1958.     314.
+## 4 1958.     315.
+## 5 1958.     315.
+## 6 1958.     315.</code></pre>
+<p>Now plot this with <code>co2.seas</code> on the <em>y</em> axis and <code>date</code> on the <em>x</em> axis,
+and a linear fit:</p>
+<pre class="r"><code>ggplot(mlo_seas, aes(x = date, y = co2.seas)) +
+  geom_line() +
+  geom_smooth(method=&quot;lm&quot;) +
+  labs(x = &quot;Year&quot;, y = &quot;CO2 concentration (ppm)&quot;)</code></pre>
+<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 6 rows containing missing values (geom_path).</code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_seas-1.png" width="672" /></p>
+<p>Now fit a linear function to find the annual trend of <code>co2.seas</code>. Save
+the results of your fit in a variable called <code>trend.seas</code>.</p>
+<pre class="r"><code>trend.seas = lm(co2.seas ~ date, data = mlo_seas)
+
+tidy(trend.seas)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 (Intercept) -2725.    15.1         -181.       0
+## 2 date            1.55   0.00758      204.       0</code></pre>
+<p>Compare the trend you fit to the raw <code>co2.filled</code> data to the trend you fit
+to the seasonally adjusted data.</p>
+<p><strong>Note:</strong> I just intend students to informally look at the trend in the graph
+and estimate its slope by eye to compare to the results in <code>trend.seas</code>.</p>
+</div>
+<div id="exercises-with-global-temperature-data-from-nasa" class="section level2">
+<h2>Exercises with Global Temperature Data from NASA</h2>
+<p>We can also download a data set from NASA’s Goddard Institute for Space Studies
+(GISS), which contains the average global temperature from 1880 through the
+present.</p>
+<p>The URL for the data file is
+<a href="https://data.giss.nasa.gov/gistemp/tabledata_v3/GLB.Ts+dSST.csv" class="uri">https://data.giss.nasa.gov/gistemp/tabledata_v3/GLB.Ts+dSST.csv</a></p>
+<p>Download this file and save it in the directory <code>_data/global_temp_land_sea.csv</code>.</p>
+<pre class="r"><code>giss_url = &quot;https://data.giss.nasa.gov/gistemp/tabledata_v3/GLB.Ts+dSST.csv&quot;
+
+download.file(giss_url, file.path(data_dir, &quot;global_temp_land_sea.csv&quot;))</code></pre>
+<ul>
+<li><p>Open the file in Excel or a text editor and look at it.</p></li>
+<li><p>Unlike the CO<sub>2</sub> data file, this one has a single line with the
+data column names, so you can specify <code>col_names=TRUE</code> in <code>read_csv</code>
+instead of having to write the column names manually.</p></li>
+<li><p>How many lines do you have to tell <code>read_csv</code> to skip?</p></li>
+</ul>
+<p><strong>Answer:</strong> 1 line: the first line is “Land-Ocean: Global Means” and we want to
+skip it.</p>
+<ul>
+<li><p><code>read_csv</code> can automatically figure out the data types for each column,
+so you don’t have to specify <code>col_types</code> when you call <code>read_csv</code></p></li>
+<li><p>This file uses <code>***</code> to indicate missing values instead of <code>-99.99</code>, so you
+will need to specify <code>na=&quot;***&quot;</code> in <code>read_csv</code>.</p>
+<p>For future reference,
+if you have a file that uses multiple different values to indicate missing
+values, you can give a vector of values to <code>na</code> in <code>read_csv</code>:
+<code>na = c(&quot;***&quot;,&quot;-99.99&quot;, &quot;NA&quot;, &quot;&quot;)</code> would tell <code>read_csv</code> that if it finds
+any of the values &quot;***“,”-99.99“,”NA&quot;, or just a blank with nothing in it,
+any of those would correspond to a missing value, and should be indicated by
+<code>NA</code> in R.</p></li>
+</ul>
+<p>Now read the file into R, using the <code>read_csv</code> function, and assign
+the resulting tibble to a variable <code>giss_temp</code></p>
+<pre class="r"><code>giss_temp = read_csv(file.path(data_dir, &quot;global_temp_land_sea.csv&quot;), skip = 1, na = &quot;***&quot;,
+                     col_names = TRUE)</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   Year = col_integer(),
+##   Jan = col_double(),
+##   Feb = col_double(),
+##   Mar = col_double(),
+##   Apr = col_double(),
+##   May = col_double(),
+##   Jun = col_double(),
+##   Jul = col_double(),
+##   Aug = col_double(),
+##   Sep = col_double(),
+##   Oct = col_double(),
+##   Nov = col_double(),
+##   Dec = col_double(),
+##   `J-D` = col_double(),
+##   `D-N` = col_double(),
+##   DJF = col_double(),
+##   MAM = col_double(),
+##   JJA = col_double(),
+##   SON = col_double()
+## )</code></pre>
+<pre class="r"><code># show the first 5 lines of giss_temp
+head(giss_temp, 5)</code></pre>
+<pre><code>## # A tibble: 5 x 19
+##    Year    Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct    Nov
+##   &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+## 1  1880 -0.290 -0.18 -0.11 -0.19 -0.11 -0.23 -0.2  -0.09 -0.15 -0.23 -0.2  
+## 2  1881 -0.15  -0.17  0.04  0.04  0.02 -0.2  -0.06 -0.02 -0.13 -0.2  -0.21 
+## 3  1882  0.15   0.15  0.04 -0.18 -0.16 -0.25 -0.2  -0.05 -0.09 -0.24 -0.16 
+## 4  1883 -0.31  -0.38 -0.12 -0.17 -0.2  -0.12 -0.08 -0.15 -0.2  -0.14 -0.22 
+## 5  1884 -0.15  -0.08 -0.37 -0.42 -0.36 -0.4  -0.34 -0.26 -0.27 -0.24 -0.290
+## # ... with 7 more variables: Dec &lt;dbl&gt;, `J-D` &lt;dbl&gt;, `D-N` &lt;dbl&gt;,
+## #   DJF &lt;dbl&gt;, MAM &lt;dbl&gt;, JJA &lt;dbl&gt;, SON &lt;dbl&gt;</code></pre>
+<p>Something is funny here: Each row corresponds to a year, but there are columns
+for each month, and some extra columns called “J-D”, “D-N”, “DJF”, “MAM”, “JJA”,
+and “SON”. These stand for average values for the year from January through
+December, the year from the previous December through November, and the seasonal
+averages for Winter (December, January, and February),
+Spring (March, April, and May), Summer (June, July, and August), and Fall
+(September, October, and November).</p>
+<p>The temperatures are recorded not as the thermometer reading, but as <em>anomalies</em>.
+If we want to compare how temperatures are changing in different seasons and at
+different parts of the world, raw temperature measurements are hard to work with
+because summer is hotter than winter and Texas is hotter than Alaska, so it
+becomes difficult to compare temperatures in August to temperatures in January,
+or temperatures in Texas to temperatures in Alaska
+and tell whether there was warming.</p>
+<p>To make it easier and more reliable to compare temperatures at different times
+and places, we define anomalies: The temperature anomaly is the difference between
+the temperature recorded at a certain location during a certain month and
+a baseline reference value, which is the average temperature for that month
+and location over a period that is typically 30 years.</p>
+<p>The GISS temperature data uses a baseline reference period of 1951–1980, so
+for instance, the temperature anomaly for Nashville in July 2017 would be
+the monthly average temperature measured in Nashville during July 2017 minus
+the average of all July temperatures measured in Nashville from 1951–1980.</p>
+<p>The GISS temperature data file then averages the temperature anomalies over all
+the temperature-measuring stations around the world and reports a global average
+anomaly for every month from January 1880 through the latest measurements
+available (currently, July 2017).</p>
+<p>Let’s focus on the months only. Use <code>select</code> to select just the columns for
+“Year” and January through December (if you are selecting a consecutive range
+of columns between “Foo” and “Bar”, you can call <code>select(Foo:Bar)</code>).
+Save the result in a variable called <code>giss_monthly</code></p>
+<pre class="r"><code>giss_monthly = select(giss_temp, Year:Dec)
+#
+# alternately, you could remove unwanted columns:
+# 
+# giss_monthly = select(giss_temp, -(`J-D`:SON))
+# 
+# You have to use back-quotes for the column `J-D` because its name includes
+# characters other than &quot;a&quot;-&quot;z&quot;, &quot;A&quot;-&quot;Z&quot;, &quot;0&quot;-&quot;9&quot;, &quot;.&quot;, and &quot;_&quot;.
+# You can give columns names with other characters than these, but it becomes
+# more complicated to indicate them to R.
+
+head(giss_monthly)</code></pre>
+<pre><code>## # A tibble: 6 x 13
+##    Year    Jan    Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct
+##   &lt;int&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1  1880 -0.290 -0.18  -0.11 -0.19 -0.11 -0.23 -0.2  -0.09 -0.15 -0.23
+## 2  1881 -0.15  -0.17   0.04  0.04  0.02 -0.2  -0.06 -0.02 -0.13 -0.2 
+## 3  1882  0.15   0.15   0.04 -0.18 -0.16 -0.25 -0.2  -0.05 -0.09 -0.24
+## 4  1883 -0.31  -0.38  -0.12 -0.17 -0.2  -0.12 -0.08 -0.15 -0.2  -0.14
+## 5  1884 -0.15  -0.08  -0.37 -0.42 -0.36 -0.4  -0.34 -0.26 -0.27 -0.24
+## 6  1885 -0.59  -0.290 -0.25 -0.42 -0.42 -0.44 -0.35 -0.31 -0.23 -0.19
+## # ... with 2 more variables: Nov &lt;dbl&gt;, Dec &lt;dbl&gt;</code></pre>
+<p>Next, it will be difficult to plot all of the data if the months are organized as
+columns. What we want is to transform the data tibble into one with three columns:
+“year”, “month”, and “anomaly”. We can do this easily using the <code>gather</code> function
+from the <code>tidyverse</code> package: <code>gather(df, key = month, value = anomaly, -Year)</code>
+or <code>df %&gt;% gather(key = month, value = anomaly, -Year)</code> will gather all of the
+columns except <code>Year</code> (the minus sign in <code>select</code> or <code>gather</code> means to include
+all columns except the ones indicated with a minus sign) and:</p>
+<ul>
+<li>Make a new tibble with three columns: “Year”, “month”, and “anomaly”</li>
+<li>For each row in the original tibble, make rows in the new tibble for each of
+the columns “Jan” through “Dec”, putting the name of the column in “month”
+and the anomaly in “anomaly”.</li>
+</ul>
+<p>Here is an example of using <code>gather</code>, using the built-in data set <code>presidents</code>,
+which lists the quarterly approval ratings for U.S. presidents from 1945–1974:</p>
+<pre class="r"><code>df = presidents@.Data %&gt;% matrix(ncol=4, byrow = TRUE) %&gt;%
+  as_tibble() %&gt;% set_names(paste0(&quot;Q&quot;, 1:4)) %&gt;% mutate(year = 1944 + seq(n()))
+
+
+print(&quot;First 10 rows of df are&quot;)</code></pre>
+<pre><code>## [1] &quot;First 10 rows of df are&quot;</code></pre>
+<pre class="r"><code>print(head(df, 10))</code></pre>
+<pre><code>## # A tibble: 10 x 5
+##       Q1    Q2    Q3    Q4  year
+##    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1    NA    87    82    75  1945
+##  2    63    50    43    32  1946
+##  3    35    60    54    55  1947
+##  4    36    39    NA    NA  1948
+##  5    69    57    57    51  1949
+##  6    45    37    46    39  1950
+##  7    36    24    32    23  1951
+##  8    25    32    NA    32  1952
+##  9    59    74    75    60  1953
+## 10    71    61    71    57  1954</code></pre>
+<p>For each year, the table has a column for the year and
+four columns (Q1 … Q4) that hold the quarterly
+approval ratings for the president in that quarter.
+Now we want to gather these data into three columns:
+one column for the year, one column to indicate the quarter,
+and one column to indicate the approval rating.</p>
+<p>We do this with the <code>gather</code> function from the <code>tidyverse</code> package.</p>
+<p>```{ r gather_example}
+dfg &lt;- df %&gt;% gather(key = quarter, # create a column called “quarter” to store
+# the names of the columns that are gathered
+value = approval, # create a column called “approval” to
+# store the values from those columns
+# (i.e., the approval ratings in that quarter)
+-year # the minus sign means gather all columns EXCEPT year.
+) %&gt;%
+arrange(year, quarter) # sort the rows of the resulting tibble to put
+# the years in ascending order, from 1945 to 1971
+# and within each year, sort the quarters from Q1
+# to Q4</p>
+<p>head(dfg) # print the first few rows of the tibble.
+```</p>
+<p>Now you try to do the same thing to:</p>
+<ul>
+<li><p>First select just the columns of <code>giss_monthly</code> for the year and the
+individual months.</p></li>
+<li><p>Next, gather all the months togeher, so there will be three columns:
+one for the year, one for the name of the month, and one for the
+temperature anomaly in that month.</p></li>
+<li><p>Store the result in a new variable called <code>giss_g</code></p></li>
+</ul>
+<pre class="r"><code>giss_g = gather(giss_monthly, key = month, value = anomaly, -Year)</code></pre>
+<p>Remember how the CO<sub>2</sub> data had a column <code>date</code> that had a year plus a fraction
+that corresponded to the month, so June 1960 was 1960.4548?</p>
+<p>Here is a trick that lets us do the same for the <code>giss_g</code> data set.
+R has a data type called <code>factor</code> that it uses for managing categorical data,
+such as male versus female, Democrat versus Republican, and so on.
+Categorical factors have a textual label, but are silently represented as integer
+numbers. Normal factors don’t have a special order, so R sorts the values alphabetically.
+However, there is another kind of factor called an ordered factor, which allows
+us to specify the order of the values.</p>
+<p>We can use a built-in R variable called <code>month.abb</code>, which is a vector of
+abbreviations for months.</p>
+<p>The following command will convert the <code>month</code> column in <code>giss_g</code> into an
+ordered factor that uses the integer values 1, 2, …, 12 to stand for
+“Jan”, “Feb”, …, “Dec”, and then uses those integer values to create a new
+column, <code>date</code> that holds the fractional year, just as the <code>date</code> column in
+<code>mlo_data</code> did:</p>
+<pre><code>giss_g = giss_g %&gt;% 
+  mutate(month = ordered(month, levels = month.abb),
+         date = Year + (as.integer(month) - 0.5) / 12) %&gt;% 
+  arrange(date)`</code></pre>
+<p>In the code above, <code>ordered(month, levels = month.abb)</code> converts the variable
+<code>month</code> from a character (text) variable that contains the name of the month
+to an ordered factor that associates a number with each month name, such that
+“Jan” = 1 and “Dec” = 12.</p>
+<p>Then we create a new column called <code>date</code> to get the fractional year corresponding
+to that month. We have to explicitly convert the ordered factor into a number
+using the function <code>as.integer()</code>, and we subtract 0.5 because the time that
+corresponds to the average temperature for the month is the middle of the month.</p>
+<p>Below, use code similar to what I put above to add a new <code>date</code> column to
+<code>giss_g</code>.</p>
+<pre class="r"><code># Here, you just copy the code from above and run it.
+# 
+giss_g = giss_g %&gt;% 
+  mutate(month = ordered(month, levels = month.abb),
+         date = Year + (as.integer(month) - 0.5) / 12) %&gt;%
+  arrange(date)</code></pre>
+<p>Now plot the monthly temperature anomalies versus date:</p>
+<pre class="r"><code>ggplot(giss_g, aes(x = date, y = anomaly)) +
+  geom_line() +
+  geom_point() +
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)</code></pre>
+<pre><code>## Warning: Removed 5 rows containing missing values (geom_path).</code></pre>
+<pre><code>## Warning: Removed 5 rows containing missing values (geom_point).</code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_giss-1.png" width="672" /></p>
+<p>That plot probably doesn’t look like much, because it’s very noisy.
+Use the function <code>rollapply</code> from the package <code>zoo</code> to create
+new columns in <code>giss_g</code> with
+12-month and 10-year (i.e., 120-month) rolling averages of the
+anomalies.</p>
+<p>Make a new plot in which you plot a thin blue line for the monthly anomaly
+(use <code>geom_line(aes(y = anomaly), color = &quot;blue&quot;, alpha = 0.3, size = 0.1)</code>;
+alpha is an optional specification for transparency where 0 means invisible
+(completely transparent) and 1 means opaque),
+a medium dark green line for the one-year rolling average,
+and a thick dark blue line for the ten-year rolling average.</p>
+<pre class="r"><code>giss_g %&gt;% 
+   mutate( smooth.1 = rollapply(data = anomaly, width = 12, FUN = mean,
+                                      fill = NA, align = &quot;center&quot;),
+           smooth.10 = rollapply(data = anomaly, width = 120, FUN = mean,
+                                      fill = NA, align = &quot;center&quot;)) %&gt;% 
+  ggplot(aes(x = date)) + # Put code here to map variables to aesthetics
+  geom_line(aes(y = anomaly), alpha = 0.3, size = 0.1, color = &quot;blue&quot;) +
+  geom_line(aes(y = smooth.1), color = &quot;dark green&quot;, size = 0.5) + 
+  geom_line(aes(y = smooth.10), color = &quot;dark blue&quot;, size = 1) +
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)</code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_giss_with_smoothing-1.png" width="672" /></p>
+<p>Alternately, we could do this fancier version:</p>
+<pre class="r"><code>giss_g %&gt;% 
+   mutate( smooth.1 = rollapply(data = anomaly, width = 12, FUN = mean,
+                                      fill = NA, align = &quot;center&quot;),
+           smooth.10 = rollapply(data = anomaly, width = 120, FUN = mean,
+                                      fill = NA, align = &quot;center&quot;)) %&gt;% 
+  ggplot(aes(x = date)) + # Put code here to map variables to aesthetics
+  geom_line(aes(y = anomaly, size = &quot;None&quot;, color = &quot;None&quot;), alpha = 0.3) +
+  geom_line(aes(y = smooth.1, size = &quot;1-year&quot;, color = &quot;1-year&quot;)) + 
+  geom_line(aes(y = smooth.10, size = &quot;10-year&quot;, color = &quot;10-year&quot;)) +
+  scale_color_manual(values = c(&quot;None&quot; = &quot;blue&quot;, &quot;1-year&quot; = &quot;dark green&quot;,
+                                &quot;10-year&quot; = &quot;dark blue&quot;), name = &quot;Averaging&quot;) +
+  scale_size_manual(values = c(&quot;None&quot; = 0.1, &quot;1-year&quot; = 0.5,
+                               &quot;10-year&quot; = 1.0), name = &quot;Averaging&quot;) +
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)</code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/alt_plot_giss_with_smoothing-1.png" width="672" /></p>
+<p>The graph shows that temperature didn’t show a steady trend until starting around
+1970, so we want to isolate the data starting in 1970 and fit a linear trend
+to it.</p>
+<p>To select only rows of a tibble that match a condition, we use the function
+<code>filter</code> from the <code>tidyverse</code> package:</p>
+<p><code>data_subset = df %&gt;% filter( conditions )</code>, where <code>df</code> is your original tibble
+and <code>conditions</code> stands for whatever conditions you want to apply.
+You can make a simple condition using equalities or inequalities:</p>
+<ul>
+<li><p><code>data_subset = df %&gt;% filter( month == &quot;Jan&quot;)</code> to select all rows where the
+month is “Jan”</p></li>
+<li><p><code>data_subset = df %&gt;% filter( month != &quot;Aug&quot;)</code> to select all rows where the
+month is not August.</p></li>
+<li><p><code>data_subset = df %&gt;% filter( month %in% c(&quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;)</code> to select all
+rows where the month is one of “Sep”, “Oct”, or “Nov”.</p></li>
+<li><p><code>data_subset = df %&gt;% filter(year &gt;= 1945)</code> to select all rows where the year
+is greater than or equal to 1945.</p></li>
+<li><p><code>data_subset = df %&gt;% filter(year &gt;= 1951 &amp; year &lt;= 1980 )</code> to select all rows
+where the year is between 1951 and 1980, inclusive.</p></li>
+<li><p><code>data_subset = df %&gt;% filter(year &gt;= 1951 | month == &quot;Mar&quot;)</code> to select all rows
+where the year is greater than or equal to 1951 or the month is “Mar”.
+this will give all rows from January 1951 onward, plus all rows before 1951
+where the month is March.</p></li>
+</ul>
+<p>Below, create a new variable <code>giss_recent</code> and assign it a subset of <code>giss_g</code> that
+has all the data from January 1970 through the present. Fit a linear trend to
+the monthly anomaly and report it.</p>
+<p>What is the average change in temperature from one year to the next?</p>
+<pre class="r"><code>giss_recent = filter(giss_g, date &gt;= 1970)
+
+recent_trend = lm(anomaly ~ date, data = giss_recent)
+
+tidy(recent_trend)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic   p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 (Intercept) -35.4     0.847        -41.8 2.64e-177
+## 2 date          0.0179  0.000425      42.3 2.13e-179</code></pre>
+<div id="did-global-warming-stop-after-1998" class="section level3">
+<h3>Did Global Warming Stop after 1998?</h3>
+<p>It is a common skeptic talking point that global warming stopped in 1998.
+In years with strong El Niños, global temperatures tend to be higher
+and in years with strong La Niñas, global temperatures tend to be lower.
+We will discuss why later in the semester.</p>
+<p>The year 1998 had a particularly strong El Niño, and the year set a record
+for global temperature that was not exceeded for several years. Indeed, compared
+to 1998, it might look as though global warming paused for many years.</p>
+<p>We will examine whether this apparent pause has scientific validity.</p>
+<p>To begin with, we will take the monthly GISS temperature data and convert it to
+annual average temperatures, so we can deal with discrete years, rather than
+separate temperatures for each month.</p>
+<p>We do this with the <code>group_by</code> and <code>summarize</code> functions.</p>
+<p>We also want to select only recent data, so we arbitrarily say we will look at
+temperatures starting in 1979, which gives us 19 years before the 1998
+El Ni˜o.</p>
+<p>We don’t have a full year of data for 2017, so we want to discard that because we
+won’t get a full year average from it.</p>
+<p>If we go back to the original <code>giss_g</code> data tibble, run the following code:</p>
+<pre class="r"><code>giss_annual = giss_g %&gt;% 
+  filter(Year &gt;= 1979 &amp; Year &lt; 2017) %&gt;%
+  group_by(Year) %&gt;% 
+  summarize(anomaly = mean(anomaly)) %&gt;%
+  ungroup() %&gt;%
+  mutate(date = Year + 0.5)
+
+head(giss_annual)</code></pre>
+<pre><code>## # A tibble: 6 x 3
+##    Year anomaly  date
+##   &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1  1979   0.159 1980.
+## 2  1980   0.271 1980.
+## 3  1981   0.33  1982.
+## 4  1982   0.131 1982.
+## 5  1983   0.312 1984.
+## 6  1984   0.161 1984.</code></pre>
+<p>This code groups the giss data by the year, so that one group will have
+January–December 1979, another will have January–December 1980, and
+so forth.</p>
+<p>Then we replace the groups of 12 rows for each year (each row represents one month)
+with a single row that represents the average of those 12 months.</p>
+<p>It is important to tell R to <code>ungroup</code> the data after we’re done working with
+the groups.</p>
+<p>Finally, we set <code>date</code> to <code>year + 0.5</code> because the average of a year corresponds
+to the middle of the year, not the beginning.</p>
+<p>Now, let’s introduce a new column <code>after</code>, which indicates whether the data is
+after the 1998 El Niño:</p>
+<p>Now plot the data and color the points for 1998 and afterward dark red to
+help us compare before and after 1998.</p>
+<pre class="r"><code>ggplot(giss_annual, aes(x = date, y = anomaly)) +
+  geom_line(size = 1) +
+  # I didn&#39;t include it in the original instructions, but the
+  # following version of geom_line is nicer than what&#39;s above:
+  # 
+  # geom_line(aes(color = Year &gt;= 1998), size = 1) +
+  # 
+  geom_point(aes(color = Year &gt;= 1998), size = 2) +
+  scale_color_manual(values = c(&quot;TRUE&quot; = &quot;dark red&quot;, &quot;FALSE&quot; = &quot;dark blue&quot;),
+                     guide = &quot;none&quot;) + # color &quot;before&quot; points dark blue, 
+                                       # &quot;after&quot; points dark red
+                                       # don&#39;t use a legend
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)</code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_recent_giss-1.png" width="672" /></p>
+<p>Does it look as though the red points are not rising as fast as the blue points?</p>
+<p>Let’s just plot the data from 1998 on:</p>
+<pre class="r"><code>ggplot(giss_annual, aes(x = date, y = anomaly)) +
+  geom_line(size = 1) +
+  # I didn&#39;t include it in the original instructions, but the
+  # following version of geom_line is nicer than what&#39;s above:
+  # 
+  # geom_line(aes(color = Year &gt;= 1998), size = 1) +
+  # 
+  geom_point(aes(color = Year &gt;= 1998), size = 2) +
+  scale_color_manual(values = c(&quot;TRUE&quot; = &quot;dark red&quot;, &quot;FALSE&quot; = &quot;dark blue&quot;),
+                     guide = &quot;none&quot;) + # color &quot;before&quot; points dark blue, 
+                                       # &quot;after&quot; points dark red
+                                       # don&#39;t use a legend
+  xlim(1998,2016) +
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)</code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_pause-1.png" width="672" /></p>
+<p>Now how does it look?</p>
+<p>Let’s use the <code>filter</code> function to break the data into two different tibbles:
+<code>giss_before</code> will have the data from 1979–1998 and the other, <code>giss_after</code>
+will have the data from 1998 onward (note that the year 1998 appears in both
+tibbles).</p>
+<pre class="r"><code>giss_before = filter(giss_annual, Year &lt;= 1998)
+giss_after = filter(giss_annual, Year &gt;= 1998)</code></pre>
+<p>Now use <code>lm</code> to fit a linear trend to the temperature data in <code>giss_before</code>
+(from 1979–1998) and assign it to a variable <code>giss_trend</code>.</p>
+<p>Next, add a column <code>timing</code> to each of the split data sets and set
+the value of this column to “Before” for <code>giss_before</code> and “After” for
+<code>giss_after</code>.</p>
+<pre class="r"><code>giss_before = mutate(giss_before, timing = &quot;Before&quot;)
+giss_after = mutate(giss_after, timing = &quot;After&quot;)
+
+giss_trend = lm(anomaly ~ date, data = giss_before)
+tidy(giss_trend)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 (Intercept) -28.3      7.91        -3.58 0.00213
+## 2 date          0.0144   0.00398      3.62 0.00196</code></pre>
+<p>Now, combine the two tibbles into one tibble:</p>
+<pre class="r"><code>giss_combined &lt;- bind_rows(giss_before, giss_after)</code></pre>
+<p>Now let’s use ggplot to plot <code>giss_combined</code>:</p>
+<ul>
+<li>Aesthetic mapping:
+<ul>
+<li>Use the <code>date</code> column for the <em>x</em> variable.</li>
+<li>Use the <code>anomaly</code> column for the <em>y</em> variable.</li>
+<li>Use the <code>timing</code> column to set the color of plot elements</li>
+</ul></li>
+<li>Plot both lines and points.
+<ul>
+<li>Set the <code>size</code> of the lines to 1</li>
+<li>Set the <code>size</code> of the points to 2</li>
+</ul></li>
+<li>Use the <code>scale_color_manual</code> function to set the color of
+“Before” to “dark blue” and “After” to “dark red”</li>
+<li>Use <code>geom_smooth(data = giss_before, method=&quot;lm&quot;, color = &quot;blue&quot;, fill = &quot;blue&quot;, alpha = 0.2, fullrange = TRUE)</code> to show a linear trend that is fit just to the <code>giss_before</code> data.</li>
+</ul>
+<pre class="r"><code>ggplot(giss_combined, aes(x = date, y = anomaly, color = timing)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  geom_smooth(data = giss_before, method = &quot;lm&quot;, color = &quot;blue&quot;, fill = &quot;blue&quot;,
+              alpha = 0.2, fullrange = TRUE) +
+  scale_color_manual(values = c(Before = &quot;dark blue&quot;, After = &quot;dark red&quot;)) +
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)  </code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_combined-1.png" width="672" /></p>
+<p>Try this with the parameter <code>fullrange</code> set to <code>TRUE</code> and <code>FALSE</code> in the
+<code>geom_smooth</code> function. What is the difference?</p>
+<pre class="r"><code>ggplot(giss_combined, aes(x = date, y = anomaly, color = timing)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  geom_smooth(data = giss_before, method = &quot;lm&quot;, color = &quot;blue&quot;, fill = &quot;blue&quot;,
+              alpha = 0.2, fullrange = FALSE) +
+  scale_color_manual(values = c(Before = &quot;dark blue&quot;, After = &quot;dark red&quot;)) +
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)  </code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/alt_plot_combined_false-1.png" width="672" /></p>
+<pre class="r"><code>ggplot(giss_combined, aes(x = date, y = anomaly, color = timing)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  geom_smooth(data = giss_before, method = &quot;lm&quot;, color = &quot;blue&quot;, fill = &quot;blue&quot;,
+              alpha = 0.2, fullrange = TRUE) +
+  scale_color_manual(values = c(Before = &quot;dark blue&quot;, After = &quot;dark red&quot;)) +
+  labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)  </code></pre>
+<p><img src="/lab_solutions/lab_02_answers_files/figure-html/alt_plot_combined_true-1.png" width="672" /></p>
+<p><strong>Answer:</strong>
+Both plots show the full data set, and a linear trend that is fit just
+to the “before” data. The trend line shows both the best fit for a trend
+(that’s the solid line) and the range of uncertainty in the fit (that’s the
+light blue shaded area around the line).</p>
+<p>But, when <code>fullrange = FALSE</code>, the line is only drawn for the data to which the
+trend was fit, whereas when <code>fullrange = TRUE</code>, the trend line is drawn for the full
+range of the graph, even though the trend was only fit to the data in part of
+the graph.</p>
+<p>If the temperature trend changed after 1998 (e.g., if the warming paused, or if
+it reversed and started cooling) then we would expect the temperature measurements
+after 1998 to fall predominantly below the extrapolated trend line, and our
+confidence that the trend had changed would depend on the number of points that
+fall below the shaded uncertainty range.</p>
+<p>How many of the red points fall below the trend line?</p>
+<p><strong>Answer:</strong> 6 points: 1999, 2000, 2008, 2011, 2012, and 2013.</p>
+<p>How many of the red points fall above the trend line?</p>
+<p><strong>Answer:</strong> Not counting 1998, 12 points: 2001, 2002, 2003, 2004 (barely),
+2005, 2006, 2007, 2009, 2010, 2014, 2015, and 2016.</p>
+<p>What do you conclude about whether global warming paused or stopped after 1998?</p>
+<p><strong>Answer:</strong> Most of the years after 1998 were warmer than we would have
+predicted if temperatures had continued to follow the warming trends of 1979–1998,
+so this is not evidence of any slow-down or pause in the warming.</p>
+</div>
+</div>
+</div>
