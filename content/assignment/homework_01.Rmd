@@ -10,6 +10,10 @@ output:
   blogdown::html_page:
     md_extensions: +tex_math_single_backslash+compact_definition_lists
 ---
+## Solutions:
+
+* [Chapter 3 Homework Answers](/homework_solutions/homework_01_answers)
+
 ## Homework
 
 ### Notes on Homework:
