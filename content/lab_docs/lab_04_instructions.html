@@ -1,0 +1,469 @@
+---
+title: 'Instructions for Lab #4'
+lab_number: 4
+lab_date: '2018-09-17'
+pubdate: '2018-07-31'
+date: '2018-09-17'
+pdf_url: /files/lab_docs/lab_04/lab_04_instructions.pdf
+slug: lab_04_instructions
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+
+
+
+<div id="exercises-with-lapse-rate-clouds-and-water-vapor-feedback." class="section level1">
+<h1>Exercises with lapse rate, clouds, and water-vapor feedback.</h1>
+<p>In this lab, we will continue using MODTRAN and will introduce a new
+climate model, RRTM. RRTM, which stands for “Rapid Radiative Transfer Model,”
+is a radiative-convective model that uses code
+from the radiative-transfer portion of a state-of-the-art globam climate model
+called the “Community Climate System Model,” developed at the National Center
+for Atmospheric Research in Boulder CO.</p>
+<p>The entire CCSM model runs on giant supercomputers, but this radiative transfer
+module can run efficiently on an ordinary computer. In order to speed up the
+calculations, RRTM does not calculate the entire longwave spectrum the way
+MODTRAN does, but uses a simplified approximation that is much faster when
+the big climate models need to run this radiative transfer calculation
+roughly 52 quadrillion (<span class="math inline">\(5.2 \times 10^{15}\)</span>) times in a simulation of 100 years
+of the earth’s climate.</p>
+<p>An advantage that RRTM has over MODTRAN, is that MODTRAN assumes that the
+atmosphere is static (none of the air moves), whereas RRTM allows for
+convective heat flow. This makes RRTM more realistic, even though it sacrifices
+detail in its treatment of longwave radiation.</p>
+<p>We will use RRTM to explore the role of convection in the earth system
+and to examine the water-vapor feedback in the presence of convection.</p>
+<p>You can run the RRTM model interactively on the web at
+<a href="http://climatemodels.uchicago.edu/rrtm/index.html" class="uri">http://climatemodels.uchicago.edu/rrtm/index.html</a>
+and I have also written a script that allows you to run it from R.</p>
+<p>To run the model interactively, you can adjust various parameters, such as the
+brightness of the sun, the albedo (it gives you a choice of many natural and
+human-made surfaces, such as asphalt, concrete, forest, grassland, snow, ocean,
+and the average for the earth) the concentrations of CO<sub>2</sub> and methane,
+the relative humidity, and the amount and type of high (cirrus) and
+low (stratus) clouds.</p>
+<p>You can also introduce aerosols typical of different parts of the earth, such as
+cities (with soot, sulfates, and other pollution), deserts (with blowing dust),
+oceans (with sea spray and salt), and a Pinatubo-like volcanic eruption.</p>
+<p>Like MODTRAN, the model does not automatically adjust the surface temperature.
+Instead, it calculates the upward and downward flux of longwave and shortwave
+radiation at 51 different levels of the atmosphere and reports whether the heat
+flow is balanced (heat in = heat out) at the top of the atmosphere.</p>
+<p>If the earth is <em>gaining</em> heat, you can manually <em>raise</em> the surface temperature
+until you balance the heat flow, and if the earth is <em>losing</em> heat, you can
+manually <em>lower</em> the temperature.</p>
+<div id="r-interface-to-rrtm" class="section level2">
+<h2>R Interface to RRTM</h2>
+<p>I have written an R function <code>run_rrtm</code> that allows you to manually run
+RRTM from R. To use this function, you need to include the line
+<code>source(&quot;_scripts/rrtm.R&quot;)</code> or <code>source(file.path(script_dir, &quot;rrtm.R&quot;))</code>
+to load it.</p>
+<ul>
+<li><p><code>run_rrtm()</code> allows you to automatically download a file
+with the data from a MODTRAN run. You call it with the following arguments:</p>
+<ul>
+<li><p><code>filename</code> is the name of the file to save the data to. The function
+returns the output data, so it’s optional to specify a filename.</p></li>
+<li><p><code>co2_ppm</code> is the amount of CO<sub>2</sub> in parts per million. The default is 400.</p></li>
+<li><p><code>ch4_ppm</code> is the amount of methane in parts per million. The default is 1.7.</p></li>
+<li><p><code>relative_humidity</code> is the relative humidity, in percent. The default is
+80%.</p></li>
+<li><p><code>T_surface</code> is the surface temperature, in Kelvin.
+The default (for 400 ppm CO<sub>2</sub>, etc.) is 284.42.
+You adjust this to restore radiative equilibrium after you change the
+parameters (amount of CO<sub>2</sub>, lapse rate, etc.).</p></li>
+<li><p><code>I_solar</code> is the brightness of the sun, in Watts per square meter.
+The default value is 1360.</p></li>
+<li><p><code>surface_type</code> is the type of surface (this is used to calcualte the
+albedo). The default is `earth average. The options are:</p>
+<ul>
+<li>“<code>earth average</code>”: The average albedo of the earth (0.30)</li>
+<li>“<code>asphalt</code>”: Dark asphalt (0.08)</li>
+<li>“<code>concrete</code>”: Concrete (0.55)</li>
+<li>“<code>desert</code>”: Typical desert (0.40)</li>
+<li>“<code>forest</code>”: Typical forest (0.15)</li>
+<li>“<code>grass</code>”: Typical grassland (0.25)</li>
+<li>“<code>ocean</code>”: Ocean (0.10)</li>
+<li>“<code>snow</code>”: Typical snow (0.85)</li>
+<li>“<code>ice</code>”: Large ice masses covering ocean or land (0.60)</li>
+<li>“<code>soil</code>”: Bare soil (0.17)</li>
+<li>&quot;<code>custom&quot;: Custom albedo (if you choose this, you need to also supply  a value for</code>albedo`)</li>
+</ul></li>
+<li><p><code>tropopause_km</code> is the altitude of the tropopause, in kilometers above
+sea level. The default value is 15. On the earth, the tropopause varies
+from around 9 km at the poles to around 17 km near the equator.</p></li>
+<li><code>lapse_rate</code> is the lapse rate, in Kelvin per kilometer. The default is
+<ol start="6" style="list-style-type: decimal">
+<li>The dry adiabatic lapse rate is 10, so it’s physically impossible to
+have a lapse rate greater than 10 and results with <code>lapse_rate</code>
+greater than 10 won’t make sense.</li>
+</ol></li>
+<li><p><code>low_cloud_frac</code> is the fraction (from 0–1) of the sky covered by
+low (stratus) clouds. The default is 0.</p></li>
+<li><p><code>high_cloud_frac</code> is the fraction (from 0–1) of the sky covered by
+high (cirrus) clouds. The default is 0.</p></li>
+<li><p><code>cloud_drop_radius</code> is the size of the water droplets in the clouds,
+in microns. The default is 10. (For reference, 10 microns is about the
+size of a red blood cell).
+You can reduce this to simulate the indirect aerosol effect.</p></li>
+<li><p><code>aerosols</code> allows you to set up the atmosphere with the kinds and
+quantities of aerosols typical of a number of different environments.
+Options are:</p>
+<ul>
+<li>“<code>none</code>”: No aerosols</li>
+<li>“<code>ocean</code>”: Typical ocean aerosols (sea-spray, salt, etc.)</li>
+<li>“<code>desert</code>”: Typical desert aerosols (dust, sand)</li>
+<li>“<code>city</code>”: Typical city with soot (black carbon) and sulfate aerosols.</li>
+<li>“<code>city just sulfates</code>”: Just sulfate aerosols typical of a city.</li>
+<li>“<code>city just soot</code>”: Just soot (black carbon) aerosols typical of a
+city.</li>
+<li>“<code>land</code>”: Typical rural land (dust, etc.)</li>
+<li>“<code>polluted land</code>”: Typical rural land suffering from pollution
+(e.g., from farming)</li>
+<li>“<code>antarctic</code>”: Typical aerosols for Antarctica</li>
+<li>“<code>volcano</code>”: Similar sulfate and dust to the Mt. Pinatubo volcanic
+eruption.</li>
+</ul></li>
+</ul>
+<p>Any arguments you don’t specify explicitly take on their default value.
+Thus, <code>run_rrtm(co2_ppm = 800, relative humidity = 10, T_surface = 300)</code>
+would run with all the default values, except for 800 ppm CO<sub>2</sub>,
+relative humidity of 10%, and a surface temperature of 300 Kelvin.</p>
+<p><code>run_rrtm</code> returns a list of data containing:</p>
+<ul>
+<li>Basic parameters of the model run:
+<ul>
+<li><code>T_surface</code></li>
+<li><code>co2_ppm</code></li>
+<li><code>ch4_ppm</code></li>
+<li><code>I_solar</code></li>
+<li><code>albedo</code></li>
+<li><code>lapse_rate</code></li>
+<li><code>tropopause_km</code></li>
+<li><code>relative_humidity</code></li>
+<li><code>aerosols</code>,</li>
+<li><code>low_cloud_frac</code></li>
+<li><code>high_cloud_frac</code></li>
+<li><code>cloud_drop_radius</code></li>
+</ul></li>
+<li>Results of the model calculations:
+<ul>
+<li><code>Q</code>: The heat imbalance <span class="math inline">\(I_{\text{in}} - I_{\text{out}}\)</span></li>
+<li><code>i_in</code>: The net solar radiation absorbed by the earth
+(<span class="math inline">\((1 - \alpha) I_{\text{solar}} / 4\)</span>)</li>
+<li><code>i_out</code>: The net longwave radiation emitted to space from the top
+of the atmosphere</li>
+<li><code>profile</code>: A tibble containing a profile of the atmosphere
+(altitude in km, pressure in millibar, and temperature in Kelvin)</li>
+<li><code>fluxes</code>: A tibble containing the fluxes (in Watts per square
+meter) of longwave, shortwave, and total radiation going up and
+down at 52 levels from the surface to the top of the atmosphere.
+The columns are <code>altitude</code> (km), <code>T</code> (temperature in K),
+<code>P</code> (pressure in millibar), <code>sw_up</code> (upward shortwave), <code>sw_down</code>
+(downward shortwave), <code>lw_up</code> (upward longwave), <code>lw_down</code>
+(downward longwave), <code>total_up</code> (<code>sw_up</code> + <code>lw_up</code>), and
+<code>total_down (</code>sw_down<code>+</code>lw_down`).</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>There are also functions for reading RRTM data files and plotting RRTM data:</p>
+<ul>
+<li><p><code>read_rrtm(file)</code> reads an RRTM file saved by <code>run_rrtm</code> and returns a
+list of data just like the one returned by <code>run_rrtm</code>.</p></li>
+<li><p><code>plot_heat_flows()</code>: plots the upward and downward fluxes of radiation from
+an RRTM file or data structure. You can call it either with
+<code>plot_rrtm(file = &quot;filename&quot;)</code> or <code>plot_rrtm(data = rrtm_data)</code>, where
+“<code>filename</code>” and “<code>rrtm_data</code>” stand for your own filename or rrtm data
+structure returned by <code>run_rrtm</code> or <code>read_rrtm</code>.</p>
+<p>You can also specify which wavelengths to plot. By default, it plots
+shortwave (SW), longwave (LW), and total (SW + LW), but you can specify
+one or more of <code>sw = FALSE</code>, <code>lw = FALSE</code>, or <code>total = FALSE</code> to
+omit wavelengths.</p></li>
+</ul>
+</div>
+<div id="example-of-running-rrtm" class="section level2">
+<h2>Example of running RRTM</h2>
+<p>Here is an example of running RRTM:</p>
+<pre class="r"><code>default_rrtm = run_rrtm()
+
+# Surface temperature:
+default_rrtm$T_surface</code></pre>
+<pre><code>## [1] 284.42</code></pre>
+<pre class="r"><code># Heat imbalance:
+default_rrtm$Q</code></pre>
+<pre><code>## [1] 0</code></pre>
+<p>This run has surface temperature
+284.42 K and a heat imbalance of
+0.00 Watts per square meter.</p>
+<div id="interpreting-rrtm-results" class="section level3">
+<h3>Interpreting RRTM Results</h3>
+<p>We can plot the heat flows as a function of altitude:</p>
+<pre class="r"><code>plot_heat_flows(default_rrtm)</code></pre>
+<p><img src="/lab_docs/lab_04_instructions_files/figure-html/plot_rrtm_example-1.png" width="672" /></p>
+<p>What you see in this plot are thick lines representing downward heat flow
+and thin lines representing upward flow. The different colors represent
+shortwave, longwave, and total (shortwave + longwave).</p>
+<p>A few things to notice: At the top of the atmospere, at
+24 km,
+there is very little longwave going down, but a lot of shortwave going down
+(around 340 W/m<sup>2</sup>).
+Conversely, there is a modest amount of shortwave going up
+(around 95 W/m<sup>2</sup>),
+but a lot of longwave going up (around
+245 W/m<sup>2</sup>).</p>
+<p>The upward shortwave radiation is sunlight reflected from the atmosphere and
+the earth’s surface.</p>
+<p>The upward longwave radiation is emitted from the surface and the atmosphere.
+You can see that the longwave radiation, both up and down, is greater closer to
+the surface, where temperatures are warmer, and smaller at higher altitudes,
+where the atmosphere is cooler.</p>
+<p>If we look at the total radiation, we see that there is a good balance near the
+top of the atmosphere (the upward and downward lines come together), but
+in the lower atmosphere, there is a serious imbalance with downward fluxes
+significantly larger than the upward ones.</p>
+<p>This is a consequence of convection: The difference between the downward and
+upward radiative fluxes is taken up by convection, which moves heat upward
+when warm air rises and cool air sinks.</p>
+</div>
+<div id="determining-climate-sensitivity-with-rrtm" class="section level3">
+<h3>Determining Climate Sensitivity with RRTM</h3>
+<p>We can also use the RRTM model to study what happens when we double CO<sub>2</sub>:</p>
+<pre class="r"><code>rrtm_double_co2 = run_rrtm(co2_ppm = 800)</code></pre>
+<p>When we double CO<sub>2</sub> without changing the surface temperature
+(T~surface = 284.42 K),
+this creates a heat imbalance of 4.20
+W/m<sup>2</sup>. We can use the online interactive version of RRTM to adjust surface
+temperature until the heat flows balance. The surface temperature where this
+happens is 286.90 K and we can paste it into our
+R code:</p>
+<pre class="r"><code>new_ts = 286.9 # Kelvin
+rrtm_double_co2_balanced = run_rrtm(co2_ppm = 800, T_surface = new_ts)</code></pre>
+<p>When we set T<sub>surface</sub> to
+286.90 K, the heat
+imbalance becomes 0.00
+Watts/m<sup>2</sup>. The climate sensitivity is the change in equilibrium
+T<sub>surface</sub> when you double CO<sub>2</sub>:
+<span class="math inline">\(\Delta T_{2\times \text{CO}_2} = 286.90 \mathrm{K} - 284.42 \mathrm{K} = 2.48\)</span> K.
+You may remember that when we calculated the climate sensitivity with MODTRAN
+(using constant relative humidity to enable water-vapor feedback) we got
+<span class="math inline">\(\Delta T_{2\times\text{CO}_2} = 1.21\)</span> K for the tropical atmosphere (it’s
+smaller for the other atmospheres), so this shows that including convection in
+our calculations roughly doubles the climate sensivity.</p>
+</div>
+</div>
+<div id="enhancements-to-read_modtran" class="section level2">
+<h2>Enhancements to <code>read_modtran</code></h2>
+<p>I have enhanced the MODTRAN functions:</p>
+<ul>
+<li>In addition to saving data to a file, <code>read_modtran</code> also returns
+data in a form that you can work with directly, without needing to
+use <code>read_modtran</code>:</li>
+</ul>
+<pre class="r"><code>modtran_baseline = run_modtran(file = &quot;_data/modtran_baseline.txt&quot;)
+modtran_baseline$i_out</code></pre>
+<pre><code>## [1] 298.6712</code></pre>
+<pre class="r"><code>plot_modtran(modtran_baseline)</code></pre>
+<p><img src="/lab_docs/lab_04_instructions_files/figure-html/modtran_examples-1.png" width="672" /></p>
+<p>You can also leave out the <code>file</code> argument to <code>read_modtran</code> if you don’t need
+to save the MODTRAN output to a file.</p>
+<pre class="r"><code>modtran_doubled_co2 = run_modtran(co2_ppm = 800)
+modtran_doubled_co2$i_out</code></pre>
+<pre><code>## [1] 295.3411</code></pre>
+<pre class="r"><code>plot_modtran(modtran_doubled_co2, i_out_ref = modtran_baseline$i_out)</code></pre>
+<p><img src="/lab_docs/lab_04_instructions_files/figure-html/modtran_example_2-1.png" width="672" /></p>
+</div>
+</div>
+<div id="new-r-and-rmarkdown-tricks" class="section level1">
+<h1>New R and RMarkdown tricks</h1>
+<p>Sometimes you may want to use different text into your document, depending
+on what the result of a calculation is.</p>
+<p>For instance, I might have a function called <code>foo</code> that returns a number
+and I want to write something different if <code>foo(x)</code> &gt; x than if
+<code>foo(x)</code> &lt; x. Here, the function <code>ifelse</code> can come in handy.</p>
+<pre class="r"><code>foo = function(x) {
+  x^2
+}</code></pre>
+<p>Now I can write <code>ifelse(foo(x) &lt; x, &quot;less than&quot;, &quot;greater than&quot;)</code>:
+When x = 0.5, <code>foo(x)</code> is
+less than x,
+but when x = 2.0, <code>foo(x)</code> is
+greater than x.</p>
+<p>You may have spotted a problem with the code above: What if <code>foo(x)</code> = x?
+Then I need another <code>ifelse</code>:
+<code>ifelse(foo(x) &lt; x, &quot;less than&quot;, ifelse(foo(x) &gt; x, &quot;greater than&quot;, &quot;equal to&quot;))</code>.
+This is cumbersome to type into your text, so you might want to write a function:</p>
+<pre class="r"><code>compare_f = function(f, x) {
+  # f is a function
+  # x is a number or a numeric variable
+  result = f(x)
+  ifelse(result &lt; x, &quot;less than&quot;,
+         ifelse(result &gt; x, &quot;greater than&quot;, 
+                &quot;equal to&quot;))
+}</code></pre>
+<p>Now I can just write <code>compare_f(foo, x)</code>:
+When x = 0.5, <code>foo(x)</code> is less than x, but
+when x = 2.0, <code>foo(x)</code> is greater than x and
+when x = 1.0, <code>foo(x)</code> is equal to x.</p>
+<p>This may seem kind of strange, but it can be helpful if you have a report
+that you prepare regularly with different data and want to be able to
+update by running RMarkdown with different data sets, and have the text
+adjust automatically to what the new numbers are.</p>
+<p>This approach is used when businesses need to generate monthly reports
+(e.g., sales, finances, etc.) and want to automate the process with an
+RMarkdown report template that can be used over and over with each new
+month’s data.</p>
+<p>It is also applicable to climate science, where many laboratories like to
+update their reports every month or every year with the latest climate data.</p>
+</div>
+<div id="exercises" class="section level1">
+<h1>Exercises</h1>
+<p>These are the exercises you will work for the lab this week.</p>
+<div id="general-instructions" class="section level3">
+<h3>General Instructions</h3>
+<p>In the past three weeks, we focused on mastering many of the basics of using
+R and RMarkdown. For this week’s lab, when you write up the answers, I would
+like you to think about integrating your R code chunks with your text.</p>
+<p>For instance, you can describe what you’re going to do to answer the question,
+and then for each step, after you describe what you’re going to do in that
+step, you can include an R code chunk to do what you just described, and then
+the subsequent text can either discuss the results of what you just did
+or describe what the next step of the analysis will do.</p>
+<p>This way, your answer can have several small chunks of R code that build on
+each other and follow the flow of your text.</p>
+</div>
+<div id="chapter-5-exercise" class="section level2">
+<h2>Chapter 5 Exercise</h2>
+<p>For this model, you will use the RRTM model, which includes both radiation and
+convection.</p>
+<div id="exercise-5.1-lapse-rate" class="section level3">
+<h3>Exercise 5.1: Lapse Rate</h3>
+<p>Run the RRTM model in its default configuration and then vary the lapse rate
+from 0 to 10 K/km. For each value of the lapse rate, adjust the surface
+temperature until the earth loses as much heat as it gains (i.e., the value of
+<em>Q</em> in the <code>run_rrtm</code> model output is zero.)</p>
+<p>It will probably be easier to do this with the interactive version of the RRTM
+model at <a href="http://climatemodels.uchicago.edu/rrtm/" class="uri">http://climatemodels.uchicago.edu/rrtm/</a> than with the R interface
+<code>run_rrtm</code>.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Make a tibble containing the values of the lapse rate and the corresponding
+equilibrium surface temperature, and make a plot with lapse rate on the
+horizontal axis and surface temperature on the vertical axis.</p></li>
+<li><p>Describe how the equilibrium surface temperature varies as the lapse rate
+varies.</p></li>
+</ol>
+</div>
+</div>
+<div id="chapter-7-exercises" class="section level2">
+<h2>Chapter 7 Exercises</h2>
+<div id="exercise-7.2-clouds-and-infrared." class="section level3">
+<h3>Exercise 7.2: Clouds and Infrared.</h3>
+<p><strong>Note:</strong> this exercise only considers the effect of clouds on longwave
+radiation and ignores the effect of clouds on albedo, which is also important.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Run the MODTRAN model with present-day CO<sub>2</sub> (400 ppm) and a tropical atmosphere.
+Plot the outgoing infrared spectrum.</p>
+<p>Run MODTRAN four times: first with no clouds, and then with three different
+kinds of clouds: standard cirrus, altostratus, and stratus. These correspond
+to high, medium, and low-altitude clouds.</p>
+<p>Describe the important differences between the spectra for the four cases.
+Describe the differences in the intensity of outgoing infrared radiation
+<span class="math inline">\(I_{\text{out}}\)</span> for the four cases.</p>
+<p>How do the four spectra compare for the 700 cm<sup>-1</sup> band (where CO<sub>2</sub> absorbs
+strongly) and the 900 cm<sup>-1</sup> band (in the atmospheric window)?</p>
+<p>Which kind of cloud has the greatest impact on outgoing infrared light?
+Why?</p></li>
+<li><p>Now set <code>atmosphere</code> to <code>&quot;midlatitude winter&quot;</code>, set <code>clouds</code> to <code>&quot;none&quot;</code>,
+and set the sensor altitude to 0 km (<code>altitude_km = 0</code>) and make the sensor
+look up (<code>looking = &quot;up&quot;</code>).
+This means your sensor is on the ground looking up at the longwave radiation
+coming down from the atmosphere to the ground instead of looking down from
+the top of the atmosphere at the longwave radiation going out to space.</p>
+<p>Run MODTRAN first with <code>h2o_scale = 1</code> (the default), and then with
+<code>h2o_scale = 0</code> (no water vapor).</p>
+<p>Plot the two spectra and compare them. Discuss why you see what you see:</p>
+<ul>
+<li><p>For the atmosphere with no water vapor, compare the parts of the
+spectrum corresponding to the strong CO<sub>2</sub> absorption
+(roughly 600–750 cm<sup>-1</sup>) and the infrared window
+(roughly 800–1200 cm<sup>-1</sup>).</p>
+<ul>
+<li>Which corresponds to higher emission temperatures and which to lower temperatures?</li>
+<li>Why do you think this is?</li>
+</ul></li>
+<li><p>For the atmosphere with normal water vapor (<code>h2o_scale = 1</code>), how does
+water vapor change the spectrum you see from the ground?</p>
+<ul>
+<li>Does it make the longwave radiation brighter (warmer) or dimmer
+(cooler)?</li>
+<li>Why do you think this is?</li>
+</ul></li>
+</ul></li>
+<li><p>Keeping the same settings for <code>atmosphere = &quot;midlatitude winter&quot;</code>,
+<code>altitude_km = 0</code>, and <code>looking=&quot;up&quot;</code>, set <code>h2o_scale=1</code>
+and run MODTRAN first with no clouds, then with three kinds of clouds:
+standard cirrus, altostratus, and stratus (<code>clouds=&quot;none&quot;</code>,
+<code>clouds=&quot;standard cirrus&quot;</code>, <code>clouds=&quot;altostratus&quot;</code>, and <code>clouds=&quot;stratus&quot;</code>).</p>
+<p>When we’re looking up at the clouds, the base (bottom) of the clouds form
+a layer that is opaque to longwave radiation, with an emissivity of 1
+(i.e., a perfect black body).</p>
+<p>Cirrus clouds are very high (around 10 km above sea level),
+altostratus clouds are at a medium height (with a base around 2.4 km),
+and stratus clouds are very low (with a base around 0.33 km).</p>
+<p>For each run examine<br />
+<span class="math inline">\(I_{\text{down}}\)</span>. (Remember that the variable <code>i_out</code> in the MODTRAN
+output measures the intensity of longwave radiation reaching the sensor.
+In this exercise, the sensor is on the ground looking up, so <code>i_out</code>
+measures the downward radiation reaching the ground.)</p>
+<p>Describe how <span class="math inline">\(I_{\text{down}}\)</span> compares for the four conditions.</p>
+<pre><code> * Do the clouds have a heating or cooling effect?
+ * Which clouds have the greatest effect?
+ * What does this suggest about how clouds affect the ground temperature?</code></pre>
+<p>As you do this exercise, think about a winter night with clear skies
+versus a winter night with cloudy skies.</p></li>
+<li><p>Plot the longwave radiation spectra for the four MODTRAN runs from part (c).
+Which parts of the spectrum do the different clouds affect the most?
+(Compare the infrared window to the parts of the spectra where CO<sub>2</sub>
+absorbs.)</p>
+<ul>
+<li><p>Look at two parts of the spectrum: the infrared window
+(roughly 800–1200 cm<sup>-1</sup>) and the region where CO<sub>2</sub> absorbs strongly
+(roughly 600–750 cm<sup>-1</sup>).</p>
+<p>Why do you suppose the high, medium, and low clouds affect the two
+different spectral regions the way they do?</p></li>
+<li><p>In which part of the spectrum do the clouds affect the downward longwave
+radiation the most?</p></li>
+</ul></li>
+</ol>
+</div>
+<div id="exercise-7.3-clouds-and-visible-light." class="section level3">
+<h3>Exercise 7.3: Clouds and Visible Light.</h3>
+<p>For this exercise, you will use the RRTM model to examine climate sensitivity
+and the water vapor feedback in a radiative-convective atmosphere.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>First, run the RRTM model with its default parameters (400 ppm CO<sub>2</sub>) and
+note the surface temperature (<code>T_surface</code>).</p>
+<p>Then run it again with doubled CO<sub>2</sub> concentration (<code>co2 = 800</code>).
+Adjust the surface temperature to bring the heat imbalance <code>Q</code> to zero
+(it may be easier to do this with the interactive model at
+<a href="http://climatemodels.uchicago.edu/rrtm/" class="uri">http://climatemodels.uchicago.edu/rrtm/</a> and then paste the new surface
+temperature into your R code).</p>
+<p>The change in surface temperature between the 400 ppm CO<sub>2</sub> and
+800 ppm CO<sub>2</sub> (<span class="math inline">\(\Delta T_{2 \times \text{CO}_2}\)</span>) runs is the
+<strong>climate sensitivity</strong>. What is it?</p></li>
+<li><p>Now run the RRTM model again, for 400 and 800 ppm CO<sub>2</sub>, but this time
+setting <code>relative_humidity = 0</code> (this turns off the water vapor feedback).
+At each concentration of CO<sub>2</sub>, adjust <code>T_surface</code> to bring the heat into
+balance (so the output has <code>Q</code> equal to zero). Now what is the climate
+sensitivity <span class="math inline">\(\Delta T_{2 \times \text{CO}_2}\)</span>?</p></li>
+<li><p>Compare the climate sensitivity (<span class="math inline">\(\Delta T_{2 \times \text{CO}_2}\)</span>) in
+part (a) (with water-vapor feedback) and part (b) (without water-vapor
+feedback).
+The amplification factor for the water-vapor feedback is the ratio of the
+climate sensitivity with water-vapor feedback to the sensitivity without the
+feedback.
+What is it?</p></li>
+</ol>
+</div>
+</div>
+</div>

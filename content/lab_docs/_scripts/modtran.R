@@ -1,5 +1,5 @@
 library(pacman)
-p_load(tidyverse, scales, gtable, grid, stringr, xml2)
+p_load(tidyverse, scales, xml2)
 
 ssource <- function(filename, chdir = F) {
   if(!file.exists(filename)) {
@@ -61,13 +61,16 @@ atmos_spec <- data_frame(
   key = c("tropical",
           "midlatitude summer", "midlatitude winter",
           "subarctic summer", "subarctic winter",
-          "standard"
+          "standard", "standard atmosphere",
+          "us standard atmosphere", "u s standard atmosphere",
+          "1976 standard atmosphere",
+          "1976 us standard atmosphere", "1976 u s standard atmosphere"
   ),
-  value = c(1, 2, 3, 4, 5, 6),
+  value = c(1, 2, 3, 4, 5, rep(6, 7)),
   descr = c("Tropical",
             "Midlatitude Summer", "Midlatitude Winter",
             "Subarctic Summer", "Subarctic Winter",
-            "1976 U.S. Standard Atmosphere"
+            rep("1976 U.S. Standard Atmosphere", 7)
   )
 )
 
@@ -115,7 +118,7 @@ sensor_orientation <- data_frame(
   descr = c("looking down", "looking up")
 )
 
-run_modtran <- function(filename,
+run_modtran <- function(filename = NULL,
                         co2_ppm = 400,
                         ch4_ppm = 1.7,
                         trop_o3_ppb = 28,
@@ -141,6 +144,10 @@ run_modtran <- function(filename,
                 "atmosphere", "clouds",
                 "altitude_km", "looking")) %>%
     map(~as.character(.x[1])) %>%
+    modify_at("atmosphere", ~str_to_lower(.x) %>%
+             str_replace_all(c("[^a-z0-9]+" = " ", "  +" = " ")) %>%
+             str_trim()
+    ) %>%
     simplify()
   for(k in c('h2o_fixed', 'atmosphere', 'clouds', 'looking')) {
     # message("Looking up ", k)
@@ -160,13 +167,24 @@ run_modtran <- function(filename,
   output = read_html(url)
   body <- as_list(output) %>% unlist() %>% simplify()
   # lines <- body %>% str_split("\n") %>% unlist() %>% simplify()
-  write(body, filename)
-  invisible(body)
+  if (! is.null(filename)) {
+    write(body, filename)
+  }
+
+
+  output <- str_c(body, collapse = "\n") %>% read_modtran(text = .)
+  invisible(output)
 }
 
 
-read_modtran_profile <- function(filename, text = NULL) {
-  if (missing(filename) && ! is.null(text)) {
+read_modtran_profile <- function(filename = NULL, text = NULL) {
+  if (! is.null(filename) && ! is.na(filename)) {
+    if (isTRUE(any(str_detect(filename, "\n"))) || length(filename) > 1) {
+      text = filename
+      filename = NULL
+    }
+  }
+  if (is.null(filename) && ! is.null(text)) {
     lines <- text %>% str_split("\n") %>% unlist()
   } else {
     f <- file(filename,"r")
@@ -193,14 +211,25 @@ extract_tropopause <- function(profile) {
   profile %>% filter(T <= lead(T)) %>% top_n(-1, Z)
 }
 
-read_modtran <- function(filename, text = NULL, scale_factor = 3.14E+4) {
-  if (missing(filename) && ! is.null(text)) {
+read_modtran <- function(filename = NULL, text = NULL, scale_factor = 3.14E+4) {
+  if (! is.null(filename) && ! is.na(filename)) {
+    if (isTRUE(any(str_detect(filename, "\n"))) || length(filename) > 1) {
+      text = filename
+      filename = NULL
+    }
+  }
+  if (is.null(filename) && ! is.null(text)) {
     lines <- text %>% str_split("\n") %>% unlist()
   } else {
     f <- file(filename,"r")
     lines <- readLines(f,warn=F)
     close(f)
   }
+  atmos_index <- str_detect(lines, "ATMOSPHERIC MODEL") %>% which()
+  atmos_spec <- str_match(lines[atmos_index + 1],
+                          "^ +TEMPERATURE += +[0-9]+ +(?<atmos>[A-Za-z0-9].+)$") %>%
+    { .[1,2] } %>% str_trim()
+
   profile <- read_modtran_profile(text = lines)
   tropopause <- extract_tropopause(profile)
   t_ground = profile$T[1]
@@ -248,10 +277,13 @@ read_modtran <- function(filename, text = NULL, scale_factor = 3.14E+4) {
                  profile = profile,
                  h_tropo = tropopause$Z,
                  t_tropo = tropopause$T,
-                 t_ground = t_ground))
+                 t_ground = t_ground,
+                 atmosphere = atmos_spec))
 }
 
-plot_modtran <- function(filename, descr = NULL, i_out_ref = NA,
+plot_modtran <- function(filename = NULL, text = NULL,
+                         modtran_data = NULL,
+                         descr = NULL, i_out_ref = NA,
                          last_i_out = NA, delta_t = NA,
                          tmin=220, tmax = 300,
                          nc = 5, max_color = 0.8,
@@ -261,7 +293,14 @@ plot_modtran <- function(filename, descr = NULL, i_out_ref = NA,
                          annotate_size = 5, text_size = 10,
                          legend_text_size = 10, legend_size = 0.2,
                          line_scale = 1, direction = "out") {
-  x  <- read_modtran(filename)
+  if (! is.null(modtran_data)) {
+    x <- modtran_data
+  } else if (! is.null(filename) && is.list(filename) &&
+             "spectrum" %in% names(filename)) {
+    x <- filename
+  } else {
+    x  <- read_modtran(filename, text)
+  }
   spectrum <- x$spectrum
   alt <- x$alt
   co2 <- x$co2

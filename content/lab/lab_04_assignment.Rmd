@@ -3,6 +3,7 @@ title: Clouds and Convection
 lab_date: '2018-09-17'
 report_due_date: '2018-09-24'
 lab_number: 4
+github_classroom_assignment_url: https://classroom.github.com/a/wkg7zh2m
 pubdate: '2018-07-31'
 date: '2018-09-17'
 slug: lab_04_assignment
@@ -14,9 +15,10 @@ This lab will explore two different phenomena: First, we will explore the effect
 
 ## Reading
 
-No reading has been posted yet for this lab.
+**Before you come to lab**, please read the following document:
 
+* [Instructions for Lab #4](/lab_docs/lab_04_instructions)
 
 ## Assignment
 
-The GitHub Classroom has not been posted yet.
+Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/wkg7zh2m>.

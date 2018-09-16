@@ -52,7 +52,7 @@ knit correctly.
 
 **Before you come to lab**, please read the following document:
 
-* [Instructions for lab #3](/lab_docs/lab_03_instructions)
+* [Instructions for Lab #3](/lab_docs/lab_03_instructions)
 
 ## Assignment
 
