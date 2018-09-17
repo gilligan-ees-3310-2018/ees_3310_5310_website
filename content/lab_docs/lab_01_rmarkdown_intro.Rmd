@@ -503,14 +503,11 @@ inserting commas to separate thousands, millions, etc.
 
 `format_md(sigma, digits = 1)` will produce `r format_md(sigma, digits = 1)`
 
-`format_md(sigma, digits = 1, scientific = FALSE)` will produce 
-`r format_md(sigma, digits = 1, scientific = FALSE)`
+`format_md(pi * 1E6, digits = 3, format="scientific")` will produce 
+`r format_md(pi * 1E6, digits = 3, format="scientific")`
 
-`format_md(pi * 1E6, digits = 3, scientific = TRUE)` will produce 
-`r format_md(pi * 1E6, digits = 3, scientific = TRUE)`
-
-`format_md(pi * 1E6, digits = 3, scientific = FALSE, comma = TRUE)` will produce 
-`r format_md(pi * 1E6, digits = 3, scientific = FALSE, comma = TRUE)`
+`format_md(pi * 1E6, digits = 3, comma = TRUE)` will produce 
+`r format_md(pi * 1E6, digits = 3, comma = TRUE)`
 
 ### Script for Layer Diagrams
 

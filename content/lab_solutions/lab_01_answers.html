@@ -1,0 +1,405 @@
+---
+title: Answers
+lab_number: 1
+lab_date: '2018-08-27'
+pubdate: '2018-09-05'
+date: '2018-09-03'
+pdf_url: /files/lab_solutions/lab_01/lab_01_answers.pdf
+slug: lab_01_answers
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+
+
+
+<div id="instructions" class="section level1">
+<h1>Instructions:</h1>
+<ul>
+<li>Clone a local copy of the file repository from github.</li>
+<li>In your local repository, answer the exercises in the template
+<code>Lab_01_Activities.Rmd</code>.</li>
+<li><p>The report, which you will be graded on, will be a knitted Word or PDF file
+based on the <code>Lab_01_Activities.Rmd</code> template, in which you have added
+answers to the exercises.</p>
+<p>When you knit the documnet, it will carry out the calculations you have
+programmed and it will also show the R code you used to do the calculations.
+Thus, it will automatically show your work and your results.</p>
+<p>As we move along in the semester, you will get experience using R to make
+graphs, tables, and other output, which you will be able to use to
+produce integrated lab reports that show all the steps of your work
+along with the results and your disucssion and illustration of those
+results.</p>
+You will turn in your knitted lab report along with the
+Lab_01_Activities.Rmd file you used to produce it, and the rest of the project,
+by committing your work to the Git repository on your computer and then
+pushing the commits to your account on GitHub.</li>
+<li><p>You should frequently knit your file to make sure it runs without errors and
+produces appropriate output. Knitting a file to PDF format can be slow, so I
+recommend knitting to HTML or Word format while you’re working on your project
+and then knitting to PDF when you get to a good stopping point and want to see
+what the finished document will look like.</p>
+<p>Please don’t wait until the last minute, just before you submit your project,
+before knitting because a big piece of your grade is producing a finished
+knitted document and if you wait too late and then can’t knit because
+there are errors in your file, you will be unhappy.</p>
+One nice thing about Git is that if you commit your edits frequently to your
+repository, then if things are going nicely and your document is knitting,
+and then you do something new and it breaks, you will be able to review your
+changes and figure out what you did that broke your document, and you will
+always be able to go back to the earlier versions that knit properly.</li>
+<li>Use git to commit your changes (including the edits to <code>Lab_01_Activities.Rmd</code>
+and the new PDF file) to your local git repository.</li>
+<li><p>Push the changes from your local git repository to github.</p>
+<p>The last changes that you push before the due date (Monday
+Sept. 3 at 9:00 am) will be graded.</p></li>
+</ul>
+<p>I advise using git to commit changes frequently as you work and push those commits
+to GitHub so that if something happens to your computer, your work will be saved in the
+cloud.</p>
+</div>
+<div id="exercises-from-chapter-2" class="section level1">
+<h1>Exercises from Chapter 2</h1>
+<p><strong><em>I have worked Exercise 2.1 as an example to show you how you can use
+RMarkdown to solve problems and write up the answers.
+You will solve the other exercises for the lab using the same methods.</em></strong></p>
+<div id="exercise-2.1-worked-example" class="section level2">
+<h2>Exercise 2.1 (worked example)</h2>
+<p>Consider exercise 1 in Chapter 2, on p. 17 of our textbook,
+<em>Global Warming: Understanding the Forecast</em>:</p>
+<blockquote>
+<p>A joule (J) is an amount of energy, and a watt (W) is a rate of using energy,
+defined as 1 W = 1 J/s. How many Joules of energy are required to run a 100-W
+light bulb for one day?</p>
+</blockquote>
+<pre class="r"><code>seconds_per_hour = 60 * 60 # number of seconds in one hour
+hours_per_day = 24 # number of seconds in one day
+light_bulb_power = 100
+joules_per_day = light_bulb_power * seconds_per_hour * hours_per_day
+
+joules_per_day</code></pre>
+<pre><code>## [1] 8640000</code></pre>
+<p>It can be hard to read a long number like that, so we can use R’s format command to add commas:</p>
+<pre class="r"><code>format_md(joules_per_day, comma = TRUE)</code></pre>
+<pre><code>## [1] &quot;8,640,000&quot;</code></pre>
+<p>Or if you want to express that in scientific notation, you can do this:</p>
+<pre class="r"><code>format_md(joules_per_day, digits = 3, format = &quot;scientific&quot;)</code></pre>
+<p>[1] “8.640×10<sup>6</sup>”</p>
+<p><strong>Answer:</strong> A 100 watt light bulb burns 100 Joules per second,
+so the light bulb burns 3.6× 10<sup>5</sup> Joules per hour and
+8.64× 10<sup>6</sup> Joules per day.</p>
+<blockquote>
+<p>Burning coal yields about
+30.×10<sup>6</sup> J of energy per
+kilogram of coal burned.
+Assuming that the coal power plant is 30% efficient,
+how much coal has to be burned to light that light bulb for one day?</p>
+</blockquote>
+<pre class="r"><code>joules_heat_per_kg_coal = 30.E+6
+efficiency = 0.30
+joules_electricity_per_kg_coal = joules_heat_per_kg_coal * efficiency
+kg_coal_per_joule_electricity = 1 / joules_electricity_per_kg_coal
+kg_coal_per_day = joules_per_day * kg_coal_per_joule_electricity
+
+kg_coal_per_day</code></pre>
+<pre><code>## [1] 0.96</code></pre>
+<p><strong>Answer:</strong> 1 kilogram of coal produces 30,000,000 joules of heat, which is converted into 9,000,000 joules of electricity.
+We can turn this around and figure that to get 1 joule of electricity takes 1 / (9,000,000) = 1.1×10<sup>-7</sup> kg of coal,
+so to get 8,600,000 joules of electricity to power the light bulb for one day takes 0.96 kg of coal.</p>
+</div>
+<div id="exercise-2.2" class="section level2">
+<h2>Exercise 2.2</h2>
+<blockquote>
+<p>A gallon of gasoline carries with it about 1.3 × 10<sup>8</sup> J of energy.
+Given a price of $3 per callon, how many Joules can you get for a dollar?</p>
+</blockquote>
+<pre class="r"><code>gasoline_energy = 1.3E8 # Joules per gallon
+gasoline_price = 3.0 # dollars per gallon
+gasoline_joules_per_dollar = gasoline_energy / gasoline_price</code></pre>
+<p><strong>Answer:</strong> You can get
+4.33×10<sup>7</sup> Joules
+of gasoline for a dollar.</p>
+<blockquote>
+<p>Electricity goes for about $0.05 per kilowatt hour. A kilowatt hour is just a
+weird way to write Joules because a watt is a joule per second, and a kilowatt
+hour is the number of Joules one would get from running 1000 W time one hour
+(3,600 seconds). In the form of electricity, how many Joules can you get for a
+dollar?</p>
+</blockquote>
+<pre class="r"><code>kwh_price = 0.05
+joules_per_kwh = 1000 * 3600
+electricity_joules_per_dollar = joules_per_kwh / kwh_price</code></pre>
+<p><strong>Answer:</strong> One kilowatt hour is 3.60×10<sup>6</sup> Joules.
+At a price of 0.05 dollars per kwh, you can buy
+7.20×10<sup>7</sup> Joules of electricity for a dollar.</p>
+<blockquote>
+<p>A standard cubic foot of natural gas carries with it about 1.1 × 10<sup>6</sup> Joules
+of energy. You can get about 5 × 10<sup>5</sup> British Thermal Units (BTUs) of gas
+for a dollar, and there are about 1,030 BTUs in a standard cubic foot.
+How many Joules of energy in the form of natural gas can you get for a dollar?</p>
+</blockquote>
+<p><strong>Answer:</strong>
+This is a litle complicated. Let’s start by entering the information we have:</p>
+<pre class="r"><code>joules_per_scf = 1.1E6   # Joules per scf
+btu_per_dollar = 5E5 # BTU per dollar
+btu_per_scf = 1030   # BTU per scf</code></pre>
+<p>We know how many BTUs we can buy for a dollar, and we also know how many
+BTUs are in an SCF, so we can calculate the number of SCF we can buy with a
+dollar:</p>
+<pre class="r"><code>scf_per_dollar = btu_per_dollar / btu_per_scf</code></pre>
+<p>We can buy 485. standard cubic feet for a
+dollar.
+Now we can calculate the number of Joules we can get for a dollar:</p>
+<pre class="r"><code>natural_gas_joules_per_dollar = joules_per_scf * scf_per_dollar</code></pre>
+<p>You can buy
+5.34×10<sup>8</sup> Joules
+of natural gas for a dollar.</p>
+<blockquote>
+<p>A ton of coal holds about 3.2 × 10<sup>10</sup> J of energy and costs about $40.
+How many Joules of energy in the form of coal can you get for a dollar?</p>
+</blockquote>
+<pre class="r"><code>coal_joules_per_ton = 3.2E10
+coal_cost_per_ton = 40
+coal_joules_per_dollar = coal_joules_per_ton / coal_cost_per_ton</code></pre>
+<p><strong>Answer:</strong> You can get 8.00×10<sup>8</sup> Joules
+of coal for a dollar.</p>
+<blockquote>
+<p>Corn oil costs about $0.10 per fluid ounce wholesale. A fluid ounce carries
+about 240 dietary Calories (which a scientist would call kilocalories).
+A dietary Calorie is about 4200 J. How many Joules of energy in the form of
+corn oil can you get for a dollar?</p>
+</blockquote>
+<pre class="r"><code>corn_oil_price_per_ounce = 0.10
+corn_oil_calorie_per_ounce = 240
+joules_per_calorie = 4200
+corn_oil_joules_per_ounce = joules_per_calorie * corn_oil_calorie_per_ounce
+corn_oil_joules_per_dollar = corn_oil_joules_per_ounce / corn_oil_price_per_ounce</code></pre>
+<p><strong>Answer:</strong> You can get
+1.01×10<sup>7</sup> Joules
+of corn oil for a dollar.</p>
+<blockquote>
+<p>Rank these five energy sources from cheap to expensive.
+What is the range of prices?</p>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Coal is the cheapest (most Joules per dollar) at
+8.0×10<sup>8</sup>
+Joules per dollar.</li>
+<li>Natural gas is the second cheapest at
+5.3×10<sup>8</sup>
+Joules per dollar.</li>
+<li>Electricity is the third cheapest at
+7.2×10<sup>7</sup>
+Joules per dollar.</li>
+<li>Gasoline is the fourth cheapest at
+4.3×10<sup>7</sup>
+Joules per dollar.</li>
+<li>Corn oil is the most expensive at
+1.0×10<sup>7</sup>
+Joules per dollar.</li>
+</ol>
+</div>
+<div id="exercise-2.3-grad-students-only" class="section level2">
+<h2>Exercise 2.3 (Grad students only)</h2>
+<blockquote>
+<p>This is one of those job-interview questions to see how creative you are,
+analogous to one I heard: “How many airplanes are over Chicago at any given time?”
+You need to make stuff up to get an estimate and demonstrate your management
+potential.
+The question is: <em>What is the efficiency of energy production from growing corn?</em></p>
+<p>Assume that sunlight deposits 250 W/m<sup>2</sup> of energy on a corn field, averaging
+over the day-night cycle.
+There are approximately 4,200 J per dietary Calorie.
+How many Calories of energy are deposited on a square
+meter of field over the growing season?</p>
+<p>(Note: the word “calorie” has two different meanings. Physicists and chemists,
+use “calorie” (with a lower-case “c”) to refer to a thermodynamic unit of heat,
+but nutritionists use the word Calorie (with a capital ‘C’)
+to mean 1 kilocalorie (1000 thermodynamic calories), so when you see “Calories”
+on a food label, it means kilocalories. To keep this exercise simple, I have
+edited the textbook version so we only need to think in terms of dietary Calories.)</p>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<p>Let’s estimate a growing season at about 3 months
+(actual time depends on the kind of corn: sweet corn for corn on the cob takes
+2-3 months to grow, and corn for cattle feed or making corn meal takes closer
+to 4 months, so 3 months is kind of in the middle).</p>
+<pre class="r"><code>I_sun = 250 # Watts per square meter
+joules_per_calorie = 4200 # Joules
+growing_season = 90 # days
+# Convert days to seconds: 24 hours per day, 3600 seconds per hour
+growing_season_seconds = growing_season * 24 * 3600
+
+joules_per_season = I_sun * growing_season_seconds</code></pre>
+<p>The average growing season is about 90 days, or
+7.78×10<sup>6</sup> seconds.
+During that time, an average of <code>I_sun</code> W/m<sup>2</sup> of sunlight is deposited on the
+ground, so a square meter of field receives a total of
+1.94×10<sup>9</sup> Joules.</p>
+<blockquote>
+<p>Now guess how many ears of corn grow per square
+meter, and guess what the number of dietary Calories is that you get for eating
+an ear of corn. Compare the sunlight energy with the corn energy to get the
+efficiency.</p>
+</blockquote>
+<p><strong>Answer:</strong>
+There is no single right answer here. There are different approaches, and what you get out depends on the assumptions and approximations you make. The basic approach is to figure out how many dietary Calories are in an ear of corn, how many ears of corn grow on a plant, and how much area the leaves of the plant constitute.</p>
+<pre class="r"><code>corn_leaf_area = 5500 / 100^2 # Square meters of leaf area per plant
+corn_ear_calories &lt;- 80
+corn_ear_joules &lt;- corn_ear_calories * joules_per_calorie</code></pre>
+<p>When I (Prof. Gilligan) first went to do this problem, I googled dietary
+information about corn, and found that the Department of Agriculture estimates
+that an ear of corn has 80 Calories. (<a href="http://www.fns.usda.gov/fdd/facts/hhpfacts/New_HHPFacts/Veges/HHFS_CORN_FRESH_F210_Final.pdf" class="uri">http://www.fns.usda.gov/fdd/facts/hhpfacts/New_HHPFacts/Veges/HHFS_CORN_FRESH_F210_Final.pdf</a>).
+The University of Iowa Agronomy Extension reports that a typical corn plant produces one ear (<a href="http://www.agronext.iastate.edu/corn/corn-qna.html" class="uri">http://www.agronext.iastate.edu/corn/corn-qna.html</a>)
+and Utah State University reports one to two ears per plant
+(<a href="http://extension.usu.edu/htm/faq/faq_q=96" class="uri">http://extension.usu.edu/htm/faq/faq_q=96</a>).
+A paper from the journal Agricultural and Forest Meteorology reports that the
+total leaf area for a corn plant is typically between
+5000 and 6000 cm<sup>2</sup> (0.5–0.6 square meters)
+(<a href="http://www.sciencedirect.com/science/article/pii/S0168192309000410" class="uri">http://www.sciencedirect.com/science/article/pii/S0168192309000410</a>)</p>
+<p>Putting these data together, I calculated the energy absorbed by the leaves of
+the corn plant and used that to calculate the efficiency with which corn
+converts sunlight to food calories:</p>
+<pre class="r"><code>corn_leaf_energy = corn_leaf_area * joules_per_season
+corn_efficiency = corn_ear_joules / corn_leaf_energy</code></pre>
+<p>This gives me an estimated efficiency of 0.00031,
+or 0.031 percent.</p>
+<p>On the other hand, David Archer’s solution manual for our textbook makes different
+assumptions. Archer assumes that an ear of corn has 500~dietary calories,
+that each plant produces an average of 4~ears, and that there are
+400 cm<sup>2</sup> of leaves per plant, which would make the plant 2% efficient.</p>
+<p>You can see that Archer and I come up with answers that are different by a
+factor of 100, so this question is not looking for a precise answer.</p>
+<p>To do a reality check, I looked up the efficiency of photosynthesis and found
+that typical plants are between 0.2 and 2.0% efficient at photosynthesis.
+If we consider that lots of the energy a corn plant takes from the sun goes
+into making leaves, stems, and roots, not just into producing the edible corn
+kernels on the ear, I think my estimates are closer to the mark than Archer’s,
+but the point of this exercise is not to be exactly right, but to get a feel
+for making reasonable approximations to solve in real-world problems.</p>
+<p>Whether Archer is correct or I am, either way a corn plant is much less
+efficient than a typical automobile (around 15% efficient at converting
+gasoline to forward motion) or an electrical generation plant
+(typically 30–45% efficient at converting coal or natural gas energy to
+electricity).
+Photovoltaic solar electricity is typically 15–20% efficient, which makes it
+between 10 and 400 times more efficient than photosynthesis, depending on
+whether you take my estimated efficiency or Archer’s for photosynthesis.</p>
+</div>
+<div id="exercise-2.4" class="section level2">
+<h2>Exercise 2.4</h2>
+<blockquote>
+<p>The Hoover Dam produces <span class="math inline">\(2 \times 10^{9}\)</span> W of electricity. It is composed of
+<span class="math inline">\(7 \times 10^{9}\)</span> kg of concrete.
+Concrete requires 1 MJ of energy (1 megajoule, 1,000,000 Joules) to produce
+per kilogram.
+How much energy did it take to produce the dam? How long is the “energy payback
+time” for the dam?</p>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<pre class="r"><code>concrete_energy = 1E6 # joules
+dam_concrete = 7E9 # kg concrete
+dam_concrete_energy = concrete_energy * dam_concrete</code></pre>
+<p>I took 7.00×10<sup>15</sup> Joules
+to make the concrete for the Hoover dam.</p>
+<pre class="r"><code>hoover_output = 2E9 # watts
+payback_seconds = dam_concrete_energy / hoover_output
+payback_days = payback_seconds / (24 * 3600)
+payback_years = payback_days / (265.25) # account for leap years</code></pre>
+<p>It would take approximately
+3.5×10<sup>6</sup> seconds,
+or 41 days for the Hoover
+Dam to generate as much electricity as it took to build it.</p>
+<blockquote>
+<p>The area of Lake Mead, formed by Hoover Dam, is 247 mi<sup>2</sup>. Assuming 250 W/m<sup>2</sup>
+of sunlight falls on Lake Mead, how much energy could you produce if instead of
+the lake you installed solar cells that were 12% efficient?
+(1 mile is 1609 meters; how many square meters are in a square mile?)</p>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<pre class="r"><code>I_sun = 250
+efficiency = 0.12
+lake_mead_area_sq_miles = 247
+sq_meters_per_sq_mile = 1609^2
+lake_mead_area = lake_mead_area_sq_miles * sq_meters_per_sq_mile # square meters
+lake_mead_solar_power = I_sun * efficiency * lake_mead_area</code></pre>
+<p>The area of Lake Mead is
+6.39×10<sup>8</sup> square meters.
+If 12% of the sunlight falling on this area were converted to electricity,
+it would produce
+1.9×10<sup>10</sup> Watts,
+which would be about 10
+times as great as the output of the Hoover Dam.</p>
+</div>
+<div id="exercise-2.5" class="section level2">
+<h2>Exercise 2.5</h2>
+<blockquote>
+<p>It takes approximately <span class="math inline">\(2 \times 10^{9}\)</span> J of energy to manufacture 1 m<sup>2</sup> of
+crystalline-silicon photovoltaic cell. (Actually, the number quoted was
+600 kilowatt hours. Can you figure out how to convert kilowatt hours into
+Joules?) Assume that the solar cell is 12% efficient, and calculate how long it
+would take, given 250 W/m<sup>2</sup> of sunlight, for the solar cell to repay the energy
+it cost for its manufacture.</p>
+</blockquote>
+<p><strong>Answer:</strong> put your answer here …</p>
+<pre class="r"><code>mfg_energy_kwh = 600 # Kilowatt hours
+joules_per_kwh = 1000 * 3600
+mfg_energy = 2E9 # Joules
+efficiency = 0.12
+I_sun = 250
+
+mfg_energy_check = mfg_energy_kwh * joules_per_kwh
+
+solar_power = I_sun * efficiency
+payback_seconds = mfg_energy / solar_power
+payback_days = payback_seconds / (24 * 3600)
+payback_years = payback_days / 365.25
+lifetime = 10 # years
+lifetime_seconds = lifetime * 365.25 * 24 * 3600 # seconds per year
+lifetime_output = lifetime_seconds * solar_power</code></pre>
+<p>One kwh is 3.6×10<sup>6</sup> Joules
+(1000 Watts × 3600 seconds/hour),
+so 600 kWh = 2.2×10<sup>9</sup> Joules.</p>
+<p>At 12% efficiency, 1 m<sup>2</sup> of solar panel would produce
+30.0 Watts, so it would take
+6.67×10<sup>7</sup> seconds, or
+2.1 years for the panel to produce as much energy
+as it took to make it.</p>
+<p>Since the average solar panel has a useful lifetime of about 10 years, it would
+generate around 5 times as
+much energy during its lifetime as it took to manufacture it.</p>
+</div>
+<div id="exercise-2.7" class="section level2">
+<h2>Exercise 2.7</h2>
+<blockquote>
+<p>Infrared light has a wavelength of about 10 <span class="math inline">\(\mu\)</span>m. What is its wave number in
+cm<sup>-1</sup>?</p>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<pre class="r"><code>wavelength = 10E-6 # meters
+centimeter = 0.01 # meter
+wavenumbers = centimeter / wavelength</code></pre>
+<p>10 <span class="math inline">\(\mu\)</span>m radiation would have a wavenumber of
+1.0×10<sup>3</sup> cm<sup>-1</sup>.</p>
+<blockquote>
+<p>Visible light has a wavelength of about 0.5 <span class="math inline">\(\mu\)</span>m. What is its frequency in
+Hz (cycles per second)?</p>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<pre class="r"><code>speed_of_light = 3E8 # meters per second
+wavelength = 0.5E-6
+frequency = speed_of_light / wavelength</code></pre>
+<p>The frequency of visible light is about
+6.0×10<sup>14</sup> Hz.</p>
+<blockquote>
+<p>FM radio operates at a frequency of about 40 kHz. What is its wavelength?</p>
+</blockquote>
+<p><strong>Answer:</strong></p>
+<pre class="r"><code>frequency = 40E3
+wavelength = speed_of_light / frequency</code></pre>
+<p>The wavelength of FM radio waves would be about
+7.5×10<sup>3</sup> meters,
+or 7.5 kilometers.</p>
+</div>
+</div>

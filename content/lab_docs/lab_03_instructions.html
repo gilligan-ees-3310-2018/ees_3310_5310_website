@@ -194,9 +194,9 @@ modtran_baseline = read_modtran(file.path(data_dir, &quot;modtran_baseline.txt&q
 baseline_i_out &lt;- modtran_baseline$i_out
 baseline_t_trop &lt;- modtran_baseline$t_trop</code></pre>
 <p>The baseline MODTRAN run has
-<span class="math inline">\(I_{\text{out}} = 298.67\)</span>
+<span class="math inline">\(I_{\text{out}} = 299.\)</span>
 and
-<span class="math inline">\(T_{\text{tropopause}} = 194.8\)</span>.</p>
+<span class="math inline">\(T_{\text{tropopause}} = 190.\)</span>.</p>
 <pre class="r"><code>plot_modtran(file.path(data_dir, &quot;modtran_baseline.txt&quot;))</code></pre>
 <p><img src="/lab_docs/lab_03_instructions_files/figure-html/plot_modtran_baseline-1.png" width="672" /></p>
 <pre class="r"><code>run_modtran(filename = file.path(data_dir, &quot;modtran_double_co2.txt&quot;), 
@@ -507,7 +507,7 @@ present-day pCO<sub>2</sub> (400 ppm). Use the ground temperature reported by th
 <span class="math inline">\(\varepsilon \sigma T_{\text{ground}}^4\)</span>, the heat flux emitted by the ground.
 Assume <span class="math inline">\(\varepsilon = 1\)</span>, and I have already provided the value of the
 Stefan-Boltzmann constant <span class="math inline">\(\sigma\)</span>, as the R variable <code>sigma_sb</code>,
-which equals 5.67 × 10<sup>-8</sup>.
+which equals 0.0000000567.
 (I defined it in the script “utils.R”, which I loaded in the “setup” chunk
 in the RMarkdown document).</p>
 <p>Next, look at the outgoing heat flux at the top of the atmosphere (70 km)

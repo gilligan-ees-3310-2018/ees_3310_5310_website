@@ -1,0 +1,203 @@
+---
+title: The Geochemical Carbon Cycle
+author: ''
+lab_number: 5
+lab_date: '2018-09-24'
+pubdate: '2018-07-31'
+date: '2018-09-24'
+pdf_url: /files/lab_documents/lab_05/lab_05_instructions.pdf
+slug: lab_05_instructions
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+
+
+
+<div id="carbon-cycle" class="section level1">
+<h1>Carbon Cycle</h1>
+<p>For the following exercises, you will use the GEOCARB model,
+which simulates the earth’s carbon cycle.</p>
+<p>The GEOCARB model has two time periods:</p>
+<ul>
+<li><p>First, it runs for 5 million years with the “Spinup” settings in order to
+bring the carbon cycle and climate into a steady state.</p></li>
+<li><p>Then, at time zero, it abruptly changes the parameters to the “Simulation”
+settings and also dumps a “spike” of CO<sub>2</sub> into the atmosphere and runs for
+another 2 million years with the new parameters to see how the climate and
+carbon cycle adjust to the new parameters and the CO<sub>2</sub> spike.</p></li>
+</ul>
+<p>The quantities that are graphed include:</p>
+<dl>
+<dt>pCO2</dt>
+<dd>is the concentration of CO<sub>2</sub> in the atmosphere, in parts per million.
+</dd>
+<dt>WeatC</dt>
+<dd>is the rate of CO<sub>2</sub> being weathered from carbonate rocks and moved to the
+oceans.
+</dd>
+<dt>BurC</dt>
+<dd>is the rate of carbonate being converted into limestone and buried on the
+ocean floor.
+</dd>
+<dt>WeatS</dt>
+<dd>is the rate of SiO<sub>2</sub> being weathered from silicate rocks and moved to the
+oceans.
+</dd>
+<dt>Degas</dt>
+<dd>is the rate at which CO<sub>2</sub> is released to the atmosphere by volcanic activity
+</dd>
+<dt>tCO2</dt>
+<dd>is the total amount of CO<sub>2</sub> dissolved in the ocean, adding all of its forms:
+<span class="math display">\[ \ce{\text{tco2} = [CO2] + [H2CO3] + [HCO3-] + [CO3^{2-}]}. \]</span>
+</dd>
+<dt>alk</dt>
+<dd>is the ocean alkalinity: the total amount of acid (<span class="math inline">\(\ce{H+}\)</span>) necessary to
+neutralize the carbonate and bicarbonate in the ocean. The detailed definition
+is complicated, but to a good approximation,
+<span class="math inline">\(\ce{\text{alk} = [HCO3-] + 2 [CO3^{2-}]}\)</span>. This is not crucial for this lab.
+</dd>
+<dt>CO3</dt>
+<dd>is the concentration of dissolved carbonate (<span class="math inline">\(\ce{CO3^{2-}}\)</span>) in the ocean,
+in moles per cubic meter.
+</dd>
+<dt>d13Cocn</dt>
+<dd>is the change in the fraction of the carbon-13 (<span class="math inline">\(\ce{^{13}C}\)</span>) isotope,
+relative to the more common carbon-12 (<span class="math inline">\(\ce{^{12}C}\)</span>) isotope, in the
+various forms of carbon dissolved in the ocean water.
+</dd>
+<dt>d13Catm</dt>
+<dd>is the change in the fraction of <span class="math inline">\(\ce{^{13}C}\)</span>,
+relative to <span class="math inline">\(\ce{^{12}C}\)</span> in atmospheric CO<sub>2</sub>.
+</dd>
+<dt>Tatm</dt>
+<dd>is the average air temperature.
+</dd>
+<dt>Tocn</dt>
+<dd>is the average temperature of ocean water.
+</dd>
+</dl>
+<div id="note" class="section level3">
+<h3><strong>Note:</strong></h3>
+<p>In this lab, you will mostly look at pCO2, but in exercise 8.2, you will also
+look at the weathering.</p>
+</div>
+<div id="running-the-geocarb-model-from-r" class="section level2">
+<h2>Running the GEOCARB model from R</h2>
+<p>I have provided functions for running the GEOCARB model from R:</p>
+<p>To run the model:</p>
+<pre><code>run_geocarb(filename, co2_spike, degas_spinup, degas_sim,
+plants_spinup, plants_sim, land_area_spinup, land_area_sim,
+delta_t2x, million_years_ago, mean_latitude_continents)</code></pre>
+<p>You need to specify <code>filename</code> (the file to save
+the results in) and <code>co2_spike</code> (the spike in CO<sub>2</sub> at time zero).</p>
+<p>The other parameters will take default values if you don’t specify them,
+but you can override those defaults by giving the parameters a value.</p>
+<p><code>degas_spinup</code> and <code>degas_sim</code> are the rates of CO<sub>2</sub> degassing from volcanoes
+for the spinup and simulation phases, in trillions of molecules per year.</p>
+<p><code>plants_spinup</code> and <code>plants_sim</code> are <code>TRUE/FALSE</code> values for whether to include
+the role of plants in weathering (their roots speed up weathering by making soil
+more permeable and by releasing CO<sub>2</sub> into the soil), and <code>land_area</code> is the
+total area of dry land, relative to today.
+The default values are: <code>degas</code> = 7.5, <code>plants</code> = <code>TRUE</code>, and <code>land_area</code> = 1.</p>
+<p>The geological configuration allows you to look into the distant past, where
+the continents were in different locations and the sun was not as bright as
+today.<br />
+<code>delta_t2x</code> is the climate sensitivity (the amount of warming, in degrees
+Celsius, that results from doubling CO<sub>2</sub>).
+<code>million_years_ago</code> is how many million years ago you want year zero to be and
+<code>mean_latitude_continents</code> is the mean latitude, in degrees, of the continents
+(today, with most of the continents in the Northern hemisphere, the mean
+latitude is 30 degrees).</p>
+<p>After you run <code>run_geocarb</code>, you would read the data in with
+<code>read_geocarb(filename)</code>. This function will return a data frame with the columns
+<code>year</code>, <code>co2.total</code>, <code>co2.atmos</code>, <code>alkalinity.ocean</code>,
+<code>delta.13C.ocean</code>, <code>delta.13C.atmos</code>, <code>carbonate.ocean</code>,
+<code>carbonate.weathering</code>, <code>silicate.weathering</code>, <code>total.weathering</code>,
+<code>carbon.burial</code>, <code>degassing.rate</code>, <code>temp.atmos</code>, and <code>temp.ocean</code>.</p>
+</div>
+<div id="chapter-8-exercises" class="section level2">
+<h2>Chapter 8 Exercises</h2>
+<div id="exercise-8.1-weathering-as-a-function-of-co2" class="section level3">
+<h3>Exercise 8.1: Weathering as a function of CO<sub>2</sub></h3>
+<p>In the steady state, the rate of weathering must balance the rate of CO<sub>2</sub>
+degassing from the Earth, from volcanoes and deep-sea vents.</p>
+<p>Run a simulation with <code>co2_spike</code> set to zero, and set the model to increase
+the degassing rate at time zero (i.e., set <code>degas_sim</code> to a higher value than
+<code>degas_spinup</code>).</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Does an increase in CO<sub>2</sub> degassing drive atmospheric CO<sub>2</sub> up or down?
+How long does it take for CO<sub>2</sub> to stabilize after the degassing increases
+at time zero?</p></li>
+<li><p>How can you see that the model balances weathering against CO<sub>2</sub> degassing
+(<strong>Hint:</strong> what variables would you graph with <code>ggplot</code>?)</p></li>
+<li><p>Repeat this run with a range of degassing values for the simulation phase
+and make a table or a graph of the equilibrium CO<sub>2</sub> concentration versus
+the degassing rate.</p>
+<p>Does the weathering rate always balance the degassing rate when the CO<sub>2</sub>
+concentration stabilizes?</p></li>
+<li><p>Plot the weathering as a function of atmospheric CO<sub>2</sub> concentration, using
+the data from the model runs you did in part (c).</p></li>
+</ol>
+</div>
+<div id="exercise-8.2-effect-of-solar-intensity-on-steady-state-co2-concentration" class="section level3">
+<h3>Exercise 8.2: Effect of solar intensity on steady-state CO<sub>2</sub> concentration</h3>
+<p>The rate of weathering is a function of CO<sub>2</sub> concentration and sunlight,
+and increases when either of those variables increases.
+The sun used to be less intense than it is today.</p>
+<p>Run GEOCARB with the spike set to zero, with the default values of
+7.5 for both <code>degas_spinup</code> and <code>degas_sim</code>, and with the clock turned back
+500 million years to when the sun was cooler than today.</p>
+<p>What do you get for the steady state CO<sub>2</sub>? How does this compare to what
+you get when you run GEOCARB for today’s solar intensity? Explain why.</p>
+</div>
+<div id="exercise-8.3-the-role-of-plants-graduate-students-only" class="section level3">
+<h3>Exercise 8.3: The role of plants (<strong>Graduate students only</strong>)</h3>
+<p>The roots of plants accelerate weathering by two processes: First, as they
+grow, they open up the soil, making it more permeable to air and water.
+Second, the roots pump CO<sub>2</sub> down into the soil.</p>
+<p>Run a simulation with no CO<sub>2</sub> spike at the transition and with no plants in
+the spinup, but with plants present in the simulation.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>What happens to the rate of weathering when plants are introduced in year zero?
+Does it go up or down right after the transition? WHat happens later on?</p></li>
+<li><p>What happens to atmospheric CO<sub>2</sub>, and why?</p></li>
+<li><p>When the CO<sub>2</sub> concentration changes, where does the carbon go?</p></li>
+</ol>
+</div>
+</div>
+<div id="exercise-from-chapter-10" class="section level2">
+<h2>Exercise from Chapter 10</h2>
+<div id="exercise-10.1-long-term-fate-of-fossil-fuel-co2" class="section level3">
+<h3>Exercise 10.1: Long-term fate of fossil fuel CO<sub>2</sub></h3>
+<p>Use the GEOCARB model in its default configuration.</p>
+<ol style="list-style-type: lower-alpha">
+<li><p>Run the model with no CO<sub>2</sub> spike at the transition. What happens to
+the weathering rates (Silicate, Carbonate, and Total) at the transition
+from spinup to simulation (i.e., year zero)?</p></li>
+<li><p>Now set the CO<sub>2</sub> spike at the transition to 1000 GTon.</p>
+<ul>
+<li><p>What happens to the weathering at the transition? How does weathering
+change over time after the transition?</p></li>
+<li><p>How long does it take for CO<sub>2</sub> to roughly stabilize (stop changing)?</p></li>
+</ul></li>
+<li><p>In the experiment from (b), how do the rates of total weathering and
+carbonate burial change over time?</p>
+<ul>
+<li><p>Plot what happens from shortly before the transition until 10,000
+years afterward (<strong>Hint:</strong> you may want to add the following to your
+<code>ggplot</code> command: <code>xlim(NA,1E4)</code>
+to limit the range of the <em>x</em>-axis,
+or
+<code>scale_x_continuous(limits = c(NA,1E4), labels = comma))</code>
+if you also want to format the numbers on the <em>x</em>-axis with commas to
+indicate thousands and millions.)</p>
+<p>How do the two rates change? What do you think is happening to cause
+this?</p></li>
+<li><p>Now plot the carbon burial and total weathering for the range
+1 million years to 2 million years. How do the two rates compare?</p></li>
+</ul></li>
+</ol>
+</div>
+</div>
+</div>

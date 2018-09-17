@@ -28,3 +28,10 @@ Before you come to class Monday, please set up a free account on GitHub, as desc
 ## Assignment
 
 Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/gvdNarpA>.
+
+
+## Solutions
+
+**Solutions for Lab Exercises**:
+
+* [Answers](/lab_solutions/lab_01_answers)

@@ -409,13 +409,11 @@ source(&quot;_scripts/layer_diagram.R&quot;)</code></pre>
 numbers nicely for markdown documents, allowing you to control how many
 significant digits it shows, and optionally using scientific notation or
 inserting commas to separate thousands, millions, etc.</p>
-<p><code>format_md(sigma, digits = 1)</code> will produce 5.7 × 10<sup>-8</sup></p>
-<p><code>format_md(sigma, digits = 1, scientific = FALSE)</code> will produce
-0.0</p>
-<p><code>format_md(pi * 1E6, digits = 3, scientific = TRUE)</code> will produce
-3.142 × 10<sup>6</sup></p>
-<p><code>format_md(pi * 1E6, digits = 3, scientific = FALSE, comma = TRUE)</code> will produce
-3,141,592.654</p>
+<p><code>format_md(sigma, digits = 1)</code> will produce 0.00000006</p>
+<p><code>format_md(pi * 1E6, digits = 3, format=&quot;scientific&quot;)</code> will produce
+3.142×10<sup>6</sup></p>
+<p><code>format_md(pi * 1E6, digits = 3, comma = TRUE)</code> will produce
+3,142,000</p>
 </div>
 <div id="script-for-layer-diagrams" class="section level3">
 <h3>Script for Layer Diagrams</h3>

@@ -194,8 +194,8 @@ default_rrtm$T_surface</code></pre>
 default_rrtm$Q</code></pre>
 <pre><code>## [1] 0</code></pre>
 <p>This run has surface temperature
-284.42 K and a heat imbalance of
-0.00 Watts per square meter.</p>
+284. K and a heat imbalance of
+0 Watts per square meter.</p>
 <div id="interpreting-rrtm-results" class="section level3">
 <h3>Interpreting RRTM Results</h3>
 <p>We can plot the heat flows as a function of altitude:</p>
@@ -205,13 +205,13 @@ default_rrtm$Q</code></pre>
 and thin lines representing upward flow. The different colors represent
 shortwave, longwave, and total (shortwave + longwave).</p>
 <p>A few things to notice: At the top of the atmospere, at
-24 km,
+20. km,
 there is very little longwave going down, but a lot of shortwave going down
-(around 340 W/m<sup>2</sup>).
+(around 300. W/m<sup>2</sup>).
 Conversely, there is a modest amount of shortwave going up
-(around 95 W/m<sup>2</sup>),
+(around 100. W/m<sup>2</sup>),
 but a lot of longwave going up (around
-245 W/m<sup>2</sup>).</p>
+200. W/m<sup>2</sup>).</p>
 <p>The upward shortwave radiation is sunlight reflected from the atmosphere and
 the earth’s surface.</p>
 <p>The upward longwave radiation is emitted from the surface and the atmosphere.
@@ -231,20 +231,20 @@ when warm air rises and cool air sinks.</p>
 <p>We can also use the RRTM model to study what happens when we double CO<sub>2</sub>:</p>
 <pre class="r"><code>rrtm_double_co2 = run_rrtm(co2_ppm = 800)</code></pre>
 <p>When we double CO<sub>2</sub> without changing the surface temperature
-(T~surface = 284.42 K),
-this creates a heat imbalance of 4.20
+(T~surface = 284. K),
+this creates a heat imbalance of 4.2
 W/m<sup>2</sup>. We can use the online interactive version of RRTM to adjust surface
 temperature until the heat flows balance. The surface temperature where this
-happens is 286.90 K and we can paste it into our
+happens is 287. K and we can paste it into our
 R code:</p>
 <pre class="r"><code>new_ts = 286.9 # Kelvin
 rrtm_double_co2_balanced = run_rrtm(co2_ppm = 800, T_surface = new_ts)</code></pre>
 <p>When we set T<sub>surface</sub> to
-286.90 K, the heat
-imbalance becomes 0.00
+287. K, the heat
+imbalance becomes 0
 Watts/m<sup>2</sup>. The climate sensitivity is the change in equilibrium
 T<sub>surface</sub> when you double CO<sub>2</sub>:
-<span class="math inline">\(\Delta T_{2\times \text{CO}_2} = 286.90 \mathrm{K} - 284.42 \mathrm{K} = 2.48\)</span> K.
+<span class="math inline">\(\Delta T_{2\times \text{CO}_2} = 287. \mathrm{K} - 284. \mathrm{K} = 2.5\)</span> K.
 You may remember that when we calculated the climate sensitivity with MODTRAN
 (using constant relative humidity to enable water-vapor feedback) we got
 <span class="math inline">\(\Delta T_{2\times\text{CO}_2} = 1.21\)</span> K for the tropical atmosphere (it’s
