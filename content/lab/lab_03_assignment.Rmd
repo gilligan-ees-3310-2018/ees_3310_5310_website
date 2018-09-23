@@ -63,4 +63,4 @@ Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/BUE
 
 **Solutions for Lab Exercises**:
 
-* [Answers](/lab_solutions/lab_03_answers)
+* [Lab #3 Answers](/lab_solutions/lab_03_answers)

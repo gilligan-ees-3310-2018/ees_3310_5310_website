@@ -28,4 +28,4 @@ Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/vFt
 
 **Solutions for Lab Exercises**:
 
-* [Answers](/lab_solutions/lab_02_answers)
+* [Lab #2 Answers](/lab_solutions/lab_02_answers)

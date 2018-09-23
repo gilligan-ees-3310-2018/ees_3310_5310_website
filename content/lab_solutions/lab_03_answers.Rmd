@@ -1,5 +1,5 @@
 ---
-title: Answers
+title: 'Lab #3 Answers'
 lab_number: 3
 lab_date: '2018-09-10'
 pubdate: '2018-09-21'
@@ -41,9 +41,13 @@ source(file.path(script_dir, "modtran.R"), chdir = T)
 Methane has a current concentration of 1.7 ppm in the atmosphere and
 is doubling at a faster rate than CO~2~.
 
+------
+
 a) Would an additional 10 ppm of methane in the atmosphere have a larger or smaller
   impact on the outgoing IR flux than an additional 10 ppm of CO~2~ at current
   concentrations?
+
+------
 
 **Answer:**
 Run MODTRAN in three configurations: 
@@ -62,7 +66,8 @@ run_modtran(file.path(data_dir, "modtran_plus_10_ppm_co2.txt"),
             atmosphere = 'tropical', co2 = 410, ch4 = 1.7 )
 
 baseline = read_modtran(file.path(data_dir, "modtran_baseline.txt"))
-plus_10_methane = read_modtran(file.path(data_dir, "modtran_plus_10_ppm_methane.txt"))
+plus_10_methane = read_modtran(file.path(data_dir, 
+                                         "modtran_plus_10_ppm_methane.txt"))
 plus_10_co2 = read_modtran(file.path(data_dir, "modtran_plus_10_ppm_co2.txt"))
 
 i_baseline = baseline$i_out
@@ -86,20 +91,24 @@ If we add 10 ppm methane, I~out~ becomes
 (a decrease of `r format_md(delta_i_methane, digits = 2)` 
 W/m^2^)
 and if we add 10 ppm CO~2~, I~out~ becomes
-`r format_md(i_co2, digits = 2)`
+`r format_md(i_co2, digits = 2)` W/m^2^
 (a decrease of `r format_md(delta_i_co2, digits = 2)` 
 W/m^2^). 
 
 Thus, the impact of adding 10 ppm of methane on I~out~ is 
-`r format_md(ratio_10_ppm, digits = 1)` 
+`r format_md(ratio_10_ppm, digits = 2)` 
 times greater than the impact of adding 10 ppm of CO~2~,
 which means methane would also have a much greater impact on the temperature.
+
+------
 
 b) Where in the spectrum does methane absorb? What concentration does it take to
   begin to saturate the absorption in this band? Explain what you are looking 
   at to judge when the gas is saturated.
   
     **Note:** See the suggestions in the instructions for this lab.
+
+------
 
 **Answer:**
 We can run MODTRAN with no greenhouse gases except methane to find where it
@@ -167,7 +176,8 @@ row by row when they have the same columns.
           # Read the MODTRAN results into R
           results = read_modtran(file_name)
 
-          p = plot_modtran(file_name, descr = str_c(p_methane, " ppm methane"))
+          p = plot_modtran(file_name, 
+                           descr = str_c(p_methane, " ppm methane"))
           print(p)
           # Create a data tibble with columns for the methane concentration
           # and I out, and append it to the end of the tibble methane_data
@@ -212,7 +222,7 @@ from 1000 to 2000 ppm.
   labs(x = "Methane concentration (ppm)", 
        y = expression(I[out]~(W/m^2)),
        title = expression(paste(I[out], 
-                                " versus methane concentration (log scale)")))
+                          " versus methane concentration (log scale)")))
 
   print(plot_1)
 ```
@@ -268,14 +278,17 @@ bands, and the different bands saturate at different concentrations.
 We generally say that absorption begins to saturate when the successive
 changes in I~out~ flatten out for the first time.
 
-**Answer:** 
 The graph of the change in I~out~ for successive doublings of methane concentration
 flattens out at around 200 ppm, meaning that we can estimate that this is 
 roughly where band saturation occurs.
-  
+
+------
+
 c) Would a doubling of methane have as great an impact on the heat balance as a 
    doubling of CO~2~?
-   
+
+------
+
 **Answer:**
 We already have a baseline run of MODTRAN from part (a), 
 with 400 ppm CO~2~ and 1.7 ppm methane, so now we need to run MODTRAN
@@ -283,12 +296,15 @@ for 800 ppm CO~2~ and 1.7 ppm methane, and for
 400 ppm CO~2~ and 3.4 ppm methane.
 
 ```{r ex_4_1_c, include=TRUE, message=FALSE}
-run_modtran(file.path(data_dir, "modtran_double_co2.txt"), co2 = 800, ch4 = 1.7, 
+run_modtran(file.path(data_dir, "modtran_double_co2.txt"), 
+            co2 = 800, ch4 = 1.7, 
             atmosphere = 'tropical')
-run_modtran(file.path(data_dir, "modtran_double_ch4.txt"), co2 = 400, ch4 = 2 * 1.7, 
+run_modtran(file.path(data_dir, "modtran_double_ch4.txt"), 
+            co2 = 400, ch4 = 2 * 1.7, 
             atmosphere = 'tropical')
 double_co2 = read_modtran(file.path(data_dir, "modtran_double_co2.txt"))
-double_methane = read_modtran(file.path(data_dir, "modtran_double_ch4.txt"))
+double_methane = read_modtran(file.path(data_dir, 
+                                        "modtran_double_ch4.txt"))
 ```
 
 Now compare I~out~ and calculate the change of I~out~ from the baseline
@@ -311,27 +327,32 @@ the effect of doubling CO~2~ on I~out~ is
 times greater than doubling methane, 
 and doubling CO~2~ will have a much greater effect on temperature.
 
+------
+
 d) What is the "equivalent CO~2~" of doubling atmospheric methane? That is to say,
    how many ppm of CO~2~ would lead to the same change in outgoing IR radiation
    energy flux as doubling methane? What is the ratio of ppm CO~2~ change to 
    ppm methane change?
+
+------
 
 **Answer:**
 From part (c), we know that doubling methane reduces I~out~ by
 `r format_md(delta_methane_2x, digits = 2)` W/m^2^.
 
 Part (a) showed us that the effect on I~out~ of adding 10 ppm of methane
-is `r format_md(ratio_10_ppm, digits = 1)` times as great as adding 
+is `r format_md(ratio_10_ppm, digits = 2)` times as great as adding 
 10 ppm of CO~2~, so we might guess that doubling methane (adding 1.7 ppm) 
 would be equivalent to adding 
-`r format_md(ratio_10_ppm * 1.7, digits = 1)` ppm of CO~2~.
+`r format_md(ratio_10_ppm * 1.7, digits = 2)` ppm of CO~2~.
 
 Let's test this guess with MODTRAN:
 
 ```{r ex_4_1_d_guess, include=TRUE, message=FALSE}
 delta_co2_guess = ratio_10_ppm * 1.7
 
-run_modtran(file.path(data_dir, "modtran_guess.txt"), atmosphere = 'tropical',
+run_modtran(file.path(data_dir, "modtran_guess.txt"), 
+            atmosphere = 'tropical',
             co2 = 400 + delta_co2_guess, ch4 = 1.7)
 modtran_guess_co2 = read_modtran(file.path(data_dir, "modtran_guess.txt"))
 
@@ -341,7 +362,7 @@ delta_i_guess = i_baseline - i_guess
 ```
 
 So we see that our guess of increasing CO~2~ by 
-`r format_md(delta_co2_guess, digits = 1)` ppm 
+`r format_md(delta_co2_guess, digits = 2)` ppm 
 changed I~out~ by 
 `r format_md(delta_i_guess, digits = 2)` W/m^2^, 
 so this was not nearly enough of a change in CO~2~ 
@@ -354,21 +375,22 @@ equiv_co2 = 85
 Next, open up the web-based version of MODTRAN and manually adjust
 the CO~2~ concentration until I~out~ matches I~out~ for doubled 
 methane. If you do this, you will find that adding
-`r format_md(equiv_co2, digits = 1)` ppm of CO~2~
+`r format_md(equiv_co2, digits = 2)` ppm of CO~2~
 matches doubling methane:
 
 ```{r ex_4_1_manual, include=TRUE, message=FALSE}
 run_modtran(file.path(data_dir, "modtran_equiv_co2.txt"), 
             atmosphere = 'tropical', co2 = 400 + equiv_co2, ch4 = 1.7)
 
-modtran_equiv_co2 = read_modtran(file.path(data_dir, "modtran_equiv_co2.txt"))
+modtran_equiv_co2 = read_modtran(file.path(data_dir, 
+                                           "modtran_equiv_co2.txt"))
 
 i_equiv = modtran_equiv_co2$i_out
 
 delta_equiv = i_baseline - i_equiv
 ```
 
-Adding `r format_md(equiv_co2, digits = 1)` ppm CO~2~ 
+Adding `r format_md(equiv_co2, digits = 2)` ppm CO~2~ 
 changes I~out~ by
 `r format_md(delta_equiv, digits = 2)` W/m^2^, which
 matches what we measured for doubling methane.
@@ -384,6 +406,7 @@ a) Is the direct effect of increasing CO~2~ on the energy output at the top of
     For each atmosphere, first record $I_{\text{out}}$ with CO~2~ at 400 ppm
     and then record the change when you increase CO~2~ to 800 ppm.
 
+------
 
 **Answer:**
 First, run MODTRAN for the different configurations:
@@ -391,14 +414,14 @@ First, run MODTRAN for the different configurations:
 ```{r ex_4_2_a, include=TRUE, message=FALSE}
 # We have already calculated these numbers for tropical atmosphere.
 # Now let's do the same for midlatitude summer and subarctic summer:
-run_modtran(file.path(data_dir, "midlat_summer_baseline.txt"), co2 = 400,
-            atmosphere = 'midlatitude summer') 
-run_modtran(file.path(data_dir, "midlat_summer_2x_co2.txt"), co2 = 800,
-            atmosphere = 'midlatitude summer') 
-run_modtran(file.path(data_dir, "subarctic_summer_baseline.txt"), co2 = 400,
-            atmosphere = 'subarctic summer') 
-run_modtran(file.path(data_dir, "subarctic_summer_2x_co2.txt"), co2 = 800,
-            atmosphere = 'subarctic summer')
+run_modtran(file.path(data_dir, "midlat_summer_baseline.txt"), 
+            co2 = 400, atmosphere = 'midlatitude summer') 
+run_modtran(file.path(data_dir, "midlat_summer_2x_co2.txt"), 
+            co2 = 800, atmosphere = 'midlatitude summer') 
+run_modtran(file.path(data_dir, "subarctic_summer_baseline.txt"), 
+            co2 = 400, atmosphere = 'subarctic summer') 
+run_modtran(file.path(data_dir, "subarctic_summer_2x_co2.txt"), 
+            co2 = 800, atmosphere = 'subarctic summer')
 
 midlat_baseline = read_modtran(file.path(data_dir, 
                                          "midlat_summer_baseline.txt"))
@@ -411,9 +434,9 @@ i_midlat_double = midlat_double$i_out
 delta_midlat =  i_midlat_baseline - i_midlat_double
 
 subarctic_baseline = read_modtran(file.path(data_dir, 
-                                            "subarctic_summer_baseline.txt"))
+                                  "subarctic_summer_baseline.txt"))
 subarctic_double = read_modtran(file.path(data_dir, 
-                                          "subarctic_summer_2x_co2.txt"))
+                                "subarctic_summer_2x_co2.txt"))
 
 i_subarctic_baseline = subarctic_baseline$i_out
 i_subarctic_double = subarctic_double$i_out
@@ -440,12 +463,16 @@ If we include the important feedbacks in the climate system,
 the effect of doubling CO~2~ is much greater near the poles
 than in the tropics.
 
+------
+
 b) Set pCO~2~ to an absurdly high value of 10,000 ppm. You will see a spike
    in the CO~2~ absorption band. What temperature is this light coming from? 
    Where in the atmosphere do you think this comes from?
 
     Now turn on clouds and run the model again. Explain what you see.
     Why are night-time temperatures warmer when there are clouds?
+
+------
 
 **Answer:** As we add CO~2~, the skin height rises. 
 
@@ -497,28 +524,32 @@ turned on:
 ```{r ex_4_2_b_clouds, include=TRUE, message=FALSE}
 pco2 = 1.0E+4 # 10,000 ppm
 
-run_modtran(file.path(data_dir, "modtran_10k_co2_no_clouds.txt"), co2 = pco2,
-            clouds = 'none')
+run_modtran(file.path(data_dir, "modtran_10k_co2_no_clouds.txt"), 
+            co2 = pco2, clouds = 'none')
 
-run_modtran(file.path(data_dir, "modtran_10k_co2_clouds.txt"), co2 = pco2,
-            clouds = 'altostratus')
+run_modtran(file.path(data_dir, "modtran_10k_co2_clouds.txt"), 
+            co2 = pco2, clouds = 'altostratus')
 
-no_clouds = read_modtran(file.path(data_dir, "modtran_10k_co2_no_clouds.txt"))
-clouds = read_modtran(file.path(data_dir, "modtran_10k_co2_clouds.txt"))
+no_clouds = read_modtran(file.path(data_dir, 
+                                   "modtran_10k_co2_no_clouds.txt"))
+clouds = read_modtran(file.path(data_dir, 
+                                "modtran_10k_co2_clouds.txt"))
 
 i_no_clouds = no_clouds$i_out
 i_clouds = clouds$i_out
 
-p_no_clouds = plot_modtran(file.path(data_dir, "modtran_10k_co2_no_clouds.txt"))
+p_no_clouds = plot_modtran(file.path(data_dir, 
+                                     "modtran_10k_co2_no_clouds.txt"))
 print(p_no_clouds)
 
-p_clouds = plot_modtran(file.path(data_dir, "modtran_10k_co2_clouds.txt"))
+p_clouds = plot_modtran(file.path(data_dir, 
+                                  "modtran_10k_co2_clouds.txt"))
 print(p_clouds)
 ```
 
 Without clouds, the outgoing heat from longwave radiation is 
-I~out~ = `r format_md(i_no_clouds, digits = 2)` and with clouds, it's 
-I~out~ = `r format_md(i_clouds, digits = 2)`.
+I~out~ = `r format_md(i_no_clouds, digits = 2)` W/m^2^ and with clouds, it's 
+I~out~ = `r format_md(i_clouds, digits = 2)` W/m^2^.
 
 In the plots of the spectra, notice how the emissions in the infrared window
 from 800--1200 cm^-1^ decrease when middle-level clouds (altostratus) are
@@ -535,11 +566,14 @@ a) How much extra outgoing IR would you get by raising the temperature of the
    ground by 5&deg;C? What effect does the ground temperature have on the 
    shape of the outgoing IR spectrum and why?
 
+------
+
 **Answer:**
 Run MODTRAN with `delta_t` set to 5 Kelvin:
 
 ```{r ex_4_3_a, include=TRUE, message=FALSE}
-run_modtran(file.path(data_dir, "modtran_plus_5k.txt"), delta_t = 5, h2o_fixed = 'vapor pressure')
+run_modtran(file.path(data_dir, "modtran_plus_5k.txt"), 
+            delta_t = 5, h2o_fixed = 'vapor pressure')
 
 modtran_5k = read_modtran(file.path(data_dir, "modtran_plus_5k.txt"))
 
@@ -571,12 +605,16 @@ infrared window (800--1200 cm^-1^).
 You can also see changes in the main CO~2~ emissions peak around 650 cm^-1^,
 but not as much as in the window region.
 
+------
+
 b) More water can evaporate into warm air than into cool air. Change the
    model settings to hold the water vapor at constant relative humidity 
    rather than constant vapor pressure (the default), calculate the change
    in outgoing IR energy flux for a 5&deg;C temperature increase.
    Is it higher or lower? Does water vapor make the Earth more sensitive to
    CO~2~ increases or less sensitive?
+
+------
 
 **Answer:**
 Run MODTRAN with relative humidity fixed and compare I~out~ to
@@ -595,12 +633,12 @@ delta_5k_humidity = i_5k_humidity - i_baseline
 
 When we raised the surface temperature by 5K with 
 vapor pressure constant, I~out~ changed by 
-`r format_md(delta_5k, digits=2)`.
+`r format_md(delta_5k, digits=2)` W/m^2^.
 When we raise the surface temperature by 5K with 
 relative humidity constant, I~out changes by
-`r format_md(delta_5k_humidity, digits=2)`, which is
+`r format_md(delta_5k_humidity, digits=2)` W/m^2^, which is
 about 
-`r format_md(100 * delta_5k_humidity / delta_5k, digits = 0)` 
+`r format_md(100 * delta_5k_humidity / delta_5k, digits = 2)` 
 percent of what it was with the water vapor pressure held constant.
 
 Constant relative humidity reduces the change in outgoing longwave radiation
@@ -623,10 +661,13 @@ Now, let's plot the spectrum for a 5K increase in surface temperature
 with constant relative humidity.
 
 ```{r humidity_plot, include=TRUE, message=FALSE}
-p_humidity = plot_modtran(file.path(data_dir, "modtran_plus_5k_humidity.txt"),
-                          descr = "Temp. increased by 5K (const. rel. hum.)")
+p_humidity = plot_modtran(file.path(data_dir, 
+                          "modtran_plus_5k_humidity.txt"),
+                descr = "Temp. increased by 5K (const. rel. hum.)")
 print(p_humidity)
 ```
+
+------
 
 c) Now see this effect in another way. 
 
@@ -648,14 +689,17 @@ c) Now see this effect in another way.
       to the warming when you hold water vapor pressure fixed is the 
       feedback factor for water vapor. What is it?
 
+------
+
 **Answer:** 
 Under baseline conditions (400 ppm CO~2~), 
 I~out~ = `r format_md(i_baseline, digits = 2)` W/m^2^.
 
 ```{r ex_4_3_c_interactive, include=TRUE, message=FALSE}
 #
-# Figure out the right delta_t to use by interactively playing with the
-# web-based interface to MODTRAN. Then insert the values here.
+# Figure out the right delta_t to use by interactively playing 
+# with the web-based interface to MODTRAN. Then insert the values 
+# here.
 #
 delta_t_vapor_pressure = 0.76
 delta_t_humidity = 1.21
@@ -672,9 +716,9 @@ After doubling CO~2~ with constant relative humidity, it takes a warming of
 
 The ratio of warming for constant relative humidity versus constant water vapor
 pressure is 
-`r format_md(delta_t_humidity / delta_t_vapor_pressure, digits = 1)`,
+`r format_md(delta_t_humidity / delta_t_vapor_pressure, digits = 2)`,
 so the feedback factor for water vapor in the tropics is 
-_f_ = `r format_md(delta_t_humidity / delta_t_vapor_pressure, digits = 1)`.
+_f_ = `r format_md(delta_t_humidity / delta_t_vapor_pressure, digits = 2)`.
 
 Below, we show that these changes in temperature restore the original
 (baseline) I~out~ with CO~2~ at 800 ppm:
@@ -685,13 +729,17 @@ Below, we show that these changes in temperature restore the original
 # web-based interface to MODTRAN. Then insert the values here.
 #
 run_modtran(file.path(data_dir, "warming_vapor_pressure.txt"), 
-            co2 = 800, delta_t = delta_t_vapor_pressure, h2o_fixed = 'vapor pressure')
+            co2 = 800, delta_t = delta_t_vapor_pressure, 
+            h2o_fixed = 'vapor pressure')
 
 run_modtran(file.path(data_dir, "warming_humidity.txt"), 
-            co2 = 800, delta_t = delta_t_humidity, h2o_fixed = 'relative humidity')
+            co2 = 800, delta_t = delta_t_humidity, 
+            h2o_fixed = 'relative humidity')
 
-warming_vapor_pressure = read_modtran(file.path(data_dir, "warming_vapor_pressure.txt"))
-warming_humidity = read_modtran(file.path(data_dir, "warming_humidity.txt"))
+warming_vapor_pressure = read_modtran(file.path(data_dir, 
+                                  "warming_vapor_pressure.txt"))
+warming_humidity = read_modtran(file.path(data_dir, 
+                                  "warming_humidity.txt"))
 
 i_vapor_pressure = warming_vapor_pressure$i_out
 i_humnidity = warming_humidity$i_out
@@ -706,7 +754,7 @@ raising the surface temperature by
 `r format_md(i_vapor_pressure, digits = 2)` W/m^2^.
 
 With doubled CO~2~ and constant relative humidity, 
-raiding the surface temperature by 
+raising the surface temperature by 
 `r delta_t_humidity` Kelvin restores I~out~ to
 `r format_md(i_humnidity, digits = 2)` W/m^2^.
 
@@ -727,6 +775,8 @@ a) Run the MODTRAN model in using the "Tropical" atmosphere, without clouds, and
     reported by the MODTRAN model. Is it greater or less than the heat flux
     that you calculated was emitted by the ground?
 
+------
+
 **Answer:** 
 Use the Stefan-Boltzmann law to calculate I~up,ground~:
 
@@ -737,7 +787,7 @@ i_up_ground = sigma_sb * T_ground^4
 i_up_skin = baseline$i_out
 ```
 
-The ground temperature is `r format_md(T_ground, digits = 1)` Kelvin,
+The ground temperature is `r format_md(T_ground, digits = 3)` Kelvin,
 so the Stefan-Boltzmann equation tells us that the ground emits
 I~up,ground~ = `r format_md(i_up_ground, digits = 2)` W/m^2^ of longwave
 radiation.
@@ -746,6 +796,8 @@ MODTRAN calculates that at the top of the atmosphere, there is
 I~out~ = `r format_md(i_up_skin, digits = 2)` W/m^2^ of longwave radiation
 going out to space, which is considerably less than what we calculated was
 emitted by the ground.
+
+------
 
 b) Use the outgoing heat flux at the top of the atmosphere to calcuate the
    skin temperature (use the equation 
@@ -757,6 +809,8 @@ b) Use the outgoing heat flux at the top of the atmosphere to calcuate the
     Assuming an environmental lapse rate of 6K/km, and using the 
     skin temperature that you calculated above, and the ground temperature
     from the model, what altitude would you expect the skin height to be?
+
+------
 
 **Answer:**
 The Stefan-Boltzmann law tells us that
@@ -770,7 +824,7 @@ skin temperature from I~out~ at the top of the atmosphere.
 T_skin = (i_up_skin / sigma_sb)^0.25 # from Stefan-Boltzmann law
 ```
 
-T~skin~ = `r format_md(T_skin, digits = 2)` K.
+T~skin~ = `r format_md(T_skin, digits = 3)` K.
 
 Next, use the lapse rate and the difference between the
 skin temperature and the ground temperature in order
@@ -801,11 +855,15 @@ is well below the tropopause, and the skin temperature is considerably
 warmer than the tropopause, but considerably colder than the ground
 temperature.
 
+------
+
 c) Double the CO~2~ concentration and run MODTRAN again. Do not adjust the
    ground temperature. Repeat the calculations from (b) of the skin
    temperature and the estimated skin height.
 
     What is the new skin temperature? What is the new skin height?
+
+------
 
 **Answer:**
 In part exercise 4.1 (c) we measured I~out~ for doubled CO~2~ 
@@ -825,7 +883,7 @@ just as we did in part (b):
 T_skin_2 = (i_skin_2 / sigma_sb)^0.25
 ```
 
-T~skin~ = `r format_md(T_skin_2, digits = 2)` K.
+T~skin~ = `r format_md(T_skin_2, digits = 3)` K.
 Now we can use the lapse rate to calculate the skin height:
 
 ```{r ex_5_2_c_h_skin, include=TRUE}
@@ -850,7 +908,8 @@ d) Put the CO~2~ back to today's value, but add cirrus clouds, using the
 Run MODTRAN with cirrus clouds and compare to the baseline conditions:
 
 ```{r ex_5_2_d, include=TRUE, message=FALSE}
-run_modtran(file.path(data_dir, "modtran_cirrus.txt"), clouds = 'standard cirrus')
+run_modtran(file.path(data_dir, "modtran_cirrus.txt"), 
+            clouds = 'standard cirrus')
 
 cirrus = read_modtran(file.path(data_dir, "modtran_cirrus.txt"))
 
@@ -863,7 +922,7 @@ h_skin_cirrus = (T_ground - T_skin_cirrus) / env_lapse
 
 With cirrus clouds (using the standard cirrus model),
 the skin temperature is
-`r format_md(T_skin_cirrus, digits = 2)` Kelvin 
+`r format_md(T_skin_cirrus, digits = 3)` Kelvin 
 and the skin height is
 `r format_md(h_skin_cirrus, digits = 2)` kilometers.
 which is

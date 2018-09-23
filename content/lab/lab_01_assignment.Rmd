@@ -34,4 +34,4 @@ Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/gvd
 
 **Solutions for Lab Exercises**:
 
-* [Answers](/lab_solutions/lab_01_answers)
+* [Lab #1 Answers](/lab_solutions/lab_01_answers)
