@@ -6,6 +6,7 @@ p_load(xtable)
 p_load(assertthat)
 p_load(yaml)
 p_load(rprojroot)
+p_load(blogdown)
 
 database <- "EES_3310_5310.sqlite3"
 online_location <- "posted on Brightspace"

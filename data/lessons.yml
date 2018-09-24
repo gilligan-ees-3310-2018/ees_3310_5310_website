@@ -62,6 +62,7 @@ lessons:
 - date: '2018-09-24'
   title: Review
   reading: /reading/reading_15
+  lecture: /Slides/Class_15
   lab: lab_05_assignment
 - date: '2018-09-26'
   title: Climate Models
