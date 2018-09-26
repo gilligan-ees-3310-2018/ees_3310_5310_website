@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<!-- JG Reveal.js Template -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Jonathan Gilligan" />
+  <title>Computer Models</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="stylesheet" href="../../lecture_lib/library/reveal.js-3.7.0/css/reveal.min.css"/>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      .smallcaps{font-variant: small-caps;}
+      .line-block{white-space: pre-line;}
+      .column{display: inline-block;}  </style>
+  <style type="text/css">
+    div.qrbox {
+     width:100vw;
+     position:fixed;
+     bottom:0%;
+     left:10px;
+     text-align:left;
+     vertical-align:bottom;
+    }
+  </style>
+<!-- theme = solarized_jg -->
+<link rel="stylesheet" href="../../lecture_lib/library/assets/css/theme/solarized_jg.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lecture_lib/library/reveal.js-3.7.0/css/print/pdf.css' : '../../lecture_lib/library/reveal.js-3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+            <!-- start title slide -->
+<section class='center' id='title' >
+    <h1 class="title">Computer Models</h1>
+    <h3 class="author">EES 3310/5310</h3>
+        <h3 class="author">Global Climate Change</h3>
+    <h3 class="author">Jonathan Gilligan</h3>
+    <h3 class="date">
+      Class #16:
+       Wednesday, Sept. 27
+      2018
+    </h3>
+        <div class="qrbox" id="qrbox">
+      <div style="font-size:30%;width:100%;">
+    <a href="https://ees3310.jgilligan.org/Slides/Class_16">
+  	<img src="qrcode.png" alt="https://ees3310.jgilligan.org/Slides/Class_16"/>
+  	</a>
+    	</div>
+    	<div style="font-size:30%;width:100%;vertical-align:top;">
+    	<span style="display:inline-block;text-align:left;margin-left:0">
+    	    	Live web page: <a href="https://ees3310.jgilligan.org/Slides/Class_16">https://ees3310.jgilligan.org/Slides/Class_16</a>
+    	<br/>
+    	PDF: <a href="https://ees3310.jgilligan.org/Slides/Class_16/EES_3310_5310_Class_16_Slides.pdf" target="_blank">https://ees3310.jgilligan.org/Slides/Class_16/EES_3310_5310_Class_16_Slides.pdf</a>
+    	
+    	    	</span>
+    	<span style="display:inline-block;text-align:right;vertical-align:top;position:relative;left:10rem;">
+    	  Navigate slides: next: N or &lt;space&gt;; previous: P or &lt;backspace&gt;<br/>
+    	  Also: up, down, left, right arrows; overview: o; help: ?
+    	</span>
+  	</div>
+  	</div>
+    	<!-- end title slide -->
+</section>
+
+<section id="midterm" class="slide level2 ninety">
+<h2>Midterm Exam</h2>
+<p><br/></p>
+<ul>
+<li>In class next Wednesday (Oct. 3)</li>
+<li>Bring #2 pencils, eraser, and calculator</li>
+<li>Test will provide important numbers and equations:</li>
+<li>You need to know how to tell:
+<ul>
+<li>which equations, numbers to use,</li>
+<li>how to interpret them.</li>
+</ul></li>
+<li>Mostly conceptual questions, not so many with math</li>
+<li>Practice test with answers on Brightspace</li>
+</ul>
+</section>
+<section><section id="climate-econ-sec" class="title-slide slide level1 center"><h1>Climate and Economy</h1></section><section id="climate-econ-1" class="slide level2 ninety">
+<h2>Climate and Economy</h2>
+<h3 id="how-well-do-markets-manage-global-warming" style="margin-bottom:2em;"><strong>How well do markets manage global warming?</strong></h3>
+<ul>
+<li class="fragment">How well do markets manage supply and price of bread?</li>
+<li class="fragment">What is different about global warming?</li>
+<li class="fragment">Externalities:
+<ul>
+<li class="fragment">What is an externality?</li>
+<li class="fragment">Are externalities good or bad?</li>
+<li class="fragment">What challenges to they pose for markets?</li>
+<li class="fragment">How can market-based economies manage externalities better?</li>
+</ul></li>
+</ul>
+</section><section id="ege-1" class="slide level2" data-transition="fade">
+<h2>Energy, Economy, Emissions</h2>
+<p><img data-src="assets/fig/global_emissions-1.png" /></p>
+</section><section id="ege-2" class="slide level2" data-transition="fade">
+<h2>Energy, Economy, Emissions</h2>
+<p><img data-src="assets/fig/us_carbon_intensity-1.png" /></p>
+</section></section>
+<section><section id="kaya-sec" class="title-slide slide level1 center"><h1>Kaya Identity</h1></section><section id="kaya" class="slide level2 ninety">
+<h2>Kaya Identity</h2>
+<p><span class="math display">\[
+\color{darkgreen}{P} \times 
+  \frac{\color{blue}{G}}{\color{darkgreen}{P}} \times 
+  \frac{\color{purple}{E}}{\color{blue}{G}} \times 
+  \frac{\color{red}{F}}{\color{purple}{E}} = \color{red}{F},
+\]</span> <br/></p>
+<p><strong>where</strong></p>
+<p><br/> <span class="math display">\[
+\begin{aligned}
+  \color{red}{F} &amp;= \COO~\text{emissions}\\
+  \color{purple}{E} &amp;= \text{energy use}\\
+  \color{blue}{G} &amp;= \text{gross domestic product}\\
+  \color{darkgreen}{P} &amp;= \text{population}
+\end{aligned}
+\]</span></p>
+</section><section id="kaya-2" class="slide level2 ninety" data-transition="fade">
+<h2>Kaya Identity</h2>
+<p><span class="math display">\[\begin{aligned}
+  \color{red}{F} &amp;= \color{darkgreen}{P} \times 
+  \frac{\color{blue}{G}}{\color{darkgreen}{P}} \times 
+  \frac{\color{purple}{E}}{\color{blue}{G}} \times 
+  \frac{\color{red}{F}}{\color{purple}{E}}\\
+  &amp;= \color{darkgreen}{P} \times \color{blue}{g}\times 
+  \color{purple}{e} \times \color{red}{f}\\
+\end{aligned}\]</span> <br/> <strong>where</strong> <br/> <span class="math display">\[\begin{aligned}
+  \color{darkgreen}{P} &amp;= \text{population}\\
+  \color{blue}{g} &amp;= \color{blue}{G} / \color{darkgreen}{P} = \text{per-capita GDP}\\
+  \color{purple}{e} &amp;= \color{purple}{E} / \color{blue}{G} = \text{energy intensity of economy}\\
+  \color{red}{f} &amp;= \color{red}{F} / \color{purple}{E} = \COO~\text{intensity of energy supply}
+\end{aligned}\]</span></p>
+</section><section id="kaya-3" class="slide level2 ninety" data-transition="fade">
+<h2>Kaya Identity in Practice</h2>
+<p><img data-src="assets/fig/world_energy_intensity-1.png" /></p>
+</section></section>
+<section><section id="climate-models-sec" class="title-slide slide level1" data-transition="fade" data-state="skip_slide"><h1>Computer Models of Climate</h1></section><section id="climate-models" class="slide level2" data-transition="fade-out">
+<h2>Computer Models of Climate</h2>
+<p><img data-src="assets/images/ModelDynamics_1.jpg" style="height:750px;" /></p>
+</section><section id="models-2" class="slide level2" data-transition="fade">
+<h2>Computer Models</h2>
+<p><img data-src="assets/images/model_processes.jpg" style="height:750px;" /></p>
+</section><section id="models-3" class="slide level2" data-transition="fade">
+<h2>Computer Models</h2>
+<div class="columns" style="display:flex;align-items:center;justify-content:center;">
+<div class="column" style="width:50%;">
+<p><img data-src="assets/images/model_resolution.jpg" style="height:750px;" /></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="assets/images/ar5_resolution.jpg" /></p>
+</div>
+</div>
+</section><section id="models-4" class="slide level2 ninety">
+<h2>Principles of Computer Modeling</h2>
+<ul>
+<li>Make models as simple as possible:
+<ul>
+<li>Start simple</li>
+<li>Add complexity only as needed
+<ul>
+<li>Different models for different purposes</li>
+</ul></li>
+<li>Check model against real world</li>
+</ul></li>
+</ul>
+<p><img data-src="assets/images/einstein.jpg" alt="“Things should be made as simple as possible, but no simpler.” — Albert Einstein" class="fragment fade-in" style="height:450px;" /></p>
+</section></section>
+<section><section id="transient-response-sec" class="title-slide slide level1 center" data-transition="fade-out"><h1>Transient vs.<br/>Equilibrium Response</h1></section><section id="transient-response" class="slide level2 ninety" data-transition="fade-in">
+<h2>Transient vs. Equilibrium Response</h2>
+<center>
+<table style="border:none;">
+<tr style="border:none;">
+<td style="vertical-align:top;border:none;">
+<ul>
+<li class="fragment">Gradually raise <span class="math inline">\(\COO\)</span> and then stop.</li>
+<li class="fragment">Planet takes time to heat up
+<ul>
+<li class="fragment">Oceans absorb heat</li>
+<li class="fragment">Like pot of water on stove</li>
+</ul></li>
+<li class="fragment">Transient response:<br/><span class="math inline">\(\Delta T\)</span> when <span class="math inline">\(\COO\)</span> stops changing</li>
+<li class="fragment">Equilibrium response:<br/>Stable temperature (much later)
+<ul>
+<li class="fragment"><span style="color:darkgreen;">Green: Atmosphere &amp; surface ocean</span></li>
+<li class="fragment"><span style="color:red;">Red: Atmosphere, surface ocean, &amp; deep ocean.</span></li>
+</ul></li>
+<li class="fragment">Equilibrium takes many decades.</li>
+</ul>
+</td>
+<td style="width:650px;border:none;">
+<img data-src="assets/images/transient_response.png" style="width:650px;height:750px;max-height:100%;max-width:100%;" />
+</td>
+</tr>
+</table>
+</center>
+</section></section>
+<section><section id="iams-sec" class="title-slide slide level1 center" data-transition="fade-out"><h1>Modeling for<br/>Science vs. Policy</h1></section><section id="iams" class="slide level2 ninety" data-transition="fade-out">
+<h2>Modeling for Science vs. Policy</h2>
+<h3 id="integrated-assessment-models-iams">Integrated Assessment Models (IAMS)</h3>
+<ul>
+<li class="fragment">Combine climate system and world economy
+<ul>
+<li class="fragment">Emissions as a consequence of economic activity
+<ul>
+<li class="fragment">Energy use for production (factories, etc.)</li>
+<li class="fragment">Energy use for consumption (households, etc.)</li>
+<li class="fragment">Farming: fertilizers, livestock, paddy fields, etc.</li>
+</ul></li>
+<li class="fragment">Climatic impacts on economy
+<ul>
+<li class="fragment">Cost of severe weather</li>
+<li class="fragment">Sea level rise</li>
+<li class="fragment">Droughts &amp; heat waves</li>
+<li class="fragment">…</li>
+</ul></li>
+</ul></li>
+<li class="fragment"><strong>Optimize for greatest net economic output</strong></li>
+</ul>
+</section><section id="model-scenarios" class="slide level2 eightyfive center">
+<h2>Climate Projections</h2>
+<ul>
+<li class="fragment">Biggest uncertainty in predicting future climates is GHG emissions
+<ul>
+<li class="fragment">We can predict consequences of emissions</li>
+<li class="fragment">We can’t predict what emissions will be</li>
+</ul></li>
+<li class="fragment">Scenarios and Pathways:
+<ul>
+<li class="fragment"><strong>Scenario</strong>: possible future,
+<ul>
+<li class="fragment">Story of economic &amp; political development <span class="math inline">\(\rightarrow\)</span> resulting emissions</li>
+</ul></li>
+<li class="fragment"><strong>Pathway</strong>: possible future,
+<ul>
+<li class="fragment">Trajectory of emissions <span class="math inline">\(\rightarrow\)</span> economic activity that might cause them</li>
+</ul></li>
+</ul></li>
+<li class="fragment">Projections:
+<ul>
+<li class="fragment">Conditional predictions:
+<ul>
+<li class="fragment">“<b>If</b> emissions do this, <strong>then</strong> climate will do that.”</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="us-projections" class="slide level2 center" data-transition="fade">
+<h2><!--- ---></h2>
+<h3 id="projections-for-future-emissions-in-us">Projections for future emissions in US:</h3>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">2010</th>
+<th style="text-align: right;">2050</th>
+<th style="text-align: right;">Growth rate (% per year)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>g</em> ($/person)</td>
+<td style="text-align: right;">42,300</td>
+<td style="text-align: right;">83,700</td>
+<td style="text-align: right;">1.7</td>
+</tr>
+<tr class="even">
+<td><em>ef</em> (tons/$million)</td>
+<td style="text-align: right;">432</td>
+<td style="text-align: right;">226</td>
+<td style="text-align: right;">-1.6</td>
+</tr>
+<tr class="odd">
+<td><em>P</em> (millions)</td>
+<td style="text-align: right;">309</td>
+<td style="text-align: right;">399</td>
+<td style="text-align: right;">0.6</td>
+</tr>
+<tr class="even">
+<td><strong>Total Emissions</strong> <span class="math inline">\(F\)</span><br/>(million tons CO<sub style="font-size:60%;">2</sub>)</td>
+<td style="text-align: right;"><strong>5,640</strong></td>
+<td style="text-align: right;"><strong>7,550</strong></td>
+<td style="text-align: right;">1.7 - 1.6 + 0.6 = <strong>0.7</strong></td>
+</tr>
+</tbody>
+</table>
+</section><section id="world-projections" class="slide level2 center" data-transition="fade">
+<h2><!--- ---></h2>
+<h3 id="projections-for-future-world-emissions">Projections for future world emissions:</h3>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">2010</th>
+<th style="text-align: right;">2050</th>
+<th style="text-align: right;">Growth rate (% per year)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>g</em> ($/person)</td>
+<td style="text-align: right;">9,780</td>
+<td style="text-align: right;">22,400</td>
+<td style="text-align: right;">2.1</td>
+</tr>
+<tr class="even">
+<td><em>ef</em> (tons/$million)</td>
+<td style="text-align: right;">522</td>
+<td style="text-align: right;">278</td>
+<td style="text-align: right;">-1.6</td>
+</tr>
+<tr class="odd">
+<td><em>P</em> (millions)</td>
+<td style="text-align: right;">6,410</td>
+<td style="text-align: right;">9,170</td>
+<td style="text-align: right;">0.9</td>
+</tr>
+<tr class="even">
+<td><strong>Total Emissions</strong> <span class="math inline">\(F\)</span><br/>(million tons CO<sub style="font-size:60%;">2</sub>)</td>
+<td style="text-align: right;"><strong>34,900</strong></td>
+<td style="text-align: right;"><strong>57,600</strong></td>
+<td style="text-align: right;">2.1 - 1.6 + 0.9 = <strong>1.4</strong></td>
+</tr>
+</tbody>
+</table>
+</section><section id="model-uncertainties-2" class="slide level2" data-transition="fade">
+<h2>Uncertainties in Projections</h2>
+<p><br/></p>
+<h3 id="projections-for-future-world-emissions-1">Projections for future world emissions:<br/><br/></h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">2010</th>
+<th style="text-align: right;">2050</th>
+<th style="text-align: right;">2100</th>
+<th style="text-align: right;">Growth rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><em>g</em></td>
+<td style="text-align: right;">9,780</td>
+<td style="text-align: right;">22,400</td>
+<td style="text-align: right;">64,737</td>
+<td style="text-align: right;">2.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>ef</em></td>
+<td style="text-align: right;">522</td>
+<td style="text-align: right;">278</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">-1.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>P</em></td>
+<td style="text-align: right;">6,410</td>
+<td style="text-align: right;">9,170</td>
+<td style="text-align: right;">14,409</td>
+<td style="text-align: right;">0.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Emissions</strong></td>
+<td style="text-align: right;"><strong>34,900</strong></td>
+<td style="text-align: right;"><strong>57,600</strong></td>
+<td style="text-align: right;"><strong>115,366</strong></td>
+<td style="text-align: right;"><strong>1.4</strong></td>
+</tr>
+</tbody>
+</table>
+</section><section id="higher-growth" class="slide level2" data-transition="fade">
+<h2>Uncertainties in Projections</h2>
+<p><br/></p>
+<h3 id="projections-for-future-world-emissions-with-slightly-different-growth-rates">Projections for future world emissions<br/>with slightly different growth rates:</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">2010</th>
+<th style="text-align: right;">2050</th>
+<th style="text-align: right;">2100</th>
+<th style="text-align: right;">Growth rate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><em>g</em></td>
+<td style="text-align: right;">9,780</td>
+<td style="text-align: right;">24,540</td>
+<td style="text-align: right;">77,505</td>
+<td style="text-align: right;">2.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><em>ef</em></td>
+<td style="text-align: right;">522</td>
+<td style="text-align: right;">298</td>
+<td style="text-align: right;">148</td>
+<td style="text-align: right;">-1.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><em>P</em></td>
+<td style="text-align: right;">6,410</td>
+<td style="text-align: right;">9,563</td>
+<td style="text-align: right;">15,766</td>
+<td style="text-align: right;">1.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Emissions</strong></td>
+<td style="text-align: right;"><strong>34,900</strong></td>
+<td style="text-align: right;"><strong>69,973</strong></td>
+<td style="text-align: right;"><strong>180,930</strong></td>
+<td style="text-align: right;"><strong>1.9</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Difference (%)</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"><strong>22%</strong></td>
+<td style="text-align: right;"><strong>57%</strong></td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+    </div>
+  </div>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/head.min.js"></script>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1440,
+        height: 900,
+      
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+
+<script>
+var MathJax = { jax: ["input/TeX", "output/HTML-CSS"],
+                TeX: {extensions: ["color.js", "mhchem.js"],
+                Macros: {
+                  permil: "\\unicode{x2030}",
+                  pH: "p\\ce{H}",
+                  CaSi: "\\ce{CaSiO3}",
+                  silicate: "\\ce{SiO3^2-}",
+                  Caplus: "\\ce{Ca^2+}",
+                  calcite: "\\ce{CaCO3}",
+                  silica: "\\ce{SiO2}",
+                  OH: "\\ce{OH-}",
+                  Hplus: "\\ce{H+}",
+                  carbonic: "\\ce{H2CO3}",
+                  bicarb: "\\ce{HCO3-}",
+                  carb: "\\ce{CO3^2-}",
+                  water: "\\mathrm{H_2O}",
+                  degF: "^\\circ \\mathrm{F}",
+                  degC: "^\\circ \\mathrm{C}",
+                  methane: "\\ce{CH4}",
+                  COO: "\\ce{CO2}"
+                },
+                  },
+                "HTML-CSS" : {scale: 100 }};
+</script>
+
+
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["SVG"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+  </script>
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  <script>
+  var qrbox = document.querySelector("#qrbox");
+  var advance_fragment = 0;
+  Reveal.addEventListener('slidechanged', function() {
+    if (Reveal.isFirstSlide()) {
+      qrbox.style.visibility="visible";
+    } else {
+      qrbox.style.visibility="hidden";
+      while (advance_fragment > 0) {
+        console.log('advancing fragment');
+        Reveal.nextFragment();
+        advance_fragment--;
+      }
+    }
+  }, false);
+
+  Reveal.addEventListener('skip_slide', function() {
+    Reveal.next();
+  }, false);
+
+  Reveal.addEventListener('advance_fragment', function() {
+    console.log("setting advance fragment");
+    advance_fragment++;
+    }, false);
+  </script>
+  </body>
+</html>

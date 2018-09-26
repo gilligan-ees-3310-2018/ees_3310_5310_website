@@ -2,6 +2,7 @@
 /docs/
 /lectures/semester/
 /public/
+*cache/
 .Rproj.user/
 node_modules/
 Corel Auto-Preserve/
