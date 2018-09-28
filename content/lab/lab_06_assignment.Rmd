@@ -14,8 +14,9 @@ In this lab, you and a partner will begin to develop your own question to explor
 
 ## Reading
 
-No reading has been posted yet for this lab.
+**Before you come to lab**, please read the following document:
 
+* [Independent Research Project](/lab_docs/lab_06_instructions)
 
 ## Assignment
 

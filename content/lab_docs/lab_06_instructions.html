@@ -1,0 +1,143 @@
+---
+title: Independent Research Project
+lab_number: 6
+lab_date: '2018-10-01'
+pubdate: '2018-07-31'
+date: '2018-10-01'
+pdf_url: /files/lab_docs/lab_06/lab_06_instructions.pdf
+slug: lab_06_instructions
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>You have done several structured labs that provided opportunities to learn
+about R, RMarkdown, and several different aspects of climate science (data
+analysis and several computer models).<br />
+For the next few weeks, you will have a chance to utilize the skills you have
+learned thus far in lab to explore a research question pertaining to your
+specific interests.
+This series of labs consists of a written lab report in RMarkdown and a
+presentation to the class. For this project, you will choose a question or idea
+pertaining to one of the previous labs and explore the topic a deeper. This may
+consit of exploring the “why” portion of previous questions that only asked you
+to describe patterns in the data or it may be evaluating relationships between
+other variables not assesed in prior labs. To answer your question, you may use
+the any of the data from lab 2, the MODTRAN model, the RRTM model, the GEOCARB
+model, or a combination thereof. Please get your topic approved by either
+Dr. Gilligan or Ms. Best by Oct. 5. The final
+project is <strong>due Oct. 17 at 11:59 PM</strong>.</p>
+<div id="solo-or-team-projects" class="section level2">
+<h2>Solo or Team Projects</h2>
+<p>You may choose to do this project individually or with a partner as a team
+effort. If you work with a partner, you may work together to design the
+question, obtain and analyze data, make a team presentation, and write a report
+together. We expect teams to include a note in the report that indicates which
+member contributed what to the report (this does not need to be super detailed
+and can say, “Alice and Bob designed the experiment together. Bob wrote the
+code to run the models. Alice wrote the code for the data analysis.
+Alice and Bob contributed equally to writing the discussion and conclusions.”)
+This is similar to the requirement at many research journals that
+co-authored papers include a statement of what each author contributed.</p>
+</div>
+<div id="choosing-a-topic" class="section level2">
+<h2>Choosing a Topic</h2>
+<p>For undergraduates, we recommend that you choose a topic from one of the
+exercises that you did in labs #2–5 and think of a new question along the same
+lines as the questions that exercise asked.
+For graduate students, we expect you to try something more ambitious than just
+simple extensions of the questions from the lab exercises, but it is still fine
+to take one of the lab exercises as a starting point.</p>
+<p>If you want to do something really different than what we have done previously
+in lab, that is fine. But check with one of us to make sure your plan is
+appropriate and feasible (we don’t want you to bite off more than you can chew).</p>
+<p><strong>Be CrEaTiVe!</strong> Now is the time to really explore parts of the class that you
+have found interesting and present your findings in a unique, exciting way.</p>
+</div>
+</div>
+<div id="writen-report-due-oct.17" class="section level1">
+<h1>Writen Report (Due Oct. 17)</h1>
+<p>Your report should be comprehensive, yet not overly verbose. One recommendation
+for achieving this is to create an outline to organize your thoughts before
+initializing writing and data analysis. The report needs to include the
+following components:</p>
+<ul>
+<li><p>Introduction</p>
+<ul>
+<li><em>Provide background information that frames the problem you are
+addressing. At the end of the introduction, the reader should understand
+exactly <strong>what the problem is</strong> that you are addressing and why that
+problem is <strong>interesting</strong> and <strong>relevant</strong> to the climate system.</em></li>
+</ul></li>
+<li><p>Methods</p>
+<ul>
+<li><p><em>Describe the methods for answering your question. The methods section
+should be written such that someone completely unfamiliar with your
+project could follow your steps and recreate your results.</em></p></li>
+<li><p>This section should contain the R code you use to do the analysis:</p>
+<ul>
+<li><p>Getting data into R: download from the internet, read it in from
+files on your computer, run models, etc.</p></li>
+<li><p>Process data to clean it up: use functions like <code>mutate</code>, <code>gather</code>,
+<code>summarize</code>, etc. to convert the data into a useful form.</p></li>
+<li><p>Analyze data: anything you do to analyze the data, such as generating
+descriptive statistics like the mean or standard deviation, fitting
+linear models to get slopes (rates of change), etc.</p></li>
+</ul></li>
+</ul></li>
+<li><p>Results</p>
+<ul>
+<li><p><em>Describe the results of your analyses. Include apropriate charts,
+tables, graphs, and other quantitative representations of data.</em></p></li>
+<li><p>This section should have R code for making graphs, tables, etc.</p></li>
+</ul></li>
+<li><p>Conclusions/Discussion</p>
+<ul>
+<li><p><em>Discuss the implications for the results you found using data from your
+results section.</em></p>
+<ul>
+<li><p>Why are these results significant or interesting?</p></li>
+<li><p>What data supports these conclusions?</p></li>
+<li><p>What are the broader implications of these results?</p></li>
+<li><p>From the results that you have found, what are the next steps to
+take in this line of research? What other questions have arisen as a
+result of your analyses?</p></li>
+</ul></li>
+</ul></li>
+<li><p>Works Cited</p>
+<ul>
+<li><p><em>Include a works cited section to credit the research and thoughts that
+are not your own. Be sure to use citations throughout your report where
+necessary.</em></p></li>
+<li><p>We will post a separate document that explains how to do citations and
+bibliographies in RMarkdown.</p></li>
+</ul></li>
+</ul>
+<p>Final reports are to be pushed to your Lab 6 Github repository
+<em>no later than 11:59 PM on Oct. 17</em>.
+<strong>You must push the .Rmd file <em>and</em> the knitted PDF</strong> to Github.
+A portion of your final report grade will reflect effective use of
+R/RMarkdown/Github, the clarity and succinctness of your writing,
+visual representations of data, appropriate discussion of results,
+and insights into future analyses.</p>
+</div>
+<div id="presentation-oct.15" class="section level1">
+<h1>Presentation (Oct. 15)</h1>
+<p>Presentations will be limited to five minutes per student. Allot approximately
+3.5 to 4 minutes for the presentation of your project and
+approximately 1 minute for questions.
+Team projects will get five minutes for each team member, and we expect you to
+coordinate so that each member speaks for roughly equal time.</p>
+<ul>
+<li><p>You can use Powerpoint to make your presentation, or if you are adventurous,
+you can use RMarkdown to make a presentation. I will post a separate document
+about how to use RMarkdown to make presentation slides.</p></li>
+<li><p>A Powerpoint or PDF of your final presentation needs to be pushed to Github
+<em>no later than 2:10 PM on
+Oct. 15</em>.</p></li>
+</ul>
+</div>
