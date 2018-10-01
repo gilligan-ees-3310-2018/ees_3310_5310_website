@@ -3,6 +3,7 @@ title: Continuing Work on Group Projects
 lab_date: '2018-10-08'
 report_due_date: '2018-10-17'
 lab_number: 7
+github_classroom_assignment_url: https://classroom.github.com/a/7XbkctvB
 pubdate: '2018-07-31'
 date: '2018-10-08'
 slug: lab_07_assignment
@@ -19,4 +20,4 @@ No reading has been posted yet for this lab.
 
 ## Assignment
 
-The GitHub Classroom has not been posted yet.
+Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/7XbkctvB>.

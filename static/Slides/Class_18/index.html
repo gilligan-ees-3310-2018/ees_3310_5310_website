@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!-- JG Reveal.js Template -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Jonathan Gilligan" />
+  <title>Review for Midterm</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="stylesheet" href="../../lecture_lib/library/reveal.js-3.7.0/css/reveal.min.css"/>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      .smallcaps{font-variant: small-caps;}
+      .line-block{white-space: pre-line;}
+      .column{display: inline-block;}  </style>
+  <style type="text/css">
+    div.qrbox {
+     width:100vw;
+     position:fixed;
+     bottom:0%;
+     left:10px;
+     text-align:left;
+     vertical-align:bottom;
+    }
+  </style>
+<!-- theme = solarized_jg -->
+<link rel="stylesheet" href="../../lecture_lib/library/assets/css/theme/solarized_jg.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lecture_lib/library/reveal.js-3.7.0/css/print/pdf.css' : '../../lecture_lib/library/reveal.js-3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+            <!-- start title slide -->
+<section class='center' id='title' >
+    <h1 class="title">Review for Midterm</h1>
+    <h3 class="author">EES 3310/5310</h3>
+        <h3 class="author">Global Climate Change</h3>
+    <h3 class="author">Jonathan Gilligan</h3>
+    <h3 class="date">
+      Class #18:
+       2018-10-01
+      2018
+    </h3>
+        <div class="qrbox" id="qrbox">
+      <div style="font-size:30%;width:100%;">
+    <a href="https://ees3310.jgilligan.org/Slides/Class_18">
+  	<img src="qrcode.png" alt="https://ees3310.jgilligan.org/Slides/Class_18"/>
+  	</a>
+    	</div>
+    	<div style="font-size:30%;width:100%;vertical-align:top;">
+    	<span style="display:inline-block;text-align:left;margin-left:0">
+    	    	Live web page: <a href="https://ees3310.jgilligan.org/Slides/Class_18">https://ees3310.jgilligan.org/Slides/Class_18</a>
+    	<br/>
+    	PDF: <a href="https://ees3310.jgilligan.org/Slides/Class_18/EES_3310_5310_Class_18_Slides.pdf" target="_blank">https://ees3310.jgilligan.org/Slides/Class_18/EES_3310_5310_Class_18_Slides.pdf</a>
+    	
+    	    	</span>
+    	<span style="display:inline-block;text-align:right;vertical-align:top;position:relative;left:10rem;">
+    	  Navigate slides: next: N or &lt;space&gt;; previous: P or &lt;backspace&gt;<br/>
+    	  Also: up, down, left, right arrows; overview: o; help: ?
+    	</span>
+  	</div>
+  	</div>
+    	<!-- end title slide -->
+</section>
+
+<section><section id="outline-sec" class="title-slide slide level1 center"><h1>Outline of Semester</h1></section><section id="heat-temp" class="slide level2 ninety">
+<h2>Heat and Temperature</h2>
+<ul>
+<li class="fragment">Temperature is stable when Q<sub>in</sub> = Q<sub>out</sub> (balance of heat)</li>
+<li class="fragment">Radiative equilibrium:
+<ul>
+<li class="fragment">Q<sub>in</sub> is shortwave light from sun</li>
+<li class="fragment">Q<sub>out</sub> is longwave light from earth
+<ul>
+<li class="fragment">Where on earth does Q<sub>out</sub> come from?</li>
+</ul></li>
+<li class="fragment">Why is Q<sub>in</sub> shortwave and Q<sub>out</sub> longwave?</li>
+<li class="fragment">Equations (in W/m<sup>2</sup>): <span class="math display">\[
+\begin{align*}
+Q_{\text{in}}  &amp;= \frac{(1 - \alpha) I_{\text{solar}}}{4}\quad\text{(Absorption)}\\
+Q_{\text{out}} &amp;= \varepsilon \sigma T_{\text{skin}}^4\quad\text{(Stefan-Boltzmann Law)}
+\end{align*}
+\]</span></li>
+</ul></li>
+</ul>
+</section><section id="greenhouse" class="slide level2 ninety">
+<h2>Greenhouse Effect</h2>
+<ul>
+<li class="fragment">No greenhouse gases: Bare-rock model <span class="math display">\[ T = \sqrt[4]{\frac{(1 - \alpha) I_{\text{solar}}}{4 \varepsilon \sigma}} \]</span></li>
+<li class="fragment">Add greenhouse gases:
+<ul>
+<li class="fragment">Simple model: Layer model (<span class="math inline">\(\varepsilon = 1\)</span> for all wavelengths)</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p><img data-src="assets/fig/layer-1.png" /></p>
+</div>
+</section></section>
+<section><section id="realistic-greenhouse-sec" class="title-slide slide level1 center"><h1>More Realistic Greenhouse Effect</h1></section><section id="greenhouse-spectrum" class="slide level2 ninety">
+<h2>More Realistic Greenhouse Effect</h2>
+<ul>
+<li>With real greenhouse gases, ε varies with wavelength:</li>
+</ul>
+<p><img data-src="assets/fig/modtran-1.png" /></p>
+</section><section id="modtran-question" class="slide level2">
+<h2>Question:</h2>
+<ul>
+<li>What do you suppose causes this?</li>
+</ul>
+<p><img data-src="assets/fig/modtran_clouds-1.png" /></p>
+</section></section>
+<section><section id="vertical-sec" class="title-slide slide level1 center"><h1>Vertical Structure of the Atmosphere</h1></section><section id="convection" class="slide level2 eighty">
+<h2>Vertical Structure of the Atmosphere</h2>
+<ul>
+<li class="fragment">Lapse Rate:
+<ul>
+<li class="fragment">Environmental (ELR): Snapshot of actual atmosphere</li>
+<li class="fragment">Adiabatic (ALR): Changes as air moves up or down</li>
+<li class="fragment">Condition for stability: ELR &lt; ALR</li>
+</ul></li>
+<li class="fragment">Why does stability matter?
+<ul>
+<li class="fragment">Greenhouse effect wants to make ELR very large</li>
+<li class="fragment">When ELR &gt; ALR, convection happens
+<ul>
+<li class="fragment">Convection moves heat around,</li>
+<li class="fragment">Convection reduces ELR until atmosphere becomes stable</li>
+</ul></li>
+<li class="fragment">Radiative-Convective Equilibrium:
+<ul>
+<li class="fragment">Atmosphere is just at the edge of stability</li>
+<li class="fragment">Greenhouse effect wants to raise ELR</li>
+<li class="fragment">Convection wants to reduce ELR</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="vertical-greenhouse" class="slide level2" data-transition="fade-out">
+<h2>Vertical Structure and Greenhouse Effect</h2>
+<p><img data-src="assets/fig/convective_greenhouse-1.png" /></p>
+</section><section id="vertical-greenhouse-2" class="slide level2" data-transition="fade-in">
+<h2>Vertical Structure and Greenhouse Effect</h2>
+<p><img data-src="assets/fig/convective_greenhouse_2-1.png" /></p>
+</section></section>
+<section><section id="feedback-sec" class="title-slide slide level1 center"><h1>Feedbacks</h1></section><section id="feedback" class="slide level2">
+<h2>Feedbacks</h2>
+<ul>
+<li class="fragment">Positive: amplify warming or cooling</li>
+<li class="fragment">Negative: diminish warming or cooling</li>
+<li class="fragment">Examples:
+<ul>
+<li class="fragment">Ice-albedo</li>
+<li class="fragment">Water vapor</li>
+<li class="fragment">Clouds</li>
+<li class="fragment">Silicate Weathering</li>
+</ul></li>
+</ul>
+</section><section id="cloud-feedback" class="slide level2">
+<h2>Cloud Feedback</h2>
+<p><img data-src="assets/images/cloud_feedback_2.png" alt="Cloud Feedbacks" style="height:750px;" /></p>
+</section><section id="si-weathering" class="slide level2 eighty">
+<h2>Silicate Weathering</h2>
+<ul>
+<li class="fragment">Constant CO<sub>2</sub>: Silicate weathering = volcanic outgassing</li>
+<li class="fragment">Raise outgassing:
+<ul>
+<li class="fragment">CO<sub>2</sub> rises</li>
+<li class="fragment">Temperature rises</li>
+<li class="fragment">More weathering</li>
+<li class="fragment">New equilibrium when weathering = new outgassing
+<ul>
+<li class="fragment">Higher temperature</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="si-weathering-2" class="slide level2 eighty">
+<h2>Silicate Weathering</h2>
+<div class="leftslide">
+<ul>
+<li>Constant CO<sub>2</sub>: Silicate weathering = volcanic outgassing</li>
+</ul>
+<ul>
+<li class="fragment">One-time increase in CO<sub>2</sub>
+<ul>
+<li class="fragment">Temperature rises</li>
+<li class="fragment">More weathering</li>
+<li class="fragment">Weathering &gt; outgassing</li>
+<li class="fragment">CO<sub>2</sub> drops</li>
+<li class="fragment">New equilibrium when CO<sub>2</sub> returns to original value:
+<ul>
+<li class="fragment"><em>T</em> returns to original value</li>
+<li class="fragment">CO<sub>2</sub> back at original value</li>
+<li class="fragment">Weathering = outgassing</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</section></section>
+<section><section id="carbon-cycle-sec" class="title-slide slide level1 center"><h1>Geochemical Carbon Cycle</h1></section><section id="carbon" class="slide level2">
+<h2>Carbon</h2>
+<ul>
+<li>Oxidized vs. Reduced Carbon</li>
+<li>Isotopes:
+<ul>
+<li><sup>12</sup>C, <sup>13</sup>C, <sup>14</sup>C</li>
+<li>What do they tell us?</li>
+</ul></li>
+<li>Evidence that rising CO<sub>2</sub> comes from fossil fuels</li>
+</ul>
+</section><section id="co2-o2-13c" class="slide level2" data-transition="fade">
+<h2>Source of CO<sub>2</sub>: O<sub>2</sub> and <sup>13</sup>C</h2>
+<p><img data-src="assets/fig/keeling_isotopes-1.png" /></p>
+</section><section id="co2-isotopes" class="slide level2" data-transition="fade">
+<h2>Source of CO<sub>2</sub>: <sup>13</sup>C and <sup>14</sup>C</h2>
+<p><img data-src="assets/fig/niwot_isotopes-1.png" /></p>
+</section><section id="carbon-reservoirs" class="slide level2">
+<h2>Where is Carbon</h2>
+<p><img data-src="assets/images/carbon_pathways.png" style="height:750px;" /></p>
+</section><section id="buffering" class="slide level2">
+<h2>Carbonate/Bicarbonate Buffering</h2>
+<h3 id="buffering-reaction" style="margin-bottom:0.25em;">Buffering reaction</h3>
+<p><span class="math display">\[ \COO + \water + \carb \rightleftharpoons 2 \bicarb \]</span></p>
+<h3 id="important-points">Important points:</h3>
+<ul>
+<li class="fragment">Lots more carbonate than CO<sub>2</sub> in ocean</li>
+<li class="fragment">Le Chatlier’s principle</li>
+<li class="fragment">Absorb lots more CO<sub>2</sub> because of buffering, carbonate</li>
+<li class="fragment">Ocean acidification as carbonate depleted</li>
+</ul>
+</section></section>
+<section><section id="weathering-rx-sec" class="title-slide slide level1 center"><h1>Weathering Reactions</h1></section><section id="si-weathering-rx" class="slide level2">
+<h2>Silicate Weathering Reactions</h2>
+<ul>
+<li class="fragment">Silicate Weathering (Urey Reaction) <span class="math display">\[ \ce{CaSiO3} + \ce{CO2} \leftrightharpoons \ce{CaCO3} + \ce{SiO2} \]</span>
+<ul>
+<li class="fragment">Intermediate (in water): <span class="math display">\[ \ce{CaSiO3} + \ce{H2CO3} \leftrightharpoons \ce{Ca^{2+}} + \ce{SiO3^{2-}} + 2 \ce{H+} + \carb \]</span></li>
+<li class="fragment">Silicate rocks dissolve into ions in water</li>
+<li class="fragment">Wash into ocean</li>
+<li class="fragment">In ocean, living organisms convert ions to <span class="math inline">\(\ce{CaCO3}\)</span> and <span class="math inline">\(\ce{SiO2}\)</span>.</li>
+<li class="fragment">Net result: Convert CO<sub>2</sub> from atmosphere into rocks at bottom of ocean.</li>
+</ul></li>
+</ul>
+</section><section id="co3-weathering-rx" class="slide level2">
+<h2>Carbonate Weathering Reactions</h2>
+<ul>
+<li class="fragment">Carbonate Weathering <span class="math display">\[ \ce{CaCO3} + \ce{CO2} \leftrightharpoons \ce{CaCO3} + \ce{CO2} \]</span>
+<ul>
+<li class="fragment">Intermediate (in water): <span class="math display">\[ \ce{CaCO3} + \ce{H2CO3} \leftrightharpoons \ce{Ca^{2+}} + 2 \ce{H+} + 2 \carb \]</span></li>
+<li class="fragment">Carbonate rocks dissolve into ions in water</li>
+<li class="fragment">Add carbonate ions to oceans</li>
+<li class="fragment">Net result: No permanent removal of CO<sub>2</sub> from atmosphere, but long-term storage in oceans.</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="past-climates-sec" class="title-slide slide level1 center"><h1>Climates of the Past</h1></section><section id="climates-of-the-past-past-climates" class="slide level2">
+<h2>Climates of the Past {past-climates}</h2>
+<ul>
+<li>Paleocene-Eocene Thermal Maximum (PETM) (~55 million years ago)</li>
+<li>Pleistocene Ice Ages (~2.8 million to 10,000 years ago)</li>
+<li>Holocene (last ~10,000 years)
+<ul>
+<li>Medieval Warm Period (~1000 years ago)</li>
+<li>Post-industrial warming</li>
+</ul></li>
+</ul>
+</section><section id="PETM" class="slide level2">
+<h2>Paleocene-Eocene Thermal Maximum</h2>
+<ul>
+<li class="fragment">What was it?</li>
+<li class="fragment">What important evidence do we see for what caused it?</li>
+<li class="fragment">What is its relevance to today?</li>
+</ul>
+</section><section id="pleistocene" class="slide level2">
+<h2>Pleistocene Ice Ages</h2>
+<ul>
+<li class="fragment">What was it?</li>
+<li class="fragment">What important evidence do we use to study it?</li>
+<li class="fragment">What do we know about what caused it?</li>
+<li class="fragment">What is its relevance to today?</li>
+</ul>
+</section><section id="holocene-agw" class="slide level2">
+<h2>Post-Industrial Warming</h2>
+<ul>
+<li class="fragment">What do we know about what caused it?</li>
+<li class="fragment">What are some lines of evidence that human activity is responsible?</li>
+</ul>
+</section><section id="medieval-warm-period" class="slide level2">
+<h2>Medieval Warm Period</h2>
+<ul>
+<li class="fragment">What was it?</li>
+<li class="fragment">What is its relevance to today?</li>
+</ul>
+</section><section id="younger-dryas" class="slide level2">
+<h2>Younger Dryas</h2>
+<ul>
+<li class="fragment">What was it?</li>
+<li class="fragment">What is its relevance to today?</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/head.min.js"></script>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1440,
+        height: 900,
+      
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+
+<script>
+var MathJax = { jax: ["input/TeX", "output/HTML-CSS"],
+                TeX: {extensions: ["color.js", "mhchem.js"],
+                Macros: {
+                  permil: "\\unicode{x2030}",
+                  pH: "p\\ce{H}",
+                  CaSi: "\\ce{CaSiO3}",
+                  silicate: "\\ce{SiO3^2-}",
+                  Caplus: "\\ce{Ca^2+}",
+                  calcite: "\\ce{CaCO3}",
+                  silica: "\\ce{SiO2}",
+                  OH: "\\ce{OH-}",
+                  Hplus: "\\ce{H+}",
+                  carbonic: "\\ce{H2CO3}",
+                  bicarb: "\\ce{HCO3-}",
+                  carb: "\\ce{CO3^2-}",
+                  water: "\\mathrm{H_2O}",
+                  degF: "^\\circ \\mathrm{F}",
+                  degC: "^\\circ \\mathrm{C}",
+                  methane: "\\ce{CH4}",
+                  COO: "\\ce{CO2}"
+                },
+                  },
+                "HTML-CSS" : {scale: 100 }};
+</script>
+
+
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["SVG"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+  </script>
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  <script>
+  var qrbox = document.querySelector("#qrbox");
+  var advance_fragment = 0;
+  Reveal.addEventListener('slidechanged', function() {
+    if (Reveal.isFirstSlide()) {
+      qrbox.style.visibility="visible";
+    } else {
+      qrbox.style.visibility="hidden";
+      while (advance_fragment > 0) {
+        console.log('advancing fragment');
+        Reveal.nextFragment();
+        advance_fragment--;
+      }
+    }
+  }, false);
+
+  Reveal.addEventListener('skip_slide', function() {
+    Reveal.next();
+  }, false);
+
+  Reveal.addEventListener('advance_fragment', function() {
+    console.log("setting advance fragment");
+    advance_fragment++;
+    }, false);
+  </script>
+  </body>
+</html>

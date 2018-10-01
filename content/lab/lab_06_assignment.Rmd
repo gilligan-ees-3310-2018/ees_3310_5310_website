@@ -3,6 +3,7 @@ title: Group Projects
 lab_date: '2018-10-01'
 report_due_date: '2018-10-17'
 lab_number: 6
+github_classroom_assignment_url: https://classroom.github.com/a/7XbkctvB
 pubdate: '2018-07-31'
 date: '2018-10-01'
 slug: lab_06_assignment
@@ -20,4 +21,4 @@ In this lab, you and a partner will begin to develop your own question to explor
 
 ## Assignment
 
-The GitHub Classroom has not been posted yet.
+Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/7XbkctvB>.
