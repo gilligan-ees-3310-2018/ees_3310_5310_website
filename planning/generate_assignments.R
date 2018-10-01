@@ -705,129 +705,131 @@ make_short_hw_assignment <- function(cal_entry) {
   output
 }
 
-make_lab_doc_page <- function(doc, assignment) {
-  # g_doc <<- doc
-  # g_asg <<- assignment
-
-  delim <- "---"
-  header <- list(
-    title = doc$lab_document_title,
-    author = doc$doc_author,
-    lab_number = assignment$lab_num,
-    lab_date = assignment$lab_date,
-    pubdate = pub_date,
-    date = assignment$lab_date,
-    pdf_url = doc$lab_document_pdf_url,
-    slug = sprintf("lab_%02d_%s", assignment$lab_num, doc$doc_filename)) %>%
-    discard(is.na) %>%
-    c(
-      output = list("blogdown::html_page" =
-                      list(md_extensions = md_extensions,
-                           toc = TRUE))
-    ) %>%
-    as.yaml() %>% str_trim("right") %>%
-    str_c(delim, ., delim, sep = "\n")
-  lab_doc_page <- str_c(
-    header,
-    doc$lab_document_markdown,
-    sep = "\n"
-  ) %>% expand_codes()
-  lab_doc_page
-}
-
-make_lab_doc <- function(doc, assignment) {
-  fname <- sprintf("lab_%02d_%s.Rmd", assignment$lab_num, doc$doc_filename)
-  doc_path <- fname %>% file.path(root_dir, "content", "lab_docs", .)
-  doc_url <- fname %>% str_replace("\\.Rmd$", "") %>%
-    file.path("/lab_docs", .)
-  lab_doc_page <- make_lab_doc_page(doc, assignment)
-  cat(lab_doc_page, file = doc_path)
-  c(path = doc_path, url = doc_url)
-}
-
-make_lab_assignment_page <- function(this_assignment, lab_docs,
-                                     lab_solutions) {
-  delim <- "---"
-  these_docs <- lab_docs %>% filter(lab_group == this_assignment$lab_group) %>%
-    arrange(lab_item_id)
-  these_solutions <- lab_solutions %>%
-    mutate(lab_sol_pub_date = as_datetime(lab_sol_pub_date)) %>%
-    filter(lab_group == this_assignment$lab_group, lab_sol_pub_date <= now()) %>%
-    arrange(lab_sol_id)
-
-  header <- list(
-    title = this_assignment$lab_title,
-    lab_date = this_assignment$lab_date,
-    presentation_date = this_assignment$lab_present_date,
-    report_due_date = this_assignment$lab_due_date,
-    lab_number = this_assignment$lab_num,
-    github_classroom_assignment_url = this_assignment$lab_assignment_url,
-    pubdate = pub_date,
-    date = this_assignment$lab_date,
-    slug = sprintf("lab_%02d_assignment", this_assignment$lab_num),
-    output = list("blogdown::html_page" =
-                    list(md_extensions = md_extensions))
-  ) %>% discard(is.na) %>%
-    as.yaml() %>% str_trim("right") %>%
-    str_c(delim, ., delim, sep = "\n")
-  output <- this_assignment$lab_description
-  if (nrow(these_docs) > 0) {
-    output <- output %>% str_c(
-      "", "## Reading", "",
-      str_c("**Before you come to lab**, please read the following document",
-            ifelse(nrow(these_docs) > 1, "s", ""),
-            ":"), "",
-      sep = "\n")
-    for (i in seq(nrow(these_docs))) {
-      this_doc <- these_docs[i,]
-      doc <- make_lab_doc(this_doc, this_assignment)
-      output <- output %>% str_c("\n* [", this_doc$lab_document_title, "](", doc['url'], ")")
-    }
-  } else {
-    output <- output %>% str_c(
-      "", "## Reading", "",
-      "No reading has been posted yet for this lab.",
-      "", sep = "\n")
-  }
-  url <- this_assignment$lab_assignment_url
-  if (! is.na(url)) {
-    output <- output %>% str_c("", "## Assignment", "",
-                               str_c("Accept the assignment at GitHub Classroom at <", url, ">."),
-                               "", sep = "\n")
-  } else {
-    output <- output %>% str_c("", "## Assignment", "",
-                               "The GitHub Classroom has not been posted yet.",
-                               "", sep = "\n")
-  }
-  if (nrow(these_solutions) > 0) {
-    output <- output %>% str_c(
-      "", "## Solutions", "",
-      "**Solutions for Lab Exercises**:", "",
-      sep = "\n")
-    for (i in seq(nrow(these_solutions))) {
-      this_sol <- these_solutions[i,]
-      sol <- make_lab_solution(this_sol, this_assignment)
-      output <- output %>% str_c("\n* [", this_sol$lab_sol_title, "](", sol['url'], ")")
-    }
-
-
-  }
-  output <- str_c(header, output, sep = "\n") %>% expand_codes()
-  output
-}
-
-make_lab_assignment <- function(group, lab_assignments, lab_docs,
-                                lab_solutions) {
-  this_assignment <- lab_assignments %>% filter(lab_group == group)
-  fname <- sprintf("lab_%02d_assignment.Rmd", this_assignment$lab_num)
-  lab_path <- fname %>% file.path(root_dir, "content", "lab", .)
-  lab_url <- fname %>% str_replace("\\.Rmd$", "")
-  lab_assignment_page <- make_lab_assignment_page(this_assignment, lab_docs,
-                                                  lab_solutions)
-  cat(lab_assignment_page, file = lab_path)
-  c(path = lab_path, url = lab_url)
-}
-
+# make_lab_doc_page <- function(doc, assignment) {
+#   g_doc <<- doc
+#   g_asg <<- assignment
+#
+#   delim <- "---"
+#   header <- list(
+#     title = doc$lab_document_title,
+#     author = doc$doc_author,
+#     lab_number = assignment$lab_num,
+#     lab_date = assignment$lab_date,
+#     pubdate = pub_date,
+#     date = assignment$lab_date,
+#     bibliography = doc$bibliography,
+#     pdf_url = doc$lab_document_pdf_url,
+#     slug = sprintf("lab_%02d_%s", assignment$lab_num, doc$doc_filename)) %>%
+#     discard(is.na) %>%
+#     c(
+#       output = list("blogdown::html_page" =
+#                       list(md_extensions = md_extensions,
+#                            toc = TRUE))
+#     ) %>%
+#     as.yaml() %>% str_trim("right") %>%
+#     str_c(delim, ., delim, sep = "\n")
+#   lab_doc_page <- str_c(
+#     header,
+#     doc$lab_document_markdown,
+#     sep = "\n"
+#   ) %>% expand_codes()
+#   lab_doc_page
+# }
+#
+# make_lab_doc <- function(doc, assignment) {
+#   fname <- sprintf("lab_%02d_%s.Rmd", assignment$lab_num, doc$doc_filename)
+#   doc_path <- fname %>% file.path(root_dir, "content", "lab_docs", .)
+#   doc_url <- fname %>% str_replace("\\.Rmd$", "") %>%
+#     file.path("/lab_docs", .)
+#   lab_doc_page <- make_lab_doc_page(doc, assignment)
+#   cat(lab_doc_page, file = doc_path)
+#   c(path = doc_path, url = doc_url)
+# }
+#
+# make_lab_assignment_page <- function(this_assignment, lab_docs,
+#                                      lab_solutions) {
+#   delim <- "---"
+#   these_docs <- lab_docs %>% filter(lab_group == this_assignment$lab_group) %>%
+#     arrange(lab_item_id)
+#   these_solutions <- lab_solutions %>%
+#     mutate(lab_sol_pub_date = as_datetime(lab_sol_pub_date)) %>%
+#     filter(lab_group == this_assignment$lab_group, lab_sol_pub_date <= now()) %>%
+#     arrange(lab_sol_id)
+#
+#   header <- list(
+#     title = this_assignment$lab_title,
+#     lab_date = this_assignment$lab_date,
+#     presentation_date = this_assignment$lab_present_date,
+#     report_due_date = this_assignment$lab_due_date,
+#     lab_number = this_assignment$lab_num,
+#     github_classroom_assignment_url = this_assignment$lab_assignment_url,
+#     pubdate = pub_date,
+#     date = this_assignment$lab_date,
+#     slug = sprintf("lab_%02d_assignment", this_assignment$lab_num),
+#     output = list("blogdown::html_page" =
+#                     list(md_extensions = md_extensions))
+#   ) %>% discard(is.na) %>%
+#     as.yaml() %>% str_trim("right") %>%
+#     str_c(delim, ., delim, sep = "\n")
+#   output <- this_assignment$lab_description
+#   if (nrow(these_docs) > 0) {
+#     output <- output %>% str_c(
+#       "", "## Reading", "",
+#       str_c("**Before you come to lab**, please read the following document",
+#             ifelse(nrow(these_docs) > 1, "s", ""),
+#             ":"), "",
+#       sep = "\n")
+#     for (i in seq(nrow(these_docs))) {
+#       this_doc <- these_docs[i,]
+#       doc <- make_lab_doc(this_doc, this_assignment)
+#       output <- output %>% str_c("\n* [", this_doc$lab_document_title, "](", doc['url'], ")")
+#     }
+#   } else {
+#     output <- output %>% str_c(
+#       "", "## Reading", "",
+#       "No reading has been posted yet for this lab.",
+#       "", sep = "\n")
+#   }
+#   url <- this_assignment$lab_assignment_url
+#   if (! is.na(url)) {
+#     output <- output %>% str_c("", "## Assignment", "",
+#                                str_c("Accept the assignment at GitHub Classroom at <", url, ">."),
+#                                "", sep = "\n")
+#   } else {
+#     output <- output %>% str_c("", "## Assignment", "",
+#                                "The GitHub Classroom has not been posted yet.",
+#                                "", sep = "\n")
+#   }
+#   if (nrow(these_solutions) > 0) {
+#     output <- output %>% str_c(
+#       "", "## Solutions", "",
+#       "**Solutions for Lab Exercises**:", "",
+#       sep = "\n")
+#     for (i in seq(nrow(these_solutions))) {
+#       this_sol <- these_solutions[i,]
+#       sol <- make_lab_solution(this_sol, this_assignment)
+#       output <- output %>% str_c("\n* [", this_sol$lab_sol_title, "](", sol['url'], ")")
+#     }
+#
+#
+#   }
+#   output <- str_c(header, output, sep = "\n") %>% expand_codes()
+#   output
+# }
+#
+# make_lab_assignment <- function(group, lab_assignments, lab_docs,
+#                                 lab_solutions) {
+#   this_assignment <- lab_assignments %>% filter(lab_group == group)
+#   fname <- sprintf("lab_%02d_assignment.Rmd", this_assignment$lab_num)
+#   lab_path <- fname %>% file.path(root_dir, "content", "lab", .)
+#   lab_url <- fname %>% str_replace("\\.Rmd$", "")
+#   lab_assignment_page <- make_lab_assignment_page(this_assignment, lab_docs,
+#                                                   lab_solutions)
+#   cat(lab_assignment_page, file = lab_path)
+#   c(path = lab_path, url = lab_url)
+# }
+#
+#
 
 make_reading_page <- function(cal_entry) {
   rd_date <- cal_entry$date
@@ -909,6 +911,7 @@ make_lab_doc_page <- function(doc, assignment) {
     lab_date = assignment$lab_date,
     pubdate = pub_date,
     date = assignment$lab_date,
+    bibliography = doc$bibliography,
     pdf_url = doc$lab_document_pdf_url,
     slug = sprintf("lab_%02d_%s", assignment$lab_num, doc$doc_filename)) %>%
     discard(is.na) %>%

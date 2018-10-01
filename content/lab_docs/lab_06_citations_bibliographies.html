@@ -1,0 +1,309 @@
+---
+title: Citations and Bibliographies
+author: Jonathan Gilligan
+lab_number: 6
+lab_date: '2018-10-01'
+pubdate: '2018-07-31'
+date: '2018-10-01'
+bibliography: lab_06.bib
+pdf_url: /files/lab_docs/lab_06/citations_bibliographies.pdf
+slug: lab_06_citations_bibliographies
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>The simplest way to do citations and bibliographies in RMarkdown is simply
+to use author-date citation like this:</p>
+<blockquote>
+<p>The Urey reaction (Archer 2011, p. 98) shows how silicate weathering can
+convert atmospheric carbon (in the form of CO<sub>2</sub>) into rocks at the bottom
+of the ocean (in the form of CaCO<sub>3</sub>).</p>
+</blockquote>
+<p>And then just manually enter a bibliography at the end of the document:</p>
+<blockquote>
+<ul>
+<li><p>Archer, David (2011). <em>Global Warming: Understanding the Forecast</em>
+(Wiley)</p></li>
+<li><p>Rogelj, Joeri, McCollum, David L., Reisinger, Andy, Meinshausen, Malte,
+and Riahi, Keywan (2013).
+Probabilistic cost estimates for climate change mitigation,
+<em>Nature</em> <strong>493</strong>, 79–83.</p></li>
+</ul>
+</blockquote>
+<div id="getting-fancy-with-citations-and-bibliographies" class="section level2">
+<h2>Getting fancy with citations and bibliographies</h2>
+<p>However, if you want to experiment with something fancier,
+RMarkdown has the ability to automatically format bibliographic information and
+manage citations. Using this is a little complicated because you need to have
+file with your bibliographic information entered in a certain format.</p>
+<p>Everything that follows describes how to do citations and bibliographies
+with RMarkdown using bibliography files. If you wish, you may ignore the
+rest of this document and manage your citations and bibliographies manually,
+as described at the top of this file.</p>
+<p>RMarkdown can work with a wide variety of file formats for bibliographies,
+including those produced by many common software packages, such as
+EndNote, Zotero, and Mendeley.
+You can find further documentation about bibliographies and citations
+at <a href="http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html" class="uri">http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html</a></p>
+</div>
+</div>
+<div id="bibliography-files" class="section level1">
+<h1>Bibliography Files</h1>
+<p>RMarkdown reads bibliography entries from an external bibliography file.
+To specify the bibloography file, you would
+just add a line to the header of your RMarkdown document: for instance,</p>
+<pre><code>---
+title: &quot;My Lab Report&quot;
+subtitle: &quot;EES 3310: Global Climate Change&quot;
+author: &quot;Jonathan Gilligan&quot;
+date: &quot;Sept. 27, 2018&quot;
+bibliography: &quot;my_bibliography.bib&quot;
+---</code></pre>
+<p>RMarkdown can figure out the kind of bibliography file it is from the file
+extension (<code>.bib</code>, etc.). I have provided an example BibTeX file, <code>lab_05.bib</code>
+that has examples of entries.</p>
+<p>For the examples here, I will work with a format called BibTeX because most
+common software packages can export bibliographies in BibTeX format, and
+Google Scholar can also provide citations in BibTeX format that you can copy
+and past from a browser. BibTeX files are plain text and you can edit them in
+RStudio.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>If you prefer, you can also use bibliographic software, such as
+Zotero,<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> Mendeley, or EndNote, and export your bibliography in
+RIS format (as a <code>.ris</code> file), BibTeX format (as a <code>.bib</code> file),
+or BibLaTeX format (as a <code>.biblatex</code> file).
+RMarkdown claims to support the following file types as well, but I
+have not tried them, so I would not be able to provide much help if you
+try them and run into trouble.</p>
+
+<table>
+<thead>
+<tr class="header">
+<th align="left">Format</th>
+<th align="left">File extension</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">EndNote</td>
+<td align="left"><code>.enl</code></td>
+</tr>
+<tr class="even">
+<td align="left">EndNote XML</td>
+<td align="left"><code>.xml</code></td>
+</tr>
+<tr class="odd">
+<td align="left">RIS</td>
+<td align="left"><code>.ris</code></td>
+</tr>
+<tr class="even">
+<td align="left">BibTeX</td>
+<td align="left"><code>.bib</code></td>
+</tr>
+<tr class="odd">
+<td align="left">ISI</td>
+<td align="left"><code>.wos</code></td>
+</tr>
+<tr class="even">
+<td align="left">MEDLINE</td>
+<td align="left"><code>.medline</code></td>
+</tr>
+<tr class="odd">
+<td align="left">MODS</td>
+<td align="left"><code>.mods</code></td>
+</tr>
+<tr class="even">
+<td align="left">Copac</td>
+<td align="left"><code>.copac</code></td>
+</tr>
+<tr class="odd">
+<td align="left">JSON citeproc</td>
+<td align="left"><code>.json</code></td>
+</tr>
+</tbody>
+</table>
+<p>You can export files in many of these formats (especially RIS and BibTeX) from
+most bibliographic software packages, such as EndNote, Mendeley, and Zotero.</p>
+</div>
+<div id="citations" class="section level1">
+<h1>Citations</h1>
+<p>In your document, you can cite books, articles, etc. by the identifiers, or
+<em>keys</em>, that appear in the database.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
+If you open the bibliography file in RStudio, you will see that all references
+begin with a reference type, starting with <code>@</code> (e.g., <code>@book</code> for a book,
+<code>@article</code> for an article in a journal, etc.) and then all the data for the
+reference is contained between a pair of braces <code>{...}</code>.
+The first thing after the opening brace will be the citation key,
+followed by a comma:</p>
+<pre><code>@book{archer.forecast.2011,
+  title = {Global Warming: Understanding the Forecast},
+  author = {Archer, David},
+  publisher = {Wiley},
+  address = {Hoboken, NJ},
+  year = {2011},
+  edition = {2nd}
+}
+
+@article{rogelj2013probabilistic,
+  title={Probabilistic cost estimates for climate change mitigation},
+  author={Rogelj, Joeri and McCollum, David L and Reisinger, Andy and 
+          Meinshausen, Malte and Riahi, Keywan},
+  journal={Nature},
+  volume={493},
+  pages={79--83},
+  year={2013},
+}</code></pre>
+<p>The citation keys for these two references are
+<code>archer.forecast.2011</code> and <code>rogelj2013probabilistic</code>.</p>
+<p>I can insert citations in an RMarkdown document by putting them inside
+square brackets (<code>[...]</code>) and putting an <code>@</code> in front of the citation key:
+<code>[@archer.forecast.2011]</code> will become <span class="citation">(Archer 2011)</span>.
+I can cite a specific page with
+<code>[@archer.forecast.2011, p. 143]</code>, which becomes <span class="citation">(Archer 2011, 143)</span>.
+I can also add some preceding text:</p>
+<pre><code>[See, e.g., @archer.forecast.2011, pp. 75--78]</code></pre>
+<p>becomes
+<span class="citation">(See, e.g., Archer 2011, 75–78)</span>.</p>
+<p>I can cite multiple authors:</p>
+<pre><code>[@archer.forecast.2011, @nordhaus.casino.2013, and @pielke.climate.fix.2010].</code></pre>
+<p>becomes</p>
+<blockquote>
+<p><span class="citation">(Archer 2011, <span class="citation">@nordhaus.casino.2013</span>, and <span class="citation">@pielke.climate.fix.2010</span>)</span>.</p>
+</blockquote>
+<p>If I want to omit the name of the author (for instance, if I have named him or her
+earlier in the text), I can put a minus sign in front of the <code>@</code>:</p>
+<pre><code>Archer describes the water-vapor feedback [-@archer.forecast.2011].</code></pre>
+<p>becomes</p>
+<blockquote>
+<p>Archer describes the water-vapor feedback <span class="citation">(2011)</span>.</p>
+</blockquote>
+<p>I can also put citations in-line by omitting the square brackets:</p>
+<pre><code>@jaeger.adams.fallacy.2008 argue that focusing only on the economic 
+impacts of climate change is misleading.</code></pre>
+<p>becomes</p>
+<blockquote>
+<p><span class="citation">Jaeger, Schellnhuber, and Brovkin (2008)</span> argue that focusing only on the economic
+impacts of climate change is misleading.</p>
+</blockquote>
+<p>and I can also add page numbers or other text to follow the year in the citation
+by putting them in square brackets after an in-text citation:</p>
+<pre><code>@rogelj2013probabilistic [Fig. 2, p. 81] show that if political inaction
+causes even modest delays in reducing carbon emissions, it can dramatically 
+increase the cost of mitigating climate change.</code></pre>
+<p>becomes</p>
+<blockquote>
+<p><span class="citation">Rogelj et al. (2013 Fig. 2, p. 81)</span> show that if political inaction
+causes even modest delays in reducing carbon emissions, it can dramatically
+increase the cost of mitigating climate change.</p>
+</blockquote>
+</div>
+<div id="the-bibliography" class="section level1">
+<h1>The Bibliography</h1>
+<p>RMarkdown will insert a formatted bibliography at the end of your document.
+It will not automatically put a section heading, so you probably want to put
+a section heading called “Bibliography” or “Works Cited” to set this off
+from your text.</p>
+<p>At the bottom of this <code>.Rmd</code> file, I have inserted the line</p>
+<pre><code># References</code></pre>
+<div id="adding-entries-to-the-bibliography-file" class="section level2">
+<h2>Adding entries to the bibliography file</h2>
+<p>If you want to add new references to the bibliography file, you can
+open <code>lab_05.bib</code> in RStudio and edit it by hand, but that may be difficult
+and confusing, so I would recommend one of three options:</p>
+<ul>
+<li><p>From Google Scholar, you can export a BibTeX entry:</p>
+<ol style="list-style-type: decimal">
+<li><p>Open <code>lab_05.bib</code> in RStudio and then open a web browser, go to
+<a href="https://scholar.google.com" class="uri">https://scholar.google.com</a> and search for your reference.</p></li>
+<li><p>When you find the reference you want in Google Scholar, and click on the
+“Cite” button, as shown below:</p>
+<p><img src="images/scholar_1.png" alt="Google Scholar search page. Click on the “Cite” button, as shown here." /><br />
+</p></li>
+<li><p>Click on “BibTeX” at the bottom of the citation page, as shown below:</p>
+<p><img src="images/scholar_2.png" alt="Google Scholar citation page: Click on “BibTeX”" /><br />
+</p></li>
+<li><p>You will see something like this:</p>
+<pre><code> @article{rogelj2012global,
+  title={Global warming under old and new scenarios using IPCC climate 
+         sensitivity range estimates},
+  author={Rogelj, Joeri and Meinshausen, Malte and Knutti, Reto},
+  journal={Nature climate change},
+  volume={2},
+  number={4},
+  pages={248},
+  year={2012},
+  publisher={Nature Publishing Group}
+}</code></pre>
+<p>Copy the entry and paste it into <code>lab_05.bib</code> in RStudio.</p>
+<p>In this entry, <code>rogelj2012global</code> is the key you would use
+for citing and the other fields are pretty much self-explanatory.</p></li>
+</ol></li>
+<li><p>If you have a bibliographic program like Zotero, Mendeley, or EndNote,
+export the references you want as BibTeX files.</p>
+<p>For instance, in Zotero,<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> highlight the references, right click, and from
+the context menu choose “Export Items…”; then select “BibTeX” format,
+click “OK” and save the exported items to a file.)</p>
+<p>Next, open the file you just exported and <code>lab_05.bib</code> in RStudio and
+copy and past the references from the exported file into <code>lab_05.bib</code>.</p></li>
+<li><p>If you have JabRef<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a> installed on your computer, you open <code>lab_05.bib</code>,
+manually create a new bibliographic entry and fill in the relevant data.</p></li>
+</ul>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-archer.forecast.2011">
+<p>Archer, David. 2011. <em>Global Warming: Understanding the Forecast</em>. 2nd edition. Hoboken, NJ: Wiley.</p>
+</div>
+<div id="ref-jaeger.adams.fallacy.2008">
+<p>Jaeger, Carlo, Hans Joachim Schellnhuber, and Victor Brovkin. 2008. “Stern’s Review and Adam’s Fallacy.” <em>Climatic Change</em> 89: 207–18.</p>
+</div>
+<div id="ref-nordhaus.casino.2013">
+<p>Nordhaus, William D. 2013. <em>The Climate Casino: Risk, Uncertainty, and Economics for a Warming World</em>. New Haven, CT: Yale University Press.</p>
+</div>
+<div id="ref-pielke.climate.fix.2010">
+<p>Pielke, Jr., Roger. 2010. <em>The Climate Fix: What Scientists and Politicians Won’t Tell You About Global Warming</em>. New York: Basic Books.</p>
+</div>
+<div id="ref-rogelj2013probabilistic">
+<p>Rogelj, Joeri, David L. McCollum, Andy Reisinger, Malte Meinshausen, and Keywan Riahi. 2013. “Probabilistic Cost Estimates for Climate Change Mitigation.” <em>Nature</em> 493: 79–83.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>If you will use BibTeX files often, I recommend a free tool
+called JabRef, which lets you edit the information in a BibTeX file
+in a graphical interface without having to worry about the details of the
+BibTeX format. You can get JabRef from <a href="http://www.jabref.org/" class="uri">http://www.jabref.org/</a>.
+It runs on Windows, MacOS, and Linux.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>I recommend Zotero, which is a free, easy to use, and very powerful
+bibliography tool that supports Windows, MacOS, and Linux, and has
+add-ins that integrate very nicely with most browsers (Chrome, Firefox, Safari,
+and Opera) and also has a good add-in to let you use it in
+Microsoft Word. Zotero has hundreds of bibliography styles for different
+uses, including standard ones, such as Chicago, APA, and MLS.
+You can get Zotero from <a href="https://zotero.org" class="uri">https://zotero.org</a>. One reason I like Zotero
+enormously is that the web browser add-in creates an icon in the browser’s
+toolbar that recognizes when you are reading an article in a scholarly journal,
+a newspaper, a magazine, a blog, etc., and you can just click on the icon to
+import whatever you’re reading in your browser into your bibliography database.
+You can also sign up for a free account on
+<a href="https://www.zotero.org/user/register" class="uri">https://www.zotero.org/user/register</a>
+that will let you back up your bibliography database to the cloud, synchronize
+your bibliographies across multiple computers, and share bibliographies with
+other people.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>In BibTeX files, the identifiers can
+be any sequence of letters, numbers, and any of the following punctuation:
+‘<code>_</code>’, ‘<code>.</code>’, ‘<code>:</code>’, and ‘<code>;</code>’.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>Zotero is free software that runs on Windows, MacOS, and Linux, and you
+can download it from <a href="https://zotero.org" class="uri">https://zotero.org</a><a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>JabRef is free software that runs on Windows, MacOS, and Linux and you can
+download it from <a href="https://jabref.org" class="uri">https://jabref.org</a>.<a href="#fnref5" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
