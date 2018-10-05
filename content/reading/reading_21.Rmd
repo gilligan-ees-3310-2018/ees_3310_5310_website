@@ -23,14 +23,26 @@ What I am looking for you to get out of this is a sense of the different kinds o
 * Pay particular attention to the distinction Nordhaus draws between **managed**, **unmanaged**, and **unmanageable** systems.
 * Also pay attention to the discussions of **adaptation** and **mitigation**.
 
-    1.[Mitigating factors] mean aspects of climate change that may be beneficial and mitigate the damage caused by the harmful aspects.
-    This can be confusing because in the context of climate policy **mitigation** usually means reducing the amount of climate change
-    (e.g., by reducing greenhouse gas emissions), whereas
-    **mitigating factors** are things that reduce the impact that a given amount of climate change will have on people's lives.
-    1.[Adaptation] means changes people make in the way they live and the kinds of economic activities they pursue in order to adapt to living in a different climate.
+    * **Mitigating factors** mean aspects of climate change that may be 
+      beneficial and mitigate the damage caused by the harmful aspects. 
+      This can be confusing because in the context of climate policy 
+      **mitigation** usually means reducing the amount of climate change 
+      (e.g., by reducing greenhouse gas emissions), whereas **mitigating factors** 
+      are things that reduce the impact that a given amount of climate change 
+      will have on people's lives.
+      
+    * **Adaptation** means changes people make in the way they live and the 
+      kinds of economic activities they pursue in order to adapt to living in a 
+      different climate.
 
-    Adaptation and mitigating factors are important because they show us that there can be more to climate change policy than just reducing greenhouse gas emissions.
-    Again, to point out how confusing this terminology can be, _mitigating factors_ (things that reduce the impact of climate change on people's lives) show that there is more to climate policy than _mitigation_ (reducing greenhouse gas emissions).
+      Adaptation and mitigating factors are important because they show us that 
+      there can be more to climate change policy than just reducing greenhouse 
+      gas emissions.
+      Again, to point out how confusing this terminology can be, 
+      _mitigating factors_ (things that reduce the impact of climate change on 
+      people's lives) show that there is more to climate policy than 
+      _mitigation_ (reducing greenhouse gas emissions).
+
 * In the three chapters on details (7--9), try to get a feel for the following questions:
 
     1. How severe are the threats likely to be to human well-being?
