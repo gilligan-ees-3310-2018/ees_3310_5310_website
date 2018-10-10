@@ -87,10 +87,12 @@ lessons:
 - date: '2018-10-08'
   title: How Will Climate Change Affect Our Lives? (Part 1)
   reading: /reading/reading_21
+  lecture: /Slides/Class_21/humanimpact1.pptx
   lab: lab_07_assignment
 - date: '2018-10-10'
   title: How Will Climate Change Affect Our Lives? (Part 2)
   reading: /reading/reading_22
+  lecture: /Slides/Class_22
 - date: '2018-10-12'
   title: Policy Myths
   reading: /reading/reading_23
