@@ -36,6 +36,11 @@
   status = 302
 
 [[redirects]]
+  from = "/decarbonization/*"
+  to = "https://shiny.jgilligan.org/ees-3310/kaya-tool/:splat"
+  status = 302
+
+[[redirects]]
   from = "/*"
   to = "/404.html"
   status = 404

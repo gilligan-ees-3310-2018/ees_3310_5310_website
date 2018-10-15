@@ -11,7 +11,20 @@ output:
   blogdown::html_page:
     md_extensions: +tex_math_single_backslash+compact_definition_lists
 ---
-You and your partner will give a presentation about your project. The final report will be due Wednesday Oct. 17
+You and your partners will give a presentation about your project in lab
+today. 
+
+You should have received an email invitation to join a shared folder 
+"EES-3310-5310-Lab-Presentations"" on 
+[vanderbilt.box.com](https://vanderbilt.box.com). 
+Please accept this invitation and upload your presentation to the 
+"Independent-Project" folder inside the "EES-3310-5310-Lab-Presentations"
+folder before lab on Monday.
+
+The final report will be due Wednesday Oct. 17. Turn in your final report
+by committing and pushing your RMarkdown project to GitHub, including a final 
+version of the report knitted to a PDF or Word document.
+
 
 ## Reading
 

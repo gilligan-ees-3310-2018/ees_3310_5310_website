@@ -10,7 +10,12 @@ output:
   blogdown::html_page:
     md_extensions: +tex_math_single_backslash+compact_definition_lists
 ---
-You and your partner will present the results of your decarbonization policy analysis. 
+You and your partners will present the results of your decarbonization policy 
+analysis. 
+
+Please upload your decarbonization presentation to the `Decarbonization-Project`
+folder inside the `EES-3310-5310-Lab-Presentations` folder on 
+[`vanderbilt.box.com`](https://vanderbilt.box.com) before lab on Monday.
 
 ## Reading
 
