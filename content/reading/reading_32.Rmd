@@ -17,6 +17,8 @@ output:
 
 ### Required for Grad Students (optional for undergrads):
 * W. Nordhaus, "Critical Assumptions in the Stern Review on Climate Change".
+* Handout: [W. Nordhaus, "Critical Assumptions in the Stern Review on Climate Change," Science **317**, 201--202 (2007)
+  ](http://www.econ.yale.edu/~nordhaus/homepage/homepage/nordhaus_stern_science.pdf){target="_blank"}.
 * Handout: [N. Stern & C. Taylor, "Climate Change: Risk, Ethics, and the Stern Review," Science **317**, 203--204 (2007)](http://science.sciencemag.org.proxy.library.vanderbilt.edu/content/317/5835/203.long){target="_blank"}.
 
 ### Optional Extra Reading:
