@@ -1,0 +1,240 @@
+---
+title: New Tools for Data Analysis
+author: Jonathan Gilligan
+lab_number: 9
+lab_date: '2018-10-22'
+pubdate: '2018-07-31'
+date: '2018-10-22'
+pdf_url: /files/lab_docs/decarb_lab_bottom_up/new_tools.pdf
+slug: lab_09_new_tools
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+
+
+
+<div id="some-new-tools-for-working-with-data" class="section level1">
+<h1>Some New Tools for Working with Data</h1>
+<p>There are two new tools we will use in working with data for this lab:</p>
+<div id="getting-fancy-with-the-pipe-operator" class="section level2">
+<h2>Getting fancy with the pipe operator (<code>%&gt;%</code>)</h2>
+<p>With the tidyverse, we often use the “pipe” operator <code>%&gt;%</code> to send the
+output from one function into the input of another function. In most cases,
+this works very simply and it uses the output from the function on the
+left as the first argument of the function on the right.</p>
+<p>For instance, the <code>filter</code> function selects certain rows in a data frame or
+tibble. I will work here with examples from the built-in <code>storms</code> data
+frame that lists a subset of hurricanes from the National Oceanic and
+Atmospheric Administration’s Atlantic hurricane database.
+The data includes the positions and attributes of 198 tropical storms, measured
+every six hours during the lifetime of the storm.</p>
+<p>Let’s select Hurricane Katrina from 2005 (I specify the year because there
+were two earlier Katrinas in 1981 and 1999; storm names are re-used
+periodically unless they are retired because a storm with that name becomes
+historically important).</p>
+<pre class="r"><code>data(storms)
+katrina &lt;- filter(storms, name == &quot;Katrina&quot;, year == 2005)</code></pre>
+<p>and we can also do the same thing using the pipe operator like this:</p>
+<pre class="r"><code>storms %&gt;% filter(name == &quot;Katrina&quot;, year == 2005)</code></pre>
+<p>What the pipe operator <code>%&gt;%</code> does behind the scenes is take that output of
+whatever is on the left (the data frame <code>storms</code>) and stick it in front
+of the arguemnts for the function on the right so the two examples given
+above are equivalent.</p>
+<p>We have been usuing the pipe operator throughout the semester to combine
+functions.
+Suppose we want to <code>mutate</code> the <code>storms</code> data frame to add a new
+column <code>ts_area</code>
+that is equal to <code>pi * (ts_diameter / 2)^2</code>, where <code>ts_diameter</code> is a column
+in <code>storms</code> that corresponds to the diameter (in nautical miles) of the area
+in which winds are tropical storm strength or greater (36 knots),
+and then we want to select only the data where the tropical storm area is
+greater than 10,000 square nautical miles, and finally sort the data so the
+rows of the data frame go from largest to smallest tropical storm area.
+We can do that as follows:</p>
+<pre class="r"><code># First way
+df1 = arrange(filter(mutate(storms, ts_area = pi * (ts_diameter / 2.0)^2), 
+     ts_area &gt; 10000), desc(ts_area))
+
+# Second way, using a temporary variable
+df2 = mutate(storms, ts_area = pi * (ts_diameter / 2.0)^2)
+df2 = filter(df2, ts_area &gt; 10000)
+df2 = arrange(df2, desc(ts_area))
+
+# Third way, using the pipe operator
+df3 = storms %&gt;% mutate(storms, ts_area = pi * (ts_diameter / 2.0)^2) %&gt;%
+     filter(ts_area &gt; 10000) %&gt;% arrange(desc(ts_area))</code></pre>
+<p>We use pipes because often they are simpler to understand. If we use the first
+way in the example above, if we are combining many functions, nesting functions
+inside other functions becomes very difficult to read and understand.
+The second way, of using temporary variables is fine, but it can get confusing
+to have lots of variable names that we use only one time to pass data from
+one function to another. The third way, using the pipe operator makes it easier
+to understand how the data is moving through the processing pipeline.</p>
+<p>But the way pipe operators work can sometimes get in the way of things we want
+to do.</p>
+<p>First, suppose that I want to send the results of a function into the second
+or third argument of a subsequent function instead of the first argument?
+We use the <code>lm</code> function to calculate the slope and intercept of a trend line
+that best fits some data. The lm function expects the formula for the line
+to fit to be the first argument and the data to be the second.</p>
+<p>Suppose I want to examine hurricanes from the year 2005 and look for a
+relationship between the air pressure in the eye and the wind speed,
+but only during the time when they are classified as hurricanes.</p>
+<p>I can do this as follows:</p>
+<pre class="r"><code>hurricanes_2005 = storms %&gt;% filter(status == &quot;hurricane&quot;, year == 2005)
+lin_fit = lm(wind ~ pressure, data = hurricanes_2005)</code></pre>
+<p>The <code>lm</code> function looks at the data given by the <code>data</code> argument and
+then finds the best line that characterizes the linear relationship
+<code>wind ~ pressure</code>, which means that the wind is a linear function of the
+pressure (this would be the slope of a graph where <code>wind</code> is on the y-axis
+and <code>pressure</code> is on the x-axis).</p>
+<p>Suppose that I would like to pipe data from the <code>filter</code> function to the
+<code>lm</code> function. I have a problem because the pipe operator would put the
+output from <code>filter</code> as the first argument of the <code>lm</code> function, but in
+<code>lm</code> the first argument is the formula and <code>data</code> is the second.
+I can do this as follows:</p>
+<pre class="r"><code>lin_fit2 = storms %&gt;% filter(status == &quot;hurricane&quot;, year == 2005) %&gt;%
+           lm(wind ~ pressure, data = .)</code></pre>
+<p>The pipe operator creates a new variable <code>.</code> (the period), which gets the
+value of whatever is on the left of the operator. If I don’t use the <code>.</code>
+in the function on the right, the pipe operator invisibly puts <code>.</code> in
+the first argument so <code>foo(x) %&gt;% bar(y, z)</code> is re-written behind the
+scenes to become</p>
+<pre class="r"><code>. = foo(x)
+bar(., y, z)</code></pre>
+<p>However, if I want to use the <code>.</code> somewhere else, I can do that explicitly
+and when the pipe operator looks at the function on its right, it knows
+not to stick the <code>.</code> in the first argument if I use <code>.</code> in the function
+call. This, I could write <code>foo(y) %&gt;% bar(x, ., z)</code> if I want to substitute
+the output of <code>foo(y)</code> for the second argument of <code>bar</code>.</p>
+</div>
+<div id="extracting-columns-from-a-data-frame-in-a-pipeline" class="section level2">
+<h2>Extracting columns from a data frame in a pipeline</h2>
+<p>If I just want to look at the names of the hurricanes from the <code>storms</code> data
+frame, I can use the <code>$</code> operator:</p>
+<pre class="r"><code>names = storms$name</code></pre>
+<p>But suppose that I want to filter the storms and then extract the names.
+What are the names of category 5 hurricanes?</p>
+<pre class="r"><code>cat_5 = storms %&gt;% filter(category == 5)
+names = cat_5$name</code></pre>
+<p>Suppose I want to do this without creating a variable <code>cat_5</code>?
+I could try</p>
+<pre class="r"><code># This will give an error
+names = storms %&gt;% filter(category == 5)$name</code></pre>
+<p>but it turns out that this doesn’t work because of the way the pipe operators
+work.
+To do this, I need to load the <code>magrittr</code> library and use the <code>%$%</code> operator
+instead of <code>$</code>:</p>
+<pre class="r"><code># This will work
+names = storms %&gt;% filter(category == 5) %$% name</code></pre>
+<p>The <code>%$%</code> operator works like the pipe operator, but instead of calling a function,
+it extracts the specified column (in this case, <code>name</code>).</p>
+<p>This will be useful for what comes next.</p>
+</div>
+<div id="tidying-up-results-of-statistical-modeling" class="section level2">
+<h2>Tidying up results of statistical modeling</h2>
+<p><code>lm</code> is one example of a lot of powerful functions in R that let you analyze
+data by fitting models. A statistical model is an idealized functional relationship
+between different attributes of the data (attributes are represented by columns
+in a data frame).
+For instance, a linear model idealizes two columns in the data frame in terms
+of a linear relationship. For instance <code>y~x</code> represents a model in which
+<span class="math inline">\(y = a + b x\)</span>. In fact, the data rarely lie exactly along a line, but
+the <code>lm</code> function will find the values for <code>a</code> and <code>b</code> that define the line
+that best relates <em>y</em> to <em>x</em> (specifically this will be the line such that
+the minimizes the sum of the square of the errors between the actual <em>y</em>
+and the line:
+<span class="math inline">\(\sum_i (y_i - (a + b x_i))^2\)</span>.</p>
+<p>We will be using <code>lm</code> in this lab to find the rates of change of different
+parameters in the Kaya identity. For that we want to examine the slopes of the
+lines identified by <code>lm</code>. We can do that as follows for the slope that relates
+wind speed to pressure for a hurricane.</p>
+<p>First, let’s plot the two variables to see wether there’s an apparent
+relationship.
+Let’s look at hurricanes from 2005:</p>
+<pre class="r"><code>storms %&gt;% filter(status == &quot;hurricane&quot;, year == 2005) %&gt;%
+  ggplot(aes(x = pressure, y = wind)) + geom_point(na.rm = T)</code></pre>
+<p><img src="/lab_docs/lab_09_new_tools_files/figure-html/plot_pressure_wind-1.png" width="672" /></p>
+<p>The data clearly doesn’t lie on a straight line, but there is a clear
+relationship that lower pressures tend to go along with higher wind
+speeds and higher pressures with lower wind speeds.</p>
+<p>First, let’s review how we can fit a relationship between wind speed and
+pressure for hurricanes from 2005:</p>
+<pre class="r"><code>lin_fit = storms %&gt;% filter(status == &quot;hurricane&quot;, year == 2005) %&gt;%
+           lm(wind ~ pressure, data = .)</code></pre>
+<p>But how can we get the slope out of the variable <code>lin_fit</code>?
+Here we use the <code>broom</code> package, which gives us a <code>tidy</code> function
+that will tidy up the results of statistical models and put them
+into a nice data frame:</p>
+<pre class="r"><code>lin_fit = storms %&gt;% filter(status == &quot;hurricane&quot;, year == 2005) %&gt;%
+           lm(wind ~ pressure, data = .)
+tidy(lin_fit)</code></pre>
+<pre><code>## # A tibble: 2 x 5
+##   term        estimate std.error statistic  p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+## 1 (Intercept)  947.      25.3         37.4 5.07e-86
+## 2 pressure      -0.890    0.0263     -33.8 3.43e-79</code></pre>
+<p>Here, <code>term</code> tells us the parameter: <code>(Intercept)</code> is the intercept
+(<em>a</em> in the formula above), and <code>pressure</code> is the slope with respect to the
+pressure (<em>b</em> in the formula above).
+<code>estimate</code> is the estimate of the parameter (intercept or slope),
+<code>std.error</code> is the uncertainty about the estimate of the parameter,
+<code>statistic</code> and <code>p.value</code> are used for statistical hypothesis testing and we
+will not use them so you can ignore them.</p>
+<p>If I just want the slope, I can get that as follows:</p>
+<pre class="r"><code>lin_fit = storms %&gt;% filter(status == &quot;hurricane&quot;, year == 2005) %&gt;%
+           lm(wind ~ pressure, data = .)
+slope = tidy(lin_fit) %&gt;% filter(term == &quot;pressure&quot;) %$% estimate
+slope</code></pre>
+<pre><code>## [1] -0.8896546</code></pre>
+<p>Here, <code>filter</code> selects the row where term equals “pressure” and <code>%$% estimate</code>
+then selects the <code>estimate</code> column.</p>
+<p>We can write this more compactly as follows:</p>
+<pre class="r"><code>slope = storms %&gt;% 
+           filter(status == &quot;hurricane&quot;, year == 2005) %&gt;%
+           lm(wind ~ pressure, data = .) %&gt;% 
+           tidy() %&gt;% 
+           filter(term == &quot;pressure&quot;) %$% estimate
+slope</code></pre>
+<pre><code>## [1] -0.8896546</code></pre>
+</div>
+</div>
+<div id="writing-functions" class="section level1">
+<h1>Writing functions</h1>
+<p>If you are going to do the same calculation many times in R it is often useful
+to define a function that performs that calculation and then you can simply
+call the function whenever you want to do the calculation with new values.</p>
+<p>For instance, in the “Growth Rates and Trends” section of the assignment
+for the bottom-up decarbonization lab, we see that if we have a quantity
+<em>q</em> that is growing at a steady percentage rate <span class="math inline">\(r_q\)</span> each year and we know
+the value in one year <span class="math inline">\(y_0\)</span> and want to predict what the value will be at
+a future year <span class="math inline">\(y\)</span>, we can calculate this as follows:
+<span class="math display">\[ q(y) = q(y_0) \times \exp(r_q \times (y - y_0)). \]</span>
+We can write this as an R function that we can call for different quantities and
+years:</p>
+<pre class="r"><code>growth = function(q_0, rate, start_year, end_year) {
+  q_0 * exp(rate * (end_year - start_year))
+}</code></pre>
+<p>A function definition has three parts:
+First we have the name of the function (<code>growth</code>), then we have the word
+<code>function</code>, followed by the arguments that the user must supply to the function
+<code>(q_0, rate, start_year, end_year)</code>, and then the body of the function, between
+curly braces <code>{ ... }</code>.
+When you call the function, it executes all of the code between the curly braces
+and returns the last value calculated before the closing brace.
+Thus, we can call the function like this to estimate the world population
+in 2050</p>
+<pre class="r"><code>P_2017 = 7.53 # world population was 7.53 billion
+r_P = 0.0141  # growth rate is 1.41% per yer
+P_2050 = growth(q_0 = P_2017, rate = r_P, start_year = 2017, end_year = 2050)
+P_2050</code></pre>
+<pre><code>## [1] 11.99146</code></pre>
+<p>If you don’t specify the name of the parameter, the function fills them out in
+order, so we could also write</p>
+<pre class="r"><code>P_2017 = 7.53 # world population was 7.53 billion
+r_P = 0.0141  # growth rate is 1.41% per yer
+P_2050 = growth(P_2017, r_P, 2017, 2050)
+P_2050</code></pre>
+<pre><code>## [1] 11.99146</code></pre>
+</div>

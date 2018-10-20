@@ -111,6 +111,7 @@ lessons:
 - date: '2018-10-22'
   title: 'Reducing Carbon Emissions: Top-Down Approaches'
   reading: /reading/reading_26
+  lab: lab_09_assignment
 - date: '2018-10-24'
   title: The Cost of Reducing Emissions
   reading: /reading/reading_27
@@ -120,6 +121,7 @@ lessons:
 - date: '2018-10-29'
   title: Costs and Benefits
   reading: /reading/reading_29
+  lab: lab_10_assignment
 - date: '2018-10-31'
   title: Pricing Carbon
   reading: /reading/reading_30
@@ -129,7 +131,7 @@ lessons:
 - date: '2018-11-05'
   title: Discounting and the Value of Time
   reading: /reading/reading_32
-  lab: lab_09_assignment
+  lab: lab_11_assignment
 - date: '2018-11-07'
   title: The Limits of Economic Approaches
   reading: /reading/reading_33
@@ -139,7 +141,7 @@ lessons:
 - date: '2018-11-12'
   title: The Case for Nuclear Energy
   reading: /reading/reading_35
-  lab: lab_10_assignment
+  lab: lab_12_assignment
 - date: '2018-11-14'
   title: 'Geoengineering: Solar Radiation Management'
   reading: /reading/reading_36
@@ -155,7 +157,7 @@ lessons:
 - date: '2018-11-26'
   title: Pragmatism and Climate Policy
   reading: /reading/reading_38
-  lab: lab_11_assignment
+  lab: lab_13_assignment
 - date: '2018-11-28'
   title: Global Warming Gridlock
   reading: /reading/reading_39
@@ -165,7 +167,7 @@ lessons:
 - date: '2018-12-03'
   title: Obstacles and Perspectives
   reading: /reading/reading_41
-  lab: lab_12_assignment
+  lab: lab_14_assignment
 - date: '2018-12-05'
   title: Review
 - date: '2018-12-10'
