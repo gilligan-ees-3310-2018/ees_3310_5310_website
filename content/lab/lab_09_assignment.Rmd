@@ -3,6 +3,7 @@ title: 'Decarbonizing the World''s Energy Supply: Bottom-Up Approaches'
 lab_date: '2018-10-22'
 report_due_date: '2018-10-29'
 lab_number: 9
+github_classroom_assignment_url: https://classroom.github.com/a/wH4bpcjg
 pubdate: '2018-07-31'
 date: '2018-10-22'
 slug: lab_09_assignment
@@ -21,4 +22,4 @@ You will use the Kaya identity to analyze challenges to decarbonizing the world'
 
 ## Assignment
 
-The GitHub Classroom has not been posted yet.
+Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/wH4bpcjg>.
