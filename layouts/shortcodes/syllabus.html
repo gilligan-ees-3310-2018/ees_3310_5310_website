@@ -1,3 +1,5 @@
+{{ "<!-- site custom syllabus.html -->" | safeHTML }}
+{{ printf "<!-- fontAwesomePro = %s -->" .Site.Params.fontAwesomePro | safeHTML }}
 <table class="table" style="opacity:0.60;">
   <tr>
     <th style="width:30%">Date</th>
@@ -22,10 +24,10 @@
 
       {{ if .lecture }}
       <td align="center"><a href="{{ .lecture  }}">
-          <i class="fa {{ if .Site.Params.fontAwesomePro -}} fa-presentation {{- else -}} fa-comment {{- end }} fa-lg"></i></a></td>
+          <i class="fa {{ if $.Site.Params.fontAwesomePro -}} fa-presentation {{- else -}} fa-comment {{- end }} fa-lg"></i></a></td>
       {{ else }}
         <td align="center"><font color="f1f1f1">
-          <i class="fa fa-comment fa-lg"></i></font></td>
+          <i class="fa {{ if $.Site.Params.fontAwesomePro -}} fa-presentation {{- else -}} fa-comment {{- end }} fa-lg"></i></font></td>
       {{ end }}
 
       {{ if .lab }}
