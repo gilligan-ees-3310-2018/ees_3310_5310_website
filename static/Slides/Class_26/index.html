@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<!-- JG Reveal.js Template -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Jonathan Gilligan" />
+  <title>Top-Down Decarbonization</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="stylesheet" href="../../lecture_lib/library/reveal.js-3.7.0/css/reveal.min.css"/>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      .smallcaps{font-variant: small-caps;}
+      .line-block{white-space: pre-line;}
+      .column{display: inline-block;}  </style>
+  <style type="text/css">
+    div.qrbox {
+     width:100vw;
+     position:fixed;
+     bottom:0%;
+     left:10px;
+     text-align:left;
+     vertical-align:bottom;
+    }
+  </style>
+<!-- theme = solarized_jg -->
+<link rel="stylesheet" href="../../lecture_lib/library/assets/css/theme/solarized_jg.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lecture_lib/library/reveal.js-3.7.0/css/print/pdf.css' : '../../lecture_lib/library/reveal.js-3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+            <!-- start title slide -->
+<section class='center' id='title' >
+    <h1 class="title">Top-Down Decarbonization</h1>
+    <h3 class="author">EES 3310/5310</h3>
+        <h3 class="author">Global Climate Change</h3>
+    <h3 class="author">Jonathan Gilligan</h3>
+    <h3 class="date">
+      Class #26:
+       Monday Oct. 22
+      2018
+    </h3>
+        <div class="qrbox" id="qrbox">
+      <div style="font-size:30%;width:100%;">
+    <a href="https://ees3310.jgilligan.org/Slides/Class_26">
+  	<img src="qrcode.png" alt="https://ees3310.jgilligan.org/Slides/Class_26"/>
+  	</a>
+    	</div>
+    	<div style="font-size:30%;width:100%;vertical-align:top;">
+    	<span style="display:inline-block;text-align:left;margin-left:0">
+    	    	Live web page: <a href="https://ees3310.jgilligan.org/Slides/Class_26">https://ees3310.jgilligan.org/Slides/Class_26</a>
+    	<br/>
+    	PDF: <a href="https://ees3310.jgilligan.org/Slides/Class_26/EES_3310_5310_Class_26_Slides.pdf" target="_blank">https://ees3310.jgilligan.org/Slides/Class_26/EES_3310_5310_Class_26_Slides.pdf</a>
+    	
+    	    	</span>
+    	<span style="display:inline-block;text-align:right;vertical-align:top;position:relative;left:10rem;">
+    	  Navigate slides: next: N or &lt;space&gt;; previous: P or &lt;backspace&gt;<br/>
+    	  Also: up, down, left, right arrows; overview: o; help: ?
+    	</span>
+  	</div>
+  	</div>
+    	<!-- end title slide -->
+</section>
+
+<section><section id="considerations-sec" class="title-slide slide level1 center"><h1>Considerations on Projections<br/>of Future Emissions</h1></section><section id="grain-of-salt" class="slide level2">
+<h2>Grain of Salt</h2>
+<ul>
+<li class="fragment">Implied decarbonization rates depend on predictions of <em>P</em>, <em>G</em>, etc.</li>
+<li class="fragment">Predicting population and economic growth are very tricky and imprecise.</li>
+<li class="fragment">So take any of these calculations with a grain of salt.</li>
+<li class="fragment">But are they still useful, despite the uncertainties?</li>
+</ul>
+</section></section>
+<section><section id="decarb-options-sec" class="title-slide slide level1 center"><h1>How Can We Decarbonize?</h1></section><section id="detailed-abatement-options" class="slide level2">
+<h2>Detailed Abatement Options</h2>
+<p><img data-src="assets/images/mckinsey.jpg" alt="CO2 abatement options, from McKinsey Global Instittute" height="750" /></p>
+</section><section id="economic-carbon-intensity-in-2017" class="slide level2">
+<h2>Economic Carbon Intensity in 2017</h2>
+<p><img data-src="assets/fig/carbon_intensity-1.png" /></p>
+</section><section id="co2-emissions" class="slide level2">
+<h2>CO<sub>2</sub> Emissions 1965–2017</h2>
+<p><img data-src="assets/fig/us_china_emissions-1.png" /></p>
+</section><section id="relative-improvement" class="slide level2 seventy">
+<h2>Relative improvement in carbon intensity 1990–2017</h2>
+<p><img data-src="assets/fig/relative_improvement-1.png" /></p>
+</section></section>
+<section><section id="decarbonizing-australia-sec" class="title-slide slide level1 center"><h1>Top-Down Analysis for Australia</h1></section><section id="aus-energy-2050" class="slide level2 eighty">
+<h2>Projected Energy Use in 2050</h2>
+<ul>
+<li>Energy Information Administration top-down projection for energy demand in Australia in 2050:
+<ul>
+<li>Total 2050 Primary Energy Use = 9.44 Quads</li>
+<li>Assume <em>P</em>, <em>g</em>, and <em>e</em> are fixed.</li>
+<li>Manage emissions by reducing <em>f</em>
+<ul>
+<li>switch from fossil fuels to clean energy</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="aus-energy-mix" class="slide level2">
+<h2>Energy Mix in 2017</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="assets/fig/australia_fuel_mix_plot-1.png" /></p>
+</div><div class="column" style="vertical-align:top;padding-top:1em;" style="width:50%;">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fuel</th>
+<th style="text-align: right;">Quads</th>
+<th style="text-align: right;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Coal</td>
+<td style="text-align: right;">1.68</td>
+<td style="text-align: right;">30.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Natural Gas</td>
+<td style="text-align: right;">1.43</td>
+<td style="text-align: right;">25.8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oil</td>
+<td style="text-align: right;">2.08</td>
+<td style="text-align: right;">37.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nuclear</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Renewables</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">6.3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">5.53</td>
+<td style="text-align: right;">100.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section><section id="emissions-factors" class="slide level2 eighty">
+<h2>Emissions Factors</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fuel</th>
+<th style="text-align: right;">MMT CO<sub>2</sub> per Quad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Coal</td>
+<td style="text-align: right;">94</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oil</td>
+<td style="text-align: right;">70</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Natural Gas</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nuclear</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Renewables</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="projected-business-as-usual-emissions-in-2050" style="margin-top:50px;">Projected Business as Usual Emissions in 2050</h3>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fuel</th>
+<th style="text-align: right;">%</th>
+<th style="text-align: right;">Quads</th>
+<th style="text-align: right;">MMT/Quad</th>
+<th style="text-align: right;">MMT CO<sub>2</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Coal</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">2.86</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">270</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Natural Gas</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">2.44</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">129</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oil</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">3.55</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">248</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nuclear</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Renewables</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">9.44</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">648</td>
+</tr>
+</tbody>
+</table>
+</section><section id="td-australia-1" class="slide level2 seventy">
+<h2>Top-down emissions-reduction</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Fuel</th>
+<th style="text-align: right;">%</th>
+<th style="text-align: right;">Quads</th>
+<th style="text-align: right;">MMT/Quad</th>
+<th style="text-align: right;">MMT CO<sub>2</sub></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Coal</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">2.86</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">270</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Natural Gas</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">2.44</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">129</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oil</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">3.55</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">248</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nuclear</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Renewables</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">9.44</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">648</td>
+</tr>
+</tbody>
+</table>
+<div style="font-size:80%;margin-top:1em;">
+<ul>
+<li class="fragment">Projected emissions for 2050 (no change in <em>f</em> ): 578 MMT</li>
+<li class="fragment">Emissions goal for 2050 = 139 MMT</li>
+<li class="fragment">Must cut by (578 - 139) = 439 MMT</li>
+<li class="fragment">Start with coal:
+<ul>
+<li class="fragment">Cut 270 MMT (2.86 quads)</li>
+<li class="fragment">169 MMT left</li>
+</ul></li>
+<li class="fragment">Next, cut gas:
+<ul>
+<li class="fragment">Cut 129 MMT (2.44 quads)</li>
+<li class="fragment">40 MMT left</li>
+</ul></li>
+<li class="fragment">Finally, cut oil:
+<ul>
+<li class="fragment">Cut 40 MMT (0.57 quads)</li>
+</ul></li>
+<li class="fragment">Total energy cuts = 2.86 + 2.44 + 0.57 = 5.87 quads.</li>
+</ul>
+</div>
+</section><section id="clean-energy" class="slide level2 eighty">
+<h2>Clean Energy Sources</h2>
+<ul>
+<li class="fragment">11,000 megawatts (MW) for one year = 1 quad
+<ul>
+<li class="fragment">(See Climate Fix, p. 97)</li>
+</ul></li>
+<li class="fragment"><strong>Nuclear Power Plant</strong>:
+<ul>
+<li class="fragment">1000 MW × 75.0%% efficiency = <strong>750 MW average</strong></li>
+<li class="fragment">1 quad per year = 11,000 MW / (750 MW per nuclear plant)<br/>= <strong>14.7 nuclear plants</strong></li>
+</ul></li>
+<li class="fragment"><strong>Concentrated Solar Power</strong>:
+<ul>
+<li class="fragment">10 MW × 33.0%% efficiency = <strong>3 MW average</strong></li>
+<li class="fragment"><strong>1 quad = 3,300 concentrated solar-thermal plants</strong></li>
+</ul></li>
+<li class="fragment"><strong>Wind Turbine</strong>:
+<ul>
+<li class="fragment">2.5 MW × 33.0%% efficiency = <strong>1 MW average</strong></li>
+<li class="fragment"><strong>1 quad = 13,300 wind turbines</strong></li>
+</ul></li>
+</ul>
+</section><section id="meeting-aus-goal" class="slide level2 eighty">
+<h2>Meeting Australia’s Goal</h2>
+<ul>
+<li>Cut CO<sub>2</sub> by 439 MMT
+<ul>
+<li>270 MMT from coal (2.86 quad)</li>
+<li>129 MMT from gas (2.44 quad)</li>
+<li>40 MMT from oil (0.57 quad)</li>
+</ul></li>
+<li>Total clean energy needed: quads per year</li>
+</ul>
+<div style="margin-top:1em;">
+<ul>
+<li class="fragment">5.87 quads × 14.7 nuclear plants/quad =<br/> <strong>86 nuclear power plants</strong> in 33 years<br/> (2.6 per year)</li>
+<li class="fragment">5.87 quads × 3,300 concentrated solar plants/quad =<br/> <strong>19,365 concentrated solar plants</strong> in 33 years<br/> (587 per year, or 11 per week)</li>
+<li class="fragment">5.87 quads × 13,300 wind plants/quad =<br/> <strong>78,047 wind turbines</strong> in 33 years<br/> (2,365 per year, or 6 per day)</li>
+</ul>
+</div>
+</section><section id="pielkes-bottom-line" class="slide level2">
+<h2>Pielke’s Bottom Line</h2>
+<ul>
+<li>Unfeasible to build so much clean energy so quickly</li>
+<li>Expense of building so much clean energy would defeat Australia’s economic goals</li>
+<li>This is why we don’t have the technology to decarbonize as quickly as politicians and activists have been promising.</li>
+</ul>
+</section><section id="but" class="slide level2">
+<h2>But …</h2>
+<ul>
+<li class="fragment">Australia used 5.53 quads in 2017.</li>
+<li class="fragment">If it uses 9.44 quads in 2050,
+<ul>
+<li class="fragment">Extra 3.91 quads</li>
+<li class="fragment">14.7 coal-fired power plants per quad</li>
+<li class="fragment">57 new coal-fired plants (1.7 new coal plants per year)</li>
+</ul></li>
+<li class="fragment">Costs of building new fossil capacity
+<ul>
+<li class="fragment">Costs of coal, ash disposal, etc.</li>
+<li class="fragment">Public health: illness, death from air pollution</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="review-sec" class="title-slide slide level1 center"><h1>Review</h1></section><section id="bottom-up-review" class="slide level2 eighty">
+<h2>Bottom-Up Analysis</h2>
+<div class="leftslide">
+<div>
+<ul>
+<li>Start with individual Kaya-identity variables:
+<ul>
+<li><em>P</em>, <em>g</em>, <em>e</em>, <em>f</em></li>
+<li>Figure out historical rates of change for each</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Gross Domestic Product: <span class="math inline">\(G = P \times g\)</span>
+<ul>
+<li>Rate of change of <span class="math inline">\(G\)</span>: <span class="math inline">\(r_G = r_P + r_g\)</span></li>
+<li>Rate of change of a product is the sum of the rates of change of the factors.</li>
+<li>Use rate of change of <em>G</em> to extrapolate <em>G</em> in the future: <span class="math display">\[ G(2050) = G(2017) \times exp(r_G \times (2050 - 2017)) \]</span></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section><section id="bottom-up-review-2" class="slide level2 eighty">
+<h2>Bottom-Up Analysis</h2>
+<div class="leftslide">
+<div>
+<ul>
+<li>Start with individual Kaya-identity variables</li>
+<li>Gross Domestic Product: <span class="math inline">\(G = P \times g\)</span></li>
+<li>Figure out implied rate of change of emissions <em>F</em>:
+<ul>
+<li>Policy: reduce emissions in 2050 60% below 2000: <span class="math display">\[ F(2050) = (1 - 0.60) \times F(2000) \]</span></li>
+<li>Figure out change in F from this year: <span class="math display">\[ r_F = \frac{\ln\left(\frac{F(2050)}{F(2017)}\right)}{2050 - 2017} \]</span></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Figure out implied rate of decarbonizing the economy:
+<ul>
+<li>Carbon intensity of the economy is <span class="math inline">\(ef = F / G\)</span>. <span class="math display">\[r_ef = r_F - r_G\]</span></li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Compare implied rate of decarbonization to historical trend to assess the difficulty of meeting the policy goals.</li>
+</ul>
+</div>
+</div>
+</section><section id="top-down-review" class="slide level2 eighty">
+<h2>Top-Down Analysis</h2>
+<ul>
+<li class="fragment">Start with macroeconomic estimate of future energy demand <em>E</em></li>
+<li class="fragment">Use mix of energy sources and emissions factors to calculate future emissions (<em>F</em>) if the mix of energy sources does not change.</li>
+<li class="fragment">Calculate policy goal for <em>F</em> the same way as for bottom-up analysis
+<ul>
+<li class="fragment">(this is purely a comparison of the policy goal to today’s emissions)</li>
+</ul></li>
+<li class="fragment">Calculate difference between projected future <em>F</em> and policy goal for <em>F</em>.</li>
+<li class="fragment">Calculate how many quads of fossil-fuel energy you would have to replace with clean energy to meet the policy goal.
+<ul>
+<li class="fragment">Start with cutting coal, then cut natural gas, and finally cut oil</li>
+<li class="fragment">Why?</li>
+</ul></li>
+<li class="fragment">Figure out how many power plants of different kinds you would have to build to supply the necessary clean energy.
+<ul>
+<li class="fragment">Remember that the actual average power output is the nameplate power times the duty factor (also called the efficiency).</li>
+</ul></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/head.min.js"></script>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1440,
+        height: 900,
+      
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+
+<script>
+var MathJax = { jax: ["input/TeX", "output/HTML-CSS"],
+                TeX: {extensions: ["color.js", "mhchem.js"],
+                Macros: {
+                  permil: "\\unicode{x2030}",
+                  pH: "p\\ce{H}",
+                  CaSi: "\\ce{CaSiO3}",
+                  silicate: "\\ce{SiO3^2-}",
+                  Caplus: "\\ce{Ca^2+}",
+                  calcite: "\\ce{CaCO3}",
+                  silica: "\\ce{SiO2}",
+                  OH: "\\ce{OH-}",
+                  Hplus: "\\ce{H+}",
+                  carbonic: "\\ce{H2CO3}",
+                  bicarb: "\\ce{HCO3-}",
+                  carb: "\\ce{CO3^2-}",
+                  water: "\\mathrm{H_2O}",
+                  degF: "^\\circ \\mathrm{F}",
+                  degC: "^\\circ \\mathrm{C}",
+                  methane: "\\ce{CH4}",
+                  COO: "\\ce{CO2}"
+                },
+                  },
+                "HTML-CSS" : {scale: 100 }};
+</script>
+
+
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["SVG"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+  </script>
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  <script>
+  var qrbox = document.querySelector("#qrbox");
+  var advance_fragment = 0;
+  Reveal.addEventListener('slidechanged', function() {
+    if (Reveal.isFirstSlide()) {
+      qrbox.style.visibility="visible";
+    } else {
+      qrbox.style.visibility="hidden";
+      while (advance_fragment > 0) {
+        console.log('advancing fragment');
+        Reveal.nextFragment();
+        advance_fragment--;
+      }
+    }
+  }, false);
+
+  Reveal.addEventListener('skip_slide', function() {
+    Reveal.next();
+  }, false);
+
+  Reveal.addEventListener('advance_fragment', function() {
+    console.log("setting advance fragment");
+    advance_fragment++;
+    }, false);
+  </script>
+  </body>
+</html>
