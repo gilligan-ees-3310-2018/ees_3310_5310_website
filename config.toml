@@ -6,7 +6,6 @@ theme = "hugo-syllabus"
 #disqusShortname = ""
 enableRobotsTXT = true
 googleAnalytics = "UA-101117636-3"
-FontAwesomePro = "sha384-POYwD7xcktv3gUeZO5s/9nUbRJG/WOmV6jfEGikMJu77LGYO8Rfs2X7URG822aum"
 paginate = 10
 relativeurls = true
 publishDir = "public"
@@ -118,6 +117,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$", "_scripts$", "_
   fullCourseName = "EES 3310/5310: Global Climate Change"
   semester = "Fall 2018"
   courseCatalogEntry = "Scientific principles and policy applications. Earth's past; evidence of human impact; future climate change; and economic, social, and ecological consequences. Economic, technological, and public policy responses. Repeat credit for 2110. Students who have earned credit for 2110 will earn only one credit hour for this course. Prerequisite: one of 1030, 1080, 1510, BSCI 1510, CHEM 1601, ECON 1010, ES 1401 or PHYS 1501, 1601, 1901. [4] (MNS)"
+  fontAwesomePro = "sha384-POYwD7xcktv3gUeZO5s/9nUbRJG/WOmV6jfEGikMJu77LGYO8Rfs2X7URG822aum"
 
   [params.lectures]
     times = "MWF 9:10--10:00"
