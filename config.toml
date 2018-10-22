@@ -6,6 +6,7 @@ theme = "hugo-syllabus"
 #disqusShortname = ""
 enableRobotsTXT = true
 googleAnalytics = "UA-101117636-3"
+FontAwesomePro = "sha384-POYwD7xcktv3gUeZO5s/9nUbRJG/WOmV6jfEGikMJu77LGYO8Rfs2X7URG822aum"
 paginate = 10
 relativeurls = true
 publishDir = "public"
