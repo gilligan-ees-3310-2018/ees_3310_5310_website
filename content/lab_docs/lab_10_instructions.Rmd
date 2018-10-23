@@ -1,0 +1,258 @@
+---
+title: Instructions for Top-Down Decarbonization Policy Analysis
+lab_number: 10
+lab_date: '2018-10-29'
+pubdate: '2018-07-31'
+date: '2018-10-29'
+pdf_url: /files/lab_docs/decarb_lab_top_down/decarb_top_down_instructions.pdf
+slug: lab_10_instructions
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE)
+
+is_output_html <- function() {
+  is_html <- TRUE
+  header <- rmarkdown:::parse_yaml_front_matter(
+    readLines(knitr::current_input())
+  )
+  if ("output.blogdown::html_page" %in% names(header)) {
+    is_html <-  TRUE
+  } else if ("output" %in% names(header)) {
+    if (is.list(header$output)) {
+      output <- names(header$output)[1]
+    } else {
+      output <- header$output[1]
+    }
+    if (str_detect(output, regex("(pdf|word)_document", ignore_case = TRUE))) {
+      is_html <- FALSE
+    }
+  }
+  is_html
+}
+
+
+getOutputFormat <- function() {
+  output <- rmarkdown:::parse_yaml_front_matter(
+    readLines(knitr::current_input())
+    )$output
+  if (is.list(output)){
+    return(names(output)[1])
+  } else {
+    return(output[1])
+  }
+}
+
+data_dir = "_data"
+script_dir = "_scripts"
+
+library(pacman)
+p_load(magrittr, tidyverse, lubridate, knitr, broom)
+p_load_gh("jonathan-g/kayadata")
+
+theme_set(theme_bw(base_size = 15))
+
+if (!dir.exists(data_dir)) dir.create(data_dir)
+
+source(file.path(script_dir, "format_md.R"), chdir = T)
+
+due_date_1 <- date("2018-10-30")
+due_date_2 <- date("2018-11-05")
+
+long_due_date_1 <- stamp("Monday, March 1")(due_date_1)
+short_due_date_1 <- stamp("Mar. 1")(due_date_1)
+
+long_due_date_2 <- stamp("Monday, March 1")(due_date_2)
+short_due_date_2 <- stamp("Mar. 1")(due_date_2)
+
+start_year <- max(get_kaya_data("United States")$year, na.rm = T)
+after_start_year <- start_year + 1
+
+eia_report_year <- max(get_top_down_values("United States")$year, na.rm = T)
+donut_year <- max(kayadata::get_fuel_mix("United States")$year, na.rm = T)
+
+IEO_url <- "http://www.eia.gov/forecasts/ieo/"
+EIA_table_url <- "http://www.eia.gov/oiaf/aeo/tablebrowser"
+
+top_down_country_assignments <- bind_rows(
+  tibble(class = "Undergraduates", 
+         region = c("World", "United States", "China")),
+  tibble(class = "Grad Students", 
+         region = c("World", "United States", "China",
+                     "India", "Brazil"))
+)
+
+rcp_26 <- tribble(
+  ~region, ~target_year, ~ref_year, ~reduction,
+  "Australia/New Zealand", 2050, 2005,  0.82,
+  "Canada",                2050, 2005,  0.72,
+  "China",                 2050, 2005,  0.78,
+  "India",                 2050, 2005,  0.73,
+  "Japan",                 2050, 2005,  0.66,
+  "South Korea",           2050, 2005,  0.67,
+  "United States",         2050, 2005,  0.73,
+  "Africa",                2050, 2005,  0.28,
+  "Latin America",         2050, 2005,  0.40,
+  "Middle East",           2050, 2005,  0.32,
+  "Southeast Asia",        2050, 2005, -0.17,
+  "Western Europe",        2050, 2005,  0.74,
+  "World",                 2050, 2005,  0.36
+)
+
+target_year <- rcp_26$target_year[1]
+ref_year <- rcp_26$ref_year[1]
+current_year <- get_fuel_mix("World")$year[1]
+```
+# Introduction
+
+In this lab, you will use a top-down approach to figure out how much new energy 
+infrastructure you would need to install for each country or region in order
+to meet the emissions-reduction goals for `r target_year`.
+
+
+You will analyze the same countries and regions you did in the bottom-up lab last 
+week:
+```{r country_assignments, echo=FALSE}
+top_down_country_assignments %>% group_by(class) %>%
+  summarize(region = str_c(region, collapse = ", ")) %>%
+  ungroup() %>% 
+  mutate(class = ordered(class, 
+                         levels = c("Undergraduates", "Grad Students"))) %>%
+  arrange(class) %>%
+  kable()
+```
+
+# The Assignment:
+
+## Outline:
+
+1. For each country, examine the top-down projections for the Kaya 
+   variables for the year `r target_year`. How many quads of energy does the 
+   Energy Information Administration preduct that the country will use
+   in `r target_year`?
+2. Examine the mix of energy sources that the country used in `r current_year`. 
+3. If the  country uses the same percentages of each energy source in 
+   `r target_year` that it did in `r current_year`, 
+   calculate how much energy the country would use from each energy source in
+   `r target_year` and how much CO~2~ each energy source would emit.
+   Add these up to get the total CO~2~ emissions _F_ in `r target_year` under a
+   "business-as-usual" scenario.
+4. Calculate the policy target for _F_ in the year `r target_year`.
+5. Calculate how much the country would have to reduce its CO~2~ emissions  in 
+   `r target_year` below business-as-usual to meet its policy goal.
+6. Allocate the emissions reduction from step 5 across the different fuels and 
+   calculate the amount of fossil fuel energy the country would need to replace 
+   with clean energy by `r target_year` to meet its policy goal.
+7. Calculate how many clean power plants the country would need to build 
+   between now and `r target_year` to produce this clean energy. 
+   
+    Report this as the total number, the number per year, and  the number per 
+    week or per day if appropriate.
+  
+    Start by doing this calculation for nuclear energy plants, then repeat the 
+    calculation for solar, and then for wind.
+8. Suppose instead that the country or region supplied its growing energy 
+   demand with coal. Calculate how many new coal power plants it would have
+   to build between now and `r target_year` to supply the growing energy 
+   demand. 
+   
+    Calculate the number of new coal power plants the country would have to 
+    build and how much additional CO~2~ that would put into the atmosphere
+    every year.
+
+## Detailed Instructions:
+
+For each country:
+
+1. Use the function `get_top_down_values()` from the 
+   `kayadata` package to examine the top-down projections for the Kaya 
+   variables for the year `r target_year`. How many quads of energy does the 
+   Energy Information Administration preduct that the country will use
+   in `r target_year`?
+2. Use the `get_fuel_mix()` function to get the mix of energy sources that the
+   country used in `r current_year`. 
+3. If the  country uses the same percentages of each energy source in 
+   `r target_year` that it did in `r current_year`, calculate the number of
+   quads and the greenhouse gas emissions from each energy source 
+   in `r target_year`, if the total energy consumed in that year
+   is the value for _E_ that you looked up in step (1).
+   
+    First, multiply the total energy demand _E_ in `r target_year` by the 
+    percentages in the fuel mix to get the number of quads for that energy
+    source. Then multiply the number of quads for each energy source by the 
+    emissions factor for that fuel to get the emissions from that energy
+    source.
+    
+    Finally, add up the emissions from all of the fuel sources to get the total
+    emissions for `r target_year`, under a "business-as-usual" scenario, where
+    the mix of energy sources does not change.
+    
+    **Hint:** You can combine data frames using `join` functions to make this
+    easier. Here is an example, which I have worked for Mexico. You can
+    do the same thing for other countries or regions:
+    ```{r example_fuel_mix}
+    E_2050 <- get_top_down_values("Mexico") %>% 
+      filter(year == 2050) %$% E
+    fm <- get_fuel_mix("Mexico")
+    
+    # Calculate the mix of energy sources for 2050
+    fm_2050 <- fm %>% mutate(quads = E_2050 * pct)
+    # Get the emission factors
+    factors <- emissions_factors()
+    
+    # Combine the emission factors data frame with the 
+    # fuel mix data frame:
+    fm_2050 <- fm_2050 %>% left_join(factors, by = "fuel") %>%
+      # This line is to fix a problem with the kaya_data package,
+      # because I forgot to put an emissions factor for Hydro power.
+      mutate(emission_factor = replace_na(emission_factor, 0))
+    
+    fm_2050 <- fm_2050 %>% mutate(emissions = quads * emission_factor)
+    
+    # Summarize by adding up the emissions from each fuel source.
+    total_emissions_2050 <- fm_2050 %>% 
+      summarize(emissions = sum(emissions)) %$% emissions
+    ```
+4. Get the Kaya identity data for the country from `get_kaya_data()` and look
+   up the CO~2~ emissions _F_ in `r ref_year`. Then use the policy goal for 
+   emissions reduction from the data frame `rcp_26` to calculate the policy 
+   target for _F_ in the year `r target_year`. You did this calculation last
+   week as part of the bottom-up analysis.
+5. Compare the projected "business as usual" emissions from step (3) to the 
+   policy target from step (4) to figure the total amount of emissions you 
+   would need to cut by converting fossil fuel energy sources to clean sources.
+6. Use the top-down procedure I presented in class last week to allocate the
+   emissions reduction that you calculated in step (5) across the different 
+   energy sources for `r target_year`, that you calculated in step (3). 
+   
+    How many million metric tons of CO~2~ would you cut from coal, natural gas, 
+    and oil? How many quads of energy from that fuel would you need to replace
+    with new clean energy?
+    
+    Add up all of the clean energy requirements to calculate the number of quads
+    of clean energy that the country would need to add between now and 
+    `r target_year` to meet the policy goal.
+7. Calculate how many clean generating plants you would need to build between
+   now and `r target_year` to produce this clean energy. Report this as the
+   total number, the number per year, and  the number per week or per day if
+   the number is large.
+  
+    Start with nuclear, then do the calculation for solar and then for wind.
+    
+    You can look up the nameplate capacity and the capacity factor for 
+    different kinds of power plants (clean and dirty) from the function 
+    `generating_capacity()`.  
+    Remember that the average number of megawatts a power source supplies over 
+    a year is the nameplate capacity times the capacity factor.
+    Remember that one quad equals 
+    `r format_md(megawatts_per_quad(), comma = TRUE)` megawatts.
+8. Suppose instead that the country or region supplied its growing energy 
+   demand with coal. Calculate how many new coal power plants it would have
+   to build between now and `r target_year` to supply the growing energy 
+   demand. 
+   
+    Calculate the number of new coal power plants the country would have to 
+    build and how much additional CO~2~ that would put into the atmosphere
+    every year.

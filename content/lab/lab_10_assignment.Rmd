@@ -14,8 +14,9 @@ This week, you will continue analyzing decarbonization policy, but this time you
 
 ## Reading
 
-No reading has been posted yet for this lab.
+**Before you come to lab**, please read the following document:
 
+* [Instructions for Top-Down Decarbonization Policy Analysis](/lab_docs/lab_10_instructions)
 
 ## Assignment
 

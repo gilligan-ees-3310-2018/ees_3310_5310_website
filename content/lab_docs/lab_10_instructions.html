@@ -1,0 +1,165 @@
+---
+title: Instructions for Top-Down Decarbonization Policy Analysis
+lab_number: 10
+lab_date: '2018-10-29'
+pubdate: '2018-07-31'
+date: '2018-10-29'
+pdf_url: /files/lab_docs/decarb_lab_top_down/decarb_top_down_instructions.pdf
+slug: lab_10_instructions
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>In this lab, you will use a top-down approach to figure out how much new energy
+infrastructure you would need to install for each country or region in order
+to meet the emissions-reduction goals for 2050.</p>
+<p>You will analyze the same countries and regions you did in the bottom-up lab last
+week:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">class</th>
+<th align="left">region</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Undergraduates</td>
+<td align="left">World, United States, China</td>
+</tr>
+<tr class="even">
+<td align="left">Grad Students</td>
+<td align="left">World, United States, China, India, Brazil</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="the-assignment" class="section level1">
+<h1>The Assignment:</h1>
+<div id="outline" class="section level2">
+<h2>Outline:</h2>
+<ol style="list-style-type: decimal">
+<li>For each country, examine the top-down projections for the Kaya
+variables for the year 2050. How many quads of energy does the
+Energy Information Administration preduct that the country will use
+in 2050?</li>
+<li>Examine the mix of energy sources that the country used in 2017.</li>
+<li>If the country uses the same percentages of each energy source in
+2050 that it did in 2017,
+calculate how much energy the country would use from each energy source in
+2050 and how much CO<sub>2</sub> each energy source would emit.
+Add these up to get the total CO<sub>2</sub> emissions <em>F</em> in 2050 under a
+“business-as-usual” scenario.</li>
+<li>Calculate the policy target for <em>F</em> in the year 2050.</li>
+<li>Calculate how much the country would have to reduce its CO<sub>2</sub> emissions in
+2050 below business-as-usual to meet its policy goal.</li>
+<li>Allocate the emissions reduction from step 5 across the different fuels and
+calculate the amount of fossil fuel energy the country would need to replace
+with clean energy by 2050 to meet its policy goal.</li>
+<li><p>Calculate how many clean power plants the country would need to build
+between now and 2050 to produce this clean energy.</p>
+<p>Report this as the total number, the number per year, and the number per
+week or per day if appropriate.</p>
+Start by doing this calculation for nuclear energy plants, then repeat the
+calculation for solar, and then for wind.</li>
+<li><p>Suppose instead that the country or region supplied its growing energy
+demand with coal. Calculate how many new coal power plants it would have
+to build between now and 2050 to supply the growing energy
+demand.</p>
+<p>Calculate the number of new coal power plants the country would have to
+build and how much additional CO<sub>2</sub> that would put into the atmosphere
+every year.</p></li>
+</ol>
+</div>
+<div id="detailed-instructions" class="section level2">
+<h2>Detailed Instructions:</h2>
+<p>For each country:</p>
+<ol style="list-style-type: decimal">
+<li>Use the function <code>get_top_down_values()</code> from the
+<code>kayadata</code> package to examine the top-down projections for the Kaya
+variables for the year 2050. How many quads of energy does the
+Energy Information Administration preduct that the country will use
+in 2050?</li>
+<li>Use the <code>get_fuel_mix()</code> function to get the mix of energy sources that the
+country used in 2017.</li>
+<li><p>If the country uses the same percentages of each energy source in
+2050 that it did in 2017, calculate the number of
+quads and the greenhouse gas emissions from each energy source
+in 2050, if the total energy consumed in that year
+is the value for <em>E</em> that you looked up in step (1).</p>
+<p>First, multiply the total energy demand <em>E</em> in 2050 by the
+percentages in the fuel mix to get the number of quads for that energy
+source. Then multiply the number of quads for each energy source by the
+emissions factor for that fuel to get the emissions from that energy
+source.</p>
+<p>Finally, add up the emissions from all of the fuel sources to get the total
+emissions for 2050, under a “business-as-usual” scenario, where
+the mix of energy sources does not change.</p>
+<p><strong>Hint:</strong> You can combine data frames using <code>join</code> functions to make this
+easier. Here is an example, which I have worked for Mexico. You can
+do the same thing for other countries or regions:</p>
+<pre class="r"><code>E_2050 &lt;- get_top_down_values(&quot;Mexico&quot;) %&gt;% 
+  filter(year == 2050) %$% E
+fm &lt;- get_fuel_mix(&quot;Mexico&quot;)
+
+# Calculate the mix of energy sources for 2050
+fm_2050 &lt;- fm %&gt;% mutate(quads = E_2050 * pct)
+# Get the emission factors
+factors &lt;- emissions_factors()
+
+# Combine the emission factors data frame with the 
+# fuel mix data frame:
+fm_2050 &lt;- fm_2050 %&gt;% left_join(factors, by = &quot;fuel&quot;) %&gt;%
+  # This line is to fix a problem with the kaya_data package,
+  # because I forgot to put an emissions factor for Hydro power.
+  mutate(emission_factor = replace_na(emission_factor, 0))
+
+fm_2050 &lt;- fm_2050 %&gt;% mutate(emissions = quads * emission_factor)
+
+# Summarize by adding up the emissions from each fuel source.
+total_emissions_2050 &lt;- fm_2050 %&gt;% 
+  summarize(emissions = sum(emissions)) %$% emissions</code></pre></li>
+<li>Get the Kaya identity data for the country from <code>get_kaya_data()</code> and look
+up the CO<sub>2</sub> emissions <em>F</em> in 2005. Then use the policy goal for
+emissions reduction from the data frame <code>rcp_26</code> to calculate the policy
+target for <em>F</em> in the year 2050. You did this calculation last
+week as part of the bottom-up analysis.</li>
+<li>Compare the projected “business as usual” emissions from step (3) to the
+policy target from step (4) to figure the total amount of emissions you
+would need to cut by converting fossil fuel energy sources to clean sources.</li>
+<li><p>Use the top-down procedure I presented in class last week to allocate the
+emissions reduction that you calculated in step (5) across the different
+energy sources for 2050, that you calculated in step (3).</p>
+<p>How many million metric tons of CO<sub>2</sub> would you cut from coal, natural gas,
+and oil? How many quads of energy from that fuel would you need to replace
+with new clean energy?</p>
+Add up all of the clean energy requirements to calculate the number of quads
+of clean energy that the country would need to add between now and
+2050 to meet the policy goal.</li>
+<li><p>Calculate how many clean generating plants you would need to build between
+now and 2050 to produce this clean energy. Report this as the
+total number, the number per year, and the number per week or per day if
+the number is large.</p>
+<p>Start with nuclear, then do the calculation for solar and then for wind.</p>
+You can look up the nameplate capacity and the capacity factor for
+different kinds of power plants (clean and dirty) from the function
+<code>generating_capacity()</code>.<br />
+Remember that the average number of megawatts a power source supplies over
+a year is the nameplate capacity times the capacity factor.
+Remember that one quad equals
+11,000 megawatts.</li>
+<li><p>Suppose instead that the country or region supplied its growing energy
+demand with coal. Calculate how many new coal power plants it would have
+to build between now and 2050 to supply the growing energy
+demand.</p>
+<p>Calculate the number of new coal power plants the country would have to
+build and how much additional CO<sub>2</sub> that would put into the atmosphere
+every year.</p></li>
+</ol>
+</div>
+</div>

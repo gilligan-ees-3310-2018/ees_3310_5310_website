@@ -216,6 +216,32 @@ world, and then for individual countries.</p>
 <p>For the bottom-up analysis, use the Kaya Identity to make reasonable
 extrapolations of the population and per-capita GDP through 2050.</p>
 <p>Repeat the steps below for each country or region:</p>
+<div id="outline" class="section level3">
+<h3>Outline:</h3>
+<p>To analyze the policy for each country:</p>
+<ol style="list-style-type: decimal">
+<li>Get the Kaya identity data for the country</li>
+<li>Figure out appropriate starting years for calculating the historical trends
+for the Kaya variables <em>P</em>, <em>g</em>, <em>e</em>, and <em>f</em>.</li>
+<li>Calculate the <em>historical trends</em> for the Kaya variables from the starting
+year you determined in step (2).</li>
+<li>Use the <em>historical trends</em> to extrapolate projected values for <em>P</em>, <em>g</em>,
+<em>e</em>, and <em>f</em> in 2050.</li>
+<li>Calculate the policy goal for emissions <em>F</em> in 2050.
+This uses the policy criteria (target emissions reduction) and the
+measured emissions <em>F</em> in 2005, from the Kaya data for your
+country.</li>
+<li>Calculate the <em>implied rate of change</em> of <em>F</em> between 2017
+and 2050, in order to reduce emissions to the policy goal that
+you calculated in step (5).</li>
+<li>Combine the <em>implied rate of change</em> of <em>F</em> with the <em>historical trends</em> of
+<em>P</em> and <em>g</em> to calculate the <em>implied rate of change</em> of <em>ef</em> that you
+calculated in step (3) in order to meet the policy goal from step (5).</li>
+<li>Compare the <em>implied rate of change</em> of <em>ef</em> that you calculated in step (7)
+to the <em>historical trend</em> of <em>ef</em> that you can determine from the
+<em>historical trends</em> of <em>e</em> and <em>f</em> that you calculated in step (3).</li>
+</ol>
+</div>
 <div id="detailed-steps" class="section level3">
 <h3>Detailed steps:</h3>
 <p>Each step has two alternative methods: using the interactive web application or
@@ -394,16 +420,16 @@ F_goal_middle_east = F_2005_middle_east * (1 - middle_east_reduction)
 F_goal_middle_east</code></pre>
 <pre><code>## [1] 934.9819</code></pre>
 <p>Check this result against the interactive web application.</p></li>
-<li><p>Look up what the CO<sub>2</sub> emission is in 2005 and calculate the
+<li><p>Look up what the CO<sub>2</sub> emission is in 2017 and calculate the
 rate of change in <em>F</em> that would be necessary to achieve your policy target.
 For the 2050 calculation:</p>
 <ol style="list-style-type: lower-alpha">
-<li>Calculate the ratio of <span class="math inline">\(F_{2050}/F_{2005}\)</span>.</li>
+<li>Calculate the ratio of <span class="math inline">\(F_{2050}/F_{2017}\)</span>.</li>
 <li>Take the natural logarithm of this ratio
 (in R, the natural logarithm function is <code>log()</code>; on your calculator
 it is “LN”).</li>
 <li>Divide the logarithm by the number of years
-(<span class="math inline">\(2050 - 2005\)</span>).
+(<span class="math inline">\(2050 - 2017\)</span>).
 This is the rate of change of <em>F</em>. A positive number means growth and a
 negative number means a reduction.
 The percentage rate of change per year is 100 times this number.</li>
@@ -411,7 +437,8 @@ The percentage rate of change per year is 100 times this number.</li>
 <p>For our Middle East example:</p>
 <pre class="r"><code>F_2017_middle_east = get_kaya_data(&quot;Middle East&quot;) %&gt;% 
   filter(year == 2017) %$% F
-r_F_middle_east = log(F_goal_middle_east / F_2017_middle_east) / (2050 - 2017)
+r_F_middle_east = log(F_goal_middle_east / F_2017_middle_east) / 
+  (2050 - 2017)
 r_F_middle_east</code></pre>
 <pre><code>## [1] -0.02469655</code></pre>
 <p>so total emissions for the Middle East would need to drop by
