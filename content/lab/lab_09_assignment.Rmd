@@ -13,6 +13,8 @@ output:
 ---
 You will use the Kaya identity to analyze challenges to decarbonizing the world's energy supply, following the "bottom-up" approach that we read about in The Climate Fix.
 
+I have posted a revised version of the lab instructions here. These don't change the assignment at all, but they correct the typos that I announced in lab on Monday about section 6.
+
 ## Reading
 
 **Before you come to lab**, please read the following documents:
