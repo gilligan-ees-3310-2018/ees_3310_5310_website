@@ -1039,7 +1039,9 @@ make_notice <- function(notice_entries) {
 }
 
 generate_assignments <- function() {
-  semester <- calendar %>% select(seq, class, date, topic, homework_num, lab_num) %>%
+  semester <- calendar %>%
+    filter(! event_id %in% c("FINAL_EXAM", "ALT_FINAL_EXAM")) %>%
+    select(seq, class, date, topic, homework_num, lab_num) %>%
     mutate(reading_page = as.character(NA), homework_page = as.character(NA),
            lecture_page = as.character(NA), lab_page = as.character(NA))
   for (class_num in na.omit(calendar$class)) {
@@ -1114,6 +1116,7 @@ generate_assignments <- function() {
   g_semester <<- semester
 
   semester %>%
+    # filter(! event_id %in% c("FINAL_EXAM", "ALT_FINAL_EXAM")) %>%
     select(date, title = topic, reading = reading_page,
            assignment = homework_page, lecture = lecture_page, lab = lab_page, topic) %>%
     arrange(date) %>%
