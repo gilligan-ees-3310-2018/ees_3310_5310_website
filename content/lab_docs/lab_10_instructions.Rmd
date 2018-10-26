@@ -59,7 +59,7 @@ if (!dir.exists(data_dir)) dir.create(data_dir)
 source(file.path(script_dir, "format_md.R"), chdir = T)
 
 due_date_1 <- date("2018-10-30")
-due_date_2 <- date("2018-11-05")
+due_date_2 <- date("2018-11-12")
 
 long_due_date_1 <- stamp("Monday, March 1")(due_date_1)
 short_due_date_1 <- stamp("Mar. 1")(due_date_1)
@@ -123,6 +123,9 @@ top_down_country_assignments %>% group_by(class) %>%
   arrange(class) %>%
   kable()
 ```
+
+The lab report is due (knitted to PDF or Word document, committed, and pushed
+to GitHub) by Monday Nov.\ 12.
 
 # The Assignment:
 
@@ -195,26 +198,36 @@ For each country:
     ```{r example_fuel_mix}
     E_2050 <- get_top_down_values("Mexico") %>% 
       filter(year == 2050) %$% E
-    fm <- get_fuel_mix("Mexico")
-    
+    fm <- get_fuel_mix("Mexico") %>% select(-region_code, -geography)
     # Calculate the mix of energy sources for 2050
     fm_2050 <- fm %>% mutate(quads = E_2050 * pct)
+    kable(fm, digits = 2)
+    ```
+    
+    ```{r example_fuel_mix_2}
     # Get the emission factors
     factors <- emissions_factors()
+    kable(factors, digits = 2)
+    ```
     
+    ```{r example_fuel_mix_3}
     # Combine the emission factors data frame with the 
     # fuel mix data frame:
     fm_2050 <- fm_2050 %>% left_join(factors, by = "fuel") %>%
       # This line is to fix a problem with the kaya_data package,
       # because I forgot to put an emissions factor for Hydro power.
       mutate(emission_factor = replace_na(emission_factor, 0))
+    kable(fm_2050, digits = 2)
+    ```
     
+    ```{r example_fuel_mix_4}
     fm_2050 <- fm_2050 %>% mutate(emissions = quads * emission_factor)
     
     # Summarize by adding up the emissions from each fuel source.
     total_emissions_2050 <- fm_2050 %>% 
       summarize(emissions = sum(emissions)) %$% emissions
     ```
+    
 4. Get the Kaya identity data for the country from `get_kaya_data()` and look
    up the CO~2~ emissions _F_ in `r ref_year`. Then use the policy goal for 
    emissions reduction from the data frame `rcp_26` to calculate the policy 

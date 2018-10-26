@@ -38,6 +38,8 @@ week:</p>
 </tr>
 </tbody>
 </table>
+<p>The lab report is due (knitted to PDF or Word document, committed, and pushed
+to GitHub) by Monday Nov. 12.</p>
 </div>
 <div id="the-assignment" class="section level1">
 <h1>The Assignment:</h1>
@@ -105,21 +107,168 @@ easier. Here is an example, which I have worked for Mexico. You can
 do the same thing for other countries or regions:</p>
 <pre class="r"><code>E_2050 &lt;- get_top_down_values(&quot;Mexico&quot;) %&gt;% 
   filter(year == 2050) %$% E
-fm &lt;- get_fuel_mix(&quot;Mexico&quot;)
-
+fm &lt;- get_fuel_mix(&quot;Mexico&quot;) %&gt;% select(-region_code, -geography)
 # Calculate the mix of energy sources for 2050
 fm_2050 &lt;- fm %&gt;% mutate(quads = E_2050 * pct)
-# Get the emission factors
+kable(fm, digits = 2)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">region</th>
+<th align="right">year</th>
+<th align="left">fuel</th>
+<th align="right">quads</th>
+<th align="right">pct</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Oil</td>
+<td align="right">3.44</td>
+<td align="right">45.85</td>
+</tr>
+<tr class="even">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Natural Gas</td>
+<td align="right">2.99</td>
+<td align="right">39.80</td>
+</tr>
+<tr class="odd">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Coal</td>
+<td align="right">0.52</td>
+<td align="right">6.92</td>
+</tr>
+<tr class="even">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Nuclear</td>
+<td align="right">0.10</td>
+<td align="right">1.30</td>
+</tr>
+<tr class="odd">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Hydro</td>
+<td align="right">0.28</td>
+<td align="right">3.79</td>
+</tr>
+<tr class="even">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Renewables</td>
+<td align="right">0.18</td>
+<td align="right">2.34</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># Get the emission factors
 factors &lt;- emissions_factors()
-
-# Combine the emission factors data frame with the 
+kable(factors, digits = 2)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">fuel</th>
+<th align="right">emission_factor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Coal</td>
+<td align="right">94.4</td>
+</tr>
+<tr class="even">
+<td align="left">Oil</td>
+<td align="right">70.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Natural Gas</td>
+<td align="right">53.1</td>
+</tr>
+<tr class="even">
+<td align="left">Nuclear</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Renewables</td>
+<td align="right">0.0</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code># Combine the emission factors data frame with the 
 # fuel mix data frame:
 fm_2050 &lt;- fm_2050 %&gt;% left_join(factors, by = &quot;fuel&quot;) %&gt;%
   # This line is to fix a problem with the kaya_data package,
   # because I forgot to put an emissions factor for Hydro power.
   mutate(emission_factor = replace_na(emission_factor, 0))
-
-fm_2050 &lt;- fm_2050 %&gt;% mutate(emissions = quads * emission_factor)
+kable(fm_2050, digits = 2)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">region</th>
+<th align="right">year</th>
+<th align="left">fuel</th>
+<th align="right">quads</th>
+<th align="right">pct</th>
+<th align="right">emission_factor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Oil</td>
+<td align="right">458.21</td>
+<td align="right">45.85</td>
+<td align="right">70.0</td>
+</tr>
+<tr class="even">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Natural Gas</td>
+<td align="right">397.76</td>
+<td align="right">39.80</td>
+<td align="right">53.1</td>
+</tr>
+<tr class="odd">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Coal</td>
+<td align="right">69.17</td>
+<td align="right">6.92</td>
+<td align="right">94.4</td>
+</tr>
+<tr class="even">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Nuclear</td>
+<td align="right">13.00</td>
+<td align="right">1.30</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Hydro</td>
+<td align="right">37.86</td>
+<td align="right">3.79</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="even">
+<td align="left">Mexico</td>
+<td align="right">2017</td>
+<td align="left">Renewables</td>
+<td align="right">23.39</td>
+<td align="right">2.34</td>
+<td align="right">0.0</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>fm_2050 &lt;- fm_2050 %&gt;% mutate(emissions = quads * emission_factor)
 
 # Summarize by adding up the emissions from each fuel source.
 total_emissions_2050 &lt;- fm_2050 %&gt;% 
