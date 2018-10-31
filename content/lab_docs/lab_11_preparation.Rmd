@@ -1,0 +1,357 @@
+---
+title: Preparation for Lab on Regulating Greenhouse Gas Emissions
+lab_number: 11
+lab_date: '2018-11-05'
+pubdate: '2018-07-31'
+date: '2018-11-05'
+pdf_url: /files/lab_docs/regulation_lab/preparation_for_regulation_lab.pdf
+slug: lab_11_preparation
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(lubridate)
+# library(xtable)
+library(knitr)
+library(kableExtra)
+
+game_day = ymd("2018-11-05")
+long_game_day = format(game_day, "%A %B %e")
+short_game_day = format(game_day, "%b.\ %e")
+
+```
+# Introduction
+
+For the laboratory period on `r long_game_day`, we will do a role-playing 
+exercise explore the effectiveness of three different approaches to 
+regulating pollution, such as greenhouse gas emissions: command-and-control, 
+cap-and-trade, and emissions taxes. 
+This reading should serve to prepare you for the exercise.
+
+# Zero-Emissions Baseline
+
+The handout "The economics of regulating greenhouse gas emissions" uses a 
+baseline scenario of business-as-usual emissions and calculates the costs and 
+benefits of an alternate policy that cuts emissions below this baseline. 
+This is the usual way policy analysts examine regulations, but if we did the 
+emissions-trading game this way, it would be more confusing. To simplify things, 
+we'll do the emissions-trading game a different way: with a zero-emissions 
+baseline that will allow us to calculate costs and benefits of emitting CO~2~. 
+In this case, the costs to the players will be the cost of buying permits to 
+emit CO~2~ and the benefits will be the profits they earn. The costs to society 
+will be the social cost of carbon (the damage caused by global warming) and the 
+benefit will be the combination of profit earned by the companies (this benefits 
+the companies, but it's also part of the gross domestic product of the nation) 
+and money received from the players as taxes or payment for emissions permits.
+
+# The Exercise
+
+
+
+## The Players
+
+To keep groups small, I will divide the class in half and each half will perform 
+the same role-playing exercise. For the exercise, I will divide the students 
+into three groups:
+
+1. One group will play The Environmental Protections Agency (EPA) and will 
+   decide how much to reduce pollution, how many permits to issue, or how 
+   much to charge as a pollution tax. 
+   
+    The EPA's motivation is to produce the best net benefit for society by 
+    balancing the costs of reducing greenhouse gas emissions against the 
+    benefits of limiting global warming.
+2. A second group will play Alpha Electricity: a large power company with a 
+   varied portfolio of generating plants including coal, natural gas, and 
+   nuclear. 
+   
+     Alpha's motives are purely to produce the greatest profit for its 
+     shareholders regardless of the cost to society of greenhouse gas emissions.
+3. A third group will play Beta Industries: a large heavy-industrial 
+   conglomerate with many large factories producing steel, aluminum, and 
+   petrochemicals such as plastics, paints, and pharmaceuticals. 
+   
+     Beta's motives are purely to produce the greatest profit for its 
+     shareholders regardless of the cost to society of greenhouse gas 
+     emissions.
+
+For the purposes of this exercise, we will assume that the EPA can accurately 
+estimate the damage that would be caused by global warming, and thus, that it 
+can also accurately estimate the social benefit of reducing greenhouse gas 
+emissions. However, the EPA cannot accurately assess the costs individual 
+companies will incur when they reduce their emissions. This means that the 
+EPA's estimates of net benefits (benefits minus costs) is limited by its 
+uncertainty about the cost of reducing emissions.
+
+Only the EPA will know the social cost of greenhouse gas emissions, only Alpha 
+will know Alpha's cost for reducing emissions, and only Beta will know Beta's 
+cost for reducing emissions.
+
+Without regulation, Alpha and Beta would each emit 150 million tons of CO~2~ 
+per year. The goal of the exercise is for the EPA to reduce pollution to achieve 
+the socially optimal balance between the benefits of economic activity 
+(jobs, wealth, etc.) and the harms of pollution. The goal of each firm is to 
+maximize their profit regardless of the costs or benefits to society or to its 
+competitor.
+
+To keep things simple, emissions cuts will be figured in blocks of 
+10 million tons, so a firm can cut emissions by zero, 10 million tons, 
+20 million tons, ..., up to a maximum of 150 million tons (cutting emissions 
+by 150 million tons means the firm reduces its emissions to zero).
+
+\clearpage
+## The Game
+
+The game will have six stages:
+
+1. First, the EPA will gather information on the cost of abating pollution. 
+   A representative of the EPA can ask four questions about each company's 
+   costs (I recommend asking questions about the marginal profit for the 
+   $n^{\text{th}}$ million tons of pollution, or how much it would cost to 
+   reduce emissions by $x$ million tons.). A representative of each company 
+   will answer the question. The representatives may answer strategically, 
+   meaning they may exaggerate the costs. The EPA may take this into account 
+   in deciding how to use the answers to estimate the true cost of reducing 
+   emissions.
+2. Second, the EPA will determine three possible courses of action:
+    a) A command and control regulation, which mandates a specific emissions 
+       reduction. Because the Constitution guarantees equality before the law, 
+       this regulation must impose the same emissions cut for each 
+       firm.^[The real world is a bit more complex, because the government 
+       would be allowed to regulate different industries differently, but would 
+       face real obstacles if it tried to impose different emissions cuts on 
+       different companies within the same industry. Because this exercise is 
+       limited to just two companies, we simplify by forcing the EPA to impose 
+       identical emissions cuts on all firms.} Based on what it knows about the 
+       costs (to the firms) and benefits (to society) of reducing emissions, the 
+       EPA will determine how many million tons of total emissions to cut 
+       (to keep things simple, the EPA should make the amount an even multiple 
+       of 20 million tons). It will then divide those emissions cuts equally 
+       between the two firms.]
+    b) A cap-and-trade. Under this program, the total emissions cuts would be 
+       the same and the EPA will issue permits to emit CO~2~. Each permit will 
+       allow the owner to emit 10 tons of CO~2~. Total CO~2~ emissions are 
+       300 million tons minus the emissions cuts the EPA wants to impose. 
+       If the EPA wants to cut emissions by 200 million tons, it would issue 
+       10 permits 
+       ($300~\text{million} - 20 \times 10~\text{million} = 100~\text{million}$; 
+       Each permit allows 10 million tons of emissions so 
+       $100~\text{million}/10~\text{million} = 10~\text{permits}$). 
+       Again, to keep things simple, make the number of permits a multiple of 2. 
+       The EPA will give each company an equal number of permits (if the EPA 
+       issues 10 permits, it gives 5 to each company).
+	  c) An emissions-tax program. Under this program, the EPA determines the tax 
+		   a firm must pay for every million tons of CO~2~ it emits. The firms will 
+		   then decide on their own how much to cut their emissions.
+3. Third, the firms determine how much CO~2~ they will emit under the 
+   command-and-control program (this is easy). At the end of this round, the 
+   EPA will publish the total benefit to society of the emissions reduction, 
+   the firms will calculate their total costs (but keep these secret), and the 
+   instructor will announce the total deadweight loss due to inefficiencies in 
+   the regulation.
+4. Fourth, permits will be distributed. The class will vote whether to auction 
+   the permits and distribute them to the highest payer or give equal numbers 
+   of permits to each firm and allow the firms to trade permits with each other. 
+   After the permits are allocated, we will again announce the total benefits to 
+   society and the deadweight loss.
+5. Fifth, we will impose an carbon tax, at the price set by the EPA in stage 2. 
+   The two firms will be free to cut emissions by as much or as little as they 
+   want (between 0 and 150 million tons each). After each firm determines its 
+   final emissions, we will once again announce the total benefits to society 
+   and the deadweight loss.
+6. Sixth and finally, we will reveal the details at each step, including the 
+   private information each firm has about its costs. This will let us discuss 
+   and analyze the strengths and limitations of each regulatory program.
+
+## Acknowledgements
+
+This exercise was adapted from The Pollution Game, an interactive exercise 
+developed by Jay R. Corrigan, Associate Professor of Economics, Kenyon College.  
+See J.R. Corrigan, ``The Pollution Game: A Classroom Exercise Demonstrating the 
+Relative Effectiveness of Emissions Taxes and Tradable Permits,'' 
+_The Journal of Economic Education_ **42**, 70--78 (2011) 
+[doi: 10.1080/00220485.2011.536491](https://doi.org/10.1080/00220485.2011.536491)
+
+\clearpage
+## Homework
+
+Do the following homework (turn it in on `r long_game_day` at the beginning of 
+lab):
+
+1. Table 1 lists the marginal profit a company earns by emitting CO~2~. 
+   Fill in the blanks in the table to show the total profits it earns at each 
+   amount of CO~2~ emissions.
+
+2. What level of CO~2~ emissions would produce the maximum total profit? 
+   How much profit would this be?
+   \vspace{2cm}
+
+3. If the company is emitting the amount of CO~2~ that would maximize its 
+   profits, and then the Environmental Protection Agency requires the company 
+   to reduce its emissions by 5 million tons, what is the total cost for the 
+   company to comply with the regulation?
+   \vspace{2cm}
+
+4. What is the marginal cost to comply with the regulation? 
+   (Be careful and consider, if the company cuts 1 million tons, then a second 
+   million tons, and so forth, what did it cost the company to make the 
+   fifth million-ton cut?)
+   \vspace{2cm}
+
+5. If the EPA imposed a tax of \$30 per ton on CO~2~ emissions, complete the 
+   table to indicate the new marginal profit and total profit at each level of 
+   emission.
+   \vspace{2cm}
+
+6. Under a \$30 per ton tax, what level of CO~2~ emissions would produce the 
+   maximum total profit? What would its total profit be? How much less is this 
+   than the total profit you reported in question 2?
+   \vspace{2cm}
+
+7. Table 2 shows the economic value of the marginal 
+   environmental harm caused by each additional million tons of CO~2~ emissions. 
+   Fill in the blanks to indicate the total environmental harm.
+
+8. The marginal net economic impact is the marginal profit generated by emitting 
+   each million tons of CO~2~ minus the marginal environmental harm. This number 
+   is the net benefit to society from emitting an additional million tons of 
+   CO~2~. If the number is positive, society benefits. If it is negative, society 
+   suffers.
+
+    Fill in the marginal and total economic impacts, using the information on 
+    environmental harm from Table 2 and the information 
+    on marginal profits from Table 1.
+
+9. What is the optimum amount of CO~2~ to emit if we consider the net benefit to 
+   society (i.e., the net economic impact).
+   \vspace{2cm}
+
+10. If you were going to set a cap on emissions, how many tons would you set the 
+    cap at?
+   \vspace{2cm}
+
+11. If you were going to set a tax on emissions, how many dollars per ton would 
+    you set the tax at?
+   \vspace{2cm}
+
+### Table 1: Profits vs. Emissions
+
+```{r profit_table}
+tax = 30
+profits = tibble(
+  emissions = seq(1,20), 
+  marginal_profit = 91 - 6 * emissions,
+  total_profit = str_c("$", marginal_profit, 
+                       ifelse(is.na(lag(marginal_profit)), "", 
+                              str_c(" + $", lag(cumsum(marginal_profit)), 
+                                    " = $", cumsum(marginal_profit))
+                              )
+                       ),
+  marginal_taxed = str_c("$", marginal_profit, " - $", tax, " = $",
+                         marginal_profit - tax),
+  total_taxed = str_c("$", marginal_profit - 30,
+                       ifelse(is.na(lag(marginal_profit)), "", 
+                              str_c(" + $", lag(cumsum(marginal_profit - 30)), 
+                                    " = $", cumsum(marginal_profit - 30))
+                              )
+                      ),
+) %>% mutate_at(vars(total_profit:total_taxed),
+                funs(ifelse(emissions <= 3, ., "")))
+
+column_names <- c("CO~2~ Emissions\n(million tons)",
+                    "Marginal profit\n(million dollars)", 
+                    "Total profit\n(million dollars)",
+                    "Marginal profit\n(million dollars)", 
+                    "Total profit\n(million dollars)")
+
+output_format <- ifelse(is_html_output(), "html", "latex")
+# message("Output format = ", output_format)
+
+if (output_format == "latex") {
+   escape = FALSE
+   column_names <- linebreak(column_names) %>%
+      str_replace_all("CO~2~", "$\\\\text{CO}_2$")
+   profits <- profits %>% mutate_all(funs(str_replace_all(., fixed("$"), "\\$")))
+} else {
+   lb <- function(x) x
+   escape = TRUE
+}
+
+kable(profits, format = output_format, align = "crrrr", digits = 0, 
+      col.names = column_names,
+      booktabs = T, escape = FALSE) %>% 
+  add_header_above(c(" " = 1, "No Emissions Tax" = 2, 
+                     "$30/ton Emissions Tax" = 2)) %>%
+  kable_styling(c("bordered","hover"), c("striped", "scale_down"))
+```
+
+**Table 1:** Profits versus emissions: The table lists the marginal profit, in 
+millions of dollars, for each million tons of CO~2~ it emits. For instance, if 
+it emits one million tons, it earns a marginal profit of $85 million. 
+The total profit for _x_ million tons is the sum of the marginal profits for 
+each million tons from 1 to _x_.
+
+Fill in the blanks with the total profit the company earns by for each amount 
+of CO~2~ emission."
+
+### Table 2: Environmental Harm vs. Emissions
+
+```{r cost_table}
+costs = tibble(
+  emissions = seq(1,20), 
+  marginal_profit = 91 - 6 * emissions,
+  marginal_harm = 5 * emissions,
+  impact = marginal_profit - marginal_harm,
+  total_harm = str_c("$", marginal_harm, 
+                       ifelse(is.na(lag(marginal_harm)), "", 
+                              str_c(" + $", lag(cumsum(marginal_harm)), 
+                                    " = $", cumsum(marginal_harm))
+                              )
+                       ),
+  marginal_impact = str_c("$", marginal_profit, " - $", marginal_harm, 
+                          " = $", impact),
+  total_impact = str_c("$", cumsum(impact))
+) %>% mutate_at(vars(total_harm:total_impact),
+                funs(ifelse(emissions <= 3, ., ""))) %>%
+  select(-marginal_profit, -impact)
+
+column_names <- c("CO~2~ Emissions\n(million tons)",
+                    "Marginal harm\n(million dollars)", 
+                    "Total harm\n(million dollars)",
+                    "Marginal impact\n(million dollars)", 
+                    "Total impact\n(million dollars)")
+
+output_format <- ifelse(is_html_output(), "html", "latex")
+# message("Output format = ", output_format)
+
+if (output_format == "latex") {
+   column_names <- linebreak(column_names) %>%
+      str_replace_all("CO~2~", "$\\\\text{CO}_2$")
+   escape = FALSE
+   costs <- costs %>% mutate_all(funs(str_replace_all(., fixed("$"), "\\$")))
+} else {
+   escape = TRUE
+}
+
+
+kable(costs, format = output_format, align = "crrrr", digits = 0,
+      col.names = column_names, booktabs = T, escape = escape) %>% 
+  add_header_above(c(" " = 1, "Environmental Harm" = 2, 
+                     "Net Economic Impact" = 2)) %>%
+  kable_styling(c("bordered","hover"), c("striped", "scale_down"))
+```
+
+**Table 2**: Economic impacts of CO~2~ emissions. The table lists the marginal 
+environmental harm, in millions of dollars, for each million tons of CO~2~ 
+released into the environment. For instance, the first million tons of 
+emissions cause $5 million in damage.
+
+The right pair of columns shows the net economic impact of the profits 
+generated from the emissions (see Table 1) minus the environmental harm.
+
+Fill in the blanks with the total environmental harm from CO~2~ emission and 
+compute the net economic impact.

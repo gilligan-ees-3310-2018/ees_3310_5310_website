@@ -21,8 +21,9 @@ There is no report to complete for this lab, and you will receive credit for sho
 
 ## Reading
 
-No reading has been posted yet for this lab.
+**Before you come to lab**, please read the following document:
 
+* [Preparation for Lab on Regulating Greenhouse Gas Emissions](/lab_docs/lab_11_preparation)
 
 ## Assignment
 
