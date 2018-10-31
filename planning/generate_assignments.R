@@ -1127,3 +1127,10 @@ generate_assignments <- function() {
 
   invisible(list(lesson_plan = lesson_plan, semester = semester))
 }
+
+update_site <- function(dir = here::here("content")) {
+  files <- files <- blogdown:::list_rmds(dir)
+  to_build <- files[mapply(blogdown:::require_rebuild, blogdown:::output_file(files), files)]
+  message("Building ", length(to_build), " out of date files; site has ", length(files), " files in total.")
+  blogdown:::build_rmds(to_build)
+}
