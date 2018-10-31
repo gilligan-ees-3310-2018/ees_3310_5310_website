@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<!-- JG Reveal.js Template -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Jonathan Gilligan" />
+  <title>Putting a Price on Carbon Emissions</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="stylesheet" href="../../lecture_lib/library/reveal.js-3.7.0/css/reveal.min.css"/>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      .smallcaps{font-variant: small-caps;}
+      .line-block{white-space: pre-line;}
+      .column{display: inline-block;}  </style>
+  <style type="text/css">
+    div.qrbox {
+     width:100vw;
+     position:fixed;
+     bottom:0%;
+     left:10px;
+     text-align:left;
+     vertical-align:bottom;
+    }
+  </style>
+<!-- theme = solarized_jg -->
+<link rel="stylesheet" href="../../lecture_lib/library/assets/css/theme/solarized_jg.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lecture_lib/library/reveal.js-3.7.0/css/print/pdf.css' : '../../lecture_lib/library/reveal.js-3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+            <!-- start title slide -->
+<section class='center' id='title' >
+    <h1 class="title">Putting a Price on Carbon Emissions</h1>
+    <h3 class="author">EES 3310/5310</h3>
+        <h3 class="author">Global Climate Change</h3>
+    <h3 class="author">Jonathan Gilligan</h3>
+    <h3 class="date">
+      Class #30:
+       Wednesday, Oct. 31
+      2018
+    </h3>
+        <div class="qrbox" id="qrbox">
+      <div style="font-size:30%;width:100%;">
+    <a href="https://ees3310.jgilligan.org/Slides/Class_30">
+  	<img src="qrcode.png" alt="https://ees3310.jgilligan.org/Slides/Class_30"/>
+  	</a>
+    	</div>
+    	<div style="font-size:30%;width:100%;vertical-align:top;">
+    	<span style="display:inline-block;text-align:left;margin-left:0">
+    	    	Live web page: <a href="https://ees3310.jgilligan.org/Slides/Class_30">https://ees3310.jgilligan.org/Slides/Class_30</a>
+    	<br/>
+    	PDF: <a href="https://ees3310.jgilligan.org/Slides/Class_30/EES_3310_5310_Class_30_Slides.pdf" target="_blank">https://ees3310.jgilligan.org/Slides/Class_30/EES_3310_5310_Class_30_Slides.pdf</a>
+    	
+    	    	</span>
+    	<span style="display:inline-block;text-align:right;vertical-align:top;position:relative;left:10rem;">
+    	  Navigate slides: next: N or &lt;space&gt;; previous: P or &lt;backspace&gt;<br/>
+    	  Also: up, down, left, right arrows; overview: o; help: ?
+    	</span>
+  	</div>
+  	</div>
+    	<!-- end title slide -->
+</section>
+
+<section id="review-of-costs-and-benefits" class="slide level2">
+<h2>Review of Costs and Benefits</h2>
+<div class="columns">
+<div class="column" style="padding-top:50px;width:49%;vertical-align:top;">
+<ul>
+<li>Total gross benefit = area under MB</li>
+<li>Total gross cost = area under MC</li>
+<li><strong>Total net benefit</strong> = gross benefit − gross cost
+<ul>
+<li>Light gray trapezoid</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:700px;">
+<p><img data-src="assets/fig/fig_2_c-1.png" /></p>
+</div>
+</div>
+</section>
+<section id="total-net-benefit" class="slide level2">
+<h2>Total Net Benefit</h2>
+<p><img data-src="assets/fig/fig_2_d-1.png" /></p>
+</section>
+<section id="optimum-emissions" class="slide level2">
+<h2>Optimum Emissions</h2>
+<div class="columns">
+<div class="column" style="padding-top:50px;width:49%;vertical-align:top;">
+<ul>
+<li>Optimum emissions = E<sup>*</sup></li>
+<li>EPA regulations allow E<sup>*</sup> emissions</li>
+<li>Total net benefits are maximized.</li>
+</ul>
+</div><div class="column" style="width:49%">
+<p><img data-src="assets/fig/fig_4_a-1.png" /></p>
+</div>
+</div>
+</section>
+<section id="deadweight-losses" class="slide level2">
+<h2>Deadweight Losses</h2>
+<div class="columns">
+<div class="column" style="width:49%;padding-top:50px;vertical-align:top;">
+<ul>
+<li>Optimum emissions = E<sup>*</sup></li>
+<li>EPA regulations allow E’ emissions</li>
+<li>Deadweight Loss (dark blue triangle) = difference between <strong>actual net benefit</strong> and <strong>optimum net benefit</strong></li>
+</ul>
+</div><div class="column" style="width:49%">
+<p><img data-src="assets/fig/simple_deadweight_loss-1.png" /></p>
+</div>
+</div>
+</section>
+<section id="deadweight-losses-1" class="slide level2">
+<h2>Deadweight Losses</h2>
+<div class="columns">
+<div class="column" style="width:49%;padding-top:50px;vertical-align:top;">
+<ul>
+<li>Optimum emissions = E<sup>*</sup></li>
+<li>EPA regulations allow E’ emissions</li>
+<li>Deadweight Loss (dark blue triangle) = difference between <strong>actual net benefit</strong> and <strong>optimum net benefit</strong></li>
+</ul>
+</div><div class="column" style="width:49%;">
+<p><img data-src="assets/fig/simple_deadweight_low-1.png" /></p>
+</div>
+</div>
+</section>
+<section><section id="regulation" class="title-slide slide level1 center"><h1>Regulation</h1></section><section id="regulation-1" class="slide level2 eighty">
+<h2>Regulation</h2>
+<ul>
+<li><strong>Command and Control</strong></li>
+<li><strong>Market-Based Regulation</strong>
+<ul>
+<li>Put a price on externalities</li>
+<li>Let the market decide best balance between costs and benefits of pollution</li>
+<li><em>Pigovian tax</em>:
+<ul>
+<li>Tax equal to social cost
+<ul>
+<li>Directly compensate people hurt by pollution</li>
+<li>Or rebate other taxes: indirect compensation</li>
+<li>Or invest in socially beneficial projects
+<ul>
+<li>Clean energy</li>
+<li>Infrastructure to adapt to climate change</li>
+<li>Compensate out-of-work coal miners</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="nordhaus-on-pigovian-taxes" class="slide level2">
+<h2>Nordhaus on Pigovian Taxes</h2>
+<ul>
+<li>Taxes on something makes people do less of it</li>
+<li>We want people to work, don’t want them to pollute</li>
+<li>But we tax working and don’t tax polluting</li>
+<li>Revenue-neutral carbon tax:
+<ul>
+<li>Raise tax on CO<sub>2</sub>, cut payroll taxes</li>
+</ul></li>
+</ul>
+</section><section id="details" class="slide level2">
+<h2>Details</h2>
+<ul>
+<li>People don’t like paying taxes</li>
+<li><em>Invisible taxes</em>
+<ul>
+<li>Charge tax when fossil fuels are taken out of the ground or imported into US</li>
+<li>Fossil fuel producer pays tax, passes cost on to consumers</li>
+</ul></li>
+<li>Taxes → higher prices → less consumption</li>
+<li>Higher fuel prices:
+<ul>
+<li>Incentive to buy energy-efficient products</li>
+<li>Incentive to invent, produce, market efficient products</li>
+<li>Clean energy becomes more competitive</li>
+</ul></li>
+</ul>
+</section><section id="simplicity-of-carbon-prices" class="slide level2">
+<h2>Simplicity of Carbon Prices</h2>
+<ul>
+<li><strong>Command and Control</strong>:
+<ul>
+<li>Government has to assess emissions &amp; costs for all kinds of technology</li>
+</ul></li>
+<li><strong>Green consumers</strong>:
+<ul>
+<li>To reduce carbon footprint, research and calculate emissions embedded in products &amp; services</li>
+</ul></li>
+<li><strong>Pricing carbon</strong>:
+<ul>
+<li>Simple calculation: tax carbon content of fuels</li>
+<li>Consumers receive simple price signal:
+<ul>
+<li>Shop for lowest price to reduce carbon footprint</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="difficulties" class="slide level2">
+<h2>Difficulties</h2>
+<ul>
+<li>Setting the correct tax rate is hard
+<ul>
+<li>Social cost of carbon is uncertain</li>
+<li>Social cost depends on total emissions now &amp; in the future
+<ul>
+<li>Set tax to marginal cost based on total emissions to date</li>
+<li>Tax rises over time</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="difficulties-1" class="slide level2">
+<h2>Difficulties</h2>
+<ul>
+<li><em>Offshoring</em>
+<ul>
+<li>If US sets carbon tax, Indoa does not, companies will shift production from US to India</li>
+<li>Big problem unless carbon tax is applied to all countries</li>
+</ul></li>
+</ul>
+</section><section id="difficulties-2" class="slide level2">
+<h2>Difficulties</h2>
+<ul>
+<li>Lack of control:
+<ul>
+<li>Actual emissions depend on both <em>price</em> <strong>and</strong> <em>consumer demand</em>
+<ul>
+<li>If regulators underestimate demand, emissions and warming will be greater than goal</li>
+<li>But if social cost is correct, this may mean benefits of energy consumption exceed damage from warming</li>
+</ul></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="carbon-taxes" class="title-slide slide level1 center"><h1>Carbon Taxes</h1></section><section id="example-tax-calculations" class="slide level2">
+<h2>Example tax calculations</h2>
+<p><img data-src="assets/images/00042.jpeg" style="height:600px;" /></p>
+<p>Tax necessary to stabilize at 2.5°C warming</p>
+</section><section id="impact-of-25ton-tax" class="slide level2">
+<h2>Impact of $25/ton tax</h2>
+<div style="margin-top:100px;">
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Tue Oct 30 22:45:33 2018 -->
+<table border="1">
+<tr>
+<th>
+Item
+</th>
+<th>
+Price increase
+</th>
+</tr>
+<tr>
+<td>
+Coal
+</td>
+<td align="right">
+134%
+</td>
+</tr>
+<tr>
+<td>
+Electricity
+</td>
+<td align="right">
+31%
+</td>
+</tr>
+<tr>
+<td>
+Natural gas
+</td>
+<td align="right">
+30%
+</td>
+</tr>
+<tr>
+<td>
+Gasoline &amp; petroleum products
+</td>
+<td align="right">
+11%
+</td>
+</tr>
+</table>
+</div>
+</section><section id="impact-of-25ton-tax-on-household-spending" class="slide level2">
+<h2>Impact of $25/ton tax<br/>on Household Spending</h2>
+<div style="margin-top:100px;">
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Tue Oct 30 22:45:33 2018 -->
+<table border="1">
+<tr>
+<th>
+Item
+</th>
+<th>
+Tons CO<sub>2</sub>
+</th>
+<th>
+Cost of tax
+</th>
+<th>
+Spending increase
+</th>
+</tr>
+<tr>
+<td>
+Annual electricity for one home
+</td>
+<td align="right">
+9.34
+</td>
+<td align="right">
+$230.00
+</td>
+<td align="right">
+19.0%
+</td>
+</tr>
+<tr>
+<td>
+Economy-class international flight
+</td>
+<td align="right">
+4.68
+</td>
+<td align="right">
+$120.00
+</td>
+<td align="right">
+8.0%
+</td>
+</tr>
+<tr>
+<td>
+Annual phone &amp; internet
+</td>
+<td align="right">
+0.01
+</td>
+<td align="right">
+$0.36
+</td>
+<td align="right">
+0.0%
+</td>
+</tr>
+<tr>
+<td>
+Annual total consumption for one household
+</td>
+<td align="right">
+30.00
+</td>
+<td align="right">
+$740.00
+</td>
+<td align="right">
+0.9%
+</td>
+</tr>
+</table>
+</div>
+</section><section id="impact-of-25ton-tax-on-national-economy" class="slide level2">
+<h2>Impact of $25/ton tax<br/>on National Economy</h2>
+<div style="margin-top:100px;">
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Tue Oct 30 22:45:33 2018 -->
+<table border="1">
+<tr>
+<th>
+Year
+</th>
+<th>
+Tax rate<br/>($/ton)
+</th>
+<th>
+Emissions<br/>(billion ton)
+</th>
+<th>
+Revenue<br/>($ billion)
+</th>
+<th>
+Revenue<br/>(% GDP)
+</th>
+</tr>
+<tr>
+<td align="right">
+2010.00
+</td>
+<td align="right">
+$0
+</td>
+<td align="right">
+6.30
+</td>
+<td align="right">
+$0
+</td>
+<td align="right">
+0.00%
+</td>
+</tr>
+<tr>
+<td align="right">
+2015.00
+</td>
+<td align="right">
+$25
+</td>
+<td align="right">
+5.90
+</td>
+<td align="right">
+$147
+</td>
+<td align="right">
+0.96%
+</td>
+</tr>
+<tr>
+<td align="right">
+2020.00
+</td>
+<td align="right">
+$30
+</td>
+<td align="right">
+5.50
+</td>
+<td align="right">
+$168
+</td>
+<td align="right">
+0.97%
+</td>
+</tr>
+<tr>
+<td align="right">
+2025.00
+</td>
+<td align="right">
+$42
+</td>
+<td align="right">
+5.40
+</td>
+<td align="right">
+$225
+</td>
+<td align="right">
+1.14%
+</td>
+</tr>
+<tr>
+<td align="right">
+2030.00
+</td>
+<td align="right">
+$53
+</td>
+<td align="right">
+5.20
+</td>
+<td align="right">
+$277
+</td>
+<td align="right">
+1.25%
+</td>
+</tr>
+</table>
+</div>
+</section></section>
+<section id="discuss" class="title-slide slide level1 center"><h1><strong>Discuss</strong></h1></section>
+    </div>
+  </div>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/head.min.js"></script>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1440,
+        height: 900,
+      
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+
+<script>
+var MathJax = { jax: ["input/TeX", "output/HTML-CSS"],
+                TeX: {extensions: ["color.js", "mhchem.js"],
+                Macros: {
+                  permil: "\\unicode{x2030}",
+                  pH: "p\\ce{H}",
+                  CaSi: "\\ce{CaSiO3}",
+                  silicate: "\\ce{SiO3^2-}",
+                  Caplus: "\\ce{Ca^2+}",
+                  calcite: "\\ce{CaCO3}",
+                  silica: "\\ce{SiO2}",
+                  OH: "\\ce{OH-}",
+                  Hplus: "\\ce{H+}",
+                  carbonic: "\\ce{H2CO3}",
+                  bicarb: "\\ce{HCO3-}",
+                  carb: "\\ce{CO3^2-}",
+                  water: "\\mathrm{H_2O}",
+                  degF: "^\\circ \\mathrm{F}",
+                  degC: "^\\circ \\mathrm{C}",
+                  methane: "\\ce{CH4}",
+                  COO: "\\ce{CO2}"
+                },
+                  },
+                "HTML-CSS" : {scale: 100 }};
+</script>
+
+
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["SVG"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+  </script>
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  <script>
+  var qrbox = document.querySelector("#qrbox");
+  var advance_fragment = 0;
+  Reveal.addEventListener('slidechanged', function() {
+    if (Reveal.isFirstSlide()) {
+      qrbox.style.visibility="visible";
+    } else {
+      qrbox.style.visibility="hidden";
+      while (advance_fragment > 0) {
+        console.log('advancing fragment');
+        Reveal.nextFragment();
+        advance_fragment--;
+      }
+    }
+  }, false);
+
+  Reveal.addEventListener('skip_slide', function() {
+    Reveal.next();
+  }, false);
+
+  Reveal.addEventListener('advance_fragment', function() {
+    console.log("setting advance fragment");
+    advance_fragment++;
+    }, false);
+  </script>
+  </body>
+</html>
