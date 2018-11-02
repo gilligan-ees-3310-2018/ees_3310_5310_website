@@ -4,6 +4,7 @@ lab_number: 1
 lab_date: '2018-08-27'
 pubdate: '2018-07-31'
 date: '2018-08-27'
+bibliography: reproducible_research.bib
 pdf_url: /files/lab_docs/lab_01/reproducible_research.pdf
 slug: lab_01_reproducible_research
 output.blogdown::html_page:

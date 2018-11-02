@@ -4,6 +4,7 @@ lab_number: 1
 lab_date: '2018-08-27'
 pubdate: '2018-07-31'
 date: '2018-08-27'
+bibliography: reproducible_research.bib
 pdf_url: /files/lab_docs/lab_01/reproducible_research.pdf
 slug: lab_01_reproducible_research
 output.blogdown::html_page:
@@ -18,19 +19,19 @@ output.blogdown::html_page:
 <p>In the spring of 2012, Bruno Iksil, a securities trader at
 the investment bank JPMorgan, Chase, &amp; Company who was also known by the
 nickname “The London Whale” for his aggressive trades, made a series of
-costly mistakes that cost JPM-Chase $6.2 billion. <span class="citation">[@hurtado_london_2015]</span>
+costly mistakes that cost JPM-Chase $6.2 billion. <span class="citation">(Hurtado 2015)</span>
 Iksil was attempting to manage the financial risk of a portfolio of investments.
 However, an analyst on Iksil’s team had calculated the volatility (a measure of
 financial riskiness) of his portfolio using an Excel spreadsheet and made a subtle
 error in a mathematical formula, dividing by the sum of two numbers instead of
 the average. That error caused Iksill to underestimate risk by a factor of 2,
 and thus to expose JPM-Chase to far more risk than he realized with his enormous
-trades. <span class="citation">[@kwak_importance_2013]</span></p>
+trades. <span class="citation">(Kwak 2013)</span></p>
 <p>Two years earlier,
 Carmen Reinhart and Kenneth Rogoff,
 two highly respected academic economists published an influential
 research paper on the effect of government debt on economic growth.
-<span class="citation">[@reinhart_growth_2010]</span> This paper
+<span class="citation">(Reinhart and Rogoff 2010)</span> This paper
 concluded that when government debt exceeds 90% of GDP, the country’s economic
 growth is likely to abruptly come to a halt, and even slide into recession.
 This paper was used to justify harsh austerity measures throughout Europe, where
@@ -43,14 +44,14 @@ explain all the details of their data and analysis. Finally, in 2013, Reinhart
 and Rogoff gave Herndon copies of the spreadsheets they had used in their analysis.
 Herndon found three glaring errors in the spreadsheet, and after he fixed the
 errors, there was no sudden slowdown of economic growth.
-<span class="citation">[@krudy_how_2013; @bailey_reinhart-rogoff_2013; @kwak_importance_2013]</span></p>
+<span class="citation">(Krudy 2013; Bailey and Borwein 2013; Kwak 2013)</span></p>
 <p>Such errors are not unique to economic research. In the past two years, errors
 in spreadsheet formulas led to the retraction of papers in prominent journals
 of environmental science, medicine, and biology.
-<span class="citation">[@stern_think_2017; @palus_doing_2016; @ferguson_teflon_2015]</span></p>
+<span class="citation">(Stern 2017; Palus 2016; Ferguson 2015)</span></p>
 <p>In 2015, a major study of air pollution associated with “fracking” in natural
 gas wells was retracted when the authors discovered a major error in an Excel
-spreadsheet that they used for data analysis. <span class="citation">[@chawla_authors_2016]</span></p>
+spreadsheet that they used for data analysis. <span class="citation">(Chawla 2016)</span></p>
 <p>Spreadsheets are not the only source of major errors in scientific publications.
 Poor statistical practices have led to what has come to be called a “crisis of
 replication” in psychology and medicine and concern that many
@@ -74,7 +75,7 @@ claimed that their satellite measurements were more accurate than the thermomete
 measurements taken at the surface and challenged scientific findings that global
 warming was taking place. Controversy about the disagreement between the satellite
 measurements and the surface measurements raged for years, and was the subject of
-a book-length report from the National Academy of Sciences. <span class="citation">[@nrc_reconciling_2000]</span></p>
+a book-length report from the National Academy of Sciences. <span class="citation">(National Research Council 2000)</span></p>
 <p>A rival team of scientists at the company Remote Sensing Systems (RSS) looked into
 the matter and conducted its own analysis of the satellite temperature records.
 Christy and Spencer would not release the computer code they used to analyze
@@ -84,7 +85,7 @@ of serious errors in the UAH analysis, including a place where the UAH team
 mistakenly added two numbers instead of subtracting one from the other (an easy
 mistake to make in programming, and one that might have been caught years earlier
 if the code had been available for public inspection).
-<span class="citation">[@wentz_effects_1998; @mears_effect_2005; @christy_tropospheric_2007]</span> In the end,
+<span class="citation">(Wentz and Schabel 1998; Mears and Wentz 2005; Christy et al. 2007)</span> In the end,
 the UAH team released corrections to their satellite temperature measurements,
 and the corrected record agreed well with other measurements, including those by
 thermometers at the surface and weather balloons. The years of controversy over
@@ -389,6 +390,47 @@ to reproducible research, and all of the files necessary to reproduce the book a
 <a href="http://ropensci.github.io/reproducibility-guide/" class="uri">http://ropensci.github.io/reproducibility-guide/</a></p></li>
 </ul>
 </div>
-<div id="references" class="section level1">
+<div id="references" class="section level1 unnumbered">
 <h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-bailey_reinhart-rogoff_2013">
+<p>Bailey, David H., and Jonathan Borwein. 2013. “The Reinhart-Rogoff Error—or How Not to Excel at Economics. The Conversation.” <em>The Conversation</em>, April. <a href="http://theconversation.com/the-reinhart-rogoff-error-or-how-not-to-excel-at-economics-13646">http://theconversation.com/the-reinhart-rogoff-error-or-how-not-to-excel-at-economics-13646</a>.</p>
+</div>
+<div id="ref-chawla_authors_2016">
+<p>Chawla, Dalmeet Singh. 2016. “Authors Retract Study That Found Pollution Near Fracking Sites. Retraction Watch.” July 8, 2016. <a href="http://retractionwatch.com/2016/07/08/authors-retract-study-that-found-pollution-near-fracking-sites/">http://retractionwatch.com/2016/07/08/authors-retract-study-that-found-pollution-near-fracking-sites/</a>.</p>
+</div>
+<div id="ref-christy_tropospheric_2007">
+<p>Christy, John R., William B. Norris, Roy W. Spencer, and Justin J. Hnilo. 2007. “Tropospheric Temperature Change Since 1979 from Tropical Radiosonde and Satellite Measurements.” <em>Journal of Geophysical Research: Atmospheres</em> 112 (D6): D06102. <a href="https://doi.org/10.1029/2005JD006881">https://doi.org/10.1029/2005JD006881</a>.</p>
+</div>
+<div id="ref-ferguson_teflon_2015">
+<p>Ferguson, Cat. 2015. “Teflon Toxicity Paper Fails to Stick. Retraction Watch.” April 16, 2015. <a href="http://retractionwatch.com/2015/04/16/teflon-toxicity-paper-fails-to-stick/">http://retractionwatch.com/2015/04/16/teflon-toxicity-paper-fails-to-stick/</a>.</p>
+</div>
+<div id="ref-hurtado_london_2015">
+<p>Hurtado, Patricia. 2015. “The London Whale.” <em>Bloomberg View</em>, April. <a href="https://www.bloomberg.com/view/quicktake/the-london-whale">https://www.bloomberg.com/view/quicktake/the-london-whale</a>.</p>
+</div>
+<div id="ref-krudy_how_2013">
+<p>Krudy, Edward. 2013. “How a Student Took on Eminent Economists on Debt Issue—and Won.” <em>Reuters</em>, April. <a href="https://www.reuters.com/article/us-global-economy-debt-herndon-idUSBRE93H0CV20130418">https://www.reuters.com/article/us-global-economy-debt-herndon-idUSBRE93H0CV20130418</a>.</p>
+</div>
+<div id="ref-kwak_importance_2013">
+<p>Kwak, James. 2013. “The Importance of Excel. The Baseline Scenario.” February 9, 2013. <a href="https://baselinescenario.com/2013/02/09/the-importance-of-excel/">https://baselinescenario.com/2013/02/09/the-importance-of-excel/</a>.</p>
+</div>
+<div id="ref-mears_effect_2005">
+<p>Mears, Carl A., and Frank J. Wentz. 2005. “The Effect of Diurnal Correction on Satellite-Derived Lower Tropospheric Temperature.” <em>Science</em> 309 (5740): 1548–51. <a href="https://doi.org/10.1126/science.1114772">https://doi.org/10.1126/science.1114772</a>.</p>
+</div>
+<div id="ref-nrc_reconciling_2000">
+<p>National Research Council. 2000. <em>Reconciling Observations of Global Temperature Change</em>. <a href="https://www.nap.edu/catalog/9755/reconciling-observations-of-global-temperature-change">https://www.nap.edu/catalog/9755/reconciling-observations-of-global-temperature-change</a>.</p>
+</div>
+<div id="ref-palus_doing_2016">
+<p>Palus, Shannon. 2016. “Doing the Right Thing: Authors Share Data, Retract When Colleague Finds Error. Retraction Watch.” May 17, 2016. <a href="http://retractionwatch.com/2016/05/17/doing-the-right-thing-authors-share-data-retract-when-colleague-finds-error/">http://retractionwatch.com/2016/05/17/doing-the-right-thing-authors-share-data-retract-when-colleague-finds-error/</a>.</p>
+</div>
+<div id="ref-reinhart_growth_2010">
+<p>Reinhart, Carmen M., and Kenneth S. Rogoff. 2010. “Growth in a Time of Debt.” <em>American Economic Review</em> 100 (2): 573–78. <a href="https://doi.org/10.1257/aer.100.2.573">https://doi.org/10.1257/aer.100.2.573</a>.</p>
+</div>
+<div id="ref-stern_think_2017">
+<p>Stern, Victoria. 2017. “Think of the Unthinkable: JAMA Retraction Prompts Author to Urge Others to Share Data. Retraction Watch.” April 19, 2017. <a href="http://retractionwatch.com/2017/04/19/think-unthinkable-jama-retraction-prompts-author-urge-others-share-data/">http://retractionwatch.com/2017/04/19/think-unthinkable-jama-retraction-prompts-author-urge-others-share-data/</a>.</p>
+</div>
+<div id="ref-wentz_effects_1998">
+<p>Wentz, Frank J., and Matthias Schabel. 1998. “Effects of Orbital Decay on Satellite-Derived Lower-Tropospheric Temperature Trends.” <em>Nature</em> 394 (6694): 661–64. <a href="https://doi.org/10.1038/29267">https://doi.org/10.1038/29267</a>.</p>
+</div>
+</div>
 </div>
