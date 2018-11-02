@@ -5,15 +5,16 @@ p_load(tidyverse, magrittr, lubridate, rlang)
 p_load(xtable)
 p_load(assertthat)
 p_load(yaml)
-p_load(rprojroot)
+p_load(here)
 p_load(blogdown)
+p_load(digest)
 
 database <- "EES_3310_5310.sqlite3"
 online_location <- "posted on Brightspace"
 
-root_dir <- find_rstudio_root_file()
-planning_dir <- find_rstudio_root_file("planning")
-slide_dir <- find_rstudio_root_file("static") %>% file.path("Slides")
+root_dir <- here::here()
+planning_dir <- here::here("planning")
+slide_dir <- here::here("static", "Slides")
 
 md_extensions <- "+tex_math_single_backslash+compact_definition_lists"
 
@@ -1128,9 +1129,57 @@ generate_assignments <- function() {
   invisible(list(lesson_plan = lesson_plan, semester = semester))
 }
 
+needs_rebuild <- function(current_digest, current_dest_digest,
+                          old_digest, old_dest_digest) {
+    ! current_digest == old_digest |
+    ! current_dest_digest == old_dest_digest %>% replace_na(TRUE)
+}
+
+digest_if_exists <- function(file) {
+  if (file.exists(file)) digest(file, file = TRUE, algo = "sha256")
+  else as.character(NA)
+}
+
+files_to_rebuild <- function(file) {
+  file <- unique(file) %>% keep(file.exists)
+  files <- tibble(file = file, dir = dirname(file), base = basename(file),
+                 dest = blogdown:::output_file(file)) %>%
+    mutate(cur_digest = map_chr(file, digest_if_exists),
+           cur_dest_digest = map_chr(dest, digest_if_exists))
+
+  digest_file <- here::here("digests.Rds")
+
+  if (file.exists(digest_file)) {
+    message("reading digest file")
+    digest <- read_rds(digest_file)
+    files <- files %>% left_join(digest, by = "file")
+  } else {
+    message("no digest file")
+    files <- files %>% mutate(digest = NA, dest_digest = NA)
+  }
+
+  files <- files %>%
+    mutate(rebuild = needs_rebuild(cur_digest, cur_dest_digest,
+                                   digest, dest_digest))
+
+  g_files <<- files
+
+  files %>% filter(rebuild) %$% file
+}
+
+update_rmd_digests <- function(files) {
+  digest_file <- here::here("digests.Rds")
+  files <- unique(files) %>% keep(file.exists)
+  digests <- tibble(file = files, dest = blogdown:::output_file(files)) %>%
+    mutate(digest = map_chr(file, ~digest(.x, file = TRUE, algo = "sha256")),
+           dest_digest = map_chr(dest, ~digest(.x, file = TRUE, algo = "sha256")))
+  write_rds(digests, digest_file)
+}
+
 update_site <- function(dir = here::here("content")) {
-  files <- files <- blogdown:::list_rmds(dir)
-  to_build <- files[mapply(blogdown:::require_rebuild, blogdown:::output_file(files), files)]
+  files <- blogdown:::list_rmds(dir)
+  to_build <- files_to_rebuild(files)
   message("Building ", length(to_build), " out of date files; site has ", length(files), " files in total.")
   blogdown:::build_rmds(to_build)
+  update_rmd_digests(files)
 }
