@@ -1153,8 +1153,8 @@ files_to_rebuild <- function(files) {
   if (file.exists(digest_file)) {
     message("reading digest file")
     digest <- read_rds(digest_file) %>%
-      mutate(file = str_replace_all(file, ("^\\."), base)) %>%
-#             dest = str_replace_all(dest, fixed("."), dest)) %>%
+      mutate(file = str_replace_all(file, ("^~"), base)) %>%
+#             dest = str_replace_all(dest, ("^~"), dest)) %>%
       select(-dest)
     df <- df %>% left_join(digest, by = "file")
   } else {
@@ -1178,8 +1178,8 @@ update_rmd_digests <- function(files) {
   digests <- tibble(file = files, dest = blogdown:::output_file(files)) %>%
     mutate(digest = map_chr(file, ~digest(.x, file = TRUE, algo = "sha256")),
            dest_digest = map_chr(dest, digest_if_exists),
-           file = str_replace_all(file, fixed(base), "."),
-           dest = str_replace_all(dest, fixed(base), "."))
+           file = str_replace_all(file, fixed(base), "~"),
+           dest = str_replace_all(dest, fixed(base), "~"))
   write_rds(digests, digest_file)
 }
 
