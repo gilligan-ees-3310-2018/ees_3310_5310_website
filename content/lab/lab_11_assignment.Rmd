@@ -17,12 +17,13 @@ This week, we will do something very different. We will role-play different kind
 
 Students will play different roles: some will act as government regulators at the Environmental Protection Agency and others will act as managers of different companies that must balance their desire to make money against the environmental damage from the pollution they emit.
 
-There is no report to complete for this lab, and you will receive credit for showing up and participating in the exercise.
+There is no report to complete for this lab, but there is a short homework assignment in preparation for the lab. The homework will be due when you come to lab on Monday. Full credit will be given for making a good effort on the preparation homework and for showing up and participating in the lab exercise.
 
 ## Reading
 
-No reading has been posted yet for this lab.
+**Before you come to lab**, please read the following document:
 
+* [Preparation for Lab on Regulating Greenhouse Gas Emissions](/lab_docs/lab_11_preparation)
 
 ## Assignment
 
