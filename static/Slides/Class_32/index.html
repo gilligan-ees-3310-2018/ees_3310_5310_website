@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<!-- JG Reveal.js Template -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Jonathan Gilligan" />
+  <title>Discounting and the Value of Time</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="stylesheet" href="../../lecture_lib/library/reveal.js-3.7.0/css/reveal.min.css"/>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      .smallcaps{font-variant: small-caps;}
+      .line-block{white-space: pre-line;}
+      .column{display: inline-block;}  </style>
+  <style type="text/css">
+    div.qrbox {
+     width:100vw;
+     position:fixed;
+     bottom:0%;
+     left:10px;
+     text-align:left;
+     vertical-align:bottom;
+    }
+  </style>
+<!-- theme = solarized_jg -->
+<link rel="stylesheet" href="../../lecture_lib/library/assets/css/theme/solarized_jg.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lecture_lib/library/reveal.js-3.7.0/css/print/pdf.css' : '../../lecture_lib/library/reveal.js-3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+            <!-- start title slide -->
+<section class='center' id='title' >
+    <h1 class="title">Discounting and the<br/>Value of Time</h1>
+    <h3 class="author">EES 3310/5310</h3>
+        <h3 class="author">Global Climate Change</h3>
+    <h3 class="author">Jonathan Gilligan</h3>
+    <h3 class="date">
+      Class #32:
+       Monday, Nov. 5
+      2018
+    </h3>
+        <div class="qrbox" id="qrbox">
+      <div style="font-size:30%;width:100%;">
+    <a href="https://ees3310.jgilligan.org/Slides/Class_32">
+  	<img src="qrcode.png" alt="https://ees3310.jgilligan.org/Slides/Class_32"/>
+  	</a>
+    	</div>
+    	<div style="font-size:30%;width:100%;vertical-align:top;">
+    	<span style="display:inline-block;text-align:left;margin-left:0">
+    	    	Live web page: <a href="https://ees3310.jgilligan.org/Slides/Class_32">https://ees3310.jgilligan.org/Slides/Class_32</a>
+    	<br/>
+    	PDF: <a href="https://ees3310.jgilligan.org/Slides/Class_32/EES_3310_5310_Class_32_Slides.pdf" target="_blank">https://ees3310.jgilligan.org/Slides/Class_32/EES_3310_5310_Class_32_Slides.pdf</a>
+    	
+    	    	</span>
+    	<span style="display:inline-block;text-align:right;vertical-align:top;position:relative;left:10rem;">
+    	  Navigate slides: next: N or &lt;space&gt;; previous: P or &lt;backspace&gt;<br/>
+    	  Also: up, down, left, right arrows; overview: o; help: ?
+    	</span>
+  	</div>
+  	</div>
+    	<!-- end title slide -->
+</section>
+
+<section><section id="announcements" class="title-slide slide level1 center"><h1>Announcements</h1></section><section id="announcement-lab" class="slide level2 center eighty">
+<h2>Announcement</h2>
+<ul>
+<li><strong>Lab:</strong> beginning next week you will work with a partner on a project to study decarbonization in detail.
+<ul>
+<li>Choose a country</li>
+<li>Study its energy supply, and trends in Kaya variables</li>
+<li>Find out its pledge in the Paris agreement (<a href="http://spappssecext.worldbank.org/sites/indc/Pages/INDCHome.aspx" class="uri">http://spappssecext.worldbank.org/sites/indc/Pages/INDCHome.aspx</a>)
+<ul>
+<li>What year?</li>
+<li>What emissions reduction?</li>
+</ul></li>
+<li>Decide how much farther you think it could go by 2050</li>
+<li>Make a plan for how the country should achieve:
+<ol type="1">
+<li>Its Nationally Determined Contribution for the Paris Agreement</li>
+<li>Your goal for 2050.</li>
+</ol></li>
+<li>Presentation in lab on Mon. December 3rd</li>
+<li>Written report due on Wed. December 5th</li>
+</ul></li>
+</ul>
+</section><section id="announcemen-final-exam" class="slide level2 center eighty">
+<h2>Announcement</h2>
+<ul>
+<li>Take-home, open book, open notes</li>
+<li>Two essay questions
+<ul>
+<li>Connecting science and policy</li>
+<li>Make connections among big ideas we’ve studied</li>
+<li>Suggested length: around 2–3 pages double-spaced for each question</li>
+</ul></li>
+<li>I will post the exam on Wed. Dec. 5</li>
+<li>Due Thurs. Dec. 13 (by email)</li>
+</ul>
+</section></section>
+<section><section id="Introduction" class="title-slide slide level1 center eighty"><h1>Should we spend more today<br/>to offset damages in the future?</h1></section><section id="net-present-value-1" class="slide level2 eighty" data-transition="fade-out">
+<h2>Should we pay $100 for a bond today<br/>that will pay $1000 in 50 years?</h2>
+<div class="leftslide">
+<ul>
+<li>What would you expect to earn if you invested $100 today in something else?</li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>Compounding interest:</p>
+<span class="math display">\[
+  V_{\text{future}} = V_{\text{present}} \times (1 + r)^n,
+  \]</span> where:
+<ul>
+<li><em>V</em> is value</li>
+<li><em>r</em> is interest rate (4% → <em>r</em> = 0.04)</li>
+<li><em>n</em> is number of years</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Alternate formula: <span class="math display">\[
+  V_{\text{future}} = V_{\text{present}} \times \exp(r \times n)
+  \]</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Rule of 72:
+<ul>
+<li>The number of years to double your investment is roughly<br/> 72 / (percent interest rate)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</section><section id="net-present-value-2" class="slide level2 eighty" data-transition="fade-out">
+<h2>Should we pay $100 for a bond today<br/>that will pay $1000 in 50 years?</h2>
+<div class="leftslide">
+<ul>
+<li>What would you expect to earn if you invested $100 today in something else?</li>
+<li>Assume real interest rate is 4%
+<ul>
+<li><p>Compounding interest:</p>
+<p><span class="math display">\[
+  V_{\text{future}} = V_{\text{present}} \times (1 + r)^n,
+  \]</span></p></li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{align}
+V_{\text{present}} &amp;= \$100\\
+V_{\text{future}} &amp;= V_{\text{present}} \times (1 + r)^n\\
+&amp;= \$100 \times 1.04^{50}\\
+&amp;= \$711.
+\end{align}
+\]</span></p>
+</div>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(\color{darkgreen}{\$1000 &gt; \$711}\)</span>, so it’s a good deal.</li>
+</ul>
+</div>
+</div>
+</section><section id="net-present-value-3" class="slide level2 eighty" data-transition="fade-out">
+<h2>Should we pay $100 for a bond today<br/>that will pay $1000 in 50 years?</h2>
+<ul>
+<li>Formula for net present value (NPV) is the inverse of the interest formula:</li>
+</ul>
+<p><span class="math display">\[
+\begin{align}
+V_{\text{future}} &amp;= V_{\text{present}} \times (1 + r)^n\\
+V_{\text{present}} &amp;= \frac{V_{\text{future}}}{(1 + r)^n}
+\end{align}
+\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[
+\begin{align}
+V_{\text{future}} &amp;= \$1000\\
+V_{\text{present}} &amp;= \frac{\$1000}{1.04^{50}}\\
+&amp;= \frac{\$1000}{7.11}\\
+&amp;= \color{darkgreen}{\$141 &gt; \$100}.
+\end{align}
+\]</span></p>
+</div>
+</section><section id="different-discount-rates" class="slide level2">
+<h2>Different Discount Rates</h2>
+<ul>
+<li><p>Higher rate (10%)</p>
+<p><span class="math display">\[
+  V_{\text{present}} = \frac{V_{\text{future}}}{(1 + {\color{red}{r}})^n} = \frac{1000}{1.{\color{red}{10}}^{50}} = \color{red}{\$9 &lt; \$100}
+  \]</span></p></li>
+<li><p>Lower rate (1%)</p>
+<p><span class="math display">\[
+  V_{\text{present}} = \frac{V_{\text{future}}}{(1 + {\color{darkgreen}{r}})^n} = \frac{1000}{1.{\color{darkgreen}{01}}^{50}} = \color{darkgreen}{\$608 &gt; \$100}
+  \]</span></p></li>
+</ul>
+</section></section>
+<section><section id="future-generations" class="title-slide slide level1 center"><h1>Future Generations</h1></section><section id="today-vs-future" class="slide level2">
+<h2>Should we spend money today to offset damages in the future?</h2>
+<div class="fragment" style="margin-top:25px;margin-bottpm:25px;">
+<h3 id="how-much-is-it-worth-to-us-today-to-avoid-climate-disruption-in-100-years">How much is it worth to us <strong>today</strong> to avoid climate disruption <strong>in 100 years</strong>?</h3>
+</div>
+<p><img data-src="assets/images/present_cost_future_benefit.jpg" style="width:1400px;" /></p>
+</section><section class="slide level2">
+
+<ul>
+<li class="fragment">How much is the welfare of your children worth, relative to your own welfare?</li>
+<li class="fragment">Your grandchildren?</li>
+<li class="fragment">Your great-grandchildren?</li>
+<li class="fragment">Your great-great grandchildren?</li>
+<li class="fragment">Your great<sup>3</sup> grandchildren?</li>
+<li class="fragment">At what great<sup>n</sup> do we stop?</li>
+</ul>
+</section><section id="assume-each-future-generation-is-worth-half-of-the-previous-generation" class="slide level2">
+<h2>Assume each future generation is worth half of the previous generation</h2>
+<div style="margin-top:50px;">
+<p><span class="math display">\[ 1 + \frac{1}{2} + \frac{1}{2^2} + \frac{1}{2^3} + \cdots = 2 \]</span></p>
+</div>
+<div class="fragment" style="vertical-align:middle;text-align:center;margin-top:50px;font-size:200%;">
+<p><img data-src="assets/images/bieber_head.jpg" alt="Justin Bieber" style="height:400px;vertical-align:middle;" /> = <img data-src="assets/images/nuclear-bomb.jpg" alt="Armageddon" style="height:400px;vertical-align:middle" /></p>
+</div>
+</section><section id="assume-each-generation-is-equal" class="slide level2">
+<h2>Assume each generation is equal</h2>
+<div style="margin-top:300px;">
+<p><span class="math display">\[ 1 + 1 + 1 + 1 + \cdots = {\Huge \infty} \]</span></p>
+</div>
+</section><section id="valuing-the-present-high-discount-rate" class="slide level2">
+<h2>Valuing the present (high discount rate)</h2>
+<div style="margin-top:100px;">
+<ul>
+<li class="fragment">We’re poor relative to the future!</li>
+<li class="fragment">Don’t take from the poor (that’s us) to give to the rich (future generations)</li>
+<li class="fragment">But if we apply this to <strong>spatial</strong> inequalities that exist <strong>now</strong> … justifies massive wasteful transfers from rich to poor</li>
+</ul>
+</div>
+</section></section>
+<section><section id="rates-matter" class="title-slide slide level1 center"><h1>Rates Matter!</h1></section><section id="stern-nordhaus-1" class="slide level2" data-transition="fade-out">
+<h2>Stern vs. Nordhaus</h2>
+<p><img data-src="assets/images/stern_v_nordhaus_1.jpg" alt="Stern vs. Nordhaus" style="width:1400px;margin-top:162px;border:none;box-shadow:none" /></p>
+</section><section id="stern-nordhaus-2" class="slide level2" data-transition="fade-in">
+<h2>Stern vs. Nordhaus</h2>
+<p><img data-src="assets/images/stern_v_nordhaus_2.jpg" alt="Stern vs. Nordhaus" style="width:1400px;margin-top:50px;border:none;box-shadow:none" /></p>
+</section><section id="consumption-elasticity-eta" class="slide level2">
+<h2>Consumption elasticity <span class="math inline">\(\eta\)</span></h2>
+<div class="columns">
+<div class="column" style="width:60%;font-size:80%;">
+<ul>
+<li class="fragment">Proportional rate at which marginal utility of consumption is reduced as consumption increases <span class="fragment">(<em><strong>What</strong>?</em>)</span></li>
+<li class="fragment">Giving $100 to someone in poverty adds more to total well-being than giving $100 to Donald Trump</li>
+<li class="fragment">High <span class="math inline">\(\eta\)</span>: Value current consumption, strong benefots for redistribution from rich to poor</li>
+<li class="fragment">Low <span class="math inline">\(\eta\)</span>: Value future consumption, weak benefits for redistribution from rich to poor</li>
+</ul>
+</div><div class="column fragment" style="width:39%;vertical-align:top;">
+<p><img data-src="assets/fig/utility-1.png" /></p>
+<ul>
+<li><span style="color:#6495ED;">Stern:</span> <span class="math inline">\(\eta = 1\)</span></li>
+<li><span style="color:#EE2C2C;">Nordhaus:</span> <span class="math inline">\(\eta = 2\)</span></li>
+</ul>
+</div>
+</div>
+</section><section id="time-discount-rate-rho" class="slide level2">
+<h2>Time discount rate <span class="math inline">\(\rho\)</span></h2>
+<div style="text-align:left;">
+<ul>
+<li class="fragment">How do we value future welfare, relative to our own?</li>
+<li class="fragment"><span class="math inline">\(\rho = 0\)</span>: All generations equal</li>
+<li class="fragment"><span class="math inline">\(\rho &gt; 0\)</span>: Future generations count less than our own</li>
+<li class="fragment"><span class="math inline">\(\rho &lt; 0\)</span>: Future generations count more than our own</li>
+</ul>
+<div class="fragment" style="margin-top:50px;">
+<ul>
+<li><span style="color:#6495ED;">Stern:</span> <span class="math inline">\(\rho = 0.1\%\)</span></li>
+<li><span style="color:#EE2C2C;">Nordhaus:</span> <span class="math inline">\(\rho = 1.5\%\)</span></li>
+</ul>
+</div>
+</div>
+</section><section id="per-capita-consumption-growth-rate-g" class="slide level2">
+<h2>Per-capita consumption growth rate, <span class="math inline">\(g\)</span></h2>
+<div class="columns">
+<div class="column" style="width:49%;vertical-align:middle">
+<ul>
+<li><span style="color:#6495ED;">Stern:</span> <span class="math inline">\(g = 1.3\%\)</span></li>
+<li><span style="color:#EE2C2C;">Nordhaus:</span> <span class="math inline">\(g = 1.3\%\)</span></li>
+</ul>
+</div><div class="column" style="width:49%;vertical-align:middle">
+<p><img data-src="assets/fig/yoghurt-1.png" /></p>
+</div>
+</div>
+</section><section id="real-return-on-capital-r" class="slide level2">
+<h2>Real return on capital <span class="math inline">\(r\)</span></h2>
+<ul>
+<li>Potential of capital to create value</li>
+<li>High <span class="math inline">\(r\)</span> → Wait and reduce emissions in the <strong>future</strong> (capital yield is higher in future)</li>
+<li>Low <span class="math inline">\(r\)</span> → Reduce emissions in the <strong>present</strong> (future damages likely to exceed future output)</li>
+</ul>
+</section><section id="stern-nordhaus-3" class="slide level2" data-transition="fade-in" data-background="assets/images/stern_v_nordhaus_2.jpg" data-background-size="1400px" data-background-position="center">
+<h2>Stern vs. Nordhaus</h2>
+<div class="columns fragment" style="margin-top:600px;margin-left:0px;margin-right:0px;padding:0px;">
+<div class="column" style="width:35%;text-align:center;vertical-align:bottom;">
+<p><span class="math display">\[r = 0.1 + 1 \times 1.3\]</span> <span class="math display">\[ r = 1.4 \]</span></p>
+</div><div class="column" style="width:28%;">
+
+</div><div class="column" style="width:35%;text-align:center;vertical-align:bottom;">
+<p><span class="math display">\[r = 1.5 + 2 \times 1.3\]</span></p>
+<p><span class="math display">\[r = 4.1\]</span></p>
+</div>
+</div>
+</section></section>
+<section><section id="discount-rates-and-decarbonization" class="title-slide slide level1 center"><h1>Discount Rates and Decarbonization</h1></section><section id="discount-rates-and-decarbonization-1" class="slide level2 eighty">
+<h2>Discount Rates and Decarbonization</h2>
+<ul>
+<li class="fragment"><p>Investing $10 million in wind today produces<br/>$100 million in real value 50 years from now</p>
+<ul>
+<li class="fragment"><p>Rate of 1%: <span class="math inline">\(V_{\text{present}} = \frac{\$100 \text{M}}{1.01^{50}} = \$61 \text{M} &gt; \$10 \text{M}\)</span> <img data-src="assets/images/thumb_up.jpg" alt="thumbs up" style="height:50px;vertical-align:middle;border:none;" /></p></li>
+<li class="fragment"><p>Rate of 4%: <span class="math inline">\(V_{\text{present}} = \frac{\$100 \text{M}}{1.04^{50}} = \$14 \text{M} &gt; \$10 \text{M}\)</span> <img data-src="assets/images/thumb_up.jpg" alt="thumbs up" style="height:50px;vertical-align:middle;border:none;" /></p></li>
+<li class="fragment"><p>Rate of 7%: <span class="math inline">\(V_{\text{present}} = \frac{\$100 \text{M}}{1.07^{50}} = \$3 \text{M} &gt; \$10 \text{M}\)</span> <img data-src="assets/images/thumb_down.jpg" alt="thumbs down" style="height:100px;vertical-align:middle;border:none;" /></p></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="stern-vs.nordhaus-on-implications-of-discount-rate" class="title-slide slide level1"><h1>Stern vs. Nordhaus on Implications of Discount Rate</h1></section><section id="nordhaus" class="slide level2 eighty">
+<h2>Nordhaus</h2>
+<div class="columns">
+<div class="column" style="width:60%">
+<blockquote>
+<p>… we need to use a discount rate that reflects the actual market opportunities that societies face, not an abstract definition of equity taken out of the context of market realities.</p>
+</blockquote>
+</div><div class="column" style="width:39%;vertical-align:top;">
+<p><img data-src="assets/images/Nordhaus.jpg" alt="William Nordhaus" style="height:550px;vertical-align:top" /></p>
+</div>
+</div>
+</section><section id="stern" class="slide level2 eighty" data-transition="fade-out">
+<h2>Stern</h2>
+<div class="columns">
+<div class="column" style="width:39%;vertical-align:top;">
+<p><img data-src="assets/images/Stern.jpg" alt="Sir Nicholas Stern" style="height:550px;" /></p>
+</div><div class="column" style="width:60%">
+<blockquote>
+<p>… the benefits of strong early action far outweigh the economic costs of not acting.</p>
+</blockquote>
+<blockquote>
+<p>… even at moderate levels of warming, all the evidence … shows that climate change will have serious impacts on world output, on human life, and on the environment.</p>
+</blockquote>
+<p><span style="font-size:60%;color:darkgray;">Stern Review, pp. xv–xvi</span></p>
+</div>
+</div>
+</section><section id="stern-1" class="slide level2 eighty" data-transition="fade-in">
+<h2>Stern</h2>
+<div class="columns">
+<div class="column" style="width:39%;vertical-align:top;">
+<p><img data-src="assets/images/Stern.jpg" alt="Sir Nicholas Stern" style="height:550px;" /></p>
+</div><div class="column" style="width:60%">
+<blockquote>
+<p>… we should go beyond the narrow framework of social welfare functions to consider other ethical approaches, including those involving rights and sustainability.</p>
+</blockquote>
+<blockquote>
+<p>… disaggregated approach to consequences — looking at different dimensions, places, and times — and a broad ethical approach.</p>
+</blockquote>
+</div>
+</div>
+</section></section>
+    </div>
+  </div>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/head.min.js"></script>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1440,
+        height: 900,
+      
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+
+<script>
+var MathJax = { jax: ["input/TeX", "output/HTML-CSS"],
+                TeX: {extensions: ["color.js", "mhchem.js"],
+                Macros: {
+                  permil: "\\unicode{x2030}",
+                  pH: "p\\ce{H}",
+                  CaSi: "\\ce{CaSiO3}",
+                  silicate: "\\ce{SiO3^2-}",
+                  Caplus: "\\ce{Ca^2+}",
+                  calcite: "\\ce{CaCO3}",
+                  silica: "\\ce{SiO2}",
+                  OH: "\\ce{OH-}",
+                  Hplus: "\\ce{H+}",
+                  carbonic: "\\ce{H2CO3}",
+                  bicarb: "\\ce{HCO3-}",
+                  carb: "\\ce{CO3^2-}",
+                  water: "\\mathrm{H_2O}",
+                  degF: "^\\circ \\mathrm{F}",
+                  degC: "^\\circ \\mathrm{C}",
+                  methane: "\\ce{CH4}",
+                  COO: "\\ce{CO2}"
+                },
+                  },
+                "HTML-CSS" : {scale: 100 }};
+</script>
+
+
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["SVG"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+  </script>
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  <script>
+  var qrbox = document.querySelector("#qrbox");
+  var advance_fragment = 0;
+  Reveal.addEventListener('slidechanged', function() {
+    if (Reveal.isFirstSlide()) {
+      qrbox.style.visibility="visible";
+    } else {
+      qrbox.style.visibility="hidden";
+      while (advance_fragment > 0) {
+        console.log('advancing fragment');
+        Reveal.nextFragment();
+        advance_fragment--;
+      }
+    }
+  }, false);
+
+  Reveal.addEventListener('skip_slide', function() {
+    Reveal.next();
+  }, false);
+
+  Reveal.addEventListener('advance_fragment', function() {
+    console.log("setting advance fragment");
+    advance_fragment++;
+    }, false);
+  </script>
+  </body>
+</html>
