@@ -6,6 +6,7 @@ title: Tools
 
 ## Menu {#menu}
 
+* [Web-based tools](#web-tools)
 * [Installing tools](#installing)
     * [Installing {{% R_LOGO %}}](#installing-r)
     * [Installing {{% GIT_LOGO %}}](#installing-git)
@@ -16,6 +17,11 @@ title: Tools
     * [{{% R_LOGO %}} and {{% RSTUDIO_LOGO %}}](#r-resources)
     * [{{% GIT_LOGO %}} and GitHUB {{% GITHUB_LOGO %}}](#git-resources)
 
+
+## Web-Based Tools for Lab {#web-tools}
+
+* [Kaya Tool for Calculating Decarbonization](https://ees3310.jgilligan.org/decarbonization/)
+* [Worksheet for Emissions-Trading Lab](https://ees3310.jgilligan.org/emissions_trading/)
 
 ## Installing Tools {#installing}
 
