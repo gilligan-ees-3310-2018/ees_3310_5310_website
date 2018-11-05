@@ -1131,7 +1131,7 @@ generate_assignments <- function() {
 
 needs_rebuild <- function(current_digest, current_dest_digest,
                           old_digest, old_dest_digest) {
-    ! current_digest == old_digest |
+  ! current_digest == old_digest |
     ! current_dest_digest == old_dest_digest %>% replace_na(TRUE)
 }
 
@@ -1143,22 +1143,22 @@ digest_if_exists <- function(file) {
 files_to_rebuild <- function(files) {
   base <- here::here()
   files <- unique(files) %>% keep(file.exists)
-  df <- tibble(file = files, dir = dirname(files), base = basename(files),
-                 dest = blogdown:::output_file(files)) %>%
+  df <- tibble(file = files,
+               dest = blogdown:::output_file(files)) %>%
     mutate(cur_digest = map_chr(file, digest_if_exists),
            cur_dest_digest = map_chr(dest, digest_if_exists))
 
   digest_file <- here::here("digests.Rds")
 
   if (file.exists(digest_file)) {
-    message("reading digest file")
+    # message("reading digest file")
     digest <- read_rds(digest_file) %>%
       mutate(file = str_replace_all(file, ("^~"), base)) %>%
-#             dest = str_replace_all(dest, ("^~"), dest)) %>%
+      #             dest = str_replace_all(dest, ("^~"), dest)) %>%
       select(-dest)
     df <- df %>% left_join(digest, by = "file")
   } else {
-    message("no digest file")
+    # message("no digest file")
     df <- df %>% mutate(digest = NA, dest_digest = NA)
   }
 
@@ -1166,7 +1166,8 @@ files_to_rebuild <- function(files) {
     mutate(rebuild = needs_rebuild(cur_digest, cur_dest_digest,
                                    digest, dest_digest))
 
-  g_files <<- df
+  # For debugging
+  # g_files <<- df
 
   df %>% filter(rebuild) %$% file
 }
@@ -1183,14 +1184,16 @@ update_rmd_digests <- function(files) {
   write_rds(digests, digest_file)
 }
 
-update_site <- function(dir = here::here("content")) {
+update_site <- function(dir = here::here("content"), quiet = FALSE) {
   files <- blogdown:::list_rmds(dir)
   to_build <- files_to_rebuild(files)
+  if (! quiet) {
     message("Building ", length(to_build), " out of date ",
-    ifelse(length(to_build) == 1, "file", "files"),
-    "; site has ", length(files), " ",
-    ifelse(length(files) == 1, "file", "files"),
-    " in total.")
+            ifelse(length(to_build) == 1, "file", "files"),
+            "; site has ", length(files), " ",
+            ifelse(length(files) == 1, "file", "files"),
+            " in total.")
+  }
   blogdown:::build_rmds(to_build)
   update_rmd_digests(files)
 }
