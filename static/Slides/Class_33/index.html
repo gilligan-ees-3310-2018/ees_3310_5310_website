@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<!-- JG Reveal.js Template -->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Jonathan Gilligan" />
+  <title>The Limits of Economic Approaches</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <link rel="stylesheet" href="../../lecture_lib/library/reveal.js-3.7.0/css/reveal.min.css"/>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      .smallcaps{font-variant: small-caps;}
+      .line-block{white-space: pre-line;}
+      .column{display: inline-block;}  </style>
+  <style type="text/css">
+    div.qrbox {
+     width:100vw;
+     position:fixed;
+     bottom:0%;
+     left:10px;
+     text-align:left;
+     vertical-align:bottom;
+    }
+  </style>
+<!-- theme = solarized_jg -->
+<link rel="stylesheet" href="../../lecture_lib/library/assets/css/theme/solarized_jg.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? '../../lecture_lib/library/reveal.js-3.7.0/css/print/pdf.css' : '../../lecture_lib/library/reveal.js-3.7.0/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+            <!-- start title slide -->
+<section class='center' id='title' >
+    <h1 class="title">The Limits of<br/>Economic Approaches</h1>
+    <h3 class="author">EES 3310/5310</h3>
+        <h3 class="author">Global Climate Change</h3>
+    <h3 class="author">Jonathan Gilligan</h3>
+    <h3 class="date">
+      Class #33:
+       Wednesday, Nov. 7
+      2018
+    </h3>
+        <div class="qrbox" id="qrbox">
+      <div style="font-size:30%;width:100%;">
+    <a href="https://ees3310.jgilligan.org/Slides/Class_33">
+  	<img src="qrcode.png" alt="https://ees3310.jgilligan.org/Slides/Class_33"/>
+  	</a>
+    	</div>
+    	<div style="font-size:30%;width:100%;vertical-align:top;">
+    	<span style="display:inline-block;text-align:left;margin-left:0">
+    	    	Live web page: <a href="https://ees3310.jgilligan.org/Slides/Class_33">https://ees3310.jgilligan.org/Slides/Class_33</a>
+    	<br/>
+    	PDF: <a href="https://ees3310.jgilligan.org/Slides/Class_33/EES_3310_5310_Class_33_Slides.pdf" target="_blank">https://ees3310.jgilligan.org/Slides/Class_33/EES_3310_5310_Class_33_Slides.pdf</a>
+    	
+    	    	</span>
+    	<span style="display:inline-block;text-align:right;vertical-align:top;position:relative;left:10rem;">
+    	  Navigate slides: next: N or &lt;space&gt;; previous: P or &lt;backspace&gt;<br/>
+    	  Also: up, down, left, right arrows; overview: o; help: ?
+    	</span>
+  	</div>
+  	</div>
+    	<!-- end title slide -->
+</section>
+
+<section><section id="reviewing-emissions-trading-game" class="title-slide slide level1 center"><h1>Reviewing Emissions Trading Game</h1></section><section id="game_review" class="slide level2 eighty">
+<h2>Review of Game</h2>
+<ul>
+<li>
+Command and Control:
+<ul>
+<li>
+Each company emits the same amount
+<ul style="color:#8080FF;">
+<li class="fragment fade-in" data-fragment-index="3">
+A: 20 total, 10 each
+</li>
+<li class="fragment fade-in" data-fragment-index="3">
+B: 16 total, 8 each
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="fragment fade-in" data-fragment-index="1">
+Cap-and-trade:
+<ul>
+<li>
+Give each company equal permits.
+</li>
+<li>
+Let them trade
+<ul style="color:#8080FF;">
+<li class="fragment fade-in" data-fragment-index="4">
+A: 10 permits each, Beta buys -2 for $29
+</li>
+<li class="fragment fade-in" data-fragment-index="4">
+B: 8 permits each, Beta buys -1 for $31
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="fragment fade-in" data-fragment-index="2">
+Carbon Tax:
+<ul>
+<li>
+Put a price on CO<sub>2</sub> emissions
+</li>
+<li>
+Each company can emit as much as it wants to
+</li>
+<li>
+But it must pay the tax on every ton.
+<ul style="color:#8080FF;">
+<li class="fragment fade-in" data-fragment-index="5">
+A: $40/ton
+</li>
+<li class="fragment fade-in" data-fragment-index="5">
+B: $44/ton
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section></section>
+<section><section id="default" class="title-slide slide level1 eighty" data-transition="fade-out" data-state="skip_slide"><h1>Default</h1></section><section id="default-1" class="slide level2 eighty" data-data_transition="fade-in">
+<h2>Default</h2>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:40:55 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+15
+</td>
+<td align="right">
+$630
+</td>
+<td align="right">
+</td>
+<td align="right">
+$630
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+15
+</td>
+<td align="right">
+$420
+</td>
+<td align="right">
+</td>
+<td align="right">
+$420
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$930
+</td>
+<td align="right">
+−$930
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+30
+</td>
+<td align="right">
+$1050
+</td>
+<td align="right">
+−$930
+</td>
+<td align="right">
+$120
+</td>
+</tr>
+</table>
+<p class="fragment fade-in" style="color:#8080FF;">
+<b>Deadweight loss = $456</b>
+</p>
+<h3 id="optimal">Optimal</h3>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:40:55 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+9
+</td>
+<td align="right">
+$540
+</td>
+<td align="right">
+</td>
+<td align="right">
+$540
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+7
+</td>
+<td align="right">
+$308
+</td>
+<td align="right">
+</td>
+<td align="right">
+$308
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+−$272
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+16
+</td>
+<td align="right">
+$848
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+$576
+</td>
+</tr>
+</table>
+</section><section id="command-control-a" class="slide level2 eighty">
+<h2>Command &amp; Control (A)</h2>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:40:55 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+10
+</td>
+<td align="right">
+$570
+</td>
+<td align="right">
+</td>
+<td align="right">
+$570
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+10
+</td>
+<td align="right">
+$380
+</td>
+<td align="right">
+</td>
+<td align="right">
+$380
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$420
+</td>
+<td align="right">
+−$420
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+20
+</td>
+<td align="right">
+$950
+</td>
+<td align="right">
+−$420
+</td>
+<td align="right">
+$530
+</td>
+</tr>
+</table>
+<p class="fragment fade-in" style="color:#8080FF;">
+<b>Deadweight loss = $46</b>
+</p>
+<h3 id="optimal-1">Optimal</h3>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:20:25 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+9
+</td>
+<td align="right">
+$540
+</td>
+<td align="right">
+</td>
+<td align="right">
+$540
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+7
+</td>
+<td align="right">
+$308
+</td>
+<td align="right">
+</td>
+<td align="right">
+$308
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+−$272
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+16
+</td>
+<td align="right">
+$848
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+$576
+</td>
+</tr>
+</table>
+</section><section id="cap-trade-a" class="slide level2 eighty">
+<h2>Cap &amp; Trade (A)</h2>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:40:55 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Permits
+</th>
+<th>
+Bought
+</th>
+<th>
+Sold
+</th>
+<th>
+Emissions
+</th>
+<th>
+Price
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+10
+</td>
+<td align="right">
+2
+</td>
+<td align="right">
+</td>
+<td align="right">
+12
+</td>
+<td align="right">
+−$29
+</td>
+<td align="right">
+$612
+</td>
+<td align="right">
+</td>
+<td align="right">
+$583
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+10
+</td>
+<td align="right">
+</td>
+<td align="right">
+2
+</td>
+<td align="right">
+8
+</td>
+<td align="right">
+$29
+</td>
+<td align="right">
+$336
+</td>
+<td align="right">
+</td>
+<td align="right">
+$365
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$420
+</td>
+<td align="right">
+−$420
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+20
+</td>
+<td align="right">
+2
+</td>
+<td align="right">
+2
+</td>
+<td align="right">
+20
+</td>
+<td align="right">
+</td>
+<td align="right">
+$948
+</td>
+<td align="right">
+−$420
+</td>
+<td align="right">
+$528
+</td>
+</tr>
+</table>
+<p class="fragment fade-in" style="color:#8080FF;">
+<b>Deadweight loss = $48</b>
+</p>
+<h3 id="optimal-2">Optimal</h3>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:20:26 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+9
+</td>
+<td align="right">
+$540
+</td>
+<td align="right">
+</td>
+<td align="right">
+$540
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+7
+</td>
+<td align="right">
+$308
+</td>
+<td align="right">
+</td>
+<td align="right">
+$308
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+−$272
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+16
+</td>
+<td align="right">
+$848
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+$576
+</td>
+</tr>
+</table>
+</section><section id="carbon-tax-a-40ton" class="slide level2 eighty">
+<h2>Carbon Tax (A): $40/ton</h2>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:40:55 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Tax
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+<th>
+Rebate
+</th>
+<th>
+Net with Rebate
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+8
+</td>
+<td align="right">
+−$320
+</td>
+<td align="right">
+$504
+</td>
+<td align="right">
+</td>
+<td align="right">
+$184
+</td>
+<td align="right">
++$260
+</td>
+<td align="right">
+$444
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+5
+</td>
+<td align="right">
+−$200
+</td>
+<td align="right">
+$240
+</td>
+<td align="right">
+</td>
+<td align="right">
+$40
+</td>
+<td align="right">
++$260
+</td>
+<td align="right">
+$300
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
++$520
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$182
+</td>
+<td align="right">
+$338
+</td>
+<td align="right">
+−$520
+</td>
+<td align="right">
+−$182
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+13
+</td>
+<td align="right">
+</td>
+<td align="right">
+$744
+</td>
+<td align="right">
+−$182
+</td>
+<td align="right">
+$562
+</td>
+<td align="right">
+</td>
+<td align="right">
+$562
+</td>
+</tr>
+</table>
+<p class="fragment fade-in" style="color:#8080FF;">
+<b>Deadweight loss = $14</b>
+</p>
+<h3 id="optimal-3">Optimal</h3>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:20:26 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+9
+</td>
+<td align="right">
+$540
+</td>
+<td align="right">
+</td>
+<td align="right">
+$540
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+7
+</td>
+<td align="right">
+$308
+</td>
+<td align="right">
+</td>
+<td align="right">
+$308
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+−$272
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+16
+</td>
+<td align="right">
+$848
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+$576
+</td>
+</tr>
+</table>
+</section></section>
+<section><section id="command-control-b" class="title-slide slide level1 eighty" data-transition="fade-out" data-state="skip_slide"><h1>Command &amp; Control (B)</h1></section><section id="command-control-b-1" class="slide level2 eighty" data-data_transition="fade-in">
+<h2>Command &amp; Control (B)</h2>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:40:55 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+8
+</td>
+<td align="right">
+$504
+</td>
+<td align="right">
+</td>
+<td align="right">
+$504
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+8
+</td>
+<td align="right">
+$336
+</td>
+<td align="right">
+</td>
+<td align="right">
+$336
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+−$272
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+16
+</td>
+<td align="right">
+$840
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+$568
+</td>
+</tr>
+</table>
+<p class="fragment fade-in" style="color:#8080FF;">
+<b>Deadweight loss = $8</b>
+</p>
+<h3 id="optimal-4">Optimal</h3>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:20:26 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+9
+</td>
+<td align="right">
+$540
+</td>
+<td align="right">
+</td>
+<td align="right">
+$540
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+7
+</td>
+<td align="right">
+$308
+</td>
+<td align="right">
+</td>
+<td align="right">
+$308
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+−$272
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+16
+</td>
+<td align="right">
+$848
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+$576
+</td>
+</tr>
+</table>
+</section><section id="cap-trade-b" class="slide level2 eighty">
+<h2>Cap &amp; Trade (B)</h2>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:40:55 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Permits
+</th>
+<th>
+Bought
+</th>
+<th>
+Sold
+</th>
+<th>
+Emissions
+</th>
+<th>
+Price
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+8
+</td>
+<td align="right">
+1
+</td>
+<td align="right">
+</td>
+<td align="right">
+9
+</td>
+<td align="right">
+−$31
+</td>
+<td align="right">
+$540
+</td>
+<td align="right">
+</td>
+<td align="right">
+$509
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+8
+</td>
+<td align="right">
+</td>
+<td align="right">
+1
+</td>
+<td align="right">
+7
+</td>
+<td align="right">
+$31
+</td>
+<td align="right">
+$308
+</td>
+<td align="right">
+</td>
+<td align="right">
+$339
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+−$272
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+16
+</td>
+<td align="right">
+1
+</td>
+<td align="right">
+1
+</td>
+<td align="right">
+16
+</td>
+<td align="right">
+</td>
+<td align="right">
+$848
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+$576
+</td>
+</tr>
+</table>
+<p class="fragment fade-in" style="color:#8080FF;">
+<b>Deadweight loss = $0</b>
+</p>
+<h3 id="optimal-5">Optimal</h3>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:20:26 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+9
+</td>
+<td align="right">
+$540
+</td>
+<td align="right">
+</td>
+<td align="right">
+$540
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+7
+</td>
+<td align="right">
+$308
+</td>
+<td align="right">
+</td>
+<td align="right">
+$308
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+−$272
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+16
+</td>
+<td align="right">
+$848
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+$576
+</td>
+</tr>
+</table>
+</section><section id="carbon-tax-b-44ton" class="slide level2 eighty">
+<h2>Carbon Tax (B): $44/ton</h2>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:40:56 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Tax
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+<th>
+Rebate
+</th>
+<th>
+Net with Rebate
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+8
+</td>
+<td align="right">
+−$320
+</td>
+<td align="right">
+$504
+</td>
+<td align="right">
+</td>
+<td align="right">
+$184
+</td>
+<td align="right">
++$260
+</td>
+<td align="right">
+$444
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+5
+</td>
+<td align="right">
+−$200
+</td>
+<td align="right">
+$240
+</td>
+<td align="right">
+</td>
+<td align="right">
+$40
+</td>
+<td align="right">
++$260
+</td>
+<td align="right">
+$300
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
++$520
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$182
+</td>
+<td align="right">
+$338
+</td>
+<td align="right">
+−$520
+</td>
+<td align="right">
+−$182
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+13
+</td>
+<td align="right">
+</td>
+<td align="right">
+$744
+</td>
+<td align="right">
+−$182
+</td>
+<td align="right">
+$562
+</td>
+<td align="right">
+</td>
+<td align="right">
+$562
+</td>
+</tr>
+</table>
+<p class="fragment fade-in" style="color:#8080FF;">
+<b>Deadweight loss = $46</b>
+</p>
+<h3 id="optimal-6">Optimal</h3>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:20:26 2018 -->
+<table border="1">
+<tr>
+<th>
+Actor
+</th>
+<th>
+Emissions
+</th>
+<th>
+Profit
+</th>
+<th>
+Cost
+</th>
+<th>
+Net
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha
+</td>
+<td align="center">
+9
+</td>
+<td align="right">
+$540
+</td>
+<td align="right">
+</td>
+<td align="right">
+$540
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta
+</td>
+<td align="center">
+7
+</td>
+<td align="right">
+$308
+</td>
+<td align="right">
+</td>
+<td align="right">
+$308
+</td>
+</tr>
+<tr>
+<td align="center">
+Society
+</td>
+<td align="center">
+</td>
+<td align="right">
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+−$272
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="center">
+16
+</td>
+<td align="right">
+$848
+</td>
+<td align="right">
+−$272
+</td>
+<td align="right">
+$576
+</td>
+</tr>
+</table>
+</section></section>
+<section><section id="summary-of-deadweight-losses" class="title-slide slide level1 eighty" data-transition="fade-out" data-state="skip_slide"><h1>Summary of Deadweight Losses</h1></section><section id="summary-of-deadweight-losses-1" class="slide level2 eighty" data-data_transition="fade-in">
+<h2>Summary of Deadweight Losses</h2>
+<p><br/></p>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:40:56 2018 -->
+<table border="1">
+<tr>
+<th>
+Group
+</th>
+<th>
+Default
+</th>
+<th>
+Command<br/>&amp; Control
+</th>
+<th>
+Cap &amp;<br/>Trade
+</th>
+<th>
+Tax
+</th>
+</tr>
+<tr>
+<td align="center">
+Group A
+</td>
+<td align="right">
+456
+</td>
+<td align="right">
+46
+</td>
+<td align="right">
+48
+</td>
+<td align="right">
+14
+</td>
+</tr>
+<tr>
+<td align="center">
+Group B
+</td>
+<td align="right">
+456
+</td>
+<td align="right">
+8
+</td>
+<td align="right">
+0
+</td>
+<td align="right">
+46
+</td>
+</tr>
+</table>
+</section><section id="summary-of-net-profitcost" class="slide level2 seventyfive">
+<h2>Summary of Net Profit/Cost</h2>
+<p><br/></p>
+<h3 id="group-a">Group A</h3>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:20:26 2018 -->
+<table border="1">
+<tr>
+<th>
+</th>
+<th>
+Default
+</th>
+<th>
+Cmd &amp; Ctrl
+</th>
+<th>
+Cap &amp; Trade
+</th>
+<th>
+Tax
+</th>
+<th>
+Tax &amp; Rebate
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha profit
+</td>
+<td align="right">
+630
+</td>
+<td align="right">
+570
+</td>
+<td align="right">
+583
+</td>
+<td align="right">
+184
+</td>
+<td align="right">
+444
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta profit
+</td>
+<td align="right">
+420
+</td>
+<td align="right">
+380
+</td>
+<td align="right">
+365
+</td>
+<td align="right">
+40
+</td>
+<td align="right">
+300
+</td>
+</tr>
+<tr>
+<td align="center">
+Social cost
+</td>
+<td align="right">
+-930
+</td>
+<td align="right">
+-420
+</td>
+<td align="right">
+-420
+</td>
+<td align="right">
+338
+</td>
+<td align="right">
+-182
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="right">
+120
+</td>
+<td align="right">
+530
+</td>
+<td align="right">
+528
+</td>
+<td align="right">
+562
+</td>
+<td align="right">
+562
+</td>
+</tr>
+</table>
+<p><br/></p>
+<h3 id="group-b">Group B</h3>
+<!-- html table generated in R 3.5.1 by xtable 1.8-3 package -->
+<!-- Wed Nov 07 00:20:27 2018 -->
+<table border="1">
+<tr>
+<th>
+</th>
+<th>
+Default
+</th>
+<th>
+Cmd &amp; Ctrl
+</th>
+<th>
+Cap &amp; Trade
+</th>
+<th>
+Tax
+</th>
+<th>
+Tax &amp; Rebate
+</th>
+</tr>
+<tr>
+<td align="center">
+Alpha profit
+</td>
+<td align="right">
+630
+</td>
+<td align="right">
+504
+</td>
+<td align="right">
+509
+</td>
+<td align="right">
+154
+</td>
+<td align="right">
+396
+</td>
+</tr>
+<tr>
+<td align="center">
+Beta profit
+</td>
+<td align="right">
+420
+</td>
+<td align="right">
+336
+</td>
+<td align="right">
+339
+</td>
+<td align="right">
+24
+</td>
+<td align="right">
+266
+</td>
+</tr>
+<tr>
+<td align="center">
+Social cost
+</td>
+<td align="right">
+-930
+</td>
+<td align="right">
+-272
+</td>
+<td align="right">
+-272
+</td>
+<td align="right">
+352
+</td>
+<td align="right">
+-132
+</td>
+</tr>
+<tr>
+<td align="center">
+Total
+</td>
+<td align="right">
+120
+</td>
+<td align="right">
+568
+</td>
+<td align="right">
+576
+</td>
+<td align="right">
+530
+</td>
+<td align="right">
+530
+</td>
+</tr>
+</table>
+</section></section>
+<section><section id="overview" class="title-slide slide level1 center"><h1>Overview</h1></section><section id="barkers-critique" class="slide level2 eighty">
+<h2>Barker’s Critique</h2>
+<ol type="1">
+<li><p>The global economy is a complex, nonlinear dynamic system undergoing technological change.</p></li>
+<li><p>Intergenerational responsibilities are an ethical problem.<br/> Traditional economics tacitly adopt an extreme form of utilitarianism.<br/> Other ethical perspectives should also be considered.</p></li>
+<li><p>Traditional economics assumes <em>continuity</em> and <em>path independence</em>. Both history and engineering point to <em>discontinuities</em> and <em>path dependence</em>.</p></li>
+<li><p>Traditional economics assumes a mathematical <em>social welfare function</em> that ignores the realities of the political process: negotiation, fragile and unstable alliances, the role of parties, etc.</p></li>
+</ol>
+</section><section id="path-dependence-economics-and-technology" class="slide level2 eighty">
+<h2>Path Dependence, Economics, and Technology</h2>
+<ul>
+<li class="fragment">Ideal: If you develop a better product for a lower price, it will dominate the market</li>
+<li class="fragment">Complications:
+<ul>
+<li class="fragment">Network effects:
+<ul>
+<li class="fragment">One cell phone is not much good. Need a network of people to call</li>
+<li class="fragment">Hydrogen vs. electric, vs. gasoline cars:
+<ul>
+<li class="fragment">Cars need filling/charging stations,</li>
+<li class="fragment">Filling/charging stations need cars.</li>
+</ul></li>
+<li class="fragment">Similarly, VCR/DVD/etc.: players need movies, movies need players</li>
+</ul></li>
+<li class="fragment">Familiarity: QWERTY keyboards → lock-in</li>
+</ul></li>
+<li class="fragment">Which technology is widely adopted depends on historical path</li>
+</ul>
+</section></section>
+<section><section id="adams-sec" class="title-slide slide level1 center"><h1>Adam’s Fallacy</h1></section><section id="jaeger-gdp-1" class="slide level2" data-transition="fade-out">
+<h2>What Does Economics Leave Out?</h2>
+<p><img data-src="assets/images/jaeger_fig_1a.jpg" alt="The GDP of many nations" style="height:700px;" /></p>
+</section><section id="jaeger-gdp-2" class="slide level2" data-transition="fade-in">
+<h2>What Does Economics Leave Out?</h2>
+<p><img data-src="assets/images/jaeger_fig_1b.jpg" alt="World War I and the GDP of many nations" style="height:700px;" /></p>
+</section><section id="jaeger-gdp-3" class="slide level2" data-transition="fade-in">
+<h2>What Does Economics Leave Out?</h2>
+<p><img data-src="assets/images/jaeger_fig_1c.jpg" alt="World War II and the GDP of many nations" style="height:700px;" /></p>
+</section><section id="section" class="slide level2">
+<h2></h2>
+<blockquote>
+<p>[Five meters of sea-level rise] is something that should rather be avoided. <br/>— R. Tol</p>
+</blockquote>
+<blockquote>
+<p>The reason we should “rather avoid” drowning the coastal cities of the world is not primarily that this would reduce global GDP, but that drowning those cities would be a dreadful act of barbarism <br/>— C. Jaeger <em>et al</em>.</p>
+</blockquote>
+</section><section id="what-is-the-value-of-non-market-goods" class="slide level2 center">
+<h2>What Is the Value of Non-Market Goods?</h2>
+</section></section>
+    </div>
+  </div>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/lib/js/head.min.js"></script>
+  <script src="../../lecture_lib/library/reveal.js-3.7.0/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1440,
+        height: 900,
+      
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/zoom-js/zoom.js', async: true },
+          { src: '../../lecture_lib/library/reveal.js-3.7.0/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+
+<script>
+var MathJax = { jax: ["input/TeX", "output/HTML-CSS"],
+                TeX: {extensions: ["color.js", "mhchem.js"],
+                Macros: {
+                  permil: "\\unicode{x2030}",
+                  pH: "p\\ce{H}",
+                  CaSi: "\\ce{CaSiO3}",
+                  silicate: "\\ce{SiO3^2-}",
+                  Caplus: "\\ce{Ca^2+}",
+                  calcite: "\\ce{CaCO3}",
+                  silica: "\\ce{SiO2}",
+                  OH: "\\ce{OH-}",
+                  Hplus: "\\ce{H+}",
+                  carbonic: "\\ce{H2CO3}",
+                  bicarb: "\\ce{HCO3-}",
+                  carb: "\\ce{CO3^2-}",
+                  water: "\\mathrm{H_2O}",
+                  degF: "^\\circ \\mathrm{F}",
+                  degC: "^\\circ \\mathrm{C}",
+                  methane: "\\ce{CH4}",
+                  COO: "\\ce{CO2}"
+                },
+                  },
+                "HTML-CSS" : {scale: 100 }};
+</script>
+
+
+
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Register.StartupHook("HTML-CSS Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["HTML-CSS"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+MathJax.Hub.Register.StartupHook("SVG Jax Ready",function () {
+    var VARIANT = MathJax.OutputJax["SVG"].FONTDATA.VARIANT;
+    VARIANT["normal"].fonts.unshift("MathJax_SansSerif");
+	  VARIANT["bold"].fonts.unshift("MathJax_SansSerif-bold");
+	  VARIANT["italic"].fonts.unshift("MathJax_SansSerif-italic");
+	  VARIANT["-tex-mathit"].fonts.unshift("MathJax_SansSerif-italic");
+	});
+  </script>
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+  <script>
+  var qrbox = document.querySelector("#qrbox");
+  var advance_fragment = 0;
+  Reveal.addEventListener('slidechanged', function() {
+    if (Reveal.isFirstSlide()) {
+      qrbox.style.visibility="visible";
+    } else {
+      qrbox.style.visibility="hidden";
+      while (advance_fragment > 0) {
+        console.log('advancing fragment');
+        Reveal.nextFragment();
+        advance_fragment--;
+      }
+    }
+  }, false);
+
+  Reveal.addEventListener('skip_slide', function() {
+    Reveal.next();
+  }, false);
+
+  Reveal.addEventListener('advance_fragment', function() {
+    console.log("setting advance fragment");
+    advance_fragment++;
+    }, false);
+  </script>
+  </body>
+</html>
