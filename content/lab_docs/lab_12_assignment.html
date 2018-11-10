@@ -1,0 +1,232 @@
+---
+title: 'Project: Decarbonization Policy for One Country'
+lab_number: 12
+lab_date: '2018-11-12'
+pubdate: '2018-07-31'
+date: '2018-11-12'
+bibliography: decarbonization.bib
+pdf_url: /files/lab_docs/decarb_project/country_decarbonization_assignment.pdf
+slug: lab_12_assignment
+output.blogdown::html_page:
+  md_extensions: +tex_math_single_backslash+compact_definition_lists
+  toc: yes
+---
+
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This assignment will be more free-form than the lab assignments we have done
+earlier in the semester.
+For this assignment, you will build on the work you did for the bottom-up and
+top-down decarbonization analysis and investigate how decarbonization might
+play out in one specific country.
+You can work on your own or in a team of two or three for this assignment.
+You will choose one country, decide what that country’s greenhouse gas
+emissions target should be for the year 2050, and then sketch out a plan for
+how that country could achieve its goal.</p>
+<p>You and your team will give a short (five minutes per person) presentation in
+the final lab on Monday, December 3 and turn in a written report (one report
+from the whole team is acceptable)
+before midnight on Wednesday December 5.
+The report is not meant to be an exhaustive research report. I expect a length
+of around 5 pages of doublespaced
+text (or equivalently, around 3 pages singlespaced)
+per team
+member, plus appropriate figures, tables, and references.</p>
+<p>Unlike previous assignments, you may use RMarkdown, Word, or any other
+word-processing mode that you wish when writing your report, but I would like
+to you produce PDF output (e.g., if you’re writing in Word, save a copy in PDF
+format).</p>
+</div>
+<div id="establishing-a-goal" class="section level1">
+<h1>Establishing a Goal</h1>
+<p>Briefly, look at what your country has pledged to do for emissions reduction
+for the 2015 Paris Agreements
+(<a href="http://spappssecext.worldbank.org/sites/indc/Pages/INDCHome.aspx" class="uri">http://spappssecext.worldbank.org/sites/indc/Pages/INDCHome.aspx</a> and the
+individual Country Briefs at
+<a href="http://spappssecext.worldbank.org/sites/indc/Pages/Content_Brief.aspx" class="uri">http://spappssecext.worldbank.org/sites/indc/Pages/Content_Brief.aspx</a>).
+Consider what the country is planning to do by 2030 or whichever alternative
+target year it specifies in its Nationally Determined Contribution and
+then consider how much more the country might reasonably plan to do by
+2050 to make a fair contribution to reducing global greenhouse gas emissions
+while also taking into account the need for less-developed nations to
+grow their economies in order to lift people out of poverty.</p>
+<p>For simplicity, I recommend that you focus on carbon dioxide emissions from
+burning fossil fuels rather than on all different kinds of greenhouse gases.</p>
+<p>There is no right answer, and it would be possible to write a 50-page
+paper just on this part, but that is not what I want you to do.
+Rather, just present a simple overview of the issues your country faces and how
+you would choose a goal.</p>
+<p>For instance, you could look back to 1965 (when the data on energy and emissions
+in the <code>kayadata</code> package begins) and add up the total emissions from your
+country and compare it to the total emissions of the world during that period
+and then consider how your country’s fraction of total emissions compare to your
+country’s fraction of the total world population or the total world Gross
+Domestic Product (GDP).</p>
+<p>You may want to refer to the table below, which lists emissions reductions from
+2005–2050 for different parts of the world that would meet a global 36%
+emissions target in 2050. This table comes from the IPCC’s representative
+concentration pathway (RCP) database and is based on the pathway called
+“RCP 2.6,”&quot; which gives about a two-thirds probability of keeping global warming
+below 2° C.
+However, this table was produced from an economic model and does not take
+account of political and ethical considerations, such as fairness, so you are
+not obliged to choose the same goal that this table lists for your country or
+its region.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Region</th>
+<th align="right">Year</th>
+<th align="right">Reduction from 2005</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">Australia/New Zealand</td>
+<td align="right">2050</td>
+<td align="right">82%</td>
+</tr>
+<tr class="even">
+<td align="center">Canada</td>
+<td align="right">2050</td>
+<td align="right">72%</td>
+</tr>
+<tr class="odd">
+<td align="center">China</td>
+<td align="right">2050</td>
+<td align="right">78%</td>
+</tr>
+<tr class="even">
+<td align="center">India</td>
+<td align="right">2050</td>
+<td align="right">73%</td>
+</tr>
+<tr class="odd">
+<td align="center">Japan</td>
+<td align="right">2050</td>
+<td align="right">66%</td>
+</tr>
+<tr class="even">
+<td align="center">South Korea</td>
+<td align="right">2050</td>
+<td align="right">67%</td>
+</tr>
+<tr class="odd">
+<td align="center">United States</td>
+<td align="right">2050</td>
+<td align="right">73%</td>
+</tr>
+<tr class="even">
+<td align="center">Africa</td>
+<td align="right">2050</td>
+<td align="right">28%</td>
+</tr>
+<tr class="odd">
+<td align="center">Latin America</td>
+<td align="right">2050</td>
+<td align="right">40%</td>
+</tr>
+<tr class="even">
+<td align="center">Middle East</td>
+<td align="right">2050</td>
+<td align="right">32%</td>
+</tr>
+<tr class="odd">
+<td align="center">Southeast Asia</td>
+<td align="right">2050</td>
+<td align="right">-17%</td>
+</tr>
+<tr class="even">
+<td align="center">Western Europe</td>
+<td align="right">2050</td>
+<td align="right">74%</td>
+</tr>
+<tr class="odd">
+<td align="center">World</td>
+<td align="right">2050</td>
+<td align="right">36%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="realizing-the-goal" class="section level1">
+<h1>Realizing the Goal</h1>
+<p>Once you have chosen a goal, you should apply the same kinds of methods that we
+used in the bottom-up and top-down decarbonization analyses to estimate what
+your conuntry’s population and per-capita GDP may be in 2030 and 2050, and what
+the implications are for energy efficiency and the mixture of fuels that should
+supply its energy needs. This is a place to research the country’s natural
+resources, current energy supply, and opportunities to decarbonize.</p>
+<p>For instance, if your country is mountainous with many rivers, you may want to
+expand hydroelectricity.
+On the other hand, if it is relatively flat, has few rivers, or if all the
+major rivers already have dams and generators, then you may want to look at
+other sources of energy.
+If your country receives a lot of sunshine, you may want to emphasize solar
+energy.
+Don’t forget to think about nuclear energy as well as renewables like
+hydroelectricity, wind, and solar.</p>
+<p>I am not asking you to give a thorough engineering and economic assessment of
+the energy transition, but to give a brief overview of the major opportunities
+and obstacles to clean energy in your country and what you think would be the
+best strategy for reducing emissions.</p>
+</div>
+<div id="format" class="section level1">
+<h1>Format</h1>
+<p>This is a lab report, not a formal research paper, so you do not need to
+structure it as a formal paper.
+My grading rubric for the written report will be:</p>
+<ul>
+<li>Thoughtful and sensible analysis of goals [30%]</li>
+<li>Thoughtful and sensible analysis of how to realize the goal [30%]</li>
+<li>Good use of the data for your country [20%]</li>
+<li>Organization of the report (do the parts fit together well and tell a clear
+story) [10%]</li>
+<li>Quality of writing [5%]</li>
+<li>Appropriate use of citations and references [5%]</li>
+</ul>
+<p>You may choose to turn this in as an RMarkdown document (knitted to PDF, of
+course) or a Word document (saved as PDF), or any other format that you have
+rendered as PDF.</p>
+<p>The key is that you explain clearly how you do your analysis.
+You can either use RMarkdown or you can turn in a document written with a
+word-processor and refer the reader to R scripts or an RMarkdown document
+with “supporting information” that contains the details of your calculations
+and quantitative analysis.</p>
+<p>You will turn this assignment in by accepting the assignment on
+GitHub Classroom, cloning the repository to your own computer, saving your
+final products in the repository and committing and pushing them to GitHub.</p>
+</div>
+<div id="data-sources" class="section level1">
+<h1>Data Sources</h1>
+<p>The <code>kayadata</code> package has data on the Kaya identity variables for 81 countries
+and top-down projections for 78 countries.</p>
+<p>If you are working on a country that’s not one of these, you may want to look
+at additional data, such as the International Energy Agency’s energy and
+emissions analyses.
+These reports are extremely expensive to buy, but the Vanderbilt Library
+provides free online access to the World Energy Outlook reports from 1999–2017
+through the ACORN library catalog and this link
+<a href="https://www.oecd-ilibrary.org/energy/world-energy-outlook-2017_weo-2017-en" class="uri">https://www.oecd-ilibrary.org/energy/world-energy-outlook-2017_weo-2017-en</a>
+if you are on campus or this link if you are off-campus
+<a href="https://www-oecd-ilibrary-org.proxy.library.vanderbilt.edu/energy/world-energy-outlook-2017_weo-2017-en" class="uri">https://www-oecd-ilibrary-org.proxy.library.vanderbilt.edu/energy/world-energy-outlook-2017_weo-2017-en</a>.
+You can also get detailed data for energy in the the OECD nations at
+<a href="https://www.oecd-ilibrary.org/energy/energy/indicator-group/english_379b6cdc-en" class="uri">https://www.oecd-ilibrary.org/energy/energy/indicator-group/english_379b6cdc-en</a>)
+or
+<a href="https://www-oecd-ilibrary-org.proxy.library.vanderbilt.edu/energy/energy/indicator-group/english_379b6cdc-en" class="uri">https://www-oecd-ilibrary-org.proxy.library.vanderbilt.edu/energy/energy/indicator-group/english_379b6cdc-en</a>).</p>
+<p>The U.S. Energy Information Administration
+publishes detailed country profiles for a number of countries at
+<a href="https://www.eia.gov/outlooks/ieo/" class="uri">https://www.eia.gov/outlooks/ieo/</a>,
+with data on many individual countries at
+<a href="https://www.eia.gov/beta/international/" class="uri">https://www.eia.gov/beta/international/</a>
+and brief country and regional analysis reports at
+<a href="https://www.eia.gov/beta/international/analysis.cfm" class="uri">https://www.eia.gov/beta/international/analysis.cfm</a></p>
+<p>This list of data sources is not exhaustive and you should feel free to explore
+other sources of information, but don’t feel that you have to spend hours in the
+library or the internet chasing down data. It is fine for this assignment to use
+“good enough” data or to substitute estimates if you can’t find exact numbers
+for what you’re looking for.
+Just be clear about how you’re doing your analysis.</p>
+</div>

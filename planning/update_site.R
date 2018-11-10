@@ -38,15 +38,21 @@ files_to_rebuild <- function(files) {
 
   if (file.exists(digest_file)) {
     digest <- readRDS(digest_file)
-    digest <- within(digest, file <- sub("^~", base, file))
+    digest <- within(digest, {
+      file <- sub("^~", base, file)
+      })
     digest <- digest[,colnames(digest) != "dest"]
     df <- merge(df, digest, by = "file")
   } else {
-    df <- within(df, digest <- NA, dest_digest <- NA)
+    df <- within(df, {
+      digest <- NA
+      dest_digest <- NA
+      })
   }
 
-  df <- within(df, rebuild <-
-                 needs_rebuild(cur_digest, cur_dest_digest, digest, dest_digest))
+  df <- within(df, {
+    rebuild <- needs_rebuild(cur_digest, cur_dest_digest, digest, dest_digest)
+    })
 
   df[df$rebuild,"file"]
 }
@@ -61,11 +67,12 @@ update_rmd_digests <- function(files) {
   digests <- data.frame(file = files,
                         dest = blogdown:::output_file(files),
                         stringsAsFactors = FALSE)
-  digests <- within(digests,
-    digest <- sapply(file, digest_if_exists),
-    dest_digest <- sapply(dest, digest_if_exists),
-    file <- sub(base, "~", file, fixed = TRUE),
-    dest <- sub(base, "~", dest, fixed = TRUE))
+  digests <- within(digests, {
+    digest <- sapply(file, digest_if_exists)
+    dest_digest <- sapply(dest, digest_if_exists)
+    file <- sub(base, "~", file, fixed = TRUE)
+    dest <- sub(base, "~", dest, fixed = TRUE)
+    })
   saveRDS(digests, file = digest_file)
 }
 

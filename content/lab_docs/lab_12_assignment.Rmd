@@ -15,9 +15,9 @@ output.blogdown::html_page:
 knitr::knit_hooks$set(inline = function(x) { knitr:::format_sci(x, 'md')})
 knitr::opts_chunk$set(cache = FALSE, echo = TRUE, fig.height=4, fig.width=7)
 
-# This section loads necessary R libraries and sources scripts that define 
+# This section loads necessary R libraries and sources scripts that define
 # useful functions format_md.
-# 
+#
 data_dir = "_data"
 script_dir = "_scripts"
 
@@ -38,72 +38,72 @@ source('_scripts/format_md.R', chdir = T)
 ```
 # Introduction
 
-This assignment will be more free-form than the lab assignments we have done 
+This assignment will be more free-form than the lab assignments we have done
 earlier in the semester.
-For this assignment, you will build on the work you did for the bottom-up and 
-top-down decarbonization analysis and investigate how decarbonization might 
-play out in one specific country. 
-You can work on your own or in a team of two or three for this assignment. 
-You will choose one country, decide what that country’s greenhouse gas 
-emissions target should be for the year 2050, and then sketch out a plan for 
+For this assignment, you will build on the work you did for the bottom-up and
+top-down decarbonization analysis and investigate how decarbonization might
+play out in one specific country.
+You can work on your own or in a team of two or three for this assignment.
+You will choose one country, decide what that country's greenhouse gas
+emissions target should be for the year 2050, and then sketch out a plan for
 how that country could achieve its goal.
 
-You and your team will give a short (five minutes per person) presentation in 
-the final lab on Monday, December 3 and turn in a written report (one report 
+You and your team will give a short (five minutes per person) presentation in
+the final lab on Monday, December 3 and turn in a written report (one report
 from the whole team is acceptable)
-before midnight on Wednesday December 5. 
+before midnight on Wednesday December 5.
 The report is not meant to be an exhaustive research report. I expect a length
 of around 5 pages of doublespaced
 text (or equivalently, around 3 pages singlespaced)
 per team
-member, plus appropriate figures, tables, and references. 
+member, plus appropriate figures, tables, and references.
 
-Unlike previous assignments, you may use RMarkdown, Word, or any other 
-word-processing mode that you wish when writing your report, but I would like 
-to you produce PDF output (e.g., if you’re writing in Word, save a copy in PDF 
-format). 
+Unlike previous assignments, you may use RMarkdown, Word, or any other
+word-processing mode that you wish when writing your report, but I would like
+to you produce PDF output (e.g., if you're writing in Word, save a copy in PDF
+format).
 
 # Establishing a Goal
 
 Briefly, look at what your country has pledged to do for emissions reduction
-for the 2015 Paris Agreements 
+for the 2015 Paris Agreements
 (<http://spappssecext.worldbank.org/sites/indc/Pages/INDCHome.aspx> and the
-individual Country Briefs at <
-http://spappssecext.worldbank.org/sites/indc/Pages/Content_Brief.aspx>).
+individual Country Briefs at 
+<http://spappssecext.worldbank.org/sites/indc/Pages/Content_Brief.aspx>).
 Consider what the country is planning to do by 2030 or whichever alternative
 target year it specifies in its Nationally Determined Contribution and
-then consider how much more the country might reasonably plan to do by 
-2050 to make a fair contribution to reducing global greenhouse gas emissions 
-while also taking into account the need for less-developed nations to 
-grow their economies in order to lift people out of poverty. 
+then consider how much more the country might reasonably plan to do by
+2050 to make a fair contribution to reducing global greenhouse gas emissions
+while also taking into account the need for less-developed nations to
+grow their economies in order to lift people out of poverty.
 
-For simplicity, I recommend that you focus on carbon dioxide emissions from 
-burning fossil fuels rather than on all different kinds of greenhouse gases. 
+For simplicity, I recommend that you focus on carbon dioxide emissions from
+burning fossil fuels rather than on all different kinds of greenhouse gases.
 
 There is no right answer, and it would be possible to write a 50-page
-paper just on this part, but that is not what I want you to do. 
-Rather, just present a simple overview of the issues your country faces and how 
-you would choose a goal. 
+paper just on this part, but that is not what I want you to do.
+Rather, just present a simple overview of the issues your country faces and how
+you would choose a goal.
 
-For instance, you could look back to 1965 (when the data on energy and emissions 
+For instance, you could look back to 1965 (when the data on energy and emissions
 in the `kayadata` package begins) and add up the total emissions from your
 country and compare it to the total emissions of the world during that period
 and then consider how your country's fraction of total emissions compare to your
-country's fraction of the total world population or the total world Gross 
-Domestic Product (GDP). 
+country's fraction of the total world population or the total world Gross
+Domestic Product (GDP).
 
-You may want to refer to the table below, which lists emissions reductions from 
-2005–2050 for different parts of the world that would meet a global 36% 
-emissions target in 2050. This table comes from the IPCC’s representative 
+You may want to refer to the table below, which lists emissions reductions from
+2005--2050 for different parts of the world that would meet a global 36%
+emissions target in 2050. This table comes from the IPCC's representative
 concentration pathway (RCP) database and is based on the pathway called
-“RCP 2.6,” which gives about a two-thirds probability of keeping global warming 
-below 2&deg; C. 
-However, this table was produced from an economic model and does not take 
-account of political and ethical considerations, such as fairness, so you are 
-not obliged to choose the same goal that this table lists for your country or 
+"RCP 2.6,"" which gives about a two-thirds probability of keeping global warming
+below 2&deg; C.
+However, this table was produced from an economic model and does not take
+account of political and ethical considerations, such as fairness, so you are
+not obliged to choose the same goal that this table lists for your country or
 its region.
 
-```{r rcp_26}
+```{r rcp_26, echo=FALSE}
 rcp_26 <- tribble(
   ~region, ~target_year, ~ref_year, ~reduction,
   "Australia/New Zealand", 2050, 2005,  0.82,
@@ -123,89 +123,91 @@ rcp_26 <- tribble(
 
 rcp_26 %>% mutate(reduction = percent(reduction, 1)) %>% select(-ref_year) %>%
                   kable(digits = 0, align = c("c", "r", "r"),
-                        col.names = c("Region", "Year", 
+                        col.names = c("Region", "Year",
                                       str_c("Reduction from ", rcp_26$ref_year[1])))
 ```
 
 # Realizing the Goal
 
-Once you have chosen a goal, you should apply the same kinds of methods that we 
-used in the bottom-up and top-down decarbonization analyses to estimate what 
-your conuntry’s population and per-capita GDP may be in 2030 and 2050, and what 
-the implications are for energy efficiency and the mixture of fuels that should 
-supply its energy needs. This is a place to research the country’s natural 
-resources, current energy supply, and opportunities to decarbonize. 
+Once you have chosen a goal, you should apply the same kinds of methods that we
+used in the bottom-up and top-down decarbonization analyses to estimate what
+your conuntry's population and per-capita GDP may be in 2030 and 2050, and what
+the implications are for energy efficiency and the mixture of fuels that should
+supply its energy needs. This is a place to research the country's natural
+resources, current energy supply, and opportunities to decarbonize.
 
-For instance, if your country is mountainous with many rivers, you may want to 
-expand hydroelectricity. 
-On the other hand, if it is relatively flat, has few rivers, or if all the 
+For instance, if your country is mountainous with many rivers, you may want to
+expand hydroelectricity.
+On the other hand, if it is relatively flat, has few rivers, or if all the
 major rivers already have dams and generators, then you may want to look at
-other sources of energy. 
+other sources of energy.
 If your country receives a lot of sunshine, you may want to emphasize solar
-energy. 
-Don’t forget to think about nuclear energy as well as renewables like 
+energy.
+Don't forget to think about nuclear energy as well as renewables like
 hydroelectricity, wind, and solar.
 
-I am not asking you to give a thorough engineering and economic assessment of 
-the energy transition, but to give a brief overview of the major opportunities 
-and obstacles to clean energy in your country and what you think would be the 
+I am not asking you to give a thorough engineering and economic assessment of
+the energy transition, but to give a brief overview of the major opportunities
+and obstacles to clean energy in your country and what you think would be the
 best strategy for reducing emissions.
 
 # Format
 
-This is a lab report, not a formal research paper, so you do not need to 
+This is a lab report, not a formal research paper, so you do not need to
 structure it as a formal paper.
 My grading rubric for the written report will be:
 
 * Thoughtful and sensible analysis of goals [30%]
 * Thoughtful and sensible analysis of how to realize the goal [30%]
 * Good use of the data for your country [20%]
-* Organization of the report (do the parts fit together well and tell a clear 
+* Organization of the report (do the parts fit together well and tell a clear
   story) [10%]
 * Quality of writing [5%]
 * Appropriate use of citations and references [5%]
 
-You may choose to turn this in as an RMarkdown document (knitted to PDF, of 
+You may choose to turn this in as an RMarkdown document (knitted to PDF, of
 course) or a Word document (saved as PDF), or any other format that you have
-rendered as PDF. 
+rendered as PDF.
 
-The key is that you explain clearly how you do your analysis. 
-You can either use RMarkdown or you can turn in a document written with a 
-word-processor and refer the reader to R scripts or an RMarkdown document 
-with "supporting information" that contains the details of your calculations 
+The key is that you explain clearly how you do your analysis.
+You can either use RMarkdown or you can turn in a document written with a
+word-processor and refer the reader to R scripts or an RMarkdown document
+with "supporting information" that contains the details of your calculations
 and quantitative analysis.
 
-You will turn this assignment in by accepting the assignment on 
-GitHub Classroom, cloning the repository to your own computer, saving your 
+You will turn this assignment in by accepting the assignment on
+GitHub Classroom, cloning the repository to your own computer, saving your
 final products in the repository and committing and pushing them to GitHub.
 
 # Data Sources
 The `kayadata` package has data on the Kaya identity variables for 81 countries
-and top-down projections for 78 countries. 
+and top-down projections for 78 countries.
 
-If you are working on a country that’s not one of these, you may want to look 
-at additional data, such as the International Energy Agency’s energy and 
-emissions analyses (these reports are extremely expensive to buy, but the 
-Vanderbilt Library provides free online access to the World Energy Outlook 
-reports from 1999–2017 through the ACORN library catalog and this link
-<http://www.oecdilibrary.org/energy/worldenergyoutlook_20725302> 
-if you are on campus. 
-You can also get detailed data for energy in the the OECD nations at 
-<http://www.oecdilibrary.org/energy/energy/indicatorgroup/english_379b6cdcen>).
+If you are working on a country that's not one of these, you may want to look
+at additional data, such as the International Energy Agency's energy and
+emissions analyses.
+These reports are extremely expensive to buy, but the Vanderbilt Library 
+provides free online access to the World Energy Outlook reports from 1999--2017 
+through the ACORN library catalog and this link
+<https://www.oecd-ilibrary.org/energy/world-energy-outlook-2017_weo-2017-en>
+if you are on campus or this link if you are off-campus
+<https://www-oecd-ilibrary-org.proxy.library.vanderbilt.edu/energy/world-energy-outlook-2017_weo-2017-en>.
+You can also get detailed data for energy in the the OECD nations at
+<https://www.oecd-ilibrary.org/energy/energy/indicator-group/english_379b6cdc-en>)
+or 
+<https://www-oecd-ilibrary-org.proxy.library.vanderbilt.edu/energy/energy/indicator-group/english_379b6cdc-en>).
 
 The U.S. Energy Information Administration
-publishes detailed country profiles for a number of countries at <
-https://www.eia.gov/outlooks/ieo/>, 
-with data on many individual countries at 
+publishes detailed country profiles for a number of countries at 
+<https://www.eia.gov/outlooks/ieo/>,
+with data on many individual countries at
 <https://www.eia.gov/beta/international/>
-and brief country and regional analysis reports at 
+and brief country and regional analysis reports at
 <https://www.eia.gov/beta/international/analysis.cfm>
 
-This list of data sources is not exhaustive and you should feel free to explore 
-other sources of information, but don’t feel that you have to spend hours in the 
-library or the internet chasing down data. It is fine for this assignment to use 
-"good enough" data or to substitute estimates if you can’t find exact numbers 
-for what you’re looking for. 
-Just be clear about how you’re doing your analysis.
-
-# References
+This list of data sources is not exhaustive and you should feel free to explore
+other sources of information, but don't feel that you have to spend hours in the
+library or the internet chasing down data. It is fine for this assignment to use
+"good enough" data or to substitute estimates if you can't find exact numbers
+for what you're looking for.
+Just be clear about how you're doing your analysis.
