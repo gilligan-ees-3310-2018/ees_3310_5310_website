@@ -4,6 +4,7 @@ lab_date: '2018-11-12'
 presentation_date: '2018-12-03'
 report_due_date: '2018-12-05'
 lab_number: 12
+github_classroom_assignment_url: https://classroom.github.com/a/1ogfEu9S
 pubdate: '2018-07-31'
 date: '2018-11-12'
 slug: lab_12_assignment
@@ -21,4 +22,4 @@ You and a partner will pick a country and begin working on a policy analysis for
 
 ## Assignment
 
-The GitHub Classroom has not been posted yet.
+Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/1ogfEu9S>.

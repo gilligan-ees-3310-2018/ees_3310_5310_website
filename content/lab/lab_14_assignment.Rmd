@@ -4,6 +4,7 @@ lab_date: '2018-12-03'
 presentation_date: '2018-12-03'
 report_due_date: '2018-12-05'
 lab_number: 14
+github_classroom_assignment_url: https://classroom.github.com/a/1ogfEu9S
 pubdate: '2018-07-31'
 date: '2018-12-03'
 slug: lab_14_assignment
@@ -25,4 +26,4 @@ No reading has been posted yet for this lab.
 
 ## Assignment
 
-The GitHub Classroom has not been posted yet.
+Accept the assignment at GitHub Classroom at <https://classroom.github.com/a/1ogfEu9S>.
