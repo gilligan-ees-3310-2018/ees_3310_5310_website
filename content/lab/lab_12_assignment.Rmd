@@ -15,8 +15,9 @@ You and a partner will pick a country and begin working on a policy analysis for
 
 ## Reading
 
-No reading has been posted yet for this lab.
+**Before you come to lab**, please read the following document:
 
+* [Project: Decarbonization Policy for One Country](/lab_docs/lab_12_assignment)
 
 ## Assignment
 
