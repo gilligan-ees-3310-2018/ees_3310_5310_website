@@ -20,3 +20,4 @@ Corel Auto-Preserve/
 *-concordance.tex
 *.bak
 .Rproj.user
+/temp.R

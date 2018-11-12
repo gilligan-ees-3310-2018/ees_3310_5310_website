@@ -150,6 +150,7 @@ lessons:
 - date: '2018-11-12'
   title: The Case for Nuclear Energy
   reading: /reading/reading_35
+  lecture: /Slides/Class_35
   lab: lab_12_assignment
 - date: '2018-11-14'
   title: 'Geoengineering: Solar Radiation Management'
