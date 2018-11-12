@@ -127,23 +127,23 @@ nicely as a table in an RMarkdown document:</p>
 <td align="right">21259</td>
 <td align="right">1958.203</td>
 <td align="right">315.70</td>
-<td align="right">314.43</td>
-<td align="right">316.18</td>
+<td align="right">314.42</td>
+<td align="right">316.19</td>
 <td align="right">314.90</td>
 <td align="right">315.70</td>
-<td align="right">314.43</td>
+<td align="right">314.42</td>
 </tr>
 <tr class="even">
 <td align="right">1958</td>
 <td align="right">4</td>
 <td align="right">21290</td>
 <td align="right">1958.288</td>
-<td align="right">317.45</td>
-<td align="right">315.16</td>
-<td align="right">317.29</td>
+<td align="right">317.46</td>
+<td align="right">315.15</td>
+<td align="right">317.30</td>
 <td align="right">314.98</td>
-<td align="right">317.45</td>
-<td align="right">315.16</td>
+<td align="right">317.46</td>
+<td align="right">315.15</td>
 </tr>
 <tr class="odd">
 <td align="right">1958</td>
@@ -151,11 +151,11 @@ nicely as a table in an RMarkdown document:</p>
 <td align="right">21320</td>
 <td align="right">1958.370</td>
 <td align="right">317.51</td>
-<td align="right">314.72</td>
-<td align="right">317.84</td>
+<td align="right">314.71</td>
+<td align="right">317.85</td>
 <td align="right">315.06</td>
 <td align="right">317.51</td>
-<td align="right">314.72</td>
+<td align="right">314.71</td>
 </tr>
 <tr class="even">
 <td align="right">1958</td>
@@ -164,9 +164,9 @@ nicely as a table in an RMarkdown document:</p>
 <td align="right">1958.455</td>
 <td align="right">NA</td>
 <td align="right">NA</td>
-<td align="right">317.23</td>
+<td align="right">317.24</td>
 <td align="right">315.14</td>
-<td align="right">317.23</td>
+<td align="right">317.24</td>
 <td align="right">315.14</td>
 </tr>
 </tbody>
@@ -210,8 +210,8 @@ function.</p>
   geom_line() +   # This line says to plot lines between the points
   labs(x = &quot;Year&quot;, y = &quot;CO2 concentration (ppm)&quot;,
        title = &quot;Measured CO2 from Mauna Loa Observatory&quot;) # This line gives the </code></pre>
-<pre><code>## Warning: Removed 6 rows containing missing values (geom_path).</code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_mlo-1.png" width="672" /></p>
+<pre><code>## Warning: Removed 4 rows containing missing values (geom_path).</code></pre>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/plot_mlo-1.png" width="672" /></p>
 <pre class="r"><code>                                                          # names of the axes
   # Earlier in this .Rmd file, I called set_theme(theme_bw(base_size = 15)) to 
   # set the default plot style. If you call ggplot() without this,
@@ -236,7 +236,7 @@ the average over a year centered at that row (technically, all the months from
   geom_line(aes(y = trend), color = &quot;black&quot;, size = 2) +
   labs(x = &quot;Year&quot;, y = &quot;CO2 concentration (ppm)&quot;, 
        title = &quot;Measured and Seasonally Adjusted CO2&quot;)</code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_trend-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_trend-1.png" width="672" /></p>
 <p>But wait: we might want a legend to tell the reader what each colored line
 represents. We can create new aesthetics for the graph mapping to do this:</p>
 <pre class="r"><code>mlo_simple %&gt;% mutate(trend = rollapply(data = co2, width = 12, FUN = mean,
@@ -248,7 +248,7 @@ represents. We can create new aesthetics for the graph mapping to do this:</p>
                      name = &quot;Smoothing&quot;) +
   labs(x = &quot;Year&quot;, y = &quot;CO2 concentration (ppm)&quot;, 
        title = &quot;Measured and Seasonally Adjusted CO2&quot;)</code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_trend_2-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_trend_2-1.png" width="672" /></p>
 <p>We can also anlyze this data to estimate the average trend in CO<sub>2</sub>.
 We use the <code>lm</code> function in R to fit a straight line to the data,
 and we use the <code>tidy</code> function from the <code>broom</code> package to
@@ -267,8 +267,8 @@ tidy(trend)</code></pre>
 <pre><code>## # A tibble: 2 x 5
 ##   term        estimate std.error statistic p.value
 ##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-## 1 (Intercept) -2726.    17.6         -155.       0
-## 2 date            1.55   0.00884      175.       0</code></pre>
+## 1 (Intercept) -2729.    17.5         -156.       0
+## 2 date            1.55   0.00881      176.       0</code></pre>
 <p>This shows us that the trend is for CO<sub>2</sub> to rise by
 1.55 ppm per year,
 with an uncertainty of plus or minus
@@ -281,7 +281,7 @@ with an uncertainty of plus or minus
   geom_smooth(method = &quot;lm&quot;) +
   labs(x = &quot;Year&quot;, y = &quot;CO2 concentration (ppm)&quot;, 
        title = &quot;Measured CO2 and Linear Fit&quot;)</code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_with_fitted_trend-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_with_fitted_trend-1.png" width="672" /></p>
 </div>
 </div>
 <div id="exercises" class="section level1">
@@ -325,9 +325,9 @@ and a linear fit:</p>
   geom_line() +
   geom_smooth(method=&quot;lm&quot;) +
   labs(x = &quot;Year&quot;, y = &quot;CO2 concentration (ppm)&quot;)</code></pre>
-<pre><code>## Warning: Removed 6 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 6 rows containing missing values (geom_path).</code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_seas-1.png" width="672" /></p>
+<pre><code>## Warning: Removed 4 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 4 rows containing missing values (geom_path).</code></pre>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/plot_mlo_seas-1.png" width="672" /></p>
 <p>Now fit a linear function to find the annual trend of <code>co2.seas</code>. Save
 the results of your fit in a variable called <code>trend.seas</code>.</p>
 <pre class="r"><code>trend.seas = lm(co2.seas ~ date, data = mlo_seas)
@@ -336,8 +336,8 @@ tidy(trend.seas)</code></pre>
 <pre><code>## # A tibble: 2 x 5
 ##   term        estimate std.error statistic p.value
 ##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-## 1 (Intercept) -2725.    15.1         -181.       0
-## 2 date            1.55   0.00758      204.       0</code></pre>
+## 1 (Intercept) -2730.    15.1         -181.       0
+## 2 date            1.55   0.00760      204.       0</code></pre>
 <p>Compare the trend you fit to the raw <code>co2.filled</code> data to the trend you fit
 to the seasonally adjusted data.</p>
 <p><strong>Note:</strong> I just intend students to informally look at the trend in the graph
@@ -576,7 +576,7 @@ giss_g = giss_g %&gt;%
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)</code></pre>
 <pre><code>## Warning: Removed 3 rows containing missing values (geom_path).</code></pre>
 <pre><code>## Warning: Removed 3 rows containing missing values (geom_point).</code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_giss-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/plot_giss-1.png" width="672" /></p>
 <p>That plot probably doesn’t look like much, because it’s very noisy.
 Use the function <code>rollapply</code> from the package <code>zoo</code> to create
 new columns in <code>giss_g</code> with
@@ -598,7 +598,7 @@ and a thick dark blue line for the ten-year rolling average.</p>
   geom_line(aes(y = smooth.1), color = &quot;dark green&quot;, size = 0.5) + 
   geom_line(aes(y = smooth.10), color = &quot;dark blue&quot;, size = 1) +
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)</code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_giss_with_smoothing-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/plot_giss_with_smoothing-1.png" width="672" /></p>
 <p>Alternately, we could do this fancier version:</p>
 <pre class="r"><code>giss_g %&gt;% 
    mutate( smooth.1 = rollapply(data = anomaly, width = 12, FUN = mean,
@@ -614,7 +614,7 @@ and a thick dark blue line for the ten-year rolling average.</p>
   scale_size_manual(values = c(&quot;None&quot; = 0.1, &quot;1-year&quot; = 0.5,
                                &quot;10-year&quot; = 1.0), name = &quot;Averaging&quot;) +
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)</code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/alt_plot_giss_with_smoothing-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/alt_plot_giss_with_smoothing-1.png" width="672" /></p>
 <p>The graph shows that temperature didn’t show a steady trend until starting around
 1970, so we want to isolate the data starting in 1970 and fit a linear trend
 to it.</p>
@@ -716,7 +716,7 @@ help us compare before and after 1998.</p>
                                        # &quot;after&quot; points dark red
                                        # don&#39;t use a legend
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)</code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_recent_giss-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/plot_recent_giss-1.png" width="672" /></p>
 <p>Does it look as though the red points are not rising as fast as the blue points?</p>
 <p>Let’s just plot the data from 1998 on:</p>
 <pre class="r"><code>ggplot(giss_annual, aes(x = date, y = anomaly)) +
@@ -733,7 +733,7 @@ help us compare before and after 1998.</p>
                                        # don&#39;t use a legend
   xlim(1998,2016) +
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)</code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_pause-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/plot_pause-1.png" width="672" /></p>
 <p>Now how does it look?</p>
 <p>Let’s use the <code>filter</code> function to break the data into two different tibbles:
 <code>giss_before</code> will have the data from 1979–1998 and the other, <code>giss_after</code>
@@ -782,7 +782,7 @@ tidy(giss_trend)</code></pre>
               alpha = 0.2, fullrange = TRUE) +
   scale_color_manual(values = c(Before = &quot;dark blue&quot;, After = &quot;dark red&quot;)) +
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)  </code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/plot_combined-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/plot_combined-1.png" width="672" /></p>
 <p>Try this with the parameter <code>fullrange</code> set to <code>TRUE</code> and <code>FALSE</code> in the
 <code>geom_smooth</code> function. What is the difference?</p>
 <pre class="r"><code>ggplot(giss_combined, aes(x = date, y = anomaly, color = timing)) +
@@ -792,7 +792,7 @@ tidy(giss_trend)</code></pre>
               alpha = 0.2, fullrange = FALSE) +
   scale_color_manual(values = c(Before = &quot;dark blue&quot;, After = &quot;dark red&quot;)) +
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)  </code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/alt_plot_combined_false-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/alt_plot_combined_false-1.png" width="672" /></p>
 <pre class="r"><code>ggplot(giss_combined, aes(x = date, y = anomaly, color = timing)) +
   geom_line(size = 1) +
   geom_point(size = 2) +
@@ -800,7 +800,7 @@ tidy(giss_trend)</code></pre>
               alpha = 0.2, fullrange = TRUE) +
   scale_color_manual(values = c(Before = &quot;dark blue&quot;, After = &quot;dark red&quot;)) +
   labs(x = &quot;Year&quot;, y = &quot;Temperature Anomaly (Celsius)&quot;)  </code></pre>
-<p><img src="/lab_solutions/lab_02_answers_files/figure-html/alt_plot_combined_true-1.png" width="672" /></p>
+<p><img src="D:/JG_Documents/teaching/2018-2019/Fall/EES-3310/EES_3310_website/content/lab_solutions/lab_02_answers_files/figure-html/alt_plot_combined_true-1.png" width="672" /></p>
 <p><strong>Answer:</strong>
 Both plots show the full data set, and a linear trend that is fit just
 to the “before” data. The trend line shows both the best fit for a trend
