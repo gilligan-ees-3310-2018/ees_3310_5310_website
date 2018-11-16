@@ -36,6 +36,16 @@ theme_set(theme_bw(base_size = 15))
 # Load basic utility scripts
 source('_scripts/format_md.R', chdir = T)
 ```
+# Important Revision
+
+The original assignment called for you to analyze **both** the country's 
+2030 nationally determined commitment under the Paris agreement **and**
+the 2050 goal that you choose. 
+
+I decided that this would be too much work, so **you only need to analyze the
+2050 goal** (you **do not** need to analyze the difficulty of meeting the
+2030 goal).
+
 # Introduction
 
 This assignment will be more free-form than the lab assignments we have done
@@ -131,7 +141,7 @@ rcp_26 %>% mutate(reduction = percent(reduction, 1)) %>% select(-ref_year) %>%
 
 Once you have chosen a goal, you should apply the same kinds of methods that we
 used in the bottom-up and top-down decarbonization analyses to estimate what
-your conuntry's population and per-capita GDP may be in 2030 and 2050, and what
+your conuntry's population and per-capita GDP may be ~~in 2030 and 2050~~ **in 2050**, and what
 the implications are for energy efficiency and the mixture of fuels that should
 supply its energy needs. This is a place to research the country's natural
 resources, current energy supply, and opportunities to decarbonize.

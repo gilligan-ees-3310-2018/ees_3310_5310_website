@@ -159,6 +159,7 @@ lessons:
 - date: '2018-11-16'
   title: 'Geoengineering: Carbon Dioxide Management'
   reading: /reading/reading_37
+  lecture: /Slides/Class_37
 - date: '2018-11-19'
   title: Thanksgiving Break
 - date: '2018-11-21'
@@ -181,3 +182,4 @@ lessons:
   lab: lab_14_assignment
 - date: '2018-12-05'
   title: Review
+  reading: /reading/reading_42

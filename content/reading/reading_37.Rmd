@@ -15,7 +15,7 @@ output:
 ### Required Reading (everyone):
 * The Climate Fix, Ch. 5, pp. 132--142.
 * Climate Casino, Ch. 14, pp. 165--168.
-* Handout: [F. Dyson, "The Question of Global Warming," New York Review of Books, June 2008](){target="_blank"}.
+* Handout: [F. Dyson, "The Question of Global Warming," New York Review of Books, June 2008](/files/reading_handouts/Dyson-GlobalWarming-2008.pdf){target="_blank"}.
 
 ### Reading Notes:
 

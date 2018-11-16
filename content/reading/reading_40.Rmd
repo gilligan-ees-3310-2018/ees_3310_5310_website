@@ -13,6 +13,6 @@ output:
 ## Reading:
 
 ### Required Reading (everyone):
-* Handout: [M.P. Vandenbergh and J.M. Gilligan, _Beyond Politics_ (Cambridge, 2017), Ch. 1](){target="_blank"}, Ch. 1.
+* Handout: [M.P. Vandenbergh and J.M. Gilligan, _Beyond Politics_ (Cambridge, 2017)](/files/reading_handouts/Beyond_Politics_Chapter_1.pdf){target="_blank"}, Ch. 1.
 
 
