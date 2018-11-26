@@ -7,7 +7,7 @@ p_load(assertthat)
 p_load(yaml)
 p_load(here)
 p_load(blogdown)
-p_load(digest)
+p_load(blogdownDigest)
 
 database <- "EES_3310_5310.sqlite3"
 online_location <- "posted on Brightspace"

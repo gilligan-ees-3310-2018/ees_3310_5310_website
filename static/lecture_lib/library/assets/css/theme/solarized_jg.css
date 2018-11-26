@@ -462,7 +462,7 @@ body {
 .reveal table th,
 .reveal table td {
   border-width: 2px;
-  border-style: dotted;
+  border-style: solid;
   border-color: gray;
   border-collapse: collapse; }
 
