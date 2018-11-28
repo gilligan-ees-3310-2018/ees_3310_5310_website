@@ -505,7 +505,9 @@ body {
 .reveal table.noborder tbody,
 .reveal table.noborder th,
 .reveal table.noborder tr,
-.reveal table.noborder td {
+.reveal table.noborder td,
+.reveal img.noborder,
+.reveal .noborder img {
   border-style: none; }
 
 .reveal .leftlist ol,
