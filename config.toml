@@ -12,7 +12,7 @@ publishDir = "public"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$", "_scripts$", "_data$", "\\.gitkeep"]
 
 [blackfriday]
-  smartypangs = true
+  smartypants = true
   latexDashes = true
   smartDashes = true
   hrefTargetBlank = true
